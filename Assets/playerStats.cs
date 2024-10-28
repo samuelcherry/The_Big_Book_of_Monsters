@@ -31,7 +31,6 @@ public class PlayerStats : MonoBehaviour
     public float maxXP;
 
 
-
     public float currentHp;
     public float maxHp;
     public int atk;
@@ -54,6 +53,7 @@ public class PlayerStats : MonoBehaviour
         currentXp = 0;
 
 
+        Debug.Log("TEST");
         //saveManager.Load();
 
         maxXP = xpArr[level - 1];
