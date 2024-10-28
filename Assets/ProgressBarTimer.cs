@@ -18,8 +18,8 @@ public class ProgressBarTimer : MonoBehaviour
     private int stage;
 
 
-    readonly float[] speedArray = new float[] { 8F, 4F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
-    readonly float[] enemySpeedArray = new float[] { 8F, 4F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
+    readonly float[] speedArray = new float[] { 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
+    readonly float[] enemySpeedArray = new float[] { 2F, 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
 
 
 
@@ -42,8 +42,8 @@ public class ProgressBarTimer : MonoBehaviour
         level = playerStats.level;
         stage = enemyStats.Stage;
 
-        totalTime = speedArray[level - 1];
-        enemyAtkTime = enemySpeedArray[stage - 1];
+        totalTime = speedArray[level];
+        enemyAtkTime = enemySpeedArray[stage];
 
 
         timeLeft = totalTime;

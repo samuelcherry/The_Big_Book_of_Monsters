@@ -10,9 +10,13 @@ public class PlayerStats : MonoBehaviour
     public EnemyStats enemyStats;
     public SaveManager saveManager;
     public ProgressBarTimer progressBarTimer;
+    public Prestige prestige;
+    public SlotUpgrades slotUpgrades;
+
+
     public TMP_Text levelText;
     public TMP_Text xpText;
-    public TMP_Text upgradeCostText;
+
     public Slider xpBar;
     public Slider hpBar;
 
@@ -25,20 +29,23 @@ public class PlayerStats : MonoBehaviour
     public int level;
     public float currentXp;
     public float maxXP;
-    public int upgradeLvl = 0;
-    public float xpPercent;
+
+
 
     public float currentHp;
     public float maxHp;
     public int atk;
     public int def;
 
-    readonly int[] xpArr = new int[] { 300, 1000, 3000, 6500, 1400, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
-    readonly int[] hpMaxArray = new int[] { 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050 };
-    readonly int[] atkArr = new int[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
-    readonly int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
-    readonly int[] upgradeCostArr = new int[] { 100, 1000, 10000, 100000 };
-    readonly int[] upgradeAmtArr = new int[] { 0, 10, 30, 50, 100 };
+    public int[] xpArr = new int[] { 300, 1000, 3000, 6500, 1400, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
+    public int[] hpMaxArray = new int[] { 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050 };
+    public int[] atkArr = new int[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
+    public int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
+
+
+
+
+
 
 
     void Start()
@@ -46,19 +53,18 @@ public class PlayerStats : MonoBehaviour
         level = 1;
         currentXp = 0;
 
-        saveManager.Load();
+
+        //saveManager.Load();
 
         maxXP = xpArr[level - 1];
 
         currentHp = 100;
-        maxHp = hpMaxArray[level - 1];
-        atk = atkArr[level - 1] + upgradeAmtArr[upgradeLvl];
-        def = defArray[level - 1];
+        maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
+        atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
+        def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
 
         hpBar.value = currentHp / maxHp;
 
-
-        saveManager.Load();
         UpdateStatText();
         progressBarTimer.UpdateSpdText();
     }
@@ -67,10 +73,12 @@ public class PlayerStats : MonoBehaviour
         UpdateStatText();
         progressBarTimer.UpdateSpdText();
     }
+
     public void AddXp()
     {
         currentXp += enemyStats.XpRwd;
         UpdateStatText();
+        prestige.AddBaseXp();
         if (currentXp == 0)
         {
             xpBar.value = 0;
@@ -97,10 +105,10 @@ public class PlayerStats : MonoBehaviour
         {
             level += 1;
             currentXp = 0;
-            atk = atkArr[level - 1] + upgradeAmtArr[upgradeLvl];
+            atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
             maxXP = xpArr[level - 1];
 
-            maxHp = hpMaxArray[level - 1];
+            maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
             currentHp = maxHp;
             hpBar.value = currentHp / maxHp;
 
@@ -125,22 +133,26 @@ public class PlayerStats : MonoBehaviour
 
     public void PlayerTakeDamage()
     {
+
         if (currentHp > 0)  // Ensure HP is greater than 0
         {
             hpBar.value = currentHp / maxHp;
-            currentHp -= enemyStats.EnemyAtk - def;
-            enemyStats.UpdateEnemyStatsText();
-            UpdateStatText();
-            if (currentHp <= 0)
+            if (enemyStats.EnemyAtk > def)
+            {
+                Debug.Log(enemyStats.EnemyAtk);
+                currentHp -= enemyStats.EnemyAtk - def;
+            }
+            else if (currentHp <= 0)
             {
                 enemyStats.Stage -= 1;
+                enemyStats.UpdateEnemyStatsText();
+
                 currentHp = maxHp;
                 enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
-
                 hpBar.value = currentHp / maxHp;
 
                 UpdateStatText();
-                enemyStats.UpdateEnemyStatsText();
+
             }
         }
         else
@@ -152,6 +164,7 @@ public class PlayerStats : MonoBehaviour
     public void AddGold()
     {
         enemyStats.GoldAmt += enemyStats.GoldRwd;
+        Debug.Log(enemyStats.GoldRwd);
     }
 
     public void UpdateStatText()
@@ -181,28 +194,7 @@ public class PlayerStats : MonoBehaviour
         {
             enemyStats.GoldAmtText.text = "Gold: " + enemyStats.GoldAmt;
         }
-        if (upgradeCostText != null)
-        {
-            upgradeCostText.text = "Cost: " + upgradeCostArr[upgradeLvl].ToString();
-        }
 
         hpBar.value = currentHp / maxHp;
     }
-
-
-    public void Upgrade()
-    {
-        if (enemyStats.GoldAmt >= upgradeCostArr[upgradeLvl])
-        {
-            enemyStats.GoldAmt -= upgradeCostArr[upgradeLvl];
-            upgradeLvl += 1;
-            atk += upgradeAmtArr[upgradeLvl];
-            UpdateStatText();
-            saveManager.Save();
-        }
-        else
-        {
-        }
-    }
-
 }
