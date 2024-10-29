@@ -19,7 +19,22 @@
 			<method name="Save"/>
 		</type>
 		<type fullname="SlotUpgrades">
-			<method name="SlotFourUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
+			<method name="SlotOneUpgrade"/>
 			<method name="SlotOneUpgrade"/>
 			<method name="SlotThreeUpgrade"/>
 			<method name="SlotTwoUpgrade"/>

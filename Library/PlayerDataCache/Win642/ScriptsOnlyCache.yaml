@@ -23,6 +23,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    - UnityEditor.Tilemaps.TilemapEditorToolPreferences
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
@@ -258,22 +259,49 @@ ScriptsOnlyBuild:
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
     methodName: SlotThreeUpgrade
   - assembly: Assembly-CSharp
     fullTypeName: Prestige
     methodName: PrestigeHero
   - assembly: Assembly-CSharp
     fullTypeName: SlotUpgrades
-    methodName: SlotFourUpgrade
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: MenuThreeMove
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
   - assembly: Assembly-CSharp
     fullTypeName: EnemyStats
     methodName: DecreaseStage
   - assembly: Assembly-CSharp
     fullTypeName: SaveManager
     methodName: Save
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: MenuTwoMove
@@ -286,6 +314,24 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: MenuFourMove
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
+  - assembly: Assembly-CSharp
+    fullTypeName: SlotUpgrades
+    methodName: SlotOneUpgrade
   - assembly: Assembly-CSharp
     fullTypeName: SlotUpgrades
     methodName: SlotOneUpgrade
@@ -367,139 +413,139 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 870}
+      Script: {instanceID: 872}
     - Class: 114
-      Script: {instanceID: 31374}
+      Script: {instanceID: 31376}
     - Class: 114
-      Script: {instanceID: 31548}
+      Script: {instanceID: 31550}
     - Class: 114
-      Script: {instanceID: 31820}
+      Script: {instanceID: 31822}
     - Class: 114
-      Script: {instanceID: 31868}
+      Script: {instanceID: 31870}
     - Class: 114
-      Script: {instanceID: 32076}
+      Script: {instanceID: 32078}
     - Class: 114
-      Script: {instanceID: 32236}
+      Script: {instanceID: 32238}
     - Class: 114
-      Script: {instanceID: 32354}
+      Script: {instanceID: 32356}
     - Class: 114
-      Script: {instanceID: 32502}
+      Script: {instanceID: 32504}
     - Class: 114
-      Script: {instanceID: 32542}
+      Script: {instanceID: 32544}
     - Class: 114
-      Script: {instanceID: 32560}
+      Script: {instanceID: 32562}
     - Class: 114
-      Script: {instanceID: 32704}
+      Script: {instanceID: 32706}
     - Class: 114
-      Script: {instanceID: 32970}
+      Script: {instanceID: 32972}
     - Class: 114
-      Script: {instanceID: 33190}
+      Script: {instanceID: 33192}
     - Class: 114
-      Script: {instanceID: 33554}
+      Script: {instanceID: 33556}
     - Class: 114
-      Script: {instanceID: 33614}
+      Script: {instanceID: 33616}
     - Class: 114
-      Script: {instanceID: 33778}
+      Script: {instanceID: 33780}
     - Class: 114
-      Script: {instanceID: 33862}
+      Script: {instanceID: 33864}
     - Class: 114
-      Script: {instanceID: 34018}
+      Script: {instanceID: 34020}
     - Class: 114
-      Script: {instanceID: 34116}
+      Script: {instanceID: 34118}
     - Class: 114
-      Script: {instanceID: 34152}
+      Script: {instanceID: 34154}
     - Class: 114
-      Script: {instanceID: 34210}
+      Script: {instanceID: 34212}
     - Class: 114
-      Script: {instanceID: 34240}
+      Script: {instanceID: 34242}
     - Class: 114
-      Script: {instanceID: 34276}
+      Script: {instanceID: 34278}
     - Class: 114
-      Script: {instanceID: 35186}
+      Script: {instanceID: 35188}
     - Class: 114
-      Script: {instanceID: 35506}
+      Script: {instanceID: 35508}
     - Class: 114
-      Script: {instanceID: 35516}
+      Script: {instanceID: 35518}
     - Class: 114
-      Script: {instanceID: 36272}
+      Script: {instanceID: 36274}
     - Class: 114
-      Script: {instanceID: 36326}
+      Script: {instanceID: 36328}
     - Class: 114
-      Script: {instanceID: 36610}
+      Script: {instanceID: 36612}
     - Class: 114
-      Script: {instanceID: 36710}
+      Script: {instanceID: 36712}
     - Class: 114
-      Script: {instanceID: 36780}
+      Script: {instanceID: 36782}
     - Class: 114
-      Script: {instanceID: 36864}
+      Script: {instanceID: 36866}
     - Class: 114
-      Script: {instanceID: 36962}
+      Script: {instanceID: 36964}
     - Class: 114
-      Script: {instanceID: 37076}
+      Script: {instanceID: 37078}
     - Class: 114
-      Script: {instanceID: 37736}
+      Script: {instanceID: 37738}
     - Class: 114
-      Script: {instanceID: 37942}
-    - Class: 114
-      Script: {instanceID: 38046}
+      Script: {instanceID: 37944}
     - Class: 114
       Script: {instanceID: 38048}
     - Class: 114
-      Script: {instanceID: 38314}
+      Script: {instanceID: 38050}
     - Class: 114
-      Script: {instanceID: 38860}
+      Script: {instanceID: 38316}
     - Class: 114
-      Script: {instanceID: 39102}
+      Script: {instanceID: 38862}
     - Class: 114
-      Script: {instanceID: 39510}
+      Script: {instanceID: 39104}
     - Class: 114
-      Script: {instanceID: 39722}
+      Script: {instanceID: 39512}
     - Class: 114
-      Script: {instanceID: 40724}
+      Script: {instanceID: 39724}
     - Class: 114
-      Script: {instanceID: 40750}
+      Script: {instanceID: 40726}
     - Class: 114
-      Script: {instanceID: 41188}
+      Script: {instanceID: 40752}
     - Class: 114
-      Script: {instanceID: 41244}
+      Script: {instanceID: 41190}
     - Class: 114
-      Script: {instanceID: 41398}
+      Script: {instanceID: 41246}
     - Class: 114
-      Script: {instanceID: 41530}
+      Script: {instanceID: 41400}
     - Class: 114
-      Script: {instanceID: 41614}
+      Script: {instanceID: 41532}
     - Class: 114
-      Script: {instanceID: 41710}
+      Script: {instanceID: 41616}
     - Class: 114
-      Script: {instanceID: 41950}
+      Script: {instanceID: 41712}
     - Class: 114
-      Script: {instanceID: 42156}
+      Script: {instanceID: 41952}
     - Class: 114
-      Script: {instanceID: 42272}
+      Script: {instanceID: 42158}
     - Class: 114
       Script: {instanceID: 42274}
     - Class: 114
-      Script: {instanceID: 42290}
+      Script: {instanceID: 42276}
     - Class: 114
-      Script: {instanceID: 42336}
+      Script: {instanceID: 42292}
     - Class: 114
-      Script: {instanceID: 42378}
+      Script: {instanceID: 42338}
     - Class: 114
-      Script: {instanceID: 42522}
+      Script: {instanceID: 42380}
     - Class: 114
-      Script: {instanceID: 42608}
+      Script: {instanceID: 42524}
     - Class: 114
-      Script: {instanceID: 42636}
+      Script: {instanceID: 42610}
     - Class: 114
-      Script: {instanceID: 42808}
+      Script: {instanceID: 42638}
     - Class: 114
-      Script: {instanceID: 43086}
+      Script: {instanceID: 42810}
     - Class: 114
-      Script: {instanceID: 43174}
+      Script: {instanceID: 43088}
     - Class: 114
-      Script: {instanceID: 43410}
+      Script: {instanceID: 43176}
     - Class: 114
-      Script: {instanceID: 43590}
+      Script: {instanceID: 43412}
+    - Class: 114
+      Script: {instanceID: 43592}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1791,7 +1837,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: 764fc2e39edf76ec3b6546cd9c1dfbd0
+      Hash: e1dd890cded63e6d45daf510677503d3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: EnemyStats

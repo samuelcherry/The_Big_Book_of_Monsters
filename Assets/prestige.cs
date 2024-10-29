@@ -83,7 +83,7 @@ public class Prestige : MonoBehaviour
         }
         if (futureMultiText != null)
         {
-            futureMultiText.text = (prestigeMulti + baseXP / 1000).ToString();
+            futureMultiText.text = (prestigeMulti + baseXP / 10000).ToString();
         }
     }
 

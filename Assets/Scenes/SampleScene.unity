@@ -606,6 +606,7 @@ Transform:
   - {fileID: 1581234898}
   - {fileID: 316611368}
   - {fileID: 210248326}
+  - {fileID: 2067066246}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &59318998
@@ -5222,7 +5223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1325, y: 55}
+  m_AnchoredPosition: {x: -1636, y: 101}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &794392488
@@ -5829,7 +5830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2050, y: 55}
+  m_AnchoredPosition: {x: -2361, y: 101}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &908365125
@@ -5913,8 +5914,8 @@ Transform:
   m_GameObject: {fileID: 908365125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -81}
-  m_LocalScale: {x: 125, y: 125, z: 1}
+  m_LocalPosition: {x: 36.4535, y: -58, z: -81}
+  m_LocalScale: {x: 147.56151, y: 147.50906, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1681472002}
@@ -6401,9 +6402,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 316611369}
-        m_TargetAssemblyTypeName: SlotUpgrades, Assembly-CSharp
-        m_MethodName: SlotOneUpgrade
+      - m_Target: {fileID: 2067066247}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgTwo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7842,8 +7843,8 @@ Transform:
   m_GameObject: {fileID: 1153035888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -80}
-  m_LocalScale: {x: 2020, y: 1200, z: 1}
+  m_LocalPosition: {x: 36.4535, y: -58, z: -80}
+  m_LocalScale: {x: 2384.5942, y: 1416.087, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681472002}
@@ -9435,7 +9436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2780, y: 50}
+  m_AnchoredPosition: {x: -3091, y: 96}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1499750077
@@ -13986,9 +13987,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 316611369}
-        m_TargetAssemblyTypeName: SlotUpgrades, Assembly-CSharp
-        m_MethodName: SlotOneUpgrade
+      - m_Target: {fileID: 2067066247}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15656,6 +15657,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044980414}
   m_CullTransparentMesh: 1
+--- !u!1 &2067066245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2067066246}
+  - component: {fileID: 2067066247}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2067066246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067066245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52338138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067066247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067066245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e574e4d0be11f804182613d7088c3522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prestige: {fileID: 1203721484}
+  upgOne: 0
+  upgTwo: 0
+  upgThree: 0
+  upgFour: 0
 --- !u!1 &2069869265
 GameObject:
   m_ObjectHideFlags: 0

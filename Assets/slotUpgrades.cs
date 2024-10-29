@@ -26,7 +26,7 @@ public class SlotUpgrades : MonoBehaviour
     public float[] slotFourCostArr = new float[] { 100, 1000, 10000, 100000 };
     public int[] slotOneAmtArr = new int[] { 0, 10, 30, 50, 100 };
     public int[] slotTwoAmtArr = new int[] { 0, 10, 30, 50, 100 };
-    public int[] slotThreeAmtArr = new int[] { 0, 10, 30, 50, 100 };
+    public int[] slotThreeAmtArr = new int[] { 0, 2, 5, 8, 10 };
     public int[] slotFourAmtArr = new int[] { 0, 10, 30, 50, 100 };
 
     void Start()
