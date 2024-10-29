@@ -34,10 +34,12 @@
 			<method name="SlotOneUpgrade"/>
 			<method name="SlotOneUpgrade"/>
 			<method name="SlotOneUpgrade"/>
-			<method name="SlotOneUpgrade"/>
-			<method name="SlotOneUpgrade"/>
 			<method name="SlotThreeUpgrade"/>
 			<method name="SlotTwoUpgrade"/>
+		</type>
+		<type fullname="Upgrades">
+			<method name="UpgOne"/>
+			<method name="UpgTwo"/>
 		</type>
 	</assembly>
 	<assembly fullname="Unity.RenderPipelines.Core.Runtime" ignoreIfMissing="1">

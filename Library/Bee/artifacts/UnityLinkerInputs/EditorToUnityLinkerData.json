@@ -1062,13 +1062,6 @@
         {
             "managedAssemblyName": "Unity.2D.Animation.Runtime.dll",
             "nativeClass": "",
-            "fullManagedTypeName": "UnityEngine.U2D.Animation.BufferManager",
-            "moduleName": "",
-            "usedInScenes": []
-        },
-        {
-            "managedAssemblyName": "Unity.2D.Animation.Runtime.dll",
-            "nativeClass": "",
             "fullManagedTypeName": "UnityEngine.U2D.Animation.DeformationManager",
             "moduleName": "",
             "usedInScenes": []
@@ -1184,6 +1177,13 @@
             "managedAssemblyName": "UnityEngine.UI.dll",
             "nativeClass": "",
             "fullManagedTypeName": "UnityEngine.UI.VerticalLayoutGroup",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
+            "managedAssemblyName": "Assembly-CSharp.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "Upgrades",
             "moduleName": "",
             "usedInScenes": []
         }
