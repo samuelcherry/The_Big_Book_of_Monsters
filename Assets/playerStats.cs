@@ -94,11 +94,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void SubstractXp()
-    {
-        currentXp -= 10;
-    }
-
     public void LevelUp()
     {
         if (level <= 20)
@@ -117,17 +112,6 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            level = 20;
-            currentXp = 0;
-            maxXP = 0;
-
-            maxHp = hpMaxArray[level - 1];
-            currentHp = maxHp;
-            hpBar.value = currentHp / maxHp;
-
-            UpdateStatText();
-            saveManager.Save();
-
         }
     }
 
@@ -142,22 +126,22 @@ public class PlayerStats : MonoBehaviour
                 Debug.Log(enemyStats.EnemyAtk);
                 currentHp -= enemyStats.EnemyAtk - def;
             }
-            else if (currentHp <= 0)
+            else
             {
-                enemyStats.Stage -= 1;
-                enemyStats.UpdateEnemyStatsText();
-
-                currentHp = maxHp;
-                enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
-                hpBar.value = currentHp / maxHp;
-
-                UpdateStatText();
-
             }
         }
-        else
+
+        else if (currentHp <= 0)
         {
+            enemyStats.Stage -= 1;
+            Reset();
+            currentHp = maxHp;
+            enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
             hpBar.value = currentHp / maxHp;
+
+            UpdateStatText();
+            enemyStats.UpdateEnemyStatsText();
+
         }
     }
 
@@ -196,5 +180,19 @@ public class PlayerStats : MonoBehaviour
         }
 
         hpBar.value = currentHp / maxHp;
+    }
+    public void Reset()
+    {
+        enemyStats.EnemyName = enemyStats.enemyNameArray[enemyStats.Stage - 1];
+        enemyStats.EnemyMaxHp = enemyStats.enemyHpMax[enemyStats.Stage - 1];
+        enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
+        enemyStats.EnemyDef = enemyStats.enemyDefArray[enemyStats.Stage - 1];
+        enemyStats.baseXpRwd = enemyStats.xpRwdArray[enemyStats.Stage - 1];
+        enemyStats.XpRwd = enemyStats.baseXpRwd * enemyStats.prestige.prestigeMulti;
+        enemyStats.GoldRwd = enemyStats.goldRwdArray[enemyStats.Stage - 1] * enemyStats.prestige.prestigeMulti;
+        enemyStats.EnemyAtk = enemyStats.enemyAtkArray[enemyStats.Stage - 1];
+        enemyStats.enemyHpBar.value = enemyStats.EnemyCurrentHp / enemyStats.EnemyMaxHp;
+
+        enemyStats.UpdateEnemyStatsText();
     }
 }
