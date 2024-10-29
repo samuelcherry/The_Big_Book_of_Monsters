@@ -16,7 +16,7 @@
                             "inputVariants": 1,
                             "outputVariants": 1,
                             "variantName": "Kernel: ComputePositionNormal",
-                            "stripTimeMs": 0.00030000000000000003
+                            "stripTimeMs": 0.0029000000000000004
                         }
                     ]
                 }
