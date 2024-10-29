@@ -32,7 +32,7 @@ public class Prestige : MonoBehaviour
     public void PrestigeHero()
     {
         Debug.Log("Old multi " + prestigeMulti);
-        prestigeMulti += baseXP / 1000;
+        prestigeMulti += baseXP / 10000;
         Debug.Log("New multi " + prestigeMulti);
         SoftRest();
     }
@@ -52,7 +52,18 @@ public class Prestige : MonoBehaviour
         enemyStats.GoldAmt = 0;
 
         enemyStats.Stage = 1;
+        enemyStats.EnemyName = enemyStats.enemyNameArray[enemyStats.Stage - 1];
+        enemyStats.EnemyMaxHp = enemyStats.enemyHpMax[enemyStats.Stage - 1];
         enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
+        enemyStats.EnemyDef = enemyStats.enemyDefArray[enemyStats.Stage - 1];
+        enemyStats.baseXpRwd = enemyStats.xpRwdArray[enemyStats.Stage - 1];
+        enemyStats.XpRwd = enemyStats.baseXpRwd * enemyStats.prestige.prestigeMulti;
+        enemyStats.GoldRwd = enemyStats.goldRwdArray[enemyStats.Stage - 1] * enemyStats.prestige.prestigeMulti;
+        enemyStats.EnemyAtk = enemyStats.enemyAtkArray[enemyStats.Stage - 1];
+        enemyStats.GoldAmt = 0;
+        enemyStats.enemyHpBar.value = enemyStats.EnemyCurrentHp / enemyStats.EnemyMaxHp;
+
+
 
         baseXP = 0;
         playerStats.UpdateStatText();
@@ -65,6 +76,7 @@ public class Prestige : MonoBehaviour
 
     public void UpdatePrestigeText()
     {
+
         if (currentMultiText != null)
         {
             currentMultiText.text = prestigeMulti.ToString();
