@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public ProgressBarTimer progressBarTimer;
     public Prestige prestige;
     public SlotUpgrades slotUpgrades;
+    public Upgrades upgrades;
 
 
     public TMP_Text levelText;
@@ -33,12 +34,12 @@ public class PlayerStats : MonoBehaviour
 
     public float currentHp;
     public float maxHp;
-    public int atk;
+    public float atk;
     public int def;
 
     public int[] xpArr = new int[] { 300, 1000, 3000, 6500, 1400, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
     public int[] hpMaxArray = new int[] { 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050 };
-    public int[] atkArr = new int[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
+    public float[] atkArr = new float[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
     public int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
 
 
@@ -52,8 +53,6 @@ public class PlayerStats : MonoBehaviour
         level = 1;
         currentXp = 0;
 
-
-        Debug.Log("TEST");
         //saveManager.Load();
 
         maxXP = xpArr[level - 1];
@@ -107,6 +106,11 @@ public class PlayerStats : MonoBehaviour
             currentHp = maxHp;
             hpBar.value = currentHp / maxHp;
 
+            for (int i = 0; i < upgrades.upgrades.Length; i++)
+            {
+                atk += (float)(upgrades.upgrades[i].metalCount * 0.3);
+            }
+
             UpdateStatText();
             saveManager.Save();
         }
@@ -123,7 +127,6 @@ public class PlayerStats : MonoBehaviour
             hpBar.value = currentHp / maxHp;
             if (enemyStats.EnemyAtk > def)
             {
-                Debug.Log(enemyStats.EnemyAtk);
                 currentHp -= enemyStats.EnemyAtk - def;
             }
             else
@@ -148,7 +151,6 @@ public class PlayerStats : MonoBehaviour
     public void AddGold()
     {
         enemyStats.GoldAmt += enemyStats.GoldRwd;
-        Debug.Log(enemyStats.GoldRwd);
     }
 
     public void UpdateStatText()

@@ -1,7 +1,7 @@
 {
   "context": {
     "projectPath": "C:/Users/samue/My project/Packages",
-    "unityVersion": "6000.0.23f1"
+    "unityVersion": "6000.0.24f1"
   },
   "inputs": [
     "C:\\Users\\samue\\My project\\Packages\\manifest.json",
@@ -58,7 +58,7 @@
     "com.unity.render-pipelines.universal@17.0.3": {
       "name": "com.unity.render-pipelines.universal",
       "resolvedPath": "C:\\Users\\samue\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal",
-      "fingerprint": "3790fbb7d51b3abf69e319c264be0b677c3d9ec8",
+      "fingerprint": "2a7c7c74a6bc0b872bcec9857be27b25a4537bb8",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin"
@@ -82,7 +82,7 @@
     "com.unity.ugui@2.0.0": {
       "name": "com.unity.ugui",
       "resolvedPath": "C:\\Users\\samue\\My project\\Library\\PackageCache\\com.unity.ugui",
-      "fingerprint": "8f98c6a1c75e66adfac0fb4351d51a0b4d92c018",
+      "fingerprint": "0187e0e77e6c4674362938fa5a77e1c92574f3dd",
       "editorCompatibility": "2019.2.0a1",
       "version": "2.0.0",
       "source": "builtin"
@@ -310,7 +310,7 @@
     "com.unity.render-pipelines.core@17.0.3": {
       "name": "com.unity.render-pipelines.core",
       "resolvedPath": "C:\\Users\\samue\\My project\\Library\\PackageCache\\com.unity.render-pipelines.core",
-      "fingerprint": "28d7f949d0896383b566b044ba7ef07c3466da59",
+      "fingerprint": "6abb1a8fafe736c8deaef35d964ef98ef03b999e",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin"
@@ -318,7 +318,7 @@
     "com.unity.shadergraph@17.0.3": {
       "name": "com.unity.shadergraph",
       "resolvedPath": "C:\\Users\\samue\\My project\\Library\\PackageCache\\com.unity.shadergraph",
-      "fingerprint": "6bda0de118dc458be6a05a6bd2eb217ec5cd3ded",
+      "fingerprint": "2a323fec5dcc1ed9dbe9f3565d9515da8cc6058b",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin"
@@ -430,7 +430,7 @@
     "com.unity.rendering.light-transport@1.0.1": {
       "name": "com.unity.rendering.light-transport",
       "resolvedPath": "C:\\Users\\samue\\My project\\Library\\PackageCache\\com.unity.rendering.light-transport",
-      "fingerprint": "8e780c06f5c1408ffa25004f2c90b6802481bbd8",
+      "fingerprint": "307bc27a498fc9cd409bbd426c85d8dc7f140bc1",
       "editorCompatibility": "2023.3.0b1",
       "version": "1.0.1",
       "source": "builtin"

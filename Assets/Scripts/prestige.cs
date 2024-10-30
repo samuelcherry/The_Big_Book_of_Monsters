@@ -8,6 +8,7 @@ public class Prestige : MonoBehaviour
     public EnemyStats enemyStats;
     public SaveManager saveManager;
     public SlotUpgrades slotUpgrades;
+    public Upgrades upgrades;
     public float baseXP;
     public float prestigeMulti;
     public TMP_Text currentMultiText;
@@ -16,7 +17,6 @@ public class Prestige : MonoBehaviour
     void Start()
     {
         prestigeMulti = 1;
-        Debug.Log("From prestige, Multi: " + prestigeMulti);
     }
 
     void Update()
@@ -26,14 +26,11 @@ public class Prestige : MonoBehaviour
     public void AddBaseXp()
     {
         baseXP += enemyStats.baseXpRwd;
-        Debug.Log(baseXP);
     }
 
     public void PrestigeHero()
     {
-        Debug.Log("Old multi " + prestigeMulti);
         prestigeMulti += baseXP / 10000;
-        Debug.Log("New multi " + prestigeMulti);
         SoftRest();
     }
 
@@ -50,6 +47,15 @@ public class Prestige : MonoBehaviour
         playerStats.def = playerStats.defArray[playerStats.level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
         playerStats.currentHp = playerStats.maxHp;
         enemyStats.GoldAmt = 0;
+
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            upgrades.upgrades[i].unlocked = false;
+            upgrades.upgrades[i].purchased = false;
+            upgrades.upgrades[i].blocked = false;
+            playerStats.atk += (float)(upgrades.upgrades[i].metalCount * 0.3);
+        }
+
 
         enemyStats.Stage = 1;
         enemyStats.EnemyName = enemyStats.enemyNameArray[enemyStats.Stage - 1];

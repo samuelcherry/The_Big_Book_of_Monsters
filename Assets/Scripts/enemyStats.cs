@@ -55,11 +55,7 @@ public class EnemyStats : MonoBehaviour
         GoldAmt = 0;
         enemyHpBar.value = EnemyCurrentHp / EnemyMaxHp;
 
-
         UpdateEnemyStatsText();
-
-        Debug.Log("Base XP " + baseXpRwd + " MULTI " + prestige.prestigeMulti + " Effective XP " + XpRwd);
-
     }
 
     private void Update()
