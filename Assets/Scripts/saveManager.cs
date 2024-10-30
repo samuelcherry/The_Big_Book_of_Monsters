@@ -7,8 +7,12 @@ public class SaveManager : MonoBehaviour
     public EnemyStats enemyStats;
     public PlayerStats playerStats;
     public Prestige prestige;
+    public Upgrades upgrades;
     public SlotUpgrades slotUpgrades;
     public int gold;
+
+
+
 
     public void Save()
     {
@@ -31,6 +35,11 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("Xp", Xp);
         PlayerPrefs.SetFloat("BaseXp", BaseXp);
         PlayerPrefs.SetFloat("PrestigeMulti", PrestigeMulti);
+
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            PlayerPrefs.SetInt("UpgradeMetalCount_" + i, upgrades.upgrades[i].metalCount);
+        }
 
         PlayerPrefs.Save();
         Debug.Log("Save");
@@ -57,5 +66,11 @@ public class SaveManager : MonoBehaviour
         playerStats.currentXp = Xp;
         prestige.baseXP = BaseXp;
         prestige.prestigeMulti = PrestigeMulti;
+
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            upgrades.upgrades[i].metalCount = PlayerPrefs.GetInt("UpgradeMetalCount_" + i, 0);
+        }
+
     }
 }

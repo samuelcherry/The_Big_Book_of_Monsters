@@ -1,75 +1,123 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
-    public Prestige prestige;
+    public PlayerStats playerStats;
+    public PassiveBonus passiveBonus;
 
-    public Sprite icon_1_0;
-    public Sprite icon_1_1;
-    public Sprite icon_1_2;
+    [System.Serializable]
+    public struct Upgrade
+    {
+        public bool unlocked;
+        public bool purchased;
+        public bool blocked;
+        public int metalCount;
 
-    private bool upg1_unlocked = false;
-    private bool upg1_purchased = false;
-    public Image button1;
+        public int attackBoost;
+        public int defenseBoost;
+        public int healthBoost;
+        // Add more fields as needed for each upgrade’s specific boosts or effects.
+    }
+
+    public Upgrade[] upgrades = new Upgrade[12];
+
+    void Start()
+    {
+        InitializeUpgrades();
+
+    }
 
     void Update()
     {
         UpgradeLocks();
     }
 
+    // Initialize each upgrade's properties (e.g., attackBoost, defenseBoost)
+    private void InitializeUpgrades()
+    {
+        // Set default values for each upgrade here or in the Inspector.
+        upgrades[0].attackBoost = 5; // Example: Tier 1, Upgrade 1
+        upgrades[1].defenseBoost = 5; // Example: Tier 1, Upgrade 2
+        upgrades[2].healthBoost = 20; // Example: Tier 1, Upgrade 3
+        //Tier 2
+        upgrades[3].attackBoost = 10;
+        upgrades[4].defenseBoost = 10;
+        upgrades[5].healthBoost = 30;
+        //Tier 3
+        upgrades[6].attackBoost = 15;
+        upgrades[7].defenseBoost = 15;
+        upgrades[8].healthBoost = 40;
+        //Tier 4
+        upgrades[9].attackBoost = 20;
+        upgrades[10].defenseBoost = 20;
+        upgrades[11].healthBoost = 50;
+        // Continue to set values as needed
+    }
 
-    //MOVE SPRITE FUNCTIONALITY TO SEPERATE SCRIPT
     public void UpgradeLocks()
     {
-        if (prestige.prestigeMulti > 2)
+        // Tier 1 unlocks at level 5
+        if (playerStats.level >= 2)
         {
-            upg1_unlocked = true;
-            Debug.Log(upg1_unlocked);
-        }
-        else
-        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+            }
         }
 
-        if (upg1_unlocked == false && upg1_purchased == false)
+        // Tier 2 unlocks at level 10
+        if (playerStats.level >= 3)
         {
-            button1.sprite = icon_1_0;
+            for (int i = 3; i < 6; i++)
+            {
+                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+            }
         }
-        else if (upg1_unlocked == true && upg1_purchased == false)
+        if (playerStats.level >= 4)
         {
-            button1.sprite = icon_1_1;
+            for (int i = 3; i < 9; i++)
+            {
+                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+            }
         }
-        else if (upg1_unlocked == true && upg1_purchased == true)
+        if (playerStats.level >= 5)
         {
-            button1.sprite = icon_1_2;
+            for (int i = 3; i < 12; i++)
+            {
+                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+            }
         }
     }
 
-    public bool upgTwo = false;
-    public bool upgThree = false;
-    public bool upgFour = false;
-
-    public void UpgOne()
+    public void PurchaseUpgrade(int index)
     {
-        if (prestige.prestigeMulti > 2)
+        if (upgrades[index].unlocked && !upgrades[index].purchased)
         {
-            prestige.prestigeMulti -= 1;
-            upg1_purchased = true;
+            upgrades[index].purchased = true;
 
-        }
-        else
-        { }
-    }
-    public void UpgTwo()
-    {
-        if (upg1_purchased == true)
-        {
-            Debug.Log("unlocked");
+            upgrades[index].metalCount += 1;
 
-        }
-        else
-        {
+            // Apply the upgrade's effects
+            playerStats.atk += upgrades[index].attackBoost;
+            playerStats.def += upgrades[index].defenseBoost;
+            playerStats.maxHp += upgrades[index].healthBoost;
 
+            // Lock other upgrades in the same tier
+            int tierStart = (index / 3) * 3; // 0–2 for tier 1, 3–5 for tier 2
+            for (int i = tierStart; i < tierStart + 3; i++)
+            {
+                if (i != index)
+                {
+                    upgrades[i].metalCount += 1;
+                    upgrades[i].blocked = true;
+                    upgrades[i].unlocked = false;
+                }
+            }
+            for (int i = 0; i < upgrades.Length; i++)
+            {
+                playerStats.atk += (float)(upgrades[i].metalCount * 0.3);
+            }
+            Debug.Log("Metal Count for Upgrade " + index + ": " + upgrades[index].metalCount);
         }
     }
 }
