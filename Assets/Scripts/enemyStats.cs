@@ -109,6 +109,10 @@ public class EnemyStats : MonoBehaviour
             EnemyCurrentHp = EnemyMaxHp;
             EnemyDef = enemyDefArray[Stage - 1];
             GoldRwd = goldRwdArray[Stage - 1];
+
+            playerStats.currentHp = playerStats.maxHp;
+            UpdateEnemyStatsText();
+            playerStats.UpdateStatText();
         }
         else
         {

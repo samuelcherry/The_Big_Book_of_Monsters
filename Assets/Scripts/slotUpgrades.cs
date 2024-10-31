@@ -23,9 +23,13 @@ public class SlotUpgrades : MonoBehaviour
     public float[] slotTwoCostArr = new float[] { 100, 1000, 10000, 100000 };
     public float[] slotThreeCostArr = new float[] { 100, 1000, 10000, 100000 };
 
-    public int[] slotOneAmtArr = new int[] { 0, 10, 30, 50, 100 };
-    public int[] slotTwoAmtArr = new int[] { 0, 10, 30, 50, 100 };
-    public int[] slotThreeAmtArr = new int[] { 0, 2, 5, 8, 10 };
+
+    [HideInInspector]
+    public int[] slotOneAmtArr;
+    [HideInInspector]
+    public int[] slotTwoAmtArr;
+    [HideInInspector]
+    public int[] slotThreeAmtArr;
 
     void Start()
     {
@@ -34,6 +38,11 @@ public class SlotUpgrades : MonoBehaviour
         slotOneLvl = 0;
         slotTwoLvl = 0;
         slotThreeLvl = 0;
+        slotOneAmtArr = new int[] { 0, 10, 30, 50, 100 };
+        slotTwoAmtArr = new int[] { 0, 10, 20, 30, 40 };
+        slotThreeAmtArr = new int[] { 0, 2, 5, 8, 10 };
+
+
     }
 
     void Update()
@@ -43,7 +52,7 @@ public class SlotUpgrades : MonoBehaviour
 
     public void SlotOneUpgrade()
     {
-        if (slotOneLvl < slotOneAmtArr.Length + 1)
+        if (slotOneLvl < slotOneAmtArr.Length)
         {
             if (enemyStats.GoldAmt >= slotOneCostArr[slotOneLvl])
             {
@@ -54,14 +63,11 @@ public class SlotUpgrades : MonoBehaviour
                 playerStats.UpdateStatText();
                 saveManager.Save();
             }
-            else
-            {
-            }
         }
     }
     public void SlotTwoUpgrade()
     {
-        if (slotTwoLvl < slotTwoAmtArr.Length + 1)
+        if (slotTwoLvl < slotTwoAmtArr.Length)
         {
             if (enemyStats.GoldAmt >= slotTwoCostArr[slotTwoLvl])
             {
@@ -72,14 +78,11 @@ public class SlotUpgrades : MonoBehaviour
                 playerStats.UpdateStatText();
                 saveManager.Save();
             }
-            else
-            {
-            }
         }
     }
     public void SlotThreeUpgrade()
     {
-        if (slotThreeLvl < slotThreeAmtArr.Length + 1)
+        if (slotThreeLvl < slotThreeAmtArr.Length)
         {
             if (enemyStats.GoldAmt >= slotThreeCostArr[slotThreeLvl])
             {
@@ -90,29 +93,26 @@ public class SlotUpgrades : MonoBehaviour
                 playerStats.UpdateStatText();
                 saveManager.Save();
             }
-            else
-            {
-            }
         }
     }
     
     public void UpdateSlotText()
     {
-        if (slotOneLvl < slotOneAmtArr.Length + 1)
+        if (slotOneLvl < slotOneAmtArr.Length - 1)
         {
             if (slotOneCostText != null)
             {
                 slotOneCostText.text = "Cost: " + slotOneCostArr[slotOneLvl].ToString();
             }
         }
-        if (slotTwoLvl < slotTwoAmtArr.Length + 1)
+        if (slotTwoLvl < slotTwoAmtArr.Length - 1)
         {
             if (slotTwoCostText != null)
             {
                 slotTwoCostText.text = "Cost: " + slotTwoCostArr[slotTwoLvl].ToString();
             }
         }
-        if (slotThreeLvl < slotThreeAmtArr.Length + 1)
+        if (slotThreeLvl < slotThreeAmtArr.Length - 1)
         {
             if (slotThreeCostText != null)
             {
