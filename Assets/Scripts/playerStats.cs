@@ -2,9 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-
-
 public class PlayerStats : MonoBehaviour
 {
     public EnemyStats enemyStats;
@@ -26,6 +23,9 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text atkText;
     public TMP_Text defText;
     public TMP_Text spdText;
+    public TMP_Text passiveAtkBonusText;
+    public TMP_Text passiveDefBonusText;
+    public TMP_Text passiveHpBonusText;
 
     public int level;
     public float currentXp;
@@ -47,15 +47,13 @@ public class PlayerStats : MonoBehaviour
     public int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
 
 
-
-
-
-
-
     void Start()
     {
         level = 1;
         currentXp = 0;
+        atkMetalCount = 0;
+        defMetalCount = 0;
+        hpMetalCount = 0;
 
         saveManager.Load();
 
