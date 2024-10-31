@@ -71,16 +71,17 @@
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\sprites.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\Scripts\passiveBonus.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\prestige.cs" />
     <Compile Include="Assets\Scripts\playerStats.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\progressBarTimer.cs" />
     <Compile Include="Assets\Scripts\saveManager.cs" />
+    <Compile Include="Assets\Scripts\ToolTip.cs" />
     <Compile Include="Assets\Scripts\upgrades.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+    <Compile Include="Assets\Scripts\TooltipTrigger.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Art\Free UI build package\Script\Slide.cs" />
+    <Compile Include="Assets\Scripts\enemyObjects.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\enemyStats.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />

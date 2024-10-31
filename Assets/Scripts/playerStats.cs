@@ -35,7 +35,11 @@ public class PlayerStats : MonoBehaviour
     public float currentHp;
     public float maxHp;
     public float atk;
-    public int def;
+    public float def;
+
+    public int atkMetalCount;
+    public int defMetalCount;
+    public int hpMetalCount;
 
     public int[] xpArr = new int[] { 300, 1000, 3000, 6500, 1400, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
     public int[] hpMaxArray = new int[] { 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050 };
@@ -53,7 +57,7 @@ public class PlayerStats : MonoBehaviour
         level = 1;
         currentXp = 0;
 
-        //saveManager.Load();
+        saveManager.Load();
 
         maxXP = xpArr[level - 1];
 
@@ -105,11 +109,6 @@ public class PlayerStats : MonoBehaviour
             maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
             currentHp = maxHp;
             hpBar.value = currentHp / maxHp;
-
-            for (int i = 0; i < upgrades.upgrades.Length; i++)
-            {
-                atk += (float)(upgrades.upgrades[i].metalCount * 0.3);
-            }
 
             UpdateStatText();
             saveManager.Save();

@@ -9,6 +9,7 @@ public class Prestige : MonoBehaviour
     public SaveManager saveManager;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+    public Upgrades.Upgrade upgrade;
     public float baseXP;
     public float prestigeMulti;
     public TMP_Text currentMultiText;
@@ -41,20 +42,26 @@ public class Prestige : MonoBehaviour
         slotUpgrades.slotOneLvl = 0;
         slotUpgrades.slotTwoLvl = 0;
         slotUpgrades.slotThreeLvl = 0;
-        slotUpgrades.slotFourLvl = 0;
         playerStats.maxHp = playerStats.hpMaxArray[playerStats.level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
         playerStats.atk = playerStats.atkArr[playerStats.level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
         playerStats.def = playerStats.defArray[playerStats.level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
         playerStats.currentHp = playerStats.maxHp;
         enemyStats.GoldAmt = 0;
 
+        
+        playerStats.atk += playerStats.atkMetalCount * upgrades.atkPassiveMulti;
+        playerStats.def += playerStats.defMetalCount * upgrades.defPassiveMulti;
+        playerStats.maxHp += playerStats.hpMetalCount * upgrades.hpPassiveMulti;
+
         for (int i = 0; i < upgrades.upgrades.Length; i++)
         {
             upgrades.upgrades[i].unlocked = false;
             upgrades.upgrades[i].purchased = false;
             upgrades.upgrades[i].blocked = false;
-            playerStats.atk += (float)(upgrades.upgrades[i].metalCount * 0.3);
         }
+
+
+
 
 
         enemyStats.Stage = 1;
