@@ -85,6 +85,7 @@ public class SaveManager : MonoBehaviour
         playerStats.defMetalCount = DefMetalCount;
         playerStats.hpMetalCount = HpMetalCount;
 
+        prestige.UpdatePostPrestigeText();
 
     }
 }

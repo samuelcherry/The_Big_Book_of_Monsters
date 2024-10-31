@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class Upgrades : MonoBehaviour
     public float defPassiveMulti = 0.01f;
     public float hpPassiveMulti = 0.01f;
 
+    public float metalMax = 10;
+
+
     [System.Serializable]
     public struct Upgrade
     {
@@ -30,6 +35,10 @@ public class Upgrades : MonoBehaviour
         public float atkPassiveBonus;
         public float defPassiveBonus;
         public float hpPassiveBonus;
+
+        public float metalCount;
+
+        public Slider metalSlider;
 
         // Add more fields as needed for each upgrade’s specific boosts or effects.
    
@@ -145,6 +154,7 @@ public class Upgrades : MonoBehaviour
     {
         if (upgrades[index].unlocked && !upgrades[index].purchased)
         {
+            UpdateMetalSliders(index);
             upgrades[index].purchased = true;
 
             // Apply the upgrade's effects
@@ -155,23 +165,30 @@ public class Upgrades : MonoBehaviour
 
             if (upgrades[index].attackBoost > 0)
             {
-                if(playerStats.atkMetalCount < 10)
+                if(upgrades[index].metalCount < metalMax)
                 {
+                    upgrades[index].metalCount++;
                     playerStats.atkMetalCount++;
+                    UpdateMetalSliders(index);
+                    
                 }
             }
              if (upgrades[index].defenseBoost > 0)
             {
-                if(playerStats.defMetalCount < 10)
+                if(upgrades[index].metalCount < metalMax)
                 {
+                    upgrades[index].metalCount++;
                     playerStats.defMetalCount++;
+                    UpdateMetalSliders(index);
                 }
             }
              if (upgrades[index].healthBoost > 0)
             {
-                if(playerStats.hpMetalCount < 10)
+                if(upgrades[index].metalCount < metalMax)
                 {
+                    upgrades[index].metalCount++;
                     playerStats.hpMetalCount++;
+                    UpdateMetalSliders(index);
                 }
             }
 
@@ -185,6 +202,15 @@ public class Upgrades : MonoBehaviour
                     upgrades[i].unlocked = false;
                 }
             }
+        }
+    }
+
+    public void UpdateMetalSliders(int index)
+    {
+        if (upgrades[index].metalCount == 0){
+            upgrades[index].metalCount = 0;
+        }else{
+        upgrades[index].metalSlider.value = upgrades[index].metalCount / metalMax;
         }
     }
 }

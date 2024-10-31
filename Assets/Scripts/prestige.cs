@@ -82,6 +82,7 @@ public class Prestige : MonoBehaviour
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
         UpdatePrestigeText();
+        UpdatePostPrestigeText();
 
         saveManager.Save();
 
@@ -98,7 +99,24 @@ public class Prestige : MonoBehaviour
         {
             futureMultiText.text = (prestigeMulti + baseXP / 10000).ToString();
         }
+
     }
+    public void UpdatePostPrestigeText()
+    {
+    if (playerStats.passiveAtkBonusText != null)
+        {
+            playerStats.passiveAtkBonusText.text = "Passive ATK Bonus: \n" + playerStats.atkMetalCount*upgrades.atkPassiveMulti;
+        }
+    if (playerStats.passiveDefBonusText != null)
+        {
+            playerStats.passiveDefBonusText.text = "Passive DEF Bonus: \n" + playerStats.defMetalCount*upgrades.defPassiveMulti;
+        }
+    if (playerStats.passiveHpBonusText != null)
+        {
+            playerStats.passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount*upgrades.hpPassiveMulti;
+        }
+    }
+    
 
 
 }
