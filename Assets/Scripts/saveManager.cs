@@ -36,10 +36,12 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("BaseXp", BaseXp);
         PlayerPrefs.SetFloat("PrestigeMulti", PrestigeMulti);
 
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
-        {
-            PlayerPrefs.SetInt("UpgradeMetalCount_" + i, upgrades.upgrades[i].metalCount);
-        }
+ 
+        PlayerPrefs.SetInt("AtkMetalCount", playerStats.atkMetalCount);
+        PlayerPrefs.SetInt("DefMetalCount", playerStats.defMetalCount);
+        PlayerPrefs.SetInt("HpMetalCount", playerStats.hpMetalCount);
+        
+
 
         PlayerPrefs.Save();
         Debug.Log("Save");
@@ -56,21 +58,22 @@ public class SaveManager : MonoBehaviour
         float Xp = PlayerPrefs.GetFloat("Xp");
         float BaseXp = PlayerPrefs.GetFloat("BaseXp");
         float PrestigeMulti = PlayerPrefs.GetFloat("PrestigeMulti");
+        int AtkMetalCount = PlayerPrefs.GetInt("AtkMetalCount");
+        int DefMetalCount = PlayerPrefs.GetInt("DefMetalCount");
+        int HpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
 
         enemyStats.GoldAmt = GoldAmt;
         playerStats.level = Level;
         slotUpgrades.slotOneLvl = SlotOneLvl;
         slotUpgrades.slotTwoLvl = SlotTwoLvl;
         slotUpgrades.slotThreeLvl = SlotThreeLvl;
-        slotUpgrades.slotFourLvl = SlotFourLvl;
         playerStats.currentXp = Xp;
         prestige.baseXP = BaseXp;
         prestige.prestigeMulti = PrestigeMulti;
+        playerStats.atkMetalCount = AtkMetalCount;
+        playerStats.defMetalCount = DefMetalCount;
+        playerStats.hpMetalCount = HpMetalCount;
 
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
-        {
-            upgrades.upgrades[i].metalCount = PlayerPrefs.GetInt("UpgradeMetalCount_" + i, 0);
-        }
 
     }
 }

@@ -12,22 +12,20 @@ public class SlotUpgrades : MonoBehaviour
     public TMP_Text slotOneCostText;
     public TMP_Text slotTwoCostText;
     public TMP_Text slotThreeCostText;
-    public TMP_Text slotFourCostText;
+
 
     public int slotOneLvl = 0;
     public int slotTwoLvl = 0;
     public int slotThreeLvl = 0;
-    public int slotFourLvl = 0;
 
 
     public float[] slotOneCostArr = new float[] { 100, 1000, 10000, 100000 };
     public float[] slotTwoCostArr = new float[] { 100, 1000, 10000, 100000 };
     public float[] slotThreeCostArr = new float[] { 100, 1000, 10000, 100000 };
-    public float[] slotFourCostArr = new float[] { 100, 1000, 10000, 100000 };
+
     public int[] slotOneAmtArr = new int[] { 0, 10, 30, 50, 100 };
     public int[] slotTwoAmtArr = new int[] { 0, 10, 30, 50, 100 };
     public int[] slotThreeAmtArr = new int[] { 0, 2, 5, 8, 10 };
-    public int[] slotFourAmtArr = new int[] { 0, 10, 30, 50, 100 };
 
     void Start()
     {
@@ -35,8 +33,7 @@ public class SlotUpgrades : MonoBehaviour
         UpdateSlotText();
         slotOneLvl = 0;
         slotTwoLvl = 0;
-        slotTwoLvl = 0;
-        slotTwoLvl = 0;
+        slotThreeLvl = 0;
     }
 
     void Update()
@@ -98,24 +95,7 @@ public class SlotUpgrades : MonoBehaviour
             }
         }
     }
-    public void SlotFourUpgrade()
-    {
-        if (slotFourLvl < slotFourAmtArr.Length + 1)
-        {
-            if (enemyStats.GoldAmt >= slotFourCostArr[slotFourLvl])
-            {
-                enemyStats.GoldAmt -= slotFourCostArr[slotFourLvl];
-                slotFourLvl += 1;
-                playerStats.atk += slotFourAmtArr[slotFourLvl];
-                UpdateSlotText();
-                playerStats.UpdateStatText();
-                saveManager.Save();
-            }
-            else
-            {
-            }
-        }
-    }
+    
     public void UpdateSlotText()
     {
         if (slotOneLvl < slotOneAmtArr.Length + 1)
@@ -139,18 +119,7 @@ public class SlotUpgrades : MonoBehaviour
                 slotThreeCostText.text = "Cost: " + slotThreeCostArr[slotThreeLvl].ToString();
             }
         }
-        if (slotFourLvl < slotFourAmtArr.Length + 1)
-        {
-            if (slotFourCostText != null)
-            {
-                slotFourCostText.text = "Cost: " + slotFourCostArr[slotFourLvl].ToString();
-            }
-            if (slotOneLvl < slotOneAmtArr.Length + 1)
-            {
-            }
-        }
     }
-
 }
 
 
