@@ -15,6 +15,7 @@
 			<method name="PrestigeHero"/>
 		</type>
 		<type fullname="SaveManager">
+			<method name="HardReset"/>
 			<method name="Load"/>
 			<method name="Save"/>
 		</type>

@@ -88,4 +88,27 @@ public class SaveManager : MonoBehaviour
         prestige.UpdatePostPrestigeText();
 
     }
+
+    public void HardReset()
+    {
+        enemyStats.GoldAmt = 0;
+        playerStats.level = 1;
+        slotUpgrades.slotOneLvl = 0;
+        slotUpgrades.slotOneLvl = 0;
+        slotUpgrades.slotOneLvl = 0;
+
+        playerStats.currentXp = 0;
+        prestige.baseXP = 0;
+
+        prestige.prestigeMulti = 1;
+        playerStats.atkMetalCount = 0;
+        playerStats.defMetalCount = 0;
+        playerStats.hpMetalCount = 0;
+
+        prestige.UpdatePrestigeText();
+        prestige.UpdatePostPrestigeText();
+        playerStats.UpdateStatText();
+        enemyStats.UpdateEnemyStatsText();
+
+    }
 }

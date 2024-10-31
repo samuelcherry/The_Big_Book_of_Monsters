@@ -279,6 +279,9 @@ ScriptsOnlyBuild:
     fullTypeName: Prestige
     methodName: PrestigeHero
   - assembly: Assembly-CSharp
+    fullTypeName: SaveManager
+    methodName: HardReset
+  - assembly: Assembly-CSharp
     fullTypeName: Upgrades
     methodName: PurchaseUpgrade
   - assembly: Assembly-CSharp
