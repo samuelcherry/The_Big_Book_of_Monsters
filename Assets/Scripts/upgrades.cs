@@ -13,11 +13,12 @@ public class Upgrades : MonoBehaviour
 /// and when a purchase is made, add to that respective metal count.
 /// we can keep the second variable in the upgrades because I want to be able to change how many metals each upgrade gives or at least increase the bonus for higher tier upgrades
 /// </summary>
-    public float atkPassiveMulti = 0.01f;
-    public float defPassiveMulti = 0.01f;
-    public float hpPassiveMulti = 0.01f;
+    public float atkPassiveMulti = 1.02f;
+    public float defPassiveMulti = 1.02f;
+    public float hpPassiveMulti = 1.02f;
 
     public float metalMax = 10;
+    public float metalMaxTier2 = 20;
 
 
     [System.Serializable]
@@ -32,28 +33,12 @@ public class Upgrades : MonoBehaviour
         public int defenseBoost;
         public int healthBoost;
 
-        public float atkPassiveBonus;
-        public float defPassiveBonus;
-        public float hpPassiveBonus;
-
         public float metalCount;
 
         public Slider metalSlider;
 
         // Add more fields as needed for each upgrade’s specific boosts or effects.
    
-    public float GetAtkPassiveBonus()
-    {
-        return playerStats.atkMetalCount * atkPassiveBonus;
-    }
-        public float GetDefPassiveBonus()
-    {
-        return playerStats.defMetalCount * defPassiveBonus;
-    }
-        public float GetHpPassiveBonus()
-    {
-        return playerStats.hpMetalCount * hpPassiveBonus;
-    }
    
     }
 
@@ -76,42 +61,25 @@ public class Upgrades : MonoBehaviour
     {
         // Set default values for each upgrade here or in the Inspector.
         upgrades[0].attackBoost = 5; // Example: Tier 1, Upgrade 1
-        upgrades[0].atkPassiveBonus = 1f;
-
-        
         upgrades[1].defenseBoost = 5; // Example: Tier 1, Upgrade 2
-        upgrades[1].defPassiveBonus = 1f;
-        
         upgrades[2].healthBoost = 20; // Example: Tier 1, Upgrade 3
-        upgrades[2].hpPassiveBonus = 1f;
+
         
         //Tier 2
         upgrades[3].attackBoost = 10;
-        upgrades[3].atkPassiveBonus = 1f;
-
         upgrades[4].defenseBoost = 10;
-        upgrades[4].defPassiveBonus = 1f;
-
         upgrades[5].healthBoost = 30;
-        upgrades[5].hpPassiveBonus = 1f;
+
         //Tier 3
         upgrades[6].attackBoost = 15;
-        upgrades[6].atkPassiveBonus = 1f;
-
         upgrades[7].defenseBoost = 15;
-        upgrades[7].defPassiveBonus = 1f;
-
         upgrades[8].healthBoost = 40;
-        upgrades[8].hpPassiveBonus = 1f;
+
         //Tier 4
         upgrades[9].attackBoost = 20;
-        upgrades[9].atkPassiveBonus = 1f;
-
         upgrades[10].defenseBoost = 20;
-        upgrades[10].defPassiveBonus = 1f;
-
         upgrades[11].healthBoost = 50;
-        upgrades[11].hpPassiveBonus = 1f;
+
         // Continue to set values as needed
     }
 
@@ -163,7 +131,7 @@ public class Upgrades : MonoBehaviour
             playerStats.maxHp += upgrades[index].healthBoost;
             
 
-            if (upgrades[index].attackBoost > 0)
+            if (upgrades[index].attackBoost > 0 && upgrades[index].attackBoost < 5)
             {
                 if(upgrades[index].metalCount < metalMax)
                 {
@@ -173,7 +141,7 @@ public class Upgrades : MonoBehaviour
                     
                 }
             }
-             if (upgrades[index].defenseBoost > 0)
+             if (upgrades[index].defenseBoost > 0 && upgrades[index].defenseBoost < 5)
             {
                 if(upgrades[index].metalCount < metalMax)
                 {
@@ -182,8 +150,40 @@ public class Upgrades : MonoBehaviour
                     UpdateMetalSliders(index);
                 }
             }
-             if (upgrades[index].healthBoost > 0)
+             if (upgrades[index].healthBoost > 0 && upgrades[index].healthBoost < 5)
             {
+                if(upgrades[index].metalCount < metalMax)
+                {
+                    upgrades[index].metalCount++;
+                    playerStats.hpMetalCount++;
+                    UpdateMetalSliders(index);
+                }
+            }
+
+             if (upgrades[index].attackBoost >= 5 && upgrades[index].attackBoost < 10)
+            {
+                metalMax = 20;
+                if(upgrades[index].metalCount < metalMax)
+                {
+                    upgrades[index].metalCount++;
+                    playerStats.atkMetalCount++;
+                    UpdateMetalSliders(index);
+                    
+                }
+            }
+             if (upgrades[index].defenseBoost > 5 && upgrades[index].defenseBoost < 10)
+            {
+                metalMax = 20;
+                if(upgrades[index].metalCount < metalMax)
+                {
+                    upgrades[index].metalCount++;
+                    playerStats.defMetalCount++;
+                    UpdateMetalSliders(index);
+                }
+            }
+             if (upgrades[index].healthBoost > 5 && upgrades[index].healthBoost < 10)
+            {
+                metalMax = 20;
                 if(upgrades[index].metalCount < metalMax)
                 {
                     upgrades[index].metalCount++;

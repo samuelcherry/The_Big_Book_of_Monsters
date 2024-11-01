@@ -80,8 +80,9 @@ public class EnemyStats : MonoBehaviour
                 UpdateEnemyStatsText();
                 if (EnemyCurrentHp <= 0)
                 {
-                    playerStats?.AddXp();
                     playerStats?.AddGold();
+                    playerStats?.AddXp();
+
 
                     EnemyCurrentHp = EnemyMaxHp;
                     playerStats.currentHp = playerStats.maxHp;
@@ -130,6 +131,10 @@ public class EnemyStats : MonoBehaviour
             EnemyCurrentHp = EnemyMaxHp;
             EnemyDef = enemyDefArray[Stage - 1];
             GoldRwd = goldRwdArray[Stage - 1];
+
+            playerStats.currentHp = playerStats.maxHp;
+            UpdateEnemyStatsText();
+            playerStats.UpdateStatText();
         }
         else
         {
