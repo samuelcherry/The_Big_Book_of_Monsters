@@ -46,7 +46,7 @@ public class PlayerStats : MonoBehaviour
     public float[] atkArr = new float[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
     public int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
 
-
+//initialzing values
     void Start()
     {
         level = 1;
@@ -64,6 +64,10 @@ public class PlayerStats : MonoBehaviour
         atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
         def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
 
+        atk += atkMetalCount * upgrades.atkPassiveMulti;
+        def += defMetalCount * upgrades.defPassiveMulti;
+        maxHp += hpMetalCount * upgrades.hpPassiveMulti;
+
         hpBar.value = currentHp / maxHp;
 
         UpdateStatText();
@@ -74,37 +78,47 @@ public class PlayerStats : MonoBehaviour
         UpdateStatText();
         progressBarTimer.UpdateSpdText();
     }
-
-    public void AddXp()
+    public void AddGold() //Adds Gold when an enemy is killed
     {
-        currentXp += enemyStats.XpRwd;
-        UpdateStatText();
-        prestige.AddBaseXp();
-        if (currentXp == 0)
-        {
-            xpBar.value = 0;
-        }
-        else
-        {
-            xpBar.value = currentXp / maxXP;
-        }
+        enemyStats.GoldAmt += enemyStats.GoldRwd;
+    }
+    public void AddXp() //Adding XP and triggering Level up function
+    {
+        if (level < 20){
+            currentXp += enemyStats.XpRwd;
+            UpdateStatText();
+            prestige.AddBaseXp();
 
-        if (currentXp >= maxXP)
-        {
-            LevelUp();
+            if (currentXp == 0)
+            {
+                xpBar.value = 0;
+            }
+            else
+            {
+                xpBar.value = currentXp / maxXP;
+            }
+
+            if (currentXp >= maxXP)
+            {
+                LevelUp();
+            }
+        }else{
+            prestige.AddBaseXp();
         }
     }
 
-    public void LevelUp()
+    public void LevelUp() // leveling up
     {
         if (level <= 20)
         {
             level += 1;
             currentXp = 0;
-            atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
+            atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
+            def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl] * (defMetalCount * upgrades.defPassiveMulti);
+
             maxXP = xpArr[level - 1];
 
-            maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
+            maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
             currentHp = maxHp;
             hpBar.value = currentHp / maxHp;
 
@@ -113,6 +127,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+
         }
     }
 
@@ -145,12 +160,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void AddGold()
-    {
-        enemyStats.GoldAmt += enemyStats.GoldRwd;
-    }
 
-    public void UpdateStatText()
+
+    public void UpdateStatText() //Checks for new values and updates text fields accordingly
     {
         if (hpText != null)
         {
@@ -170,8 +182,12 @@ public class PlayerStats : MonoBehaviour
         }
         if (xpText != null)
         {
+            if (level < 20){
             maxXP = xpArr[level - 1];
             xpText.text = "XP: " + currentXp + "/" + maxXP;
+            }else{
+                xpText.text = "XP: MAX";
+            }
         }
         if (enemyStats.GoldAmtText != null)
         {
