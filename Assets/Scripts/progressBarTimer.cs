@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,7 +78,6 @@ public class ProgressBarTimer : MonoBehaviour
         else
         {
             enemyStats?.TakeDamage();
-
             TriggerAnimation();
 
             timeLeft = totalTime;
@@ -95,9 +93,6 @@ public class ProgressBarTimer : MonoBehaviour
         else
         {
             playerStats?.PlayerTakeDamage();
-
-            //TriggerAnimation();
-
             enemyAtkTimeLeft = enemyAtkTime;
             enemyAtkTimer.value = 1;
         }
@@ -111,9 +106,6 @@ public class ProgressBarTimer : MonoBehaviour
         }
         else
         {
-            // enemyStats?.TakeDamage();
-
-            // TriggerAnimation();
             enemyAtkTimeLeft = enemyAtkTime;
             enemyAtkTimer.value = 1;
         }
@@ -122,6 +114,8 @@ public class ProgressBarTimer : MonoBehaviour
     {
         animator.SetTrigger("PlayAnimation");
         enemyAnimator.SetTrigger("Take_Hit");
+
+
     }
 
     public void UpdateSpdText()

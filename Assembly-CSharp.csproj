@@ -69,6 +69,7 @@
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Scripts\StartManager.cs" />
     <Compile Include="Assets\Scripts\sprites.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\saveManager.cs" />
     <Compile Include="Assets\Scripts\ToolTip.cs" />
     <Compile Include="Assets\Scripts\upgrades.cs" />
+    <Compile Include="Assets\Scripts\EnemyAnimation.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\Scripts\TooltipTrigger.cs" />
@@ -97,7 +99,9 @@
     <Compile Include="Assets\Scripts\menuManager.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\Scripts\ConfirmManager.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="Assets\Art\Free UI build package\Script\Slide.cs" />
     <Compile Include="Assets\Scripts\enemyObjects.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\BlacksmithToggleManager.cs" />
     <Compile Include="Assets\Scripts\enemyStats.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />

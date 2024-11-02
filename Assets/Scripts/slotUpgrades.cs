@@ -14,34 +14,39 @@ public class SlotUpgrades : MonoBehaviour
     public TMP_Text slotThreeCostText;
 
 
-    public int slotOneLvl = 0;
-    public int slotTwoLvl = 0;
-    public int slotThreeLvl = 0;
+    public int slotOneLvl;
+    public int slotTwoLvl;
+    public int slotThreeLvl;
 
 
-    public float[] slotOneCostArr = new float[] { 100, 1000, 10000, 100000 };
-    public float[] slotTwoCostArr = new float[] { 100, 1000, 10000, 100000 };
-    public float[] slotThreeCostArr = new float[] { 100, 1000, 10000, 100000 };
+    public float[] slotOneCostArr;
+    public float[] slotTwoCostArr;
+    public float[] slotThreeCostArr;
 
-
-    [HideInInspector]
     public int[] slotOneAmtArr;
-    [HideInInspector]
     public int[] slotTwoAmtArr;
-    [HideInInspector]
     public int[] slotThreeAmtArr;
 
     void Start()
     {
-        //saveManager.Load();
+
+
+        //upgrade level
         UpdateSlotText();
         slotOneLvl = 0;
         slotTwoLvl = 0;
         slotThreeLvl = 0;
-        slotOneAmtArr = new int[] { 0, 10, 30, 50, 100 };
-        slotTwoAmtArr = new int[] { 0, 10, 20, 30, 40 };
-        slotThreeAmtArr = new int[] { 0, 2, 5, 8, 10 };
+        //Increase per upgrade
+        slotOneAmtArr = new int[] { 0,10,10,10,20,20,20,30,30,30,30,30,40,40,40,50,50,50,50,50};
+        slotTwoAmtArr = new int[] { 0,1,1,1,2,2,2,3,3,3,3,3,4,4,4,5,5,5,5,5};
+        slotThreeAmtArr = new int[] { 0,1,1,1,2,2,2,3,3,3,3,3,4,4,4,5,5,5,5,5};
+        //Cost per upgrade
+        slotOneCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000};
+        slotTwoCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000};
+        slotThreeCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000};
 
+        
+        saveManager.Load();
 
     }
 
@@ -104,6 +109,9 @@ public class SlotUpgrades : MonoBehaviour
             {
                 slotOneCostText.text = "Cost: " + slotOneCostArr[slotOneLvl].ToString();
             }
+        }else if (slotOneLvl >= slotOneAmtArr.Length -1)
+        {
+            slotOneCostText.text = "Cost: MAX";
         }
         if (slotTwoLvl < slotTwoAmtArr.Length - 1)
         {
@@ -111,6 +119,10 @@ public class SlotUpgrades : MonoBehaviour
             {
                 slotTwoCostText.text = "Cost: " + slotTwoCostArr[slotTwoLvl].ToString();
             }
+        
+        }else if (slotTwoLvl >= slotTwoAmtArr.Length -1)
+        {
+            slotTwoCostText.text = "Cost: MAX";
         }
         if (slotThreeLvl < slotThreeAmtArr.Length - 1)
         {
@@ -118,6 +130,9 @@ public class SlotUpgrades : MonoBehaviour
             {
                 slotThreeCostText.text = "Cost: " + slotThreeCostArr[slotThreeLvl].ToString();
             }
+        }else if (slotThreeLvl >= slotThreeAmtArr.Length -1)
+        {
+            slotThreeCostText.text = "Cost: MAX";
         }
     }
 }
