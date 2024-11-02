@@ -1,5 +1,10 @@
 <linker>
 	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="ConfirmManager">
+			<method name="Confirm"/>
+			<method name="ToggleShow"/>
+			<method name="ToggleShow"/>
+		</type>
 		<type fullname="EnemyStats">
 			<method name="DecreaseStage"/>
 			<method name="IncreaseStage"/>
@@ -11,11 +16,14 @@
 			<method name="MenuThreeMove"/>
 			<method name="MenuTwoMove"/>
 		</type>
+		<type fullname="PauseManager">
+			<method name="PauseGame"/>
+			<method name="ResumeGame"/>
+		</type>
 		<type fullname="Prestige">
 			<method name="PrestigeHero"/>
 		</type>
 		<type fullname="SaveManager">
-			<method name="HardReset"/>
 			<method name="Load"/>
 			<method name="Save"/>
 		</type>
@@ -23,6 +31,9 @@
 			<method name="SlotOneUpgrade"/>
 			<method name="SlotThreeUpgrade"/>
 			<method name="SlotTwoUpgrade"/>
+		</type>
+		<type fullname="StartScreenManager">
+			<method name="StartGame"/>
 		</type>
 		<type fullname="Upgrades">
 			<method name="PurchaseUpgrade"/>

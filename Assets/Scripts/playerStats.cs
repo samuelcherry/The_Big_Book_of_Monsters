@@ -11,14 +11,10 @@ public class PlayerStats : MonoBehaviour
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
 
-
     public TMP_Text levelText;
     public TMP_Text xpText;
-
     public Slider xpBar;
     public Slider hpBar;
-
-
     public TMP_Text hpText;
     public TMP_Text atkText;
     public TMP_Text defText;
@@ -30,8 +26,6 @@ public class PlayerStats : MonoBehaviour
     public int level;
     public float currentXp;
     public float maxXP;
-
-
     public float currentHp;
     public float maxHp;
     public float atk;
@@ -41,32 +35,38 @@ public class PlayerStats : MonoBehaviour
     public int defMetalCount;
     public int hpMetalCount;
 
-    public int[] xpArr = new int[] { 300, 1000, 3000, 6500, 1400, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
-    public int[] hpMaxArray = new int[] { 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050 };
-    public float[] atkArr = new float[] { 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
-    public int[] defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
+    public int[] xpArr;
+    public int[] hpMaxArray;
+    public float[] atkArr;
+    public int[] defArray;
 
-//initialzing values
+    // Arrays removed from field declarations
+
     void Start()
     {
+        // Initializing arrays in Start to avoid inspector interference
+        xpArr = new int[] { 300, 1000, 3000, 6500, 14000, 25000, 35000, 50000, 65000, 85000, 100000, 120000, 140000, 165000, 200000, 225000, 265000, 305000, 355000 };
+        hpMaxArray = new int[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+        atkArr = new float[] { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
+        defArray = new int[] { 2, 0, 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 0, 2, 0, 0, 2, 0, 0, 2 };
+
         level = 1;
         currentXp = 0;
         atkMetalCount = 0;
         defMetalCount = 0;
         hpMetalCount = 0;
+        currentHp = 100;
 
         saveManager.Load();
 
         maxXP = xpArr[level - 1];
-
-        currentHp = 100;
         maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
         atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
         def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
 
-        atk += atkMetalCount * upgrades.atkPassiveMulti;
-        def += defMetalCount * upgrades.defPassiveMulti;
-        maxHp += hpMetalCount * upgrades.hpPassiveMulti;
+        atk *= atkMetalCount * upgrades.atkPassiveMulti + 1;
+        def *= defMetalCount * upgrades.defPassiveMulti + 1;
+        maxHp *= hpMetalCount * upgrades.hpPassiveMulti + 1;
 
         hpBar.value = currentHp / maxHp;
 
@@ -109,25 +109,49 @@ public class PlayerStats : MonoBehaviour
 
     public void LevelUp() // leveling up
     {
-        if (level <= 20)
+        if (level < 20) // Check to ensure level does not exceed max level
         {
+            // Increment the level
             level += 1;
             currentXp = 0;
-            atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
-            def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl] * (defMetalCount * upgrades.defPassiveMulti);
 
+            // Increase maxXP based on the new level
             maxXP = xpArr[level - 1];
 
-            maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
-            currentHp = maxHp;
-            hpBar.value = currentHp / maxHp;
+            // Accumulate level-based increase to atk and def
+            float atkIncrease = atkArr[level - 1];
+            float defIncrease = defArray[level - 1];
 
+            // Apply the new level-based increases to the current stats
+            atk += atkIncrease;
+            def += defIncrease;
+
+            // Adjust atk and def based on slot upgrades and passive bonuses
+            atk += slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
+            def += slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl] * (defMetalCount * upgrades.defPassiveMulti);
+
+            // Apply a level-based HP increase
+            float hpIncrease = hpMaxArray[level - 1];
+            maxHp += hpIncrease;
+
+            // Adjust maxHp based on slot upgrades and passive bonuses
+            maxHp += slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
+
+            // Set current HP to the new max HP
+            currentHp = maxHp;
+
+            // Update the UI elements
+            hpBar.value = currentHp / maxHp;
             UpdateStatText();
+
+            // Save the updated stats
             saveManager.Save();
+
+            Debug.Log($"Level Up! New Level: {level}, atk: {atk}, def: {def}, maxHp: {maxHp}");
         }
         else
         {
-
+            Debug.Log("Maximum level reached.");
         }
     }
 

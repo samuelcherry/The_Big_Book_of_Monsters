@@ -1,13 +1,16 @@
 <linker>
 	<assembly fullname="Assembly-CSharp">
+		<type fullname="ConfirmManager" preserve="nothing"/>
 		<type fullname="EnemyStats" preserve="nothing"/>
 		<type fullname="MenuManager" preserve="nothing"/>
+		<type fullname="PauseManager" preserve="nothing"/>
 		<type fullname="PlayerStats" preserve="nothing"/>
 		<type fullname="Prestige" preserve="nothing"/>
 		<type fullname="ProgressBarTimer" preserve="nothing"/>
 		<type fullname="SaveManager" preserve="nothing"/>
 		<type fullname="SlotUpgrades" preserve="nothing"/>
 		<type fullname="Sprites" preserve="nothing"/>
+		<type fullname="StartScreenManager" preserve="nothing"/>
 		<type fullname="Tooltip" preserve="nothing"/>
 		<type fullname="TooltipTrigger" preserve="nothing"/>
 		<type fullname="Upgrades" preserve="nothing"/>
