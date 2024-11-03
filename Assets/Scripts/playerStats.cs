@@ -60,9 +60,12 @@ public class PlayerStats : MonoBehaviour
         saveManager.Load();
 
         maxXP = xpArr[level - 1];
-        maxHp = hpMaxArray[level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
-        atk = atkArr[level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
-        def = defArray[level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            maxHp = hpMaxArray[level - 1] + slotUpgrades.slotStructs[0].slotAmtArr[slotUpgrades.slotStructs[0].slotLvl];
+            atk = atkArr[level - 1] + slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl];
+            def = defArray[level - 1] + slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl];
+        }
 
         atk *= atkMetalCount * upgrades.atkPassiveMulti + 1;
         def *= defMetalCount * upgrades.defPassiveMulti + 1;
@@ -84,7 +87,8 @@ public class PlayerStats : MonoBehaviour
     }
     public void AddXp() //Adding XP and triggering Level up function
     {
-        if (level < 20){
+        if (level < 20)
+        {
             currentXp += enemyStats.XpRwd;
             UpdateStatText();
             prestige.AddBaseXp();
@@ -102,7 +106,9 @@ public class PlayerStats : MonoBehaviour
             {
                 LevelUp();
             }
-        }else{
+        }
+        else
+        {
             prestige.AddBaseXp();
         }
     }
@@ -127,15 +133,15 @@ public class PlayerStats : MonoBehaviour
             def += defIncrease;
 
             // Adjust atk and def based on slot upgrades and passive bonuses
-            atk += slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
-            def += slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl] * (defMetalCount * upgrades.defPassiveMulti);
+            atk += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
+            def += slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl] * (defMetalCount * upgrades.defPassiveMulti);
 
             // Apply a level-based HP increase
             float hpIncrease = hpMaxArray[level - 1];
             maxHp += hpIncrease;
 
             // Adjust maxHp based on slot upgrades and passive bonuses
-            maxHp += slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
+            maxHp += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
 
             // Set current HP to the new max HP
             currentHp = maxHp;
@@ -206,10 +212,13 @@ public class PlayerStats : MonoBehaviour
         }
         if (xpText != null)
         {
-            if (level < 20){
-            maxXP = xpArr[level - 1];
-            xpText.text = "XP: " + currentXp + "/" + maxXP;
-            }else{
+            if (level < 20)
+            {
+                maxXP = xpArr[level - 1];
+                xpText.text = "XP: " + currentXp + "/" + maxXP;
+            }
+            else
+            {
                 xpText.text = "XP: MAX";
             }
         }

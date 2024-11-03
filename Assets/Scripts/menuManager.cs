@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     public bool MenuFourOpen = false;
     void Start()
     {
-        MenuOne.transform.position = new Vector3(-470, 55, -180);
+        MenuOne.transform.position = new Vector3(-480, 55, 0);
     }
 
     public void MenuOneMove()
@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour
     {
         if (MenuOneOpen == false)
         {
-            MenuOne.transform.position = new Vector3(-470, 55, -180);
+            MenuOne.transform.position = new Vector3(-480, 55, 0);
             MenuTwo.transform.position = new Vector3(-74, 4, 90);
             MenuThree.transform.position = new Vector3(-74, 4, 90);
             MenuFour.transform.position = new Vector3(-74, 4, 90);
@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
         if (MenuTwoOpen == false)
         {
             MenuOne.transform.position = new Vector3(-74, 4, 90);
-            MenuTwo.transform.position = new Vector3(-470, 55, -180);
+            MenuTwo.transform.position = new Vector3(-480, 55, 0);
             MenuThree.transform.position = new Vector3(-74, 4, 90);
             MenuFour.transform.position = new Vector3(-74, 4, 90);
             MenuOneOpen = false;
@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
         {
             MenuOne.transform.position = new Vector3(-74, 4, 90);
             MenuTwo.transform.position = new Vector3(-74, 4, 90);
-            MenuThree.transform.position = new Vector3(-470, 55, -180);
+            MenuThree.transform.position = new Vector3(-480, 55, 0);
             MenuFour.transform.position = new Vector3(-74, 4, 90);
             MenuOneOpen = false;
             MenuTwoOpen = false;
@@ -67,7 +67,7 @@ public class MenuManager : MonoBehaviour
             MenuOne.transform.position = new Vector3(-74, 4, 90);
             MenuTwo.transform.position = new Vector3(-74, 4, 90);
             MenuThree.transform.position = new Vector3(-74, 4, 90);
-            MenuFour.transform.position = new Vector3(-470, 55, -180);
+            MenuFour.transform.position = new Vector3(-480, 55, 0);
             MenuOneOpen = false;
             MenuTwoOpen = false;
             MenuThreeOpen = false;

@@ -1,0 +1,1367 @@
+fileFormatVersion: 2
+guid: 23ae6ca7f3915ba47ba6ec2098d042b1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 101003381719452563
+    second: Idle_dungeon_icons_0
+  - first:
+      213: -7121616847491062742
+    second: Idle_dungeon_icons_1
+  - first:
+      213: -5184347806530979057
+    second: Idle_dungeon_icons_2
+  - first:
+      213: 5651641984396077782
+    second: Idle_dungeon_icons_3
+  - first:
+      213: -7983631669348333117
+    second: Idle_dungeon_icons_4
+  - first:
+      213: 6904983719991044570
+    second: Idle_dungeon_icons_5
+  - first:
+      213: 3354542846684450822
+    second: Idle_dungeon_icons_6
+  - first:
+      213: 8408274595485506712
+    second: Idle_dungeon_icons_7
+  - first:
+      213: 6286191673733296596
+    second: Idle_dungeon_icons_8
+  - first:
+      213: 3205035591479079483
+    second: Idle_dungeon_icons_9
+  - first:
+      213: -6265665370975373428
+    second: Idle_dungeon_icons_10
+  - first:
+      213: 2680890021856416238
+    second: Idle_dungeon_icons_11
+  - first:
+      213: -395828869456276593
+    second: Idle_dungeon_icons_12
+  - first:
+      213: 1902080596162856882
+    second: Idle_dungeon_icons_13
+  - first:
+      213: -2948584554498385327
+    second: Idle_dungeon_icons_14
+  - first:
+      213: -7579531960032490226
+    second: Idle_dungeon_icons_15
+  - first:
+      213: 6489299783917719644
+    second: Idle_dungeon_icons_16
+  - first:
+      213: -4080021996211327914
+    second: Idle_dungeon_icons_17
+  - first:
+      213: 2129373004803164729
+    second: Idle_dungeon_icons_18
+  - first:
+      213: 1497176214600076309
+    second: Idle_dungeon_icons_19
+  - first:
+      213: -4967369090113464071
+    second: Idle_dungeon_icons_20
+  - first:
+      213: -677561615740157096
+    second: Idle_dungeon_icons_21
+  - first:
+      213: -3553852586101709443
+    second: Idle_dungeon_icons_22
+  - first:
+      213: 8249320566333695894
+    second: Idle_dungeon_icons_23
+  - first:
+      213: 7059696755707716994
+    second: Idle_dungeon_icons_24
+  - first:
+      213: -3118046927706073480
+    second: Idle_dungeon_icons_25
+  - first:
+      213: 6289867880400969279
+    second: Idle_dungeon_icons_26
+  - first:
+      213: 916400962288917727
+    second: Idle_dungeon_icons_27
+  - first:
+      213: 7136462827613064223
+    second: Idle_dungeon_icons_28
+  - first:
+      213: -2858762916273175032
+    second: Idle_dungeon_icons_29
+  - first:
+      213: 5360863943509838827
+    second: Idle_dungeon_icons_30
+  - first:
+      213: 6618080742878135947
+    second: Idle_dungeon_icons_31
+  - first:
+      213: -9173872885501915851
+    second: Idle_dungeon_icons_32
+  - first:
+      213: -2794885020461008090
+    second: Idle_dungeon_icons_33
+  - first:
+      213: -3984524647604774592
+    second: Idle_dungeon_icons_34
+  - first:
+      213: -5838477997958834418
+    second: Idle_dungeon_icons_35
+  - first:
+      213: 3032608186389258117
+    second: Idle_dungeon_icons_36
+  - first:
+      213: 2206259599738223439
+    second: Idle_dungeon_icons_37
+  - first:
+      213: 1405918979966480231
+    second: Idle_dungeon_icons_38
+  - first:
+      213: 8698471779053275444
+    second: Idle_dungeon_icons_39
+  - first:
+      213: -951428993777433824
+    second: Idle_dungeon_icons_40
+  - first:
+      213: -5957154028976871383
+    second: Idle_dungeon_icons_41
+  - first:
+      213: 6383037490023830789
+    second: Idle_dungeon_icons_42
+  - first:
+      213: 7302156471846516404
+    second: Idle_dungeon_icons_43
+  - first:
+      213: -5700339726255899668
+    second: Idle_dungeon_icons_44
+  - first:
+      213: 9195163836910434980
+    second: Idle_dungeon_icons_45
+  - first:
+      213: 1915730852709621247
+    second: Idle_dungeon_icons_46
+  - first:
+      213: 1725798399252895268
+    second: Idle_dungeon_icons_47
+  - first:
+      213: -9202076187389209920
+    second: Idle_dungeon_icons_48
+  - first:
+      213: 1430827563062642898
+    second: Idle_dungeon_icons_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 135
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b40806a06d66100800000000000000
+      internalID: 101003381719452563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 135
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a24abda853fea2d90800000000000000
+      internalID: -7121616847491062742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 135
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b35a7432f7d08b0800000000000000
+      internalID: -5184347806530979057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 137
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6daac9de07aae6e40800000000000000
+      internalID: 5651641984396077782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 137
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c90feabb41743190800000000000000
+      internalID: -7983631669348333117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 145
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9ebe1fb1e63df50800000000000000
+      internalID: 6904983719991044570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_6
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 135
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600547822fabd8e20800000000000000
+      internalID: 3354542846684450822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_7
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 145
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cdad5123130b470800000000000000
+      internalID: 8408274595485506712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 135
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d134e6850a0d3750800000000000000
+      internalID: 6286191673733296596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_9
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 133
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b323892b3e29a7c20800000000000000
+      internalID: 3205035591479079483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_10
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 135
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c87fb81ca82eb09a0800000000000000
+      internalID: -6265665370975373428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 100
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee114aa554f643520800000000000000
+      internalID: 2680890021856416238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_12
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 101
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83d63c8dbbb18af0800000000000000
+      internalID: -395828869456276593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_13
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 103
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7437c793c856a10800000000000000
+      internalID: 1902080596162856882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_14
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 103
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a9bee48f58417d0800000000000000
+      internalID: -2948584554498385327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_15
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 103
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d0b8627d710d690800000000000000
+      internalID: -7579531960032490226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_16
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 109
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c505f6d85cf9e0a50800000000000000
+      internalID: 6489299783917719644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_17
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 101
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c2b008c99d067c0800000000000000
+      internalID: -4080021996211327914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_18
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 69
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a4999477d0d8d10800000000000000
+      internalID: 2129373004803164729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_19
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 43
+        width: 20
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cc665b5d907c410800000000000000
+      internalID: 1497176214600076309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_20
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 69
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f8188b712c501bb0800000000000000
+      internalID: -4967369090113464071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_21
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 83
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8534e54ec41d896f0800000000000000
+      internalID: -677561615740157096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_22
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 77
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75ed4de6ed2eaec0800000000000000
+      internalID: -3553852586101709443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_23
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 83
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 697e4aa29597b7270800000000000000
+      internalID: 8249320566333695894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_24
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 77
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 285afe1abc419f160800000000000000
+      internalID: 7059696755707716994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_25
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 69
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876d411e6d87ab4d0800000000000000
+      internalID: -3118046927706073480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_26
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 69
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3e507713891a4750800000000000000
+      internalID: 6289867880400969279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_27
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 71
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdc9e05e1d5b7bc00800000000000000
+      internalID: 916400962288917727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_28
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 70
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c08a0912fc90360800000000000000
+      internalID: 7136462827613064223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_29
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 71
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8064a762642a358d0800000000000000
+      internalID: -2858762916273175032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_30
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 71
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beb8a128a5d956a40800000000000000
+      internalID: 5360863943509838827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_31
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 39
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86ca1e1f5528db50800000000000000
+      internalID: 6618080742878135947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_32
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 39
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53d0215473bdfa080800000000000000
+      internalID: -9173872885501915851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_33
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 40
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b7c5fb1e29639d0800000000000000
+      internalID: -2794885020461008090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_34
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 51
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0499ab4a1ff14b8c0800000000000000
+      internalID: -3984524647604774592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_35
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 45
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e07dab6c13f89fea0800000000000000
+      internalID: -5838477997958834418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_36
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 39
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f5cacf31df51a20800000000000000
+      internalID: 3032608186389258117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_37
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 6
+        width: 18
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b31bcaa653e9e10800000000000000
+      internalID: 2206259599738223439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_38
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 39
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76fa1e70dd3d28310800000000000000
+      internalID: 1405918979966480231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_39
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 5
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4390b3f1ffd27b870800000000000000
+      internalID: 8698471779053275444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_40
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 5
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02383ecfe58dbc2f0800000000000000
+      internalID: -951428993777433824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 6
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 928eb8619ffe35da0800000000000000
+      internalID: -5957154028976871383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_42
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 6
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5051fd447ca159850800000000000000
+      internalID: 6383037490023830789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_43
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 6
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b63bb66f98765560800000000000000
+      internalID: 7302156471846516404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_44
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 6
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb387d783354e0b0800000000000000
+      internalID: -5700339726255899668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_45
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 6
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa7096aac8cb9f70800000000000000
+      internalID: 9195163836910434980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_46
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 6
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd53018f0b069a10800000000000000
+      internalID: 1915730852709621247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_47
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 6
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 426186d108443f710800000000000000
+      internalID: 1725798399252895268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_48
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 6
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2d5965678ab4080800000000000000
+      internalID: -9202076187389209920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_dungeon_icons_49
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 6
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d8cf2776125bd310800000000000000
+      internalID: 1430827563062642898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
