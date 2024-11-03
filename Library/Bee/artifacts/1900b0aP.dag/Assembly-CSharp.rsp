@@ -388,6 +388,8 @@
 "Assets/Art/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/Art/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Art/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/Scripts/AlchemyTimers.cs"
+"Assets/Scripts/BlacksmithToggleManager.cs"
 "Assets/Scripts/ConfirmManager.cs"
 "Assets/Scripts/EnemyAnimation.cs"
 "Assets/Scripts/enemyObjects.cs"

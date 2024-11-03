@@ -91,7 +91,7 @@ public class BlacksmithToggleManager : MonoBehaviour
     {
         if (AutoBuyerAmtText != null)
         {
-            AutoBuyerAmtText.text = AutoBuyerAmt + "/" + AutoBuyerMax;
+            AutoBuyerAmtText.text = AutoBuyerLvl + "/" + AutoBuyerMax;
         }
         if (AutoBuyerCostText != null && AutoBuyerLvl < AutoBuyerMax)
         {
@@ -107,7 +107,6 @@ public class BlacksmithToggleManager : MonoBehaviour
             {
                 prestige.prestigeMulti -= AutoBuyerCost[AutoBuyerLvl];
                 AutoBuyerLvl += 1;
-                AutoBuyerAmt += 1;
             }
         }
         else
