@@ -64,7 +64,10 @@ public class SaveManager : MonoBehaviour
         prestige.UpdatePostPrestigeText();
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
-        slotUpgrades.UpdateSlotText();
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            slotUpgrades.UpdateSlotText(i);
+        }
 
         for (int i = 0; i < upgrades.upgrades.Length; i++)
         {

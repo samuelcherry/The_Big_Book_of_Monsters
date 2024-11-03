@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\StartManager.cs" />
     <Compile Include="Assets\Scripts\sprites.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\AlchemyTimers.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\prestige.cs" />
     <Compile Include="Assets\Scripts\playerStats.cs" />

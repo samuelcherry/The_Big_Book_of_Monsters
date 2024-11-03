@@ -44,7 +44,6 @@ public class ProgressBarTimer : MonoBehaviour
         totalTime = speedArray[level];
         enemyAtkTime = enemySpeedArray[stage];
 
-
         timeLeft = totalTime;
         progressBar.value = 1;
 

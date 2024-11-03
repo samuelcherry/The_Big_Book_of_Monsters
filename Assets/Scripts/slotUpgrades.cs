@@ -22,7 +22,10 @@ public class SlotUpgrades : MonoBehaviour
     void Start()
     {
         //upgrade level
-        UpdateSlotText();
+        for (int i = 0; i < slotStructs.Length; i++)
+        {
+            UpdateSlotText(i);
+        }
         for (int i = 0; i < slotStructs.Length; i++)
         {
             slotStructs[i].slotLvl = 0;
@@ -42,7 +45,10 @@ public class SlotUpgrades : MonoBehaviour
 
     void Update()
     {
-        UpdateSlotText();
+        for (int i = 0; i < slotStructs.Length; i++)
+        {
+            UpdateSlotText(i);
+        }
     }
 
     public void SlotUpgrade(int index)
@@ -54,28 +60,25 @@ public class SlotUpgrades : MonoBehaviour
                 enemyStats.GoldAmt -= slotStructs[index].slotCostArr[slotStructs[index].slotLvl];
                 slotStructs[index].slotLvl += 1;
                 playerStats.maxHp += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
-                UpdateSlotText();
+                UpdateSlotText(index);
                 playerStats.UpdateStatText();
                 saveManager.Save();
             }
         }
     }
 
-    public void UpdateSlotText()
+    public void UpdateSlotText(int index)
     {
-        for (int i = 0; i < slotStructs.Length; i++)
+        if (slotStructs[index].slotLvl < slotStructs[index].slotAmtArr.Length - 1)
         {
-            if (slotStructs[i].slotLvl < slotStructs[i].slotAmtArr.Length - 1)
+            if (slotStructs[index].slotCostText != null)
             {
-                if (slotStructs[i].slotCostText != null)
-                {
-                    slotStructs[i].slotCostText.text = "Cost: " + slotStructs[i].slotCostArr[slotStructs[i].slotLvl].ToString();
-                }
+                slotStructs[index].slotCostText.text = "Cost: " + slotStructs[index].slotCostArr[slotStructs[index].slotLvl].ToString();
             }
-            else if (slotStructs[i].slotLvl >= slotStructs[i].slotAmtArr.Length - 1)
-            {
-                slotStructs[i].slotCostText.text = "Cost: MAX";
-            }
+        }
+        else if (slotStructs[index].slotLvl >= slotStructs[index].slotAmtArr.Length - 1)
+        {
+            slotStructs[index].slotCostText.text = "Cost: MAX";
         }
     }
 }
