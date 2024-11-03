@@ -14,9 +14,9 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("GoldAmt", enemyStats.GoldAmt);
         PlayerPrefs.SetInt("Level", playerStats.level);
 
-        PlayerPrefs.SetInt("SlotOneLvl", slotUpgrades.slotOneLvl);
-        PlayerPrefs.SetInt("SlotTwoLvl", slotUpgrades.slotTwoLvl);
-        PlayerPrefs.SetInt("SlotThreeLvl", slotUpgrades.slotThreeLvl);
+        PlayerPrefs.SetInt("SlotOneLvl", slotUpgrades.slotStructs[0].slotLvl);
+        PlayerPrefs.SetInt("SlotTwoLvl", slotUpgrades.slotStructs[1].slotLvl);
+        PlayerPrefs.SetInt("SlotThreeLvl", slotUpgrades.slotStructs[2].slotLvl);
 
         PlayerPrefs.SetFloat("Xp", playerStats.currentXp);
         PlayerPrefs.SetFloat("BaseXp", prestige.baseXP);
@@ -35,9 +35,9 @@ public class SaveManager : MonoBehaviour
         enemyStats.GoldAmt = PlayerPrefs.GetFloat("GoldAmt");
         playerStats.level = PlayerPrefs.GetInt("Level");
 
-        slotUpgrades.slotOneLvl = PlayerPrefs.GetInt("SlotOneLvl");
-        slotUpgrades.slotTwoLvl = PlayerPrefs.GetInt("SlotTwoLvl");
-        slotUpgrades.slotThreeLvl = PlayerPrefs.GetInt("SlotThreeLvl");
+        slotUpgrades.slotStructs[0].slotLvl = PlayerPrefs.GetInt("SlotOneLvl");
+        slotUpgrades.slotStructs[1].slotLvl = PlayerPrefs.GetInt("SlotTwoLvl");
+        slotUpgrades.slotStructs[2].slotLvl = PlayerPrefs.GetInt("SlotThreeLvl");
 
         playerStats.currentXp = PlayerPrefs.GetFloat("Xp");
         prestige.baseXP = PlayerPrefs.GetFloat("BaseXp");

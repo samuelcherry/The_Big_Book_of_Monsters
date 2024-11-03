@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
@@ -40,16 +41,18 @@ public class Prestige : MonoBehaviour
         playerStats.level = 1;
         playerStats.currentXp = 0;
 
-        slotUpgrades.slotOneLvl = 0;
-        slotUpgrades.slotTwoLvl = 0;
-        slotUpgrades.slotThreeLvl = 0;
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            slotUpgrades.slotStructs[i].slotLvl = 0;
 
+            playerStats.maxHp = playerStats.hpMaxArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[0].slotAmtArr[slotUpgrades.slotStructs[0].slotLvl]);
+            playerStats.atk = playerStats.atkArr[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl]);
+            playerStats.def = playerStats.defArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl]);
+        }
         playerStats.currentHp = playerStats.maxHp;
         enemyStats.GoldAmt = 0;
 
-        playerStats.maxHp = playerStats.hpMaxArray[playerStats.level - 1] + slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl];
-        playerStats.atk = playerStats.atkArr[playerStats.level - 1] + slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl];
-        playerStats.def = playerStats.defArray[playerStats.level - 1] + slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl];
+
 
         playerStats.atk += playerStats.atkMetalCount * upgrades.atkPassiveMulti;
         playerStats.def += playerStats.defMetalCount * upgrades.defPassiveMulti;
@@ -99,20 +102,20 @@ public class Prestige : MonoBehaviour
     }
     public void UpdatePostPrestigeText()
     {
-    if (playerStats.passiveAtkBonusText != null)
+        if (playerStats.passiveAtkBonusText != null)
         {
-            playerStats.passiveAtkBonusText.text = "Passive ATK Bonus: \n" + playerStats.atkMetalCount*upgrades.atkPassiveMulti;
+            playerStats.passiveAtkBonusText.text = "Passive ATK Bonus: \n" + playerStats.atkMetalCount * upgrades.atkPassiveMulti;
         }
-    if (playerStats.passiveDefBonusText != null)
+        if (playerStats.passiveDefBonusText != null)
         {
-            playerStats.passiveDefBonusText.text = "Passive DEF Bonus: \n" + playerStats.defMetalCount*upgrades.defPassiveMulti;
+            playerStats.passiveDefBonusText.text = "Passive DEF Bonus: \n" + playerStats.defMetalCount * upgrades.defPassiveMulti;
         }
-    if (playerStats.passiveHpBonusText != null)
+        if (playerStats.passiveHpBonusText != null)
         {
-            playerStats.passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount*upgrades.hpPassiveMulti;
+            playerStats.passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount * upgrades.hpPassiveMulti;
         }
     }
-    
+
 
 
 }

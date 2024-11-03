@@ -1,29 +1,29 @@
 using System;
+using Mono.Cecil.Cil;
+using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BlacksmithToggleManager : MonoBehaviour
 {
+
+    [System.Serializable]
+    public struct ToggleButton
+    {
+        public Button autoBuyer;
+        public GameObject autoBuyerButton;
+        public int toggleValue;
+    }
+
+    public ToggleButton[] toggleButtons = new ToggleButton[3];
     public SlotUpgrades slotUpgrades;
     public EnemyStats enemyStats;
     public Prestige prestige;
-    public Button AutoBuyerOne;
-    public Button AutoBuyerTwo;
-    public Button AutoBuyerThree;
-    public GameObject AutoBuyerOneButton;
-    public GameObject AutoBuyerTwoButton;
-    public GameObject AutoBuyerThreeButton;
-
     public int AutoBuyerAmt = 1;
     public int AutoBuyerMax = 3;
-    public int ToggleOneValue = 0;
-    public int ToggleTwoValue = 0;
-    public int ToggleThreeValue = 0;
-
     public int AutoBuyerLvl;
     public int[] AutoBuyerCost;
-
     public TMP_Text AutoBuyerAmtText;
     public TMP_Text AutoBuyerCostText;
 
@@ -35,34 +35,21 @@ public class BlacksmithToggleManager : MonoBehaviour
 
     void Update()
     {
-        CheckGold();
+        for (int i = 0; i < toggleButtons.Length; i++)
+        {
+            CheckGold(i);
+        }
         UpdateAutoBuyerText();
         CheckToggleVisibilty();
     }
 
-    public void CheckGold()
+    public void CheckGold(int index)
     {
-        if (ToggleOneValue == 1)
+        if (toggleButtons[index].toggleValue == 1)
         {
-            if (enemyStats.GoldAmt >= slotUpgrades.slotOneAmtArr[slotUpgrades.slotOneLvl])
+            if (enemyStats.GoldAmt >= slotUpgrades.slotStructs[index].slotAmtArr[slotUpgrades.slotStructs[index].slotLvl])
             {
-                slotUpgrades.SlotOneUpgrade();
-            }
-            else { }
-        }
-        if (ToggleTwoValue == 1)
-        {
-            if (enemyStats.GoldAmt >= slotUpgrades.slotTwoAmtArr[slotUpgrades.slotTwoLvl])
-            {
-                slotUpgrades.SlotTwoUpgrade();
-            }
-            else { }
-        }
-        if (ToggleThreeValue == 1)
-        {
-            if (enemyStats.GoldAmt >= slotUpgrades.slotThreeAmtArr[slotUpgrades.slotThreeLvl])
-            {
-                slotUpgrades.SlotThreeUpgrade();
+                slotUpgrades.SlotUpgrade(index);
             }
             else { }
         }
@@ -70,74 +57,33 @@ public class BlacksmithToggleManager : MonoBehaviour
 
     //Changes the autobuyer count and toggles visibility
 
-    public void ToggleOne()
+    public void ShowButtons(int index)
     {
-        if (ToggleOneValue == 0 && AutoBuyerAmt > 0)
+        if (toggleButtons[index].toggleValue == 0 && AutoBuyerAmt > 0)
         {
             AutoBuyerAmt -= 1;
-            ToggleOneValue = 1;
+            toggleButtons[index].toggleValue = 1;
         }
-        else if (ToggleOneValue == 1)
+        else if (toggleButtons[index].toggleValue == 1)
         {
             AutoBuyerAmt += 1;
-            ToggleOneValue = 0;
+            toggleButtons[index].toggleValue = 0;
         }
     }
 
-    public void ToggleTwo()
-    {
-        if (ToggleTwoValue == 0 && AutoBuyerAmt > 0)
-        {
-            AutoBuyerAmt -= 1;
-            ToggleTwoValue = 1;
-        }
-        else if (ToggleTwoValue == 1)
-        {
-            AutoBuyerAmt += 1;
-            ToggleTwoValue = 0;
-        }
-    }
-    public void ToggleThree()
-    {
-        if (ToggleThreeValue == 0 && AutoBuyerAmt > 0)
-        {
-            AutoBuyerAmt -= 1;
-            ToggleThreeValue = 1;
-        }
-        else if (ToggleThreeValue == 1)
-        {
-            AutoBuyerAmt += 1;
-            ToggleThreeValue = 0;
-        }
-    }
 
     public void CheckToggleVisibilty()
     {
-        if (ToggleOneValue == 0)
+        for (int i = 0; i < toggleButtons.Length; i++)
         {
-            AutoBuyerOneButton.SetActive(false);
-        }
-        else if (ToggleOneValue == 1)
-        {
-            AutoBuyerOneButton.SetActive(true);
-        }
-        //
-        if (ToggleTwoValue == 0)
-        {
-            AutoBuyerTwoButton.SetActive(false);
-        }
-        else if (ToggleTwoValue == 1)
-        {
-            AutoBuyerTwoButton.SetActive(true);
-        }
-        //
-        if (ToggleThreeValue == 0)
-        {
-            AutoBuyerThreeButton.SetActive(false);
-        }
-        else if (ToggleThreeValue == 1)
-        {
-            AutoBuyerThreeButton.SetActive(true);
+            if (toggleButtons[i].toggleValue == 0)
+            {
+                toggleButtons[i].autoBuyerButton.SetActive(false);
+            }
+            else if (toggleButtons[i].toggleValue == 1)
+            {
+                toggleButtons[i].autoBuyerButton.SetActive(true);
+            }
         }
     }
 
@@ -149,7 +95,7 @@ public class BlacksmithToggleManager : MonoBehaviour
         }
         if (AutoBuyerCostText != null && AutoBuyerLvl < AutoBuyerMax)
         {
-            AutoBuyerCostText.text = "Cost: " + AutoBuyerCost[AutoBuyerLvl];
+            AutoBuyerCostText.text = "Cost: " + AutoBuyerCost[AutoBuyerLvl] + " Prestige points";
         }
     }
 
