@@ -3966,7 +3966,7 @@ GameObject:
   - component: {fileID: 247466701}
   - component: {fileID: 247466700}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4864,14 +4864,17 @@ MonoBehaviour:
     slotLvl: 0
     slotCostArr: []
     slotAmtArr: 
+    StatBoost: 
   - slotCostText: {fileID: 1373240329}
     slotLvl: 0
     slotCostArr: []
     slotAmtArr: 
+    StatBoost: 
   - slotCostText: {fileID: 330015702}
     slotLvl: 0
     slotCostArr: []
     slotAmtArr: 
+    StatBoost: 
   enemyStats: {fileID: 764326449}
   playerStats: {fileID: 1581234899}
   saveManager: {fileID: 1884933239}
@@ -9281,7 +9284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prestige: {fileID: 1203721484}
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 1581234899}
   AlchPrestigeAmtText: {fileID: 887119362}
   AlchPrestigeCostText: {fileID: 1809973616}
   AlchemyPrestigeCost: 
@@ -12348,7 +12351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &982354901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12392,7 +12395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &984562110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20684,7 +20687,7 @@ GameObject:
   - component: {fileID: 1620441508}
   - component: {fileID: 1620441507}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

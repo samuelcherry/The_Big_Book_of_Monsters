@@ -4,6 +4,7 @@ using TMPro;
 
 public class SlotUpgrades : MonoBehaviour
 {
+
     [System.Serializable]
     public struct SlotStruct
     {
@@ -11,9 +12,11 @@ public class SlotUpgrades : MonoBehaviour
         public int slotLvl;
         public float[] slotCostArr;
         public int[] slotAmtArr;
+        public string StatBoost;
     }
 
     public SlotStruct[] slotStructs = new SlotStruct[3];
+
 
     public EnemyStats enemyStats;
     public PlayerStats playerStats;
@@ -38,6 +41,9 @@ public class SlotUpgrades : MonoBehaviour
         slotStructs[1].slotCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000 };
         slotStructs[2].slotCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000 };
 
+        slotStructs[0].StatBoost = "MAXHP";
+        slotStructs[1].StatBoost = "ATK";
+        slotStructs[2].StatBoost = "DEF";
 
         saveManager.Load();
 
@@ -59,7 +65,19 @@ public class SlotUpgrades : MonoBehaviour
             {
                 enemyStats.GoldAmt -= slotStructs[index].slotCostArr[slotStructs[index].slotLvl];
                 slotStructs[index].slotLvl += 1;
-                playerStats.maxHp += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
+                if (slotStructs[index].StatBoost == "MAXHP")
+                {
+                    playerStats.maxHp += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
+                }
+                else if (slotStructs[index].StatBoost == "ATK")
+                {
+                    playerStats.atk += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
+                }
+                else if (slotStructs[index].StatBoost == "DEF")
+                {
+                    playerStats.def += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
+                }
+
                 UpdateSlotText(index);
                 playerStats.UpdateStatText();
                 saveManager.Save();

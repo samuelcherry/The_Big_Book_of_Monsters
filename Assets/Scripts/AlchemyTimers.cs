@@ -219,7 +219,7 @@ public class AlchemyTimers : MonoBehaviour
         {
             if (alchemyProgressBar[4].rwd > 0)
             {
-                alchemyProgressBar[4].rwd -= 1;
+                alchemyProgressBar[4].rwd -= index + 1;
                 potion[index].PotionAmt += 1;
             }
         }
@@ -230,7 +230,8 @@ public class AlchemyTimers : MonoBehaviour
         if (potion[index].PotionAmt > 0)
         {
             potion[index].PotionAmt -= 1;
-            playerStats.currentHp += 10 * potion[index].PotionStrenght;
+            playerStats.currentHp += 10 * (index + 1);
+
         }
     }
 
