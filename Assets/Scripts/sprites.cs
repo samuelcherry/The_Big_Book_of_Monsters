@@ -31,7 +31,14 @@ public class Sprites : MonoBehaviour
             var upgrade = upgrades.upgrades[i];
             var spriteSet = upgradeSprites[i];
 
-            if (!upgrade.unlocked && !upgrade.purchased)
+
+            if (upgrade.metalCount == upgrade.metalMax)
+            {
+                upgradeButtons[i].sprite = spriteSet.purchasedSprite;
+            }
+
+
+            else if (!upgrade.unlocked && !upgrade.purchased)
             {
                 upgradeButtons[i].sprite = spriteSet.lockedSprite;
             }
@@ -43,6 +50,7 @@ public class Sprites : MonoBehaviour
             {
                 upgradeButtons[i].sprite = spriteSet.purchasedSprite;
             }
+
         }
     }
 }

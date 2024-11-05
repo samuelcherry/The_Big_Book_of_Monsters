@@ -49,10 +49,9 @@ public class Prestige : MonoBehaviour
             playerStats.atk = playerStats.atkArr[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl]);
             playerStats.def = playerStats.defArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl]);
         }
+
         playerStats.currentHp = playerStats.maxHp;
         enemyStats.GoldAmt = 0;
-
-
 
         playerStats.atk += playerStats.atkMetalCount * upgrades.atkPassiveMulti;
         playerStats.def += playerStats.defMetalCount * upgrades.defPassiveMulti;
@@ -92,11 +91,11 @@ public class Prestige : MonoBehaviour
 
         if (currentMultiText != null)
         {
-            currentMultiText.text = prestigeMulti.ToString();
+            currentMultiText.text = playerStats.FormatStatValue(prestigeMulti).ToString();
         }
         if (futureMultiText != null)
         {
-            futureMultiText.text = (prestigeMulti + baseXP / 10000).ToString();
+            futureMultiText.text = playerStats.FormatStatValue(prestigeMulti + baseXP / 10000).ToString();
         }
 
     }

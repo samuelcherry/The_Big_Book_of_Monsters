@@ -8,6 +8,8 @@ public class SaveManager : MonoBehaviour
     public Prestige prestige;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+    public BlacksmithToggleManager blacksmithToggleManager;
+    public AlchemyTimers alchemyTimers;
 
     public void Save()
     {
@@ -26,8 +28,13 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("DefMetalCount", playerStats.defMetalCount);
         PlayerPrefs.SetInt("HpMetalCount", playerStats.hpMetalCount);
 
+        PlayerPrefs.SetInt("AutoBuyerLvl", blacksmithToggleManager.AutoBuyerLvl);
+        PlayerPrefs.SetInt("AutoBuyerAmt", blacksmithToggleManager.AutoBuyerAmt);
+
+        AlchemySave();
+
         PlayerPrefs.Save();
-        Debug.Log("Save");
+
     }
 
     public void Load()
@@ -47,7 +54,13 @@ public class SaveManager : MonoBehaviour
         playerStats.defMetalCount = PlayerPrefs.GetInt("DefMetalCount");
         playerStats.hpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
 
+        blacksmithToggleManager.AutoBuyerLvl = PlayerPrefs.GetInt("AutoBuyerLvl");
+        blacksmithToggleManager.AutoBuyerAmt = PlayerPrefs.GetInt("AutoBuyerAmt");
+
+        AlchemyLoad();
+
         prestige.UpdatePostPrestigeText();
+
     }
 
     public void HardReset()
@@ -74,5 +87,18 @@ public class SaveManager : MonoBehaviour
             upgrades.upgrades[i].metalCount = 0;
             upgrades.upgrades[i].metalSlider.value = upgrades.upgrades[i].metalCount / upgrades.upgrades[i].metalMax;
         }
+    }
+
+    public void AlchemySave()
+    {
+        PlayerPrefs.SetInt("AlchAutoBuyerLvl", alchemyTimers.AlchAutoBuyerLvl);
+        PlayerPrefs.SetInt("AlchAutoBuyerAmt", alchemyTimers.AlchAutoBuyerAmt);
+    }
+
+    public void AlchemyLoad()
+    {
+        alchemyTimers.AlchAutoBuyerLvl = PlayerPrefs.GetInt("AlchAutoBuyerLvl");
+        alchemyTimers.AlchAutoBuyerAmt = PlayerPrefs.GetInt("AlchAutoBuyerAmt");
+        alchemyTimers.AlchAutoBuyerAmt = alchemyTimers.AlchAutoBuyerLvl;
     }
 }

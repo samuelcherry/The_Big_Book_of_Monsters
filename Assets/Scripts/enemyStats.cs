@@ -73,19 +73,23 @@ public class EnemyStats : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (EnemyCurrentHp > 0)
+        if (EnemyCurrentHp > 0) // Check if enemy HP is above zero before taking damage
         {
             if (playerStats.atk > EnemyDef)
             {
-                EnemyCurrentHp -= playerStats.atk - EnemyDef;
+                // Calculate the damage and ensure it doesn't reduce HP below zero
+                EnemyCurrentHp = Mathf.Max(0, EnemyCurrentHp - (playerStats.atk - EnemyDef));
                 enemyHpBar.value = EnemyCurrentHp / EnemyMaxHp;
                 UpdateEnemyStatsText();
-                if (EnemyCurrentHp <= 0)
+
+                // Check if enemy has been defeated
+                if (EnemyCurrentHp == 0)
                 {
+                    // Grant rewards to player
                     playerStats?.AddGold();
                     playerStats?.AddXp();
 
-
+                    // Reset enemy HP for the next encounter
                     EnemyCurrentHp = EnemyMaxHp;
                     playerStats.currentHp = playerStats.maxHp;
                     UpdateEnemyStatsText();
@@ -93,6 +97,7 @@ public class EnemyStats : MonoBehaviour
             }
             else
             {
+                Debug.Log("Player's attack is not strong enough to damage the enemy.");
             }
         }
         else
@@ -100,6 +105,7 @@ public class EnemyStats : MonoBehaviour
             Debug.Log("Enemy already at 0 HP.");
         }
     }
+
 
 
     public void IncreaseStage()
@@ -152,11 +158,11 @@ public class EnemyStats : MonoBehaviour
         }
         if (GoldAmtText != null)
         {
-            GoldAmtText.text = "Gold : " + GoldAmt;
+            GoldAmtText.text = "Gold : " + playerStats.FormatStatValue(GoldAmt);
         }
         if (EnemyHpText != null)
         {
-            EnemyHpText.text = EnemyCurrentHp + "/" + EnemyMaxHp;
+            EnemyHpText.text = playerStats.FormatStatValue(EnemyCurrentHp) + "/" + playerStats.FormatStatValue(EnemyMaxHp);
         }
         if (StageNumber != null)
         {

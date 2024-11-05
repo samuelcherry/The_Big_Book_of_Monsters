@@ -4,33 +4,40 @@ public class ConfirmManager : MonoBehaviour
 {
     public SaveManager saveManager;
 
-    public GameObject confirmMenu; // Reference to the pause menu UI
-    private bool isVisible = false;
+    [System.Serializable]
+    public struct ConfirmMenu
+    {
+        public GameObject Menu;
+        public bool isVisible;
+    }
+
+
+    public ConfirmMenu[] confirmMenus = new ConfirmMenu[3];
+
 
     void Start()
     {
-        confirmMenu.SetActive(false); // Hide the pause menu at the start
+        for (int i = 0; i < confirmMenus.Length; i++)
+        {
+            confirmMenus[i].isVisible = false;
+        }
     }
 
 
-    public void ToggleShow()
+    public void ToggleShow(int index)
     {
-        isVisible = !isVisible;
 
-
-        if (isVisible)
+        if (!confirmMenus[index].isVisible)
         {
-            confirmMenu.SetActive(true); // Show the menu
+            confirmMenus[index].Menu.SetActive(true); // Show the menu
+            confirmMenus[index].isVisible = true;
+            Debug.Log("TEST 1");
         }
         else
         {
-            confirmMenu.SetActive(false); // Show the menu
+            confirmMenus[index].Menu.SetActive(false); // Hide the menu
+            confirmMenus[index].isVisible = false;
+            Debug.Log("TEST 2");
         }
-    }
-
-    public void Confirm()
-    {
-        saveManager.HardReset();
-        ToggleShow();
     }
 }

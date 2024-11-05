@@ -31,8 +31,8 @@ public class Upgrades : MonoBehaviour
         public float metalMax;
 
         // Add more fields as needed for each upgrade’s specific boosts or effects.
-   
-   
+
+
     }
 
 
@@ -64,7 +64,7 @@ public class Upgrades : MonoBehaviour
 
         upgrades[2].healthBoost = 20; // Example: Tier 1, Upgrade 3
         upgrades[2].metalMax = 10;
-        
+
         //Tier 2
         upgrades[3].attackBoost = 10;
         upgrades[3].metalMax = 20;
@@ -74,7 +74,7 @@ public class Upgrades : MonoBehaviour
 
         upgrades[5].healthBoost = 30;
         upgrades[5].metalMax = 20;
-        
+
         //Tier 3
         upgrades[6].attackBoost = 15;
         upgrades[6].metalMax = 30;
@@ -100,35 +100,37 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeLocks()
     {
-        // Tier 1 unlocks at level 5
         if (playerStats.level >= 5)
         {
             for (int i = 0; i < 3; i++)
             {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
-            }
-        }
+                if (!upgrades[i].blocked && upgrades[i].metalCount < upgrades[i].metalMax)
+                {
+                    upgrades[i].unlocked = true;
+                }
 
-        // Tier 2 unlocks at level 10
+            }
+
+        }
         if (playerStats.level >= 10)
         {
             for (int i = 3; i < 6; i++)
             {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+                if (!upgrades[i].blocked && upgrades[i].metalCount < upgrades[i].metalMax) upgrades[i].unlocked = true;
             }
         }
         if (playerStats.level >= 15)
         {
             for (int i = 3; i < 9; i++)
             {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+                if (!upgrades[i].blocked && upgrades[i].metalCount < upgrades[i].metalMax) upgrades[i].unlocked = true;
             }
         }
         if (playerStats.level >= 20)
         {
             for (int i = 3; i < 12; i++)
             {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+                if (!upgrades[i].blocked && upgrades[i].metalCount < upgrades[i].metalMax) upgrades[i].unlocked = true;
             }
         }
     }
@@ -144,30 +146,30 @@ public class Upgrades : MonoBehaviour
             playerStats.atk += upgrades[index].attackBoost;
             playerStats.def += upgrades[index].defenseBoost;
             playerStats.maxHp += upgrades[index].healthBoost;
-            
-//sets the limits based on the tier
+
+            //sets the limits based on the tier
 
             if (upgrades[index].attackBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrades[index].metalCount < upgrades[index].metalMax)
                 {
                     upgrades[index].metalCount++;
                     playerStats.atkMetalCount++;
                     UpdateMetalSliders(index);
                 }
             }
-             if (upgrades[index].defenseBoost > 0)
+            if (upgrades[index].defenseBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrades[index].metalCount < upgrades[index].metalMax)
                 {
                     upgrades[index].metalCount++;
                     playerStats.defMetalCount++;
                     UpdateMetalSliders(index);
                 }
             }
-             if (upgrades[index].healthBoost > 0)
+            if (upgrades[index].healthBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrades[index].metalCount < upgrades[index].metalMax)
                 {
                     upgrades[index].metalCount++;
                     playerStats.hpMetalCount++;
@@ -190,10 +192,13 @@ public class Upgrades : MonoBehaviour
 
     public void UpdateMetalSliders(int index)
     {
-        if (upgrades[index].metalCount == 0){
+        if (upgrades[index].metalCount == 0)
+        {
             upgrades[index].metalCount = 0;
-        }else{
-        upgrades[index].metalSlider.value = upgrades[index].metalCount / upgrades[index].metalMax;
+        }
+        else
+        {
+            upgrades[index].metalSlider.value = upgrades[index].metalCount / upgrades[index].metalMax;
         }
     }
 }

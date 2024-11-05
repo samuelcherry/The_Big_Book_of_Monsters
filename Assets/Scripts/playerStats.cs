@@ -58,8 +58,10 @@ public class PlayerStats : MonoBehaviour
         currentHp = 100;
 
         saveManager.Load();
-
-        maxXP = xpArr[level - 1];
+        if (level < 20)
+        {
+            maxXP = xpArr[level - 1];
+        }
         for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
         {
             maxHp = hpMaxArray[level - 1] + slotUpgrades.slotStructs[0].slotAmtArr[slotUpgrades.slotStructs[0].slotLvl];
@@ -81,6 +83,24 @@ public class PlayerStats : MonoBehaviour
         UpdateStatText();
         progressBarTimer.UpdateSpdText();
     }
+
+    // A generic method to format any stat value based on its range
+    public string FormatStatValue(float value)
+    {
+        if (value >= 1000)
+        {
+            return value.ToString("F0"); // No decimal places for values 1000 and above
+        }
+        else if (value >= 100)
+        {
+            return value.ToString("F1"); // One decimal place for values in the hundreds
+        }
+        else
+        {
+            return value.ToString("F2"); // Two decimal places for values below 100
+        }
+    }
+
     public void AddGold() //Adds Gold when an enemy is killed
     {
         enemyStats.GoldAmt += enemyStats.GoldRwd;
@@ -109,56 +129,79 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            currentXp = 0; // Prevent XP overflow at max level
+
+            currentHp = maxHp;
+            enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
+
+            hpBar.value = currentHp / maxHp;
+            enemyStats.enemyHpBar.value = enemyStats.EnemyCurrentHp / enemyStats.EnemyMaxHp;
+            UpdateStatText();
+            enemyStats.UpdateEnemyStatsText();
             prestige.AddBaseXp();
         }
     }
 
-    public void LevelUp() // leveling up
+    public void LevelUp()
     {
-        if (level < 20) // Check to ensure level does not exceed max level
+        if (level < 19) // Normal level-up logic up to level 20
         {
-            // Increment the level
+            level += 1;
+            currentXp = 0;
+            maxXP = xpArr[level - 1];
+
+            // Apply level-based increases to stats
+            float atkIncrease = atkArr[level - 1];
+            float defIncrease = defArray[level - 1];
+            float hpIncrease = hpMaxArray[level - 1];
+
+            atk += atkIncrease;
+            def += defIncrease;
+            maxHp += hpIncrease;
+
+            // Apply slot upgrades and passive bonuses
+            atk += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
+            def += slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl] * (defMetalCount * upgrades.defPassiveMulti);
+            maxHp += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
+
+            currentHp = maxHp;
+            hpBar.value = currentHp / maxHp;
+            UpdateStatText();
+            saveManager.Save();
+            Debug.Log($"Level Up! New Level: {level}, atk: {atk}, def: {def}, maxHp: {maxHp}");
+        }
+        else if (level == 19) // Handle max level case
+        {
             level += 1;
             currentXp = 0;
 
-            // Increase maxXP based on the new level
-            maxXP = xpArr[level - 1];
-
-            // Accumulate level-based increase to atk and def
+            // Apply level-based increases to stats
             float atkIncrease = atkArr[level - 1];
             float defIncrease = defArray[level - 1];
+            float hpIncrease = hpMaxArray[level - 1];
 
-            // Apply the new level-based increases to the current stats
             atk += atkIncrease;
             def += defIncrease;
-
-            // Adjust atk and def based on slot upgrades and passive bonuses
-            atk += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
-            def += slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl] * (defMetalCount * upgrades.defPassiveMulti);
-
-            // Apply a level-based HP increase
-            float hpIncrease = hpMaxArray[level - 1];
             maxHp += hpIncrease;
 
-            // Adjust maxHp based on slot upgrades and passive bonuses
+            // Apply slot upgrades and passive bonuses
+            atk += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (atkMetalCount * upgrades.atkPassiveMulti);
+            def += slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl] * (defMetalCount * upgrades.defPassiveMulti);
             maxHp += slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl] * (hpMetalCount * upgrades.hpPassiveMulti);
 
-            // Set current HP to the new max HP
             currentHp = maxHp;
-
-            // Update the UI elements
             hpBar.value = currentHp / maxHp;
             UpdateStatText();
-
-            // Save the updated stats
             saveManager.Save();
-
             Debug.Log($"Level Up! New Level: {level}, atk: {atk}, def: {def}, maxHp: {maxHp}");
         }
-        else
-        {
-            Debug.Log("Maximum level reached.");
-        }
+    }
+
+    public void ResetPlayerHealth()
+    {
+        currentHp = maxHp;
+        hpBar.value = currentHp / maxHp;
+        UpdateStatText();
     }
 
     public void PlayerTakeDamage()
@@ -196,15 +239,15 @@ public class PlayerStats : MonoBehaviour
     {
         if (hpText != null)
         {
-            hpText.text = "HP: " + currentHp + "/" + maxHp;
+            hpText.text = "HP: " + FormatStatValue(currentHp) + "/" + FormatStatValue(maxHp);
         }
         if (atkText != null)
         {
-            atkText.text = "Atk: " + atk;
+            atkText.text = "Atk: " + FormatStatValue(atk);
         }
         if (defText != null)
         {
-            defText.text = "Def: " + def;
+            defText.text = "Def: " + FormatStatValue(def);
         }
         if (levelText != null)
         {
@@ -215,7 +258,7 @@ public class PlayerStats : MonoBehaviour
             if (level < 20)
             {
                 maxXP = xpArr[level - 1];
-                xpText.text = "XP: " + currentXp + "/" + maxXP;
+                xpText.text = "XP: " + FormatStatValue(currentXp) + "/" + FormatStatValue(maxXP);
             }
             else
             {
@@ -224,7 +267,7 @@ public class PlayerStats : MonoBehaviour
         }
         if (enemyStats.GoldAmtText != null)
         {
-            enemyStats.GoldAmtText.text = "Gold: " + enemyStats.GoldAmt;
+            enemyStats.GoldAmtText.text = "Gold: " + FormatStatValue(enemyStats.GoldAmt);
         }
 
         hpBar.value = currentHp / maxHp;
