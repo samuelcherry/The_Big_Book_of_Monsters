@@ -21,10 +21,10 @@ public class AlchemyTimers : MonoBehaviour
         public int req;
         public bool canRun;
         public int limit;
-        public TMP_Text limitText;
         public float alchXP;
         public float alchMaxXp;
         public int alchLvl;
+        public TMP_Text limitText;
         public Slider alchLvlBar;
         public TMP_Text lvlText;
     }

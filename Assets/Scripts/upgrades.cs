@@ -57,43 +57,43 @@ public class Upgrades : MonoBehaviour
     {
         // Set default values for each upgrade here or in the Inspector.
         upgrades[0].attackBoost = 5; // Example: Tier 1, Upgrade 1
-        upgrades[0].metalMax = 10;
+        upgrades[0].metalMax = 1000;
 
         upgrades[1].defenseBoost = 5; // Example: Tier 1, Upgrade 2
-        upgrades[1].metalMax = 10;
+        upgrades[1].metalMax = 1000;
 
         upgrades[2].healthBoost = 20; // Example: Tier 1, Upgrade 3
-        upgrades[2].metalMax = 10;
+        upgrades[2].metalMax = 1000;
 
         //Tier 2
         upgrades[3].attackBoost = 10;
-        upgrades[3].metalMax = 20;
+        upgrades[3].metalMax = 2000;
 
         upgrades[4].defenseBoost = 10;
-        upgrades[4].metalMax = 20;
+        upgrades[4].metalMax = 2000;
 
         upgrades[5].healthBoost = 30;
-        upgrades[5].metalMax = 20;
+        upgrades[5].metalMax = 2000;
 
         //Tier 3
         upgrades[6].attackBoost = 15;
-        upgrades[6].metalMax = 30;
+        upgrades[6].metalMax = 3000;
 
         upgrades[7].defenseBoost = 15;
-        upgrades[7].metalMax = 30;
+        upgrades[7].metalMax = 3000;
 
         upgrades[8].healthBoost = 40;
-        upgrades[8].metalMax = 30;
+        upgrades[8].metalMax = 3000;
 
         //Tier 4
         upgrades[9].attackBoost = 20;
-        upgrades[9].metalMax = 40;
+        upgrades[9].metalMax = 4000;
 
         upgrades[10].defenseBoost = 20;
-        upgrades[10].metalMax = 40;
+        upgrades[10].metalMax = 4000;
 
         upgrades[11].healthBoost = 50;
-        upgrades[11].metalMax = 40;
+        upgrades[11].metalMax = 4000;
 
         // Continue to set values as needed
     }

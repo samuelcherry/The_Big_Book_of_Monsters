@@ -1359,7 +1359,57 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Idle_dungeon_icons_0: 101003381719452563
+      Idle_dungeon_icons_1: -7121616847491062742
+      Idle_dungeon_icons_10: -6265665370975373428
+      Idle_dungeon_icons_11: 2680890021856416238
+      Idle_dungeon_icons_12: -395828869456276593
+      Idle_dungeon_icons_13: 1902080596162856882
+      Idle_dungeon_icons_14: -2948584554498385327
+      Idle_dungeon_icons_15: -7579531960032490226
+      Idle_dungeon_icons_16: 6489299783917719644
+      Idle_dungeon_icons_17: -4080021996211327914
+      Idle_dungeon_icons_18: 2129373004803164729
+      Idle_dungeon_icons_19: 1497176214600076309
+      Idle_dungeon_icons_2: -5184347806530979057
+      Idle_dungeon_icons_20: -4967369090113464071
+      Idle_dungeon_icons_21: -677561615740157096
+      Idle_dungeon_icons_22: -3553852586101709443
+      Idle_dungeon_icons_23: 8249320566333695894
+      Idle_dungeon_icons_24: 7059696755707716994
+      Idle_dungeon_icons_25: -3118046927706073480
+      Idle_dungeon_icons_26: 6289867880400969279
+      Idle_dungeon_icons_27: 916400962288917727
+      Idle_dungeon_icons_28: 7136462827613064223
+      Idle_dungeon_icons_29: -2858762916273175032
+      Idle_dungeon_icons_3: 5651641984396077782
+      Idle_dungeon_icons_30: 5360863943509838827
+      Idle_dungeon_icons_31: 6618080742878135947
+      Idle_dungeon_icons_32: -9173872885501915851
+      Idle_dungeon_icons_33: -2794885020461008090
+      Idle_dungeon_icons_34: -3984524647604774592
+      Idle_dungeon_icons_35: -5838477997958834418
+      Idle_dungeon_icons_36: 3032608186389258117
+      Idle_dungeon_icons_37: 2206259599738223439
+      Idle_dungeon_icons_38: 1405918979966480231
+      Idle_dungeon_icons_39: 8698471779053275444
+      Idle_dungeon_icons_4: -7983631669348333117
+      Idle_dungeon_icons_40: -951428993777433824
+      Idle_dungeon_icons_41: -5957154028976871383
+      Idle_dungeon_icons_42: 6383037490023830789
+      Idle_dungeon_icons_43: 7302156471846516404
+      Idle_dungeon_icons_44: -5700339726255899668
+      Idle_dungeon_icons_45: 9195163836910434980
+      Idle_dungeon_icons_46: 1915730852709621247
+      Idle_dungeon_icons_47: 1725798399252895268
+      Idle_dungeon_icons_48: -9202076187389209920
+      Idle_dungeon_icons_49: 1430827563062642898
+      Idle_dungeon_icons_5: 6904983719991044570
+      Idle_dungeon_icons_6: 3354542846684450822
+      Idle_dungeon_icons_7: 8408274595485506712
+      Idle_dungeon_icons_8: 6286191673733296596
+      Idle_dungeon_icons_9: 3205035591479079483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

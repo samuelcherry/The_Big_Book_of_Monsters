@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     public Prestige prestige;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+    public EnemyObjects enemyObjects;
 
     public TMP_Text levelText;
     public TMP_Text xpText;
@@ -68,10 +69,18 @@ public class PlayerStats : MonoBehaviour
             atk = atkArr[level - 1] + slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl];
             def = defArray[level - 1] + slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl];
         }
-
-        atk *= atkMetalCount * upgrades.atkPassiveMulti + 1;
-        def *= defMetalCount * upgrades.defPassiveMulti + 1;
-        maxHp *= hpMetalCount * upgrades.hpPassiveMulti + 1;
+        if (atkMetalCount * upgrades.atkPassiveMulti <= 1)
+        {
+            atk *= atkMetalCount * upgrades.atkPassiveMulti + 1;
+            def *= defMetalCount * upgrades.defPassiveMulti + 1;
+            maxHp *= hpMetalCount * upgrades.hpPassiveMulti + 1;
+        }
+        else
+        {
+            atk *= atkMetalCount * upgrades.atkPassiveMulti;
+            def *= defMetalCount * upgrades.defPassiveMulti;
+            maxHp *= hpMetalCount * upgrades.hpPassiveMulti;
+        }
 
         hpBar.value = currentHp / maxHp;
 
@@ -274,14 +283,14 @@ public class PlayerStats : MonoBehaviour
     }
     public void Reset()
     {
-        enemyStats.EnemyName = enemyStats.enemyNameArray[enemyStats.Stage - 1];
-        enemyStats.EnemyMaxHp = enemyStats.enemyHpMax[enemyStats.Stage - 1];
+        enemyStats.EnemyName = enemyObjects.enemies[enemyStats.Stage - 1].enemyName;
+        enemyStats.EnemyMaxHp = enemyObjects.enemies[enemyStats.Stage - 1].enemyMaxHp;
         enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
-        enemyStats.EnemyDef = enemyStats.enemyDefArray[enemyStats.Stage - 1];
-        enemyStats.baseXpRwd = enemyStats.xpRwdArray[enemyStats.Stage - 1];
+        enemyStats.EnemyDef = enemyObjects.enemies[enemyStats.Stage - 1].enemyDef;
+        enemyStats.baseXpRwd = enemyObjects.enemies[enemyStats.Stage - 1].xpRwd;
         enemyStats.XpRwd = enemyStats.baseXpRwd * enemyStats.prestige.prestigeMulti;
-        enemyStats.GoldRwd = enemyStats.goldRwdArray[enemyStats.Stage - 1] * enemyStats.prestige.prestigeMulti;
-        enemyStats.EnemyAtk = enemyStats.enemyAtkArray[enemyStats.Stage - 1];
+        enemyStats.GoldRwd = enemyObjects.enemies[enemyStats.Stage - 1].goldRwd * enemyStats.prestige.prestigeMulti;
+        enemyStats.EnemyAtk = enemyObjects.enemies[enemyStats.Stage - 1].enemyAtk;
         enemyStats.enemyHpBar.value = enemyStats.EnemyCurrentHp / enemyStats.EnemyMaxHp;
 
         enemyStats.UpdateEnemyStatsText();

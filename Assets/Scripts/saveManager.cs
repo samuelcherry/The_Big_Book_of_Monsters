@@ -87,6 +87,9 @@ public class SaveManager : MonoBehaviour
             upgrades.upgrades[i].metalCount = 0;
             upgrades.upgrades[i].metalSlider.value = upgrades.upgrades[i].metalCount / upgrades.upgrades[i].metalMax;
         }
+        alchemyTimers.AlchAutoBuyerAmt = 0;
+        alchemyTimers.AlchAutoBuyerLvl = 0;
+
     }
 
     public void AlchemySave()
