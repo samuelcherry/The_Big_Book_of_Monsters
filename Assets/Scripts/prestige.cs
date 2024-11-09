@@ -1,5 +1,4 @@
 using System;
-using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 
@@ -11,15 +10,25 @@ public class Prestige : MonoBehaviour
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
     public Upgrades.Upgrade upgrade;
-    public EnemyObjects enemyObjects;
+    public ProgressBarTimer progressBarTimer;
     public float baseXP;
     public float prestigeMulti;
     public TMP_Text currentMultiText;
     public TMP_Text futureMultiText;
 
-    void Start()
+    void Awake()
     {
-        prestigeMulti = 1;
+        Debug.Log("Prestige Awake");
+        if (PlayerPrefs.GetFloat("PrestigeMulti") >= 1)
+        {
+            Debug.Log("Prestige is not equal to 1");
+            prestigeMulti = PlayerPrefs.GetFloat("PrestigeMulti");
+        }
+        else
+        {
+            prestigeMulti = 1;
+        }
+        Debug.Log(prestigeMulti);
     }
 
     void Update()
@@ -28,7 +37,8 @@ public class Prestige : MonoBehaviour
     }
     public void AddBaseXp()
     {
-        baseXP += enemyStats.baseXpRwd;
+        baseXP += enemyStats.enemies[enemyStats.Stage - 1].xpRwd / prestigeMulti;
+        Debug.Log("BaseXP: " + baseXP + " XpRwd: " + enemyStats.enemies[enemyStats.Stage - 1].xpRwd);
     }
 
     public void PrestigeHero()
@@ -47,24 +57,18 @@ public class Prestige : MonoBehaviour
             slotUpgrades.slotStructs[i].slotLvl = 0;
 
             playerStats.maxHp = playerStats.hpMaxArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[0].slotAmtArr[slotUpgrades.slotStructs[0].slotLvl]);
-            playerStats.atk = playerStats.atkArr[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl]);
+            playerStats.atk = playerStats.atkArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[1].slotAmtArr[slotUpgrades.slotStructs[1].slotLvl]);
             playerStats.def = playerStats.defArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl]);
         }
 
         playerStats.currentHp = playerStats.maxHp;
         enemyStats.GoldAmt = 0;
-        if (playerStats.atkMetalCount * upgrades.atkPassiveMulti <= 1)
-        {
-            playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
-            playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
-            playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
-        }
-        else
-        {
-            playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti;
-            playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti;
-            playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti;
-        }
+
+
+        playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
+        playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
+        playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
+        progressBarTimer.totalTime = playerStats.speedArray[playerStats.level];
 
         for (int i = 0; i < upgrades.upgrades.Length; i++)
         {
@@ -73,23 +77,29 @@ public class Prestige : MonoBehaviour
             upgrades.upgrades[i].blocked = false;
         }
 
-        enemyStats.Stage = 1;
-        enemyStats.EnemyName = enemyObjects.enemies[enemyStats.Stage - 1].enemyName;
-        enemyStats.EnemyMaxHp = enemyObjects.enemies[enemyStats.Stage - 1].enemyMaxHp;
-        enemyStats.EnemyCurrentHp = enemyStats.EnemyMaxHp;
-        enemyStats.EnemyDef = enemyObjects.enemies[enemyStats.Stage - 1].enemyDef;
-        enemyStats.baseXpRwd = enemyObjects.enemies[enemyStats.Stage - 1].xpRwd;
-        enemyStats.XpRwd = enemyStats.baseXpRwd * enemyStats.prestige.prestigeMulti;
-        enemyStats.GoldRwd = enemyObjects.enemies[enemyStats.Stage - 1].goldRwd * enemyStats.prestige.prestigeMulti;
-        enemyStats.EnemyAtk = enemyObjects.enemies[enemyStats.Stage - 1].enemyAtk;
+        var currentEnemy = enemyStats.enemies[enemyStats.Stage - 1];
+
+        currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
+        enemyStats.enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
+
+        currentEnemy.xpRwd = currentEnemy.baseXpRwd * enemyStats.prestige.prestigeMulti;
+        currentEnemy.goldRwd = currentEnemy.baseGoldRwd * enemyStats.prestige.prestigeMulti;
+
+        progressBarTimer.enemyAtkTime = enemyStats.enemies[enemyStats.Stage - 1].enemySpeed;
+
         enemyStats.GoldAmt = 0;
-        enemyStats.enemyHpBar.value = enemyStats.EnemyCurrentHp / enemyStats.EnemyMaxHp;
 
         baseXP = 0;
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
         UpdatePrestigeText();
         UpdatePostPrestigeText();
+
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            slotUpgrades.UpdateSlotText(i);
+        }
+
 
         saveManager.Save();
 

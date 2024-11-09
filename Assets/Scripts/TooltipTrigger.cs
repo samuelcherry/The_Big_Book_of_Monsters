@@ -3,24 +3,25 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	private Tooltip tooltip;
-	public SlotUpgrades slotUpgrades;
+    private Tooltip tooltip;
+    public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
     public string upgradeDescription;
-	public string tooltipMessage;
+    public string tooltipMessage;
     public int upgradeIndex;
 
 
     void Start()
-	{
-		tooltip = FindFirstObjectByType<Tooltip>();
-	}
+    {
+        tooltip = FindFirstObjectByType<Tooltip>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-		Vector3 tooltipPosition = transform.position + new Vector3(220, 0, 0);
+
+        Vector3 tooltipPosition = transform.position + new Vector3(220, 0, 0);
         var upgrade = upgrades.upgrades[upgradeIndex];
-        
+
         tooltipMessage =
         $"{upgradeDescription}\n" +
         "Skill Points\n" +
@@ -32,7 +33,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-		Vector3 tooltipPosition = transform.position + new Vector3(0, 6000, 0);
+        Vector3 tooltipPosition = transform.position + new Vector3(0, 6000, 0);
         tooltip.HideTooltip(tooltipPosition);
     }
 }

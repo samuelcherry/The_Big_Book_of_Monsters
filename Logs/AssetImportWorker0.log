@@ -15,7 +15,7 @@ C:/Users/samue/My project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52672
+60471
 -job-worker-count
 3
 -background-job-worker-count
@@ -59,12 +59,12 @@ C:/Users/samue/My project
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [17252]  Target information:
+Player connection [23720]  Target information:
 
-Player connection [17252]  * "[IP] 10.0.0.49 [Port] 0 [Flags] 2 [Guid] 1236037805 [EditorId] 1236037805 [Version] 1048832 [Id] WindowsEditor(7,sam_cherry) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [23720]  * "[IP] 10.0.0.49 [Port] 0 [Flags] 2 [Guid] 2293291751 [EditorId] 2293291751 [Version] 1048832 [Id] WindowsEditor(7,sam_cherry) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [17252] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [17252] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [23720] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [23720] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 3
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -75,7 +75,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 13.14 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 16.32 ms, found 8 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.24f1 (11fa355cd605)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.24f1/Editor/Data/Resources/UnitySubsystems
@@ -91,43 +91,43 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.24f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.24f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56876
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56728
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004508 seconds.
-- Loaded All Assemblies, in  0.723 seconds
+Registered in 0.003199 seconds.
+- Loaded All Assemblies, in  0.593 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.849 seconds
-Domain Reload Profiling: 1569ms
-	BeginReloadAssembly (237ms)
+- Finished resetting the current domain, in  0.647 seconds
+Domain Reload Profiling: 1237ms
+	BeginReloadAssembly (210ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (79ms)
-	RebuildNativeTypeToScriptingClass (22ms)
-	initialDomainReloadingComplete (80ms)
-	LoadAllAssembliesAndSetupDomain (301ms)
-		LoadAssemblies (234ms)
+	RebuildCommonClasses (54ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (75ms)
+	LoadAllAssembliesAndSetupDomain (237ms)
+		LoadAssemblies (206ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (295ms)
-			TypeCache.Refresh (293ms)
-				TypeCache.ScanAssembly (267ms)
+		AnalyzeDomain (233ms)
+			TypeCache.Refresh (230ms)
+				TypeCache.ScanAssembly (208ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (850ms)
+	FinalizeReload (647ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (633ms)
+		SetupLoadedEditorAssemblies (562ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (55ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (9ms)
-			ProcessInitializeOnLoadAttributes (459ms)
-			ProcessInitializeOnLoadMethodAttributes (99ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (10ms)
+			ProcessInitializeOnLoadAttributes (373ms)
+			ProcessInitializeOnLoadMethodAttributes (123ms)
 			AfterProcessingInitializeOnLoad (4ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -136,331 +136,194 @@ Domain Reload Profiling: 1569ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.869 seconds
-Refreshing native plugins compatible for Editor in 6.37 ms, found 8 plugins.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  2.090 seconds
+Refreshing native plugins compatible for Editor in 11.72 ms, found 8 plugins.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 9.03 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 15.48 ms, found 8 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.536 seconds
-Domain Reload Profiling: 3399ms
-	BeginReloadAssembly (796ms)
+- Finished resetting the current domain, in  1.985 seconds
+Domain Reload Profiling: 4070ms
+	BeginReloadAssembly (675ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (10ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (74ms)
-	RebuildCommonClasses (45ms)
-	RebuildNativeTypeToScriptingClass (18ms)
-	initialDomainReloadingComplete (42ms)
-	LoadAllAssembliesAndSetupDomain (961ms)
-		LoadAssemblies (717ms)
+		CreateAndSetChildDomain (75ms)
+	RebuildCommonClasses (61ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (65ms)
+	LoadAllAssembliesAndSetupDomain (1265ms)
+		LoadAssemblies (749ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (474ms)
-			TypeCache.Refresh (331ms)
-				TypeCache.ScanAssembly (301ms)
-			BuildScriptInfoCaches (127ms)
-			ResolveRequiredComponents (13ms)
-	FinalizeReload (1537ms)
+		AnalyzeDomain (681ms)
+			TypeCache.Refresh (504ms)
+				TypeCache.ScanAssembly (462ms)
+			BuildScriptInfoCaches (149ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1986ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1192ms)
+		SetupLoadedEditorAssemblies (1525ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
+			InitializePlatformSupportModulesInManaged (4ms)
 			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (143ms)
-			ProcessInitializeOnLoadAttributes (705ms)
-			ProcessInitializeOnLoadMethodAttributes (323ms)
-			AfterProcessingInitializeOnLoad (11ms)
+			BeforeProcessingInitializeOnLoad (174ms)
+			ProcessInitializeOnLoadAttributes (928ms)
+			ProcessInitializeOnLoadMethodAttributes (399ms)
+			AfterProcessingInitializeOnLoad (13ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (9ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
-Refreshing native plugins compatible for Editor in 10.35 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 14.36 ms, found 8 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 230 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7795 unused Assets / (5.3 MB). Loaded Objects now: 8553.
-Memory consumption went from 214.4 MB to 209.2 MB.
-Total: 18.342600 ms (FindLiveObjects: 0.978200 ms CreateObjectMapping: 1.036500 ms MarkObjects: 12.230000 ms  DeleteObjects: 4.096100 ms)
+Unloading 7795 unused Assets / (5.5 MB). Loaded Objects now: 8553.
+Memory consumption went from 214.4 MB to 208.9 MB.
+Total: 29.599400 ms (FindLiveObjects: 1.733900 ms CreateObjectMapping: 2.423400 ms MarkObjects: 17.826000 ms  DeleteObjects: 7.611700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16389.818018 seconds.
-  path: Assets/Art/Pixel Banner_01 1.png
-  artifactKey: Guid(a30e2d4197308da4db1ab4ea400dad2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01 1.png using Guid(a30e2d4197308da4db1ab4ea400dad2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '367b3f5d983de0b41c95d5acef332aac') in 0.1160643 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  Time since last request: 208581.559550 seconds.
+  path: Assets/Art
+  artifactKey: Guid(ac0146f3eec9f2449a477bb81d37952b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art using Guid(ac0146f3eec9f2449a477bb81d37952b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0988728fa1281cac3e5a8ba9bbb60cc9') in 0.0079419 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.801446 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest
+  artifactKey: Guid(a39cf8002df4206458df300f6ce63d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest using Guid(a39cf8002df4206458df300f6ce63d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '43a71a6da49644c504d4a441a5c14df1') in 0.0008142 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.068887 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Atlas.spriteatlas
+  artifactKey: Guid(72ed2a5fe375d7e4bbecf74985d9ecab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Atlas.spriteatlas using Guid(72ed2a5fe375d7e4bbecf74985d9ecab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5bcecd7a1776f6bc7c053216c3cbae05') in 0.0266171 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background4.asset
+  artifactKey: Guid(6a2790478b36b4d408fa1d0b541b5c68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background4.asset using Guid(6a2790478b36b4d408fa1d0b541b5c68) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '12d33fc01e4e3ce37ce478a1424c6bf9') in 0.0719822 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Table1.asset
+  artifactKey: Guid(db73e4463ce74ca47a76b43844ce2c4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Table1.asset using Guid(db73e4463ce74ca47a76b43844ce2c4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68bc7a1004c99fa4bee806336f6024f9') in 0.0261718 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround2.asset
+  artifactKey: Guid(66fcb0b6690610d42a35c8fe952df954) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround2.asset using Guid(66fcb0b6690610d42a35c8fe952df954) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7211d597f444a06e6674847111c22554') in 0.0222876 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Plant4.asset
+  artifactKey: Guid(59d9b5c51ac38e449a384cc7acfa5a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Plant4.asset using Guid(59d9b5c51ac38e449a384cc7acfa5a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0653d33f08e1a9ff72a6b511fafceda3') in 0.0229557 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Plant3.asset
+  artifactKey: Guid(45180e5bc3c539949a503f7e57a8159c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Plant3.asset using Guid(45180e5bc3c539949a503f7e57a8159c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e434051ed91342fe1e6f2eecc68621c0') in 0.0358603 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Sprites.png
+  artifactKey: Guid(5fe5454ec8605de43809133b020d1b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Sprites.png using Guid(5fe5454ec8605de43809133b020d1b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ae5986fc534eb1ec2f5be4a0693ca66b') in 0.5799446 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background3.asset
+  artifactKey: Guid(f67a142c7214ca94889b9a3b70b6bf03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background3.asset using Guid(f67a142c7214ca94889b9a3b70b6bf03) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '683d3af02a84d00f177c68b60629a05d') in 0.0228905 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround7.asset
+  artifactKey: Guid(f017f936a12f549459f1c95a05394bb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround7.asset using Guid(f017f936a12f549459f1c95a05394bb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '75b02f19e5ccff352a64f6177ac7465d') in 0.0247672 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone6.asset
+  artifactKey: Guid(4e9920888e838ef4a85c755dec8d4dec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone6.asset using Guid(4e9920888e838ef4a85c755dec8d4dec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ef59c567816204c80c06310e1f17bad') in 0.0226844 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background5.asset
+  artifactKey: Guid(0bfa2a57f8d2b0d4c9c3de15005b0524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background5.asset using Guid(0bfa2a57f8d2b0d4c9c3de15005b0524) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '88462f6a5cf39a23e4d2ee423efaa124') in 0.0277174 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000031 seconds.
-  path: Assets/Art/upgrade tree lines.png
-  artifactKey: Guid(dfd5a140d057c7a46802a2b1a33b827c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/upgrade tree lines.png using Guid(dfd5a140d057c7a46802a2b1a33b827c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3b7373a93c515174cbd59846c535e5fb') in 0.019924 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround4.asset
+  artifactKey: Guid(6c3eb9c8175118f4e8182ae9c0b620ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/TileBackGround4.asset using Guid(6c3eb9c8175118f4e8182ae9c0b620ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4474578fb05a1eae859875dc83df877a') in 0.0289886 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
 
 ========================================================================
 Received Import Request.
-  Time since last request: 30.773169 seconds.
-  path: Assets/Art/SimplePixelUI/prefabs/Gray_black/square/buttons/button_1.prefab
-  artifactKey: Guid(898380e1ddcafc24d8b877b904e71c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/SimplePixelUI/prefabs/Gray_black/square/buttons/button_1.prefab using Guid(898380e1ddcafc24d8b877b904e71c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3f0096f94ab29ff01d489b410169c0c7') in 0.0183827 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+  Time since last request: 0.000041 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone5.asset
+  artifactKey: Guid(422a638db941cbc4ea3db859cc8d0cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone5.asset using Guid(422a638db941cbc4ea3db859cc8d0cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cf17051c76f41bfb1e9d19d15e728e20') in 0.0271146 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/SimplePixelUI/prefabs/Gray_black/square/buttons/button_small_2.prefab
-  artifactKey: Guid(1dab821edd288744a911586e55667f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/SimplePixelUI/prefabs/Gray_black/square/buttons/button_small_2.prefab using Guid(1dab821edd288744a911586e55667f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '714573c74caee745735a50e5cd22e939') in 0.0037763 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 11.11 ms, found 8 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 13 unused Assets / (1.8 MB). Loaded Objects now: 8564.
-Memory consumption went from 168.9 MB to 167.1 MB.
-Total: 15.034900 ms (FindLiveObjects: 0.545200 ms CreateObjectMapping: 0.413300 ms MarkObjects: 13.210900 ms  DeleteObjects: 0.863800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.310 seconds
-Refreshing native plugins compatible for Editor in 7.76 ms, found 8 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.531 seconds
-Domain Reload Profiling: 3844ms
-	BeginReloadAssembly (332ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (17ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (119ms)
-	RebuildCommonClasses (43ms)
-	RebuildNativeTypeToScriptingClass (18ms)
-	initialDomainReloadingComplete (37ms)
-	LoadAllAssembliesAndSetupDomain (881ms)
-		LoadAssemblies (602ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (410ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (379ms)
-			ResolveRequiredComponents (15ms)
-	FinalizeReload (2533ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1877ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (9ms)
-			BeforeProcessingInitializeOnLoad (166ms)
-			ProcessInitializeOnLoadAttributes (874ms)
-			ProcessInitializeOnLoadMethodAttributes (805ms)
-			AfterProcessingInitializeOnLoad (17ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (49ms)
-Refreshing native plugins compatible for Editor in 21.59 ms, found 8 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7793 unused Assets / (4.8 MB). Loaded Objects now: 8566.
-Memory consumption went from 177.7 MB to 172.9 MB.
-Total: 41.380100 ms (FindLiveObjects: 2.524800 ms CreateObjectMapping: 2.815000 ms MarkObjects: 25.376700 ms  DeleteObjects: 10.660700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 272.136747 seconds.
-  path: Assets/Art/Pixel Banner_01 2.png
-  artifactKey: Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01 2.png using Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b0b0ece8dbcdfc41bb4dd9332f2d9ba6') in 0.1121145 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  Time since last request: 0.000046 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background2.asset
+  artifactKey: Guid(8c81a9d9d0f225e4eb713aeb0a4bdee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Background2.asset using Guid(8c81a9d9d0f225e4eb713aeb0a4bdee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f06f26b25e78f10ab898fcf1ad7849c0') in 0.0243053 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
 
 ========================================================================
 Received Import Request.
-  Time since last request: 46.664639 seconds.
-  path: Assets/Art/Pixel Banner_01 2.png
-  artifactKey: Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01 2.png using Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '960b6291f0cdf29548805aa1318b96fb') in 0.023043 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  Time since last request: 0.000033 seconds.
+  path: Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone3.asset
+  artifactKey: Guid(dd9849669be8e1e47bbd83f5ce7ee4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/2D Pixel Art Platformer Biome - American Forest/Stone3.asset using Guid(dd9849669be8e1e47bbd83f5ce7ee4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '351cee34b5949b54ae8527ebff0e924a') in 0.0328734 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
 
 ========================================================================
 Received Import Request.
-  Time since last request: 28.252713 seconds.
-  path: Assets/Art/Pixel Banner_01 2.png
-  artifactKey: Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01 2.png using Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '077a157afc4ee15681936c1ae64e26fb') in 0.0142406 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  Time since last request: 4.215815 seconds.
+  path: Assets/Art/Free UI build package
+  artifactKey: Guid(700101e0da3e57a479b9aee076cfa293) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/Free UI build package using Guid(700101e0da3e57a479b9aee076cfa293) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '33ea3d2f59dcdb274ede843915bc611a') in 0.0007084 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
-========================================================================
-Received Import Request.
-  Time since last request: 266.600239 seconds.
-  path: Assets/Art/Pixel Banner_01.png
-  artifactKey: Guid(2247f737d36c39e4fae92129f283d382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01.png using Guid(2247f737d36c39e4fae92129f283d382) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '14a7746ec5cf7d386ea6b47fad519317') in 0.0262839 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.279084 seconds.
-  path: Assets/Art/Pixel Banner_01 2.png
-  artifactKey: Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01 2.png using Guid(2be6cb1130f17c848915069ecf4acad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '03cfe26a5c6bbb58691348b0972cd0bb') in 0.0172027 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.677169 seconds.
-  path: Assets/Art/Pixel Banner_01.png
-  artifactKey: Guid(2247f737d36c39e4fae92129f283d382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Pixel Banner_01.png using Guid(2247f737d36c39e4fae92129f283d382) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '263146f679798dcc4c69814655e3b733') in 0.0238906 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.318 seconds
-Refreshing native plugins compatible for Editor in 10.12 ms, found 8 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.400 seconds
-Domain Reload Profiling: 3720ms
-	BeginReloadAssembly (381ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (21ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (105ms)
-	RebuildCommonClasses (57ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (836ms)
-		LoadAssemblies (652ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (378ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (348ms)
-			ResolveRequiredComponents (14ms)
-	FinalizeReload (2401ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1782ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (146ms)
-			ProcessInitializeOnLoadAttributes (1014ms)
-			ProcessInitializeOnLoadMethodAttributes (599ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (24ms)
-Refreshing native plugins compatible for Editor in 25.20 ms, found 8 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7793 unused Assets / (3.9 MB). Loaded Objects now: 8572.
-Memory consumption went from 177.8 MB to 173.9 MB.
-Total: 70.865900 ms (FindLiveObjects: 7.249600 ms CreateObjectMapping: 9.090200 ms MarkObjects: 43.635200 ms  DeleteObjects: 10.888900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.256 seconds
-Refreshing native plugins compatible for Editor in 9.38 ms, found 8 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.241 seconds
-Domain Reload Profiling: 3495ms
-	BeginReloadAssembly (297ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (19ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (101ms)
-	RebuildCommonClasses (49ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (39ms)
-	LoadAllAssembliesAndSetupDomain (854ms)
-		LoadAssemblies (580ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (390ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (359ms)
-			ResolveRequiredComponents (16ms)
-	FinalizeReload (2241ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1603ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (135ms)
-			ProcessInitializeOnLoadAttributes (882ms)
-			ProcessInitializeOnLoadMethodAttributes (559ms)
-			AfterProcessingInitializeOnLoad (18ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (36ms)
-Refreshing native plugins compatible for Editor in 13.84 ms, found 8 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7793 unused Assets / (4.2 MB). Loaded Objects now: 8574.
-Memory consumption went from 177.8 MB to 173.5 MB.
-Total: 32.715000 ms (FindLiveObjects: 2.041400 ms CreateObjectMapping: 3.009900 ms MarkObjects: 19.662100 ms  DeleteObjects: 7.998600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.233 seconds
-Refreshing native plugins compatible for Editor in 9.11 ms, found 8 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.975 seconds
-Domain Reload Profiling: 4213ms
-	BeginReloadAssembly (311ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (15ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (118ms)
-	RebuildCommonClasses (44ms)
-	RebuildNativeTypeToScriptingClass (19ms)
-	initialDomainReloadingComplete (40ms)
-	LoadAllAssembliesAndSetupDomain (820ms)
-		LoadAssemblies (551ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (384ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (356ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (2979ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2059ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (169ms)
-			ProcessInitializeOnLoadAttributes (1439ms)
-			ProcessInitializeOnLoadMethodAttributes (417ms)
-			AfterProcessingInitializeOnLoad (23ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (144ms)
-Refreshing native plugins compatible for Editor in 13.69 ms, found 8 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7793 unused Assets / (4.4 MB). Loaded Objects now: 8576.
-Memory consumption went from 177.8 MB to 173.4 MB.
-Total: 56.328800 ms (FindLiveObjects: 2.014900 ms CreateObjectMapping: 2.322900 ms MarkObjects: 34.350700 ms  DeleteObjects: 17.636600 ms)
-
-Prepare: number of updated asset objects reloaded= 0

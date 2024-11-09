@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -24,6 +23,12 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("BaseXp", prestige.baseXP);
 
         PlayerPrefs.SetFloat("PrestigeMulti", prestige.prestigeMulti);
+
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            PlayerPrefs.SetFloat($"UpgradeMetalCount_{i}", upgrades.upgrades[i].metalCount);
+        }
+
         PlayerPrefs.SetInt("AtkMetalCount", playerStats.atkMetalCount);
         PlayerPrefs.SetInt("DefMetalCount", playerStats.defMetalCount);
         PlayerPrefs.SetInt("HpMetalCount", playerStats.hpMetalCount);
@@ -34,38 +39,79 @@ public class SaveManager : MonoBehaviour
         AlchemySave();
 
         PlayerPrefs.Save();
+        Debug.Log("Save");
 
     }
 
     public void Load()
     {
-        enemyStats.GoldAmt = PlayerPrefs.GetFloat("GoldAmt");
-        playerStats.level = PlayerPrefs.GetInt("Level");
 
-        slotUpgrades.slotStructs[0].slotLvl = PlayerPrefs.GetInt("SlotOneLvl");
-        slotUpgrades.slotStructs[1].slotLvl = PlayerPrefs.GetInt("SlotTwoLvl");
-        slotUpgrades.slotStructs[2].slotLvl = PlayerPrefs.GetInt("SlotThreeLvl");
+        //ENEMY LOAD
+
+        enemyStats.GoldAmt = PlayerPrefs.GetFloat("GoldAmt");
+
+
+        //PLAYER LOAD
+        if (PlayerPrefs.GetInt("Level") <= 1)
+        {
+            playerStats.level = 1;
+        }
+        else
+        {
+            playerStats.level = PlayerPrefs.GetInt("Level");
+        }
 
         playerStats.currentXp = PlayerPrefs.GetFloat("Xp");
         prestige.baseXP = PlayerPrefs.GetFloat("BaseXp");
 
-        prestige.prestigeMulti = PlayerPrefs.GetFloat("PrestigeMulti");
-        playerStats.atkMetalCount = PlayerPrefs.GetInt("AtkMetalCount");
-        playerStats.defMetalCount = PlayerPrefs.GetInt("DefMetalCount");
-        playerStats.hpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
+
+        //SLOT UPGRADES LOAD
+        slotUpgrades.slotStructs[0].slotLvl = PlayerPrefs.GetInt("SlotOneLvl");
+        slotUpgrades.slotStructs[1].slotLvl = PlayerPrefs.GetInt("SlotTwoLvl");
+        slotUpgrades.slotStructs[2].slotLvl = PlayerPrefs.GetInt("SlotThreeLvl");
 
         blacksmithToggleManager.AutoBuyerLvl = PlayerPrefs.GetInt("AutoBuyerLvl");
         blacksmithToggleManager.AutoBuyerAmt = PlayerPrefs.GetInt("AutoBuyerAmt");
 
+        //PRESTIGE LOAD
+        if (PlayerPrefs.GetFloat("PrestigeMulti") <= 1)
+        {
+            prestige.prestigeMulti = 1;
+        }
+        else
+        {
+            prestige.prestigeMulti = PlayerPrefs.GetFloat("PrestigeMulti");
+        }
+
+
+        //UPGRADES LOAD
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            upgrades.upgrades[i].metalCount = PlayerPrefs.GetFloat($"UpgradeMetalCount_{i}");
+        }
+
+        playerStats.atkMetalCount = PlayerPrefs.GetInt("AtkMetalCount");
+        playerStats.defMetalCount = PlayerPrefs.GetInt("DefMetalCount");
+        playerStats.hpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
+
+        //ALCHEMY LOAD
+
         AlchemyLoad();
 
+        //TEXT UPDATES
         prestige.UpdatePostPrestigeText();
+        playerStats.UpdateStatText();
+        enemyStats.UpdateEnemyStatsText();
 
+        Debug.Log("Load");
     }
 
     public void HardReset()
     {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         prestige.SoftRest();
+        playerStats.level = 1;
         prestige.baseXP = 0;
         prestige.prestigeMulti = 1;
 
@@ -77,6 +123,7 @@ public class SaveManager : MonoBehaviour
         prestige.UpdatePostPrestigeText();
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
+
         for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
         {
             slotUpgrades.UpdateSlotText(i);

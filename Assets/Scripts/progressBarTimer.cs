@@ -13,18 +13,13 @@ public class ProgressBarTimer : MonoBehaviour
 
     public TMP_Text spdText;
 
-    private int level;
-    private int stage;
-
-
-    readonly float[] speedArray = new float[] { 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
-    readonly float[] enemySpeedArray = new float[] { 2F, 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
 
 
 
-    private float totalTime;
+
+    public float totalTime;
     private float timeLeft;
-    private float enemyAtkTime;
+    public float enemyAtkTime;
     private float enemyAtkTimeLeft;
 
 
@@ -37,12 +32,8 @@ public class ProgressBarTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UpdateSpdText();
-        level = playerStats.level;
-        stage = enemyStats.Stage;
-
-        totalTime = speedArray[level];
-        enemyAtkTime = enemySpeedArray[stage];
+        totalTime = playerStats.speedArray[playerStats.level];
+        enemyAtkTime = enemyStats.enemies[enemyStats.Stage].enemySpeed;
 
         timeLeft = totalTime;
         progressBar.value = 1;
@@ -50,7 +41,7 @@ public class ProgressBarTimer : MonoBehaviour
         enemyAtkTimeLeft = enemyAtkTime;
         enemyAtkTimer.value = 1;
 
-
+        UpdateSpdText();
 
         if (playerStats == null)
         {
@@ -63,12 +54,6 @@ public class ProgressBarTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        level = playerStats.level;
-        stage = enemyStats.Stage;
-        totalTime = speedArray[level - 1];
-        enemyAtkTime = enemySpeedArray[stage - 1];
-
-
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
@@ -76,7 +61,8 @@ public class ProgressBarTimer : MonoBehaviour
         }
         else
         {
-            enemyStats?.TakeDamage();
+
+            enemyStats.TakeDamage();
             TriggerAnimation();
 
             timeLeft = totalTime;
@@ -91,20 +77,8 @@ public class ProgressBarTimer : MonoBehaviour
         }
         else
         {
-            playerStats?.PlayerTakeDamage();
-            enemyAtkTimeLeft = enemyAtkTime;
-            enemyAtkTimer.value = 1;
-        }
+            playerStats.PlayerTakeDamage();
 
-
-
-        if (enemyAtkTimeLeft > 0)
-        {
-            enemyAtkTimeLeft -= Time.deltaTime;
-            enemyAtkTimer.value = enemyAtkTimeLeft / enemyAtkTime;
-        }
-        else
-        {
             enemyAtkTimeLeft = enemyAtkTime;
             enemyAtkTimer.value = 1;
         }
@@ -113,8 +87,6 @@ public class ProgressBarTimer : MonoBehaviour
     {
         animator.SetTrigger("PlayAnimation");
         enemyAnimator.SetTrigger("Take_Hit");
-
-
     }
 
     public void UpdateSpdText()

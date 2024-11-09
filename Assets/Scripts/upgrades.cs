@@ -41,9 +41,9 @@ public class Upgrades : MonoBehaviour
     void Start()
     {
         InitializeUpgrades();
-        atkPassiveMulti = 1.02f;
-        defPassiveMulti = 1.02f;
-        hpPassiveMulti = 1.02f;
+        atkPassiveMulti = 0.02f;
+        defPassiveMulti = 0.02f;
+        hpPassiveMulti = 0.02f;
 
     }
 

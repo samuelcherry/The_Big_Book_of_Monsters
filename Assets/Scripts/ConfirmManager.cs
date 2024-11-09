@@ -31,13 +31,11 @@ public class ConfirmManager : MonoBehaviour
         {
             confirmMenus[index].Menu.SetActive(true); // Show the menu
             confirmMenus[index].isVisible = true;
-            Debug.Log("TEST 1");
         }
         else
         {
             confirmMenus[index].Menu.SetActive(false); // Hide the menu
             confirmMenus[index].isVisible = false;
-            Debug.Log("TEST 2");
         }
     }
 }

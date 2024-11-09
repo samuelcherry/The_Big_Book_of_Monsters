@@ -16,26 +16,21 @@ public class SlotUpgrades : MonoBehaviour
     }
 
     public SlotStruct[] slotStructs = new SlotStruct[3];
-
-
     public EnemyStats enemyStats;
     public PlayerStats playerStats;
     public SaveManager saveManager;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log("SlotUpgrades Awake");
         //upgrade level
-        for (int i = 0; i < slotStructs.Length; i++)
-        {
-            UpdateSlotText(i);
-        }
         for (int i = 0; i < slotStructs.Length; i++)
         {
             slotStructs[i].slotLvl = 0;
         }
-        slotStructs[0].slotAmtArr = new int[] { 0, 10, 10, 10, 20, 20, 20, 30, 30, 30, 30, 30, 40, 40, 40, 50, 50, 50, 50, 50 };
-        slotStructs[1].slotAmtArr = new int[] { 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5 };
-        slotStructs[2].slotAmtArr = new int[] { 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5 };
+        slotStructs[0].slotAmtArr = new int[] { 0, 10, 20, 30, 50, 70, 90, 120, 150, 180, 210, 240, 280, 320, 360, 400, 450, 500, 550, 600 };
+        slotStructs[1].slotAmtArr = new int[] { 0, 1, 2, 3, 5, 7, 9, 12, 15, 18, 21, 24, 28, 32, 36, 40, 45, 50, 55, 60 };
+        slotStructs[2].slotAmtArr = new int[] { 0, 1, 2, 3, 5, 7, 9, 12, 15, 18, 21, 24, 28, 32, 36, 40, 45, 50, 55, 60 };
 
         slotStructs[0].slotCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000 };
         slotStructs[1].slotCostArr = new float[] { 5, 10, 15, 20, 30, 40, 50, 100, 150, 200, 250, 500, 1000, 1250, 1500, 2000, 3000, 5000, 10000, 20000 };
@@ -45,16 +40,11 @@ public class SlotUpgrades : MonoBehaviour
         slotStructs[1].StatBoost = "ATK";
         slotStructs[2].StatBoost = "DEF";
 
-        saveManager.Load();
-
-    }
-
-    void Update()
-    {
         for (int i = 0; i < slotStructs.Length; i++)
         {
             UpdateSlotText(i);
         }
+
     }
 
     public void SlotUpgrade(int index)
@@ -65,21 +55,13 @@ public class SlotUpgrades : MonoBehaviour
             {
                 enemyStats.GoldAmt -= slotStructs[index].slotCostArr[slotStructs[index].slotLvl];
                 slotStructs[index].slotLvl += 1;
-                if (slotStructs[index].StatBoost == "MAXHP")
-                {
-                    playerStats.maxHp += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
-                }
-                else if (slotStructs[index].StatBoost == "ATK")
-                {
-                    playerStats.atk += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
-                }
-                else if (slotStructs[index].StatBoost == "DEF")
-                {
-                    playerStats.def += slotStructs[index].slotAmtArr[slotStructs[index].slotLvl];
-                }
 
                 UpdateSlotText(index);
-                playerStats.UpdateStatText();
+                playerStats.UpdateStats();
+                playerStats.UpdateGoldText();
+                playerStats.UpdateHpText();
+                playerStats.UpdateAtkText();
+                playerStats.UpdateDefText();
                 saveManager.Save();
             }
         }
@@ -91,7 +73,7 @@ public class SlotUpgrades : MonoBehaviour
         {
             if (slotStructs[index].slotCostText != null)
             {
-                slotStructs[index].slotCostText.text = "Cost: " + slotStructs[index].slotCostArr[slotStructs[index].slotLvl].ToString();
+                slotStructs[index].slotCostText.text = "Cost: " + slotStructs[index].slotCostArr[slotStructs[index].slotLvl];
             }
         }
         else if (slotStructs[index].slotLvl >= slotStructs[index].slotAmtArr.Length - 1)
