@@ -32,8 +32,8 @@ public class ProgressBarTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        totalTime = playerStats.speedArray[playerStats.level];
-        enemyAtkTime = enemyStats.enemies[enemyStats.Stage].enemySpeed;
+        totalTime = playerStats.speedArray[playerStats.level - 1];
+        enemyAtkTime = enemyStats.enemies[enemyStats.Stage - 1].enemySpeed;
 
         timeLeft = totalTime;
         progressBar.value = 1;
