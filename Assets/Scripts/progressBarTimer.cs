@@ -105,15 +105,6 @@ public class ProgressBarTimer : MonoBehaviour
         animator.SetTrigger("PlayerTakeHit");
     }
 
-    public void PlayerDies()
-    {
-        animator.SetTrigger("PlayerDies");
-    }
-
-    public void EnemyDies()
-    {
-        enemyAnimator.SetTrigger("EnemyDies");
-    }
 
     public void UpdateSpdText()
     {

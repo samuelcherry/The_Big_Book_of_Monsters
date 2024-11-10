@@ -44,26 +44,26 @@ public class EnemyStats : MonoBehaviour
     {
         Stage = 1;
 
-        enemies[0] = new Enemy("Imp", 30, 2, 5, 5, 2, 5, 2, 4);
-        enemies[1] = new Enemy("Ogre", 45, 3, 8, 10, 3, 10, 3, 3.8f);
-        enemies[2] = new Enemy("Wight", 80, 5, 12, 15, 4, 15, 4, 3.6f);
-        enemies[3] = new Enemy("Ghost", 100, 8, 18, 20, 5, 20, 5, 3.4f);
-        enemies[4] = new Enemy("Hill Giant", 200, 16, 27, 30, 6, 30, 6, 3.2f);
-        enemies[5] = new Enemy("Drider", 300, 24, 41, 40, 8, 40, 8, 3f);
-        enemies[6] = new Enemy("Stone Giant", 500, 36, 62, 50, 10, 50, 10, 2.8f);
-        enemies[7] = new Enemy("Chain Devil", 800, 54, 93, 60, 12, 60, 12, 2.6f);
-        enemies[8] = new Enemy("Treant", 1000, 81, 140, 70, 14, 70, 14, 2.4f);
-        enemies[9] = new Enemy("Guardian Naga", 2000, 162, 210, 90, 16, 90, 16, 2.2f);
-        enemies[10] = new Enemy("Djinni", 3000, 243, 315, 110, 20, 110, 20, 2F);
-        enemies[11] = new Enemy("Arch Mage", 5000, 365, 473, 130, 25, 130, 25, 1.8f);
-        enemies[12] = new Enemy("Adult White Dragon", 8000, 548, 710, 150, 30, 150, 30, 1.6f);
-        enemies[13] = new Enemy("Ice Devil", 10000, 822, 1065, 170, 35, 170, 35, 1.4f);
-        enemies[14] = new Enemy("Purple Worm", 20000, 1644, 1598, 200, 40, 200, 40, 1.2f);
-        enemies[15] = new Enemy("Iron Golem", 30000, 2466, 2397, 240, 50, 240, 50, 1f);
-        enemies[16] = new Enemy("Adult Red Dragon", 50000, 3699, 3596, 280, 75, 280, 75, 0.8f);
-        enemies[17] = new Enemy("Dragon Turtle", 80000, 5549, 5394, 320, 125, 320, 125, 0.6f);
-        enemies[18] = new Enemy("Balor", 100000, 8324, 8091, 360, 200, 360, 200, 0.4f);
-        enemies[19] = new Enemy("Lich", 200000, 16648, 12137, 400, 300, 400, 300, 0.2f);
+        enemies[0] = new Enemy("Goblin grunt", 30, 2, 5, 5, 2, 5, 2, 4);
+        enemies[1] = new Enemy("Goblin Soldier", 45, 3, 8, 10, 3, 10, 3, 3.8f);
+        enemies[2] = new Enemy("Goblin Elite", 80, 5, 12, 15, 4, 15, 4, 3.6f);
+        enemies[3] = new Enemy("Goblin Captain", 100, 8, 18, 20, 5, 20, 5, 3.4f);
+        enemies[4] = new Enemy("Goblin Chief", 200, 16, 27, 30, 6, 30, 6, 3.2f);
+        enemies[5] = new Enemy("Mushroom Varient", 300, 24, 41, 40, 8, 40, 8, 3f);
+        enemies[6] = new Enemy("Mushroom Specimen", 500, 36, 62, 50, 10, 50, 10, 2.8f);
+        enemies[7] = new Enemy("Mushroom Mutant", 800, 54, 93, 60, 12, 60, 12, 2.6f);
+        enemies[8] = new Enemy("Mushroom Monstrosity", 1000, 81, 140, 70, 14, 70, 14, 2.4f);
+        enemies[9] = new Enemy("Mushroom Abomination", 2000, 162, 210, 90, 16, 90, 16, 2.2f);
+        enemies[10] = new Enemy("Flying Eye Tracker", 3000, 243, 315, 110, 20, 110, 20, 2F);
+        enemies[11] = new Enemy("Flying Eye Informer", 5000, 365, 473, 130, 25, 130, 25, 1.8f);
+        enemies[12] = new Enemy("Flying Eye Spy", 8000, 548, 710, 150, 30, 150, 30, 1.6f);
+        enemies[13] = new Enemy("Flying Eye Agent", 10000, 822, 1065, 170, 35, 170, 35, 1.4f);
+        enemies[14] = new Enemy("Flying Eye Master Mind", 20000, 1644, 1598, 200, 40, 200, 40, 1.2f);
+        enemies[15] = new Enemy("Skeleton Fighter", 30000, 2466, 2397, 240, 50, 240, 50, 1f);
+        enemies[16] = new Enemy("Skeleton Guard", 50000, 3699, 3596, 280, 75, 280, 75, 0.8f);
+        enemies[17] = new Enemy("Skeleton Soldier", 80000, 5549, 5394, 320, 125, 320, 125, 0.6f);
+        enemies[18] = new Enemy("Skeleton Knight", 100000, 8324, 8091, 360, 200, 360, 200, 0.4f);
+        enemies[19] = new Enemy("Skeleton King", 200000, 16648, 12137, 400, 300, 400, 300, 0.2f);
     }
 
 
@@ -95,7 +95,6 @@ public class EnemyStats : MonoBehaviour
 
             if (currentEnemy.enemyCurrentHp <= 0)  // Prevent going negative
             {
-                progressBarTimer.EnemyDies();
                 playerStats.AddGold();
                 playerStats.AddXp();
                 currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;

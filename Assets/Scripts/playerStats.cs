@@ -151,7 +151,6 @@ public class PlayerStats : MonoBehaviour
 
         else if (currentHp <= 0)
         {
-            progressBarTimer.PlayerDies();
             enemyStats.DecreaseStage();
             Reset();
         }
