@@ -42,7 +42,6 @@ public class EnemyStats : MonoBehaviour
     public Enemy[] enemies = new Enemy[20];
     void Awake()
     {
-        Debug.Log("EnemyStats Awake Start");
         Stage = 1;
 
         enemies[0] = new Enemy("Imp", 30, 2, 5, 5, 2, 5, 2, 4);
@@ -71,7 +70,6 @@ public class EnemyStats : MonoBehaviour
 
     public void ResetEnemies()
     {
-        Debug.Log("EnemyStats.ResetEnemies Start");
         enemies[Stage - 1].goldRwd = enemies[Stage - 1].baseGoldRwd * prestige.prestigeMulti;
         enemies[Stage - 1].xpRwd = enemies[Stage - 1].baseXpRwd * prestige.prestigeMulti;
 
@@ -82,7 +80,6 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("enemyStats Start");
         ResetEnemies();
     }
 
@@ -98,6 +95,7 @@ public class EnemyStats : MonoBehaviour
 
             if (currentEnemy.enemyCurrentHp <= 0)  // Prevent going negative
             {
+                progressBarTimer.EnemyDies();
                 playerStats.AddGold();
                 playerStats.AddXp();
                 currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
@@ -115,6 +113,7 @@ public class EnemyStats : MonoBehaviour
             Stage += 1;
             playerStats.currentHp = playerStats.maxHp;
             progressBarTimer.enemyAtkTime = enemies[Stage - 1].enemySpeed;
+            progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
             playerStats.UpdateStatText();
@@ -128,6 +127,7 @@ public class EnemyStats : MonoBehaviour
             Stage -= 1;
             playerStats.currentHp = playerStats.maxHp;
             progressBarTimer.enemyAtkTime = enemies[Stage - 1].enemySpeed;
+            progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
             playerStats.UpdateStatText();

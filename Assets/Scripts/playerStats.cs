@@ -28,9 +28,7 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("PlayerStats Awake Start");
         level = 1;
-        Debug.Log(level);
         currentXp = 0;
         atkMetalCount = 0;
         defMetalCount = 0;
@@ -51,7 +49,6 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("PlayerStats Start");
         saveManager.Load();
         UpdateStats();
         UpdateStatText();
@@ -95,11 +92,10 @@ public class PlayerStats : MonoBehaviour
             if (currentXp == 0)
             {
                 xpBar.value = 0;
+
             }
-            else
-            {
-                xpBar.value = currentXp / maxXP;
-            }
+            //RESET Xp bar on update
+            xpBar.value = currentXp / maxXP;
 
             if (currentXp >= maxXP)
             {
@@ -124,6 +120,7 @@ public class PlayerStats : MonoBehaviour
         {
             level += 1;
             currentXp = 0;
+            xpBar.value = currentXp / maxXP;
             progressBarTimer.totalTime = speedArray[level - 1];
             UpdateStats();
             saveManager.Save();
@@ -133,6 +130,7 @@ public class PlayerStats : MonoBehaviour
         {
             level = 20;
             currentXp = 0;
+            xpBar.value = currentXp / maxXP;
             progressBarTimer.totalTime = speedArray[level - 1];
             UpdateStats();
             saveManager.Save();
@@ -153,6 +151,7 @@ public class PlayerStats : MonoBehaviour
 
         else if (currentHp <= 0)
         {
+            progressBarTimer.PlayerDies();
             enemyStats.DecreaseStage();
             Reset();
         }

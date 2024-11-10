@@ -22,7 +22,6 @@ public class SlotUpgrades : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("SlotUpgrades Awake");
         //upgrade level
         for (int i = 0; i < slotStructs.Length; i++)
         {

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,8 +24,6 @@ public class ProgressBarTimer : MonoBehaviour
     private float enemyAtkTimeLeft;
 
 
-
-
     public Animator animator;
     public Animator enemyAnimator;
 
@@ -41,6 +40,9 @@ public class ProgressBarTimer : MonoBehaviour
         enemyAtkTimeLeft = enemyAtkTime;
         enemyAtkTimer.value = 1;
 
+
+        enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
+
         UpdateSpdText();
 
         if (playerStats == null)
@@ -54,6 +56,8 @@ public class ProgressBarTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //PLAYER ATTACK
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
@@ -63,13 +67,13 @@ public class ProgressBarTimer : MonoBehaviour
         {
 
             enemyStats.TakeDamage();
-            TriggerAnimation();
+            PlayerAttack();
 
             timeLeft = totalTime;
             progressBar.value = 1;
         }
 
-
+        //ENEMY ATTACK
         if (enemyAtkTimeLeft > 0)
         {
             enemyAtkTimeLeft -= Time.deltaTime;
@@ -78,15 +82,37 @@ public class ProgressBarTimer : MonoBehaviour
         else
         {
             playerStats.PlayerTakeDamage();
-
+            EnemyAttack();
             enemyAtkTimeLeft = enemyAtkTime;
             enemyAtkTimer.value = 1;
         }
     }
-    private void TriggerAnimation()
+
+    public void SetStageAnimation()
     {
-        animator.SetTrigger("PlayAnimation");
-        enemyAnimator.SetTrigger("Take_Hit");
+        enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
+    }
+
+    private void PlayerAttack()
+    {
+        animator.SetTrigger("PlayerAttack");
+        enemyAnimator.SetTrigger("EnemyTakeHit");
+    }
+
+    private void EnemyAttack()
+    {
+        enemyAnimator.SetTrigger("EnemyAttack");
+        animator.SetTrigger("PlayerTakeHit");
+    }
+
+    public void PlayerDies()
+    {
+        animator.SetTrigger("PlayerDies");
+    }
+
+    public void EnemyDies()
+    {
+        enemyAnimator.SetTrigger("EnemyDies");
     }
 
     public void UpdateSpdText()

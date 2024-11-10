@@ -304,9 +304,12 @@ public class AlchemyTimers : MonoBehaviour
     {
         if (potion[index].PotionAmt > 0)
         {
+            Debug.Log("USE POTION");
             potion[index].PotionAmt -= 1;
             playerStats.currentHp += 100 * (index + 1);
             UpdateTimerText(index);
+            playerStats.UpdateHpText();
+
 
         }
     }

@@ -102,6 +102,14 @@ public class SaveManager : MonoBehaviour
         prestige.UpdatePostPrestigeText();
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            slotUpgrades.UpdateSlotText(i);
+        }
+
+        //SLIDER UPDATE
+        playerStats.xpBar.value = playerStats.currentXp / playerStats.maxXP;
+
 
         Debug.Log("Load");
     }

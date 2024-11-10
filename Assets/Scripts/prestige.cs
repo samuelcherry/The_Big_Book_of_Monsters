@@ -18,17 +18,14 @@ public class Prestige : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Prestige Awake");
         if (PlayerPrefs.GetFloat("PrestigeMulti") >= 1)
         {
-            Debug.Log("Prestige is not equal to 1");
             prestigeMulti = PlayerPrefs.GetFloat("PrestigeMulti");
         }
         else
         {
             prestigeMulti = 1;
         }
-        Debug.Log(prestigeMulti);
     }
 
     void Update()
@@ -38,7 +35,6 @@ public class Prestige : MonoBehaviour
     public void AddBaseXp()
     {
         baseXP += enemyStats.enemies[enemyStats.Stage - 1].xpRwd / prestigeMulti;
-        Debug.Log("BaseXP: " + baseXP + " XpRwd: " + enemyStats.enemies[enemyStats.Stage - 1].xpRwd);
     }
 
     public void PrestigeHero()
@@ -49,9 +45,15 @@ public class Prestige : MonoBehaviour
 
     public void SoftRest()
     {
+
+        //XP RESET
         playerStats.level = 1;
         playerStats.currentXp = 0;
+        playerStats.xpBar.value = playerStats.currentXp / playerStats.maxXP;
+        baseXP = 0;
 
+
+        //SLOT UPGRADES RESET
         for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
         {
             slotUpgrades.slotStructs[i].slotLvl = 0;
@@ -61,22 +63,10 @@ public class Prestige : MonoBehaviour
             playerStats.def = playerStats.defArray[playerStats.level - 1] + Convert.ToInt32(slotUpgrades.slotStructs[2].slotAmtArr[slotUpgrades.slotStructs[2].slotLvl]);
         }
 
-        playerStats.currentHp = playerStats.maxHp;
+        //ENEMY STATS RESET
+
+        enemyStats.Stage = 1;
         enemyStats.GoldAmt = 0;
-
-
-        playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
-        playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
-        playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
-        progressBarTimer.totalTime = playerStats.speedArray[playerStats.level];
-
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
-        {
-            upgrades.upgrades[i].unlocked = false;
-            upgrades.upgrades[i].purchased = false;
-            upgrades.upgrades[i].blocked = false;
-        }
-
         var currentEnemy = enemyStats.enemies[enemyStats.Stage - 1];
 
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
@@ -89,7 +79,25 @@ public class Prestige : MonoBehaviour
 
         enemyStats.GoldAmt = 0;
 
-        baseXP = 0;
+        //PLAYER STATS RESET
+
+        playerStats.currentHp = playerStats.maxHp;
+        playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
+        playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
+        playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
+        progressBarTimer.totalTime = playerStats.speedArray[playerStats.level];
+
+        //UPGRADES RESET
+
+        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        {
+            upgrades.upgrades[i].unlocked = false;
+            upgrades.upgrades[i].purchased = false;
+            upgrades.upgrades[i].blocked = false;
+        }
+
+        //TEXT RESET
+
         playerStats.UpdateStatText();
         enemyStats.UpdateEnemyStatsText();
         UpdatePrestigeText();
