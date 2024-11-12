@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
     public Prestige prestige;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+    public Bestiary bestiary;
     public BlacksmithToggleManager blacksmithToggleManager;
     public AlchemyTimers alchemyTimers;
 
@@ -23,10 +24,12 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("BaseXp", prestige.baseXP);
 
         PlayerPrefs.SetFloat("PrestigeMulti", prestige.prestigeMulti);
-
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            PlayerPrefs.SetFloat($"UpgradeMetalCount_{i}", upgrades.upgrades[i].metalCount);
+            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            {
+                PlayerPrefs.SetFloat($"UpgradeMetalCount_{i}", upgrades.roles[r].upgrades[i].metalCount);
+            }
         }
 
         PlayerPrefs.SetInt("AtkMetalCount", playerStats.atkMetalCount);
@@ -36,10 +39,16 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("AutoBuyerLvl", blacksmithToggleManager.AutoBuyerLvl);
         PlayerPrefs.SetInt("AutoBuyerAmt", blacksmithToggleManager.AutoBuyerAmt);
 
+        //BOOK SAVES
+        for (int i = 0; i < bestiary.entry.Length; i++)
+        {
+            PlayerPrefs.SetInt($"IsDefeated_{i}", bestiary.entry[i].IsDefeated);
+        }
+
+
         AlchemySave();
 
         PlayerPrefs.Save();
-        Debug.Log("Save");
 
     }
 
@@ -85,33 +94,43 @@ public class SaveManager : MonoBehaviour
 
 
         //UPGRADES LOAD
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            upgrades.upgrades[i].metalCount = PlayerPrefs.GetFloat($"UpgradeMetalCount_{i}");
+            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            {
+                upgrades.roles[r].upgrades[i].metalCount = PlayerPrefs.GetFloat($"UpgradeMetalCount_{i}");
+            }
+
+            playerStats.atkMetalCount = PlayerPrefs.GetInt("AtkMetalCount");
+            playerStats.defMetalCount = PlayerPrefs.GetInt("DefMetalCount");
+            playerStats.hpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
+
+            //ALCHEMY LOAD
+
+            AlchemyLoad();
+
+
+            //BOOK LOAD
+
+            for (int i = 0; i < bestiary.entry.Length; i++)
+            {
+                bestiary.entry[i].IsDefeated = PlayerPrefs.GetInt($"IsDefeated_{i}");
+            }
+
+            //TEXT UPDATES
+            prestige.UpdatePostPrestigeText();
+            playerStats.UpdateStatText();
+            enemyStats.UpdateEnemyStatsText();
+            for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+            {
+                slotUpgrades.UpdateSlotText(i);
+            }
+
+            //SLIDER UPDATE
+            playerStats.xpBar.value = playerStats.currentXp / playerStats.maxXP;
+
+            Debug.Log("Load");
         }
-
-        playerStats.atkMetalCount = PlayerPrefs.GetInt("AtkMetalCount");
-        playerStats.defMetalCount = PlayerPrefs.GetInt("DefMetalCount");
-        playerStats.hpMetalCount = PlayerPrefs.GetInt("HpMetalCount");
-
-        //ALCHEMY LOAD
-
-        AlchemyLoad();
-
-        //TEXT UPDATES
-        prestige.UpdatePostPrestigeText();
-        playerStats.UpdateStatText();
-        enemyStats.UpdateEnemyStatsText();
-        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
-        {
-            slotUpgrades.UpdateSlotText(i);
-        }
-
-        //SLIDER UPDATE
-        playerStats.xpBar.value = playerStats.currentXp / playerStats.maxXP;
-
-
-        Debug.Log("Load");
     }
 
     public void HardReset()
@@ -137,14 +156,21 @@ public class SaveManager : MonoBehaviour
             slotUpgrades.UpdateSlotText(i);
         }
 
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            upgrades.upgrades[i].metalCount = 0;
-            upgrades.upgrades[i].metalSlider.value = upgrades.upgrades[i].metalCount / upgrades.upgrades[i].metalMax;
-        }
-        alchemyTimers.AlchAutoBuyerAmt = 0;
-        alchemyTimers.AlchAutoBuyerLvl = 0;
+            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            {
+                upgrades.roles[r].upgrades[i].metalCount = 0;
+            }
+            alchemyTimers.AlchAutoBuyerAmt = 0;
+            alchemyTimers.AlchAutoBuyerLvl = 0;
 
+            //BOOK RESET
+            for (int i = 0; i < bestiary.entry.Length; i++)
+            {
+                bestiary.entry[i].IsDefeated = 0;
+            }
+        }
     }
 
     public void AlchemySave()

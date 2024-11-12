@@ -9,7 +9,7 @@ public class Prestige : MonoBehaviour
     public SaveManager saveManager;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
-    public Upgrades.Upgrade upgrade;
+    public Upgrades.Roles.Upgrade upgrade;
     public ProgressBarTimer progressBarTimer;
     public float baseXP;
     public float prestigeMulti;
@@ -34,7 +34,7 @@ public class Prestige : MonoBehaviour
     }
     public void AddBaseXp()
     {
-        baseXP += enemyStats.enemies[enemyStats.Stage - 1].xpRwd / prestigeMulti;
+        baseXP += enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].xpRwd / prestigeMulti;
     }
 
     public void PrestigeHero()
@@ -67,15 +67,15 @@ public class Prestige : MonoBehaviour
 
         enemyStats.Stage = 1;
         enemyStats.GoldAmt = 0;
-        var currentEnemy = enemyStats.enemies[enemyStats.Stage - 1];
+        var currentEnemy = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1];
 
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
         enemyStats.enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
 
-        currentEnemy.xpRwd = currentEnemy.baseXpRwd * enemyStats.prestige.prestigeMulti;
-        currentEnemy.goldRwd = currentEnemy.baseGoldRwd * enemyStats.prestige.prestigeMulti;
+        currentEnemy.xpRwd *= enemyStats.prestige.prestigeMulti;
+        currentEnemy.goldRwd *= enemyStats.prestige.prestigeMulti;
 
-        progressBarTimer.enemyAtkTime = enemyStats.enemies[enemyStats.Stage - 1].enemySpeed;
+        progressBarTimer.enemyAtkTime = currentEnemy.enemySpeed;
 
         enemyStats.GoldAmt = 0;
 
@@ -85,32 +85,34 @@ public class Prestige : MonoBehaviour
         playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
         playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
         playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
-        progressBarTimer.totalTime = playerStats.speedArray[playerStats.level];
+        progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level];
 
         //UPGRADES RESET
 
-        for (int i = 0; i < upgrades.upgrades.Length; i++)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            upgrades.upgrades[i].unlocked = false;
-            upgrades.upgrades[i].purchased = false;
-            upgrades.upgrades[i].blocked = false;
+            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            {
+                upgrades.roles[r].upgrades[i].unlocked = false;
+                upgrades.roles[r].upgrades[i].purchased = false;
+                upgrades.roles[r].upgrades[i].blocked = false;
+            }
+
+            //TEXT RESET
+
+            playerStats.UpdateStatText();
+            enemyStats.UpdateEnemyStatsText();
+            UpdatePrestigeText();
+            UpdatePostPrestigeText();
+
+            for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+            {
+                slotUpgrades.UpdateSlotText(i);
+            }
+
+
+            saveManager.Save();
         }
-
-        //TEXT RESET
-
-        playerStats.UpdateStatText();
-        enemyStats.UpdateEnemyStatsText();
-        UpdatePrestigeText();
-        UpdatePostPrestigeText();
-
-        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
-        {
-            slotUpgrades.UpdateSlotText(i);
-        }
-
-
-        saveManager.Save();
-
     }
 
     public void UpdatePrestigeText()

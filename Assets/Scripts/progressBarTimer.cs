@@ -18,8 +18,8 @@ public class ProgressBarTimer : MonoBehaviour
 
 
 
-    public float totalTime;
-    private float timeLeft;
+    public float playerAtkTime;
+    private float playerAtkTimeLeft;
     public float enemyAtkTime;
     private float enemyAtkTimeLeft;
 
@@ -31,10 +31,10 @@ public class ProgressBarTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        totalTime = playerStats.speedArray[playerStats.level - 1];
-        enemyAtkTime = enemyStats.enemies[enemyStats.Stage - 1].enemySpeed;
+        playerAtkTime = playerStats.speedArray[playerStats.level - 1];
+        enemyAtkTime = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemySpeed;
 
-        timeLeft = totalTime;
+        playerAtkTimeLeft = playerAtkTime;
         progressBar.value = 1;
 
         enemyAtkTimeLeft = enemyAtkTime;
@@ -58,18 +58,16 @@ public class ProgressBarTimer : MonoBehaviour
     {
 
         //PLAYER ATTACK
-        if (timeLeft > 0)
+        if (playerAtkTimeLeft > 0)
         {
-            timeLeft -= Time.deltaTime;
-            progressBar.value = timeLeft / totalTime;
+            playerAtkTimeLeft -= Time.deltaTime;
+            progressBar.value = playerAtkTimeLeft / playerAtkTime;
         }
         else
         {
-
             enemyStats.TakeDamage();
             PlayerAttack();
-
-            timeLeft = totalTime;
+            playerAtkTimeLeft = playerAtkTime;
             progressBar.value = 1;
         }
 
@@ -110,7 +108,7 @@ public class ProgressBarTimer : MonoBehaviour
     {
         if (spdText != null)
         {
-            spdText.text = "Spd: " + totalTime;
+            spdText.text = "Spd: " + playerAtkTime;
         }
     }
 }

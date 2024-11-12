@@ -24,33 +24,37 @@ public class Sprites : MonoBehaviour
     // Update each button's sprite based on the upgrade's state
     private void UpdateSprites()
     {
-        for (int i = 0; i < upgradeButtons.Length; i++)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            if (i >= upgrades.upgrades.Length) break;
-
-            var upgrade = upgrades.upgrades[i];
-            var spriteSet = upgradeSprites[i];
-
-
-            if (upgrade.metalCount == upgrade.metalMax)
+            for (int i = 0; i < upgradeButtons.Length; i++)
             {
-                upgradeButtons[i].sprite = spriteSet.purchasedSprite;
-            }
+                if (i >= upgrades.roles[r].upgrades.Length) break;
+
+                var upgrade = upgrades.roles[r].upgrades[i];
+                var spriteSet = upgradeSprites[i];
 
 
-            else if (!upgrade.unlocked && !upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.lockedSprite;
-            }
-            else if (upgrade.unlocked && !upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.unlockedSprite;
-            }
-            else if (upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.purchasedSprite;
-            }
+                if (upgrade.metalCount == upgrade.metalMax)
+                {
+                    upgradeButtons[i].sprite = spriteSet.purchasedSprite;
+                }
 
+
+                else if (!upgrade.unlocked && !upgrade.purchased)
+                {
+                    upgradeButtons[i].sprite = spriteSet.lockedSprite;
+                }
+                else if (upgrade.unlocked && !upgrade.purchased)
+                {
+                    upgradeButtons[i].sprite = spriteSet.unlockedSprite;
+                }
+                else if (upgrade.purchased)
+                {
+                    upgradeButtons[i].sprite = spriteSet.purchasedSprite;
+                }
+
+
+            }
         }
     }
 }

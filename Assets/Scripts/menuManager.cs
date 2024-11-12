@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
         public bool MenuOpen;
     }
 
-    public Menu[] menu = new Menu[5];
+    public Menu[] menu = new Menu[7];
 
 
     void Start()

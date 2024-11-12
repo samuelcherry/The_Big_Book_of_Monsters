@@ -79,20 +79,21 @@ public class PlayerStats : MonoBehaviour
     //AFTER KILLING AN ENEMY
     public void AddGold() //Adds Gold when an enemy is killed
     {
-        enemyStats.GoldAmt += enemyStats.enemies[enemyStats.Stage - 1].goldRwd;
+        var currentEnemy = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1];
+
+        enemyStats.GoldAmt += currentEnemy.goldRwd;
         UpdateStats();
     }
     public void AddXp() //Adding XP and triggering Level up function
     {
         if (level < 20)
         {
-            currentXp += enemyStats.enemies[enemyStats.Stage - 1].xpRwd;
+            currentXp += enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].xpRwd;
             prestige.AddBaseXp();
 
             if (currentXp == 0)
             {
                 xpBar.value = 0;
-
             }
             //RESET Xp bar on update
             xpBar.value = currentXp / maxXP;
@@ -121,17 +122,16 @@ public class PlayerStats : MonoBehaviour
             level += 1;
             currentXp = 0;
             xpBar.value = currentXp / maxXP;
-            progressBarTimer.totalTime = speedArray[level - 1];
+            progressBarTimer.playerAtkTime = speedArray[level - 1];
             UpdateStats();
             saveManager.Save();
-            Debug.Log($"Level Up! New Level: {level}, atk: {atk}, def: {def}, maxHp: {maxHp}");
         }
         else
         {
             level = 20;
             currentXp = 0;
             xpBar.value = currentXp / maxXP;
-            progressBarTimer.totalTime = speedArray[level - 1];
+            progressBarTimer.playerAtkTime = speedArray[level - 1];
             UpdateStats();
             saveManager.Save();
         }
@@ -143,9 +143,9 @@ public class PlayerStats : MonoBehaviour
     {
         if (currentHp > 0)  // Ensure HP is greater than 0
         {
-            if (enemyStats.enemies[enemyStats.Stage - 1].enemyAtk > def)
+            if (enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemyAtk > def)
             {
-                currentHp -= enemyStats.enemies[enemyStats.Stage - 1].enemyAtk - def;
+                currentHp -= enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemyAtk - def;
             }
         }
 
@@ -167,7 +167,6 @@ public class PlayerStats : MonoBehaviour
         maxHp += hpMaxArray[level - 1] * (hpMetalCount * upgrades.hpPassiveMulti);
 
         currentHp = maxHp;
-
         atk = atkArray[level - 1];
         atk += slotUpgrade[1].slotAmtArr[slotUpgrade[1].slotLvl];
         atk += atkArray[level - 1] * (atkMetalCount * upgrades.atkPassiveMulti);
@@ -205,6 +204,13 @@ public class PlayerStats : MonoBehaviour
     {
         defText.text = "Def: " + FormatStatValue(def);
     }
+
+    public void UpdateSpeedText()
+    {
+
+    }
+
+
     public void UpdateLevelText()
     {
         if (level < 20)
@@ -228,11 +234,11 @@ public class PlayerStats : MonoBehaviour
         currentHp = maxHp;
         UpdateHpText();
 
-        var currentEnemy = enemyStats.enemies[enemyStats.Stage - 1];
+        var currentEnemy = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1];
 
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
-        enemyStats.enemies[enemyStats.Stage - 1].xpRwd *= enemyStats.prestige.prestigeMulti;
-        currentEnemy.goldRwd *= enemyStats.prestige.prestigeMulti;
+        currentEnemy.xpRwd = currentEnemy.baseXpRwd * prestige.prestigeMulti;
+        currentEnemy.goldRwd = currentEnemy.baseGoldRwd * prestige.prestigeMulti;
 
         enemyStats.enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
 

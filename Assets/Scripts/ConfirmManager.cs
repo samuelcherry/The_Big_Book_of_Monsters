@@ -3,6 +3,7 @@ using UnityEngine;
 public class ConfirmManager : MonoBehaviour
 {
     public SaveManager saveManager;
+    public EnemyStats enemyStats;
 
     [System.Serializable]
     public struct ConfirmMenu
@@ -12,7 +13,7 @@ public class ConfirmManager : MonoBehaviour
     }
 
 
-    public ConfirmMenu[] confirmMenus = new ConfirmMenu[3];
+    public ConfirmMenu[] confirmMenus = new ConfirmMenu[4];
 
 
     void Start()

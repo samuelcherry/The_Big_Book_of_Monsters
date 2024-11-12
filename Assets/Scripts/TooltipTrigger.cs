@@ -20,12 +20,16 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
 
         Vector3 tooltipPosition = transform.position + new Vector3(220, 0, 0);
-        var upgrade = upgrades.upgrades[upgradeIndex];
 
-        tooltipMessage =
-        $"{upgradeDescription}\n" +
-        "Skill Points\n" +
-        $" {upgrade.metalCount} / {upgrade.metalMax}";
+        for (int r = 0; r < upgrades.roles.Length; r++)
+        {
+            var upgrade = upgrades.roles[r].upgrades[upgradeIndex];
+
+            tooltipMessage =
+            $"{upgradeDescription}\n" +
+            "Skill Points\n" +
+            $" {upgrade.metalCount} / {upgrade.metalMax}";
+        }
 
 
         tooltip.ShowTooltip(tooltipMessage, tooltipPosition);
