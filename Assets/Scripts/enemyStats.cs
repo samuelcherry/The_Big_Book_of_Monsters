@@ -167,7 +167,6 @@ public class EnemyStats : MonoBehaviour
         {
             currentEnemy.enemyCurrentHp -= playerStats.atk - currentEnemy.enemyDef;
             enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
-
             if (currentEnemy.enemyCurrentHp <= 0)  // KILL ENEMY
             {
                 playerStats.AddGold();

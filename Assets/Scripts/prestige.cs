@@ -91,7 +91,7 @@ public class Prestige : MonoBehaviour
 
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
             {
                 upgrades.roles[r].upgrades[i].unlocked = false;
                 upgrades.roles[r].upgrades[i].purchased = false;

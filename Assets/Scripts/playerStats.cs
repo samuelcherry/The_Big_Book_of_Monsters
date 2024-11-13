@@ -11,11 +11,10 @@ public class PlayerStats : MonoBehaviour
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
 
-
     public TMP_Text levelText, xpText, hpText, atkText, defText, spdText, passiveAtkBonusText, passiveDefBonusText, passiveHpBonusText;
     public Slider xpBar, hpBar;
 
-    public int level, atkMetalCount, defMetalCount, hpMetalCount;
+    public int level, atkMetalCount, defMetalCount, hpMetalCount, role;
     public float currentXp, maxXP, currentHp, maxHp, atk, def;
 
     public int[] xpArray;
@@ -28,8 +27,10 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
+
         level = 1;
         currentXp = 0;
+
         atkMetalCount = 0;
         defMetalCount = 0;
         hpMetalCount = 0;
@@ -174,6 +175,21 @@ public class PlayerStats : MonoBehaviour
         def = defArray[level - 1];
         def += slotUpgrade[2].slotAmtArr[slotUpgrade[2].slotLvl];
         def += defArray[level - 1] * (defMetalCount * upgrades.defPassiveMulti);
+
+        for (int r = 0; r < upgrades.roles.Length; r++)
+        {
+            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
+            {
+                if (upgrades.roles[r].upgrades[i].purchased)
+                {
+                    atk += upgrades.roles[r].upgrades[i].attackBoost;
+                    def += upgrades.roles[r].upgrades[i].defenseBoost;
+                    maxHp += upgrades.roles[r].upgrades[i].healthBoost;
+                }
+            }
+        }
+
+        UpdateStatText();
     }
 
 

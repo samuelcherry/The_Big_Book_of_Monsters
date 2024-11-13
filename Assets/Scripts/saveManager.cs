@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("PrestigeMulti", prestige.prestigeMulti);
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
             {
                 PlayerPrefs.SetFloat($"UpgradeMetalCount_{i}", upgrades.roles[r].upgrades[i].metalCount);
             }
@@ -96,7 +96,7 @@ public class SaveManager : MonoBehaviour
         //UPGRADES LOAD
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
             {
                 upgrades.roles[r].upgrades[i].metalCount = PlayerPrefs.GetFloat($"UpgradeMetalCount_{i}");
             }
@@ -158,7 +158,7 @@ public class SaveManager : MonoBehaviour
 
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            for (int i = 0; i < upgrades.roles[r].upgrades.Length; i++)
+            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
             {
                 upgrades.roles[r].upgrades[i].metalCount = 0;
             }

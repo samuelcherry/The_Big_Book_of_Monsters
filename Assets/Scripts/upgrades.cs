@@ -1,24 +1,19 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
     public PlayerStats playerStats;
     public float atkPassiveMulti = 0.02f, defPassiveMulti = 0.02f, hpPassiveMulti = 0.02f;
-
+    //CREATING ROLES
     [Serializable]
     public class Roles
     {
         public string roleName;
-        public Upgrade[] upgrades;
-
-        // Add a constructor to accept values
-        public Roles(string roleName, Upgrade[] upgrades)
-        {
-            this.roleName = roleName;
-            this.upgrades = upgrades;
-        }
-
+        public List<Upgrade> upgrades = new();
+        //SET OF UPGRADES INSIDE ROLES
         [Serializable]
         public class Upgrade
         {
@@ -27,130 +22,11 @@ public class Upgrades : MonoBehaviour
             public bool unlocked = false, purchased = false, blocked = false;
             public int attackBoost = 0, defenseBoost = 0, healthBoost = 0;
             public float metalCount, metalMax;
+            public Button upgradeButton;
         }
     }
 
     public Roles[] roles;
-
-    void Awake()
-    {
-
-        // Create the arrays for upgrades for each role
-        Roles.Upgrade[] Hero = new Roles.Upgrade[4];
-        Roles.Upgrade[] Tank = new Roles.Upgrade[4];
-        Roles.Upgrade[] Dps = new Roles.Upgrade[4];
-        Roles.Upgrade[] Healer = new Roles.Upgrade[4];
-
-        // Initialize the Hero role with upgrades
-        Hero[0] = new Roles.Upgrade
-        { upgradeName = "Hero Upgrade 1", attackBoost = 5, metalMax = 100 };
-
-        Hero[1] = new Roles.Upgrade
-        {
-            upgradeName = "Hero Upgrade 2",
-            attackBoost = 10,
-            metalMax = 150,
-        };
-        Hero[2] = new Roles.Upgrade
-        {
-            upgradeName = "Hero Upgrade 3",
-            attackBoost = 15,
-            metalMax = 200,
-        };
-        Hero[3] = new Roles.Upgrade
-        {
-            upgradeName = "Hero Upgrade 4",
-            attackBoost = 15,
-            metalMax = 200,
-        };
-
-        // Initialize the Tank role with upgrades
-        Tank[0] = new Roles.Upgrade
-        {
-            upgradeName = "Tank Upgrade 1",
-            defenseBoost = 5,
-            metalMax = 100,
-        };
-        Tank[1] = new Roles.Upgrade
-        {
-            upgradeName = "Tank Upgrade 2",
-            defenseBoost = 10,
-            metalMax = 150,
-        };
-        Tank[2] = new Roles.Upgrade
-        {
-            upgradeName = "Tank Upgrade 3",
-            defenseBoost = 15,
-            metalMax = 200,
-        };
-        Tank[3] = new Roles.Upgrade
-        {
-            upgradeName = "Tank Upgrade 4",
-            defenseBoost = 15,
-            metalMax = 200,
-        };
-
-        // Initialize the Dps role with upgrades
-        Dps[0] = new Roles.Upgrade
-        {
-            upgradeName = "Dps Upgrade 1",
-            healthBoost = 5,
-            metalMax = 100,
-        };
-        Dps[1] = new Roles.Upgrade
-        {
-            upgradeName = "Dps Upgrade 2",
-            healthBoost = 10,
-            metalMax = 150,
-        };
-        Dps[2] = new Roles.Upgrade
-        {
-            upgradeName = "Dps Upgrade 3",
-            healthBoost = 15,
-            metalMax = 200,
-        };
-        Dps[3] = new Roles.Upgrade
-        {
-            upgradeName = "Dps Upgrade 4",
-            healthBoost = 15,
-            metalMax = 200,
-        };
-
-        // Initialize the Healer role with upgrades
-        Healer[0] = new Roles.Upgrade
-        {
-            upgradeName = "Healer Upgrade 1",
-            attackBoost = 5,
-            metalMax = 100,
-        };
-        Healer[1] = new Roles.Upgrade
-        {
-            upgradeName = "Healer Upgrade 2",
-            healthBoost = 5,
-            metalMax = 150,
-        };
-        Healer[2] = new Roles.Upgrade
-        {
-            upgradeName = "Healer Upgrade 3",
-            healthBoost = 10,
-            metalMax = 200,
-        };
-        Healer[3] = new Roles.Upgrade
-        {
-            upgradeName = "Healer Upgrade 4",
-            healthBoost = 10,
-            metalMax = 200,
-        };
-        roles = new Roles[4];
-        roles[0] = new Roles("Hero", Hero);
-        roles[1] = new Roles("Tank", Tank);
-        roles[2] = new Roles("Dps", Dps);
-        roles[3] = new Roles("Healer", Healer);
-    }
-
-    void Start()
-    {
-    }
 
     void Update()
     {
@@ -162,10 +38,9 @@ public class Upgrades : MonoBehaviour
         for (int r = 0; r < roles.Length; r++)
         {
             // Loop through the upgrades for the current role
-            for (int i = 0; i < roles[r].upgrades.Length; i++)
+            for (int i = 0; i < roles[r].upgrades.Count; i++)
             {
                 var upgrade = roles[r].upgrades[i]; // Get the current upgrade for the role
-
                 // Check the player's level and unlock upgrades based on the conditions
                 if (playerStats.level >= 5)
                 {
@@ -217,6 +92,7 @@ public class Upgrades : MonoBehaviour
             playerStats.atk += upgrade.attackBoost;
             playerStats.def += upgrade.defenseBoost;
             playerStats.maxHp += upgrade.healthBoost;
+            Debug.Log(playerStats.atk);
 
             // Set the limits based on the tier (metal count)
             if (upgrade.attackBoost > 0)

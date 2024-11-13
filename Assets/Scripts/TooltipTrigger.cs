@@ -7,8 +7,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
     public string upgradeDescription;
-    public string tooltipMessage;
+    string tooltipMessage;
+    public int roleIndex;
     public int upgradeIndex;
+
 
 
     void Start()
@@ -21,16 +23,11 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         Vector3 tooltipPosition = transform.position + new Vector3(220, 0, 0);
 
-        for (int r = 0; r < upgrades.roles.Length; r++)
-        {
-            var upgrade = upgrades.roles[r].upgrades[upgradeIndex];
-
-            tooltipMessage =
-            $"{upgradeDescription}\n" +
-            "Skill Points\n" +
-            $" {upgrade.metalCount} / {upgrade.metalMax}";
-        }
-
+        var upgrade = upgrades.roles[roleIndex].upgrades[upgradeIndex];
+        tooltipMessage =
+        $"{upgradeDescription}\n" +
+        "Skill Points\n" +
+        $" {upgrade.metalCount} / {upgrade.metalMax}";
 
         tooltip.ShowTooltip(tooltipMessage, tooltipPosition);
     }
