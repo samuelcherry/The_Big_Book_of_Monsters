@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -84,6 +85,8 @@ public class PlayerStats : MonoBehaviour
 
         enemyStats.GoldAmt += currentEnemy.goldRwd;
         UpdateStats();
+        Debug.Log("Expected Value: " + currentEnemy.baseGoldRwd * prestige.prestigeMulti);
+        Debug.Log("Actual Value: " + currentEnemy.goldRwd);
     }
     public void AddXp() //Adding XP and triggering Level up function
     {

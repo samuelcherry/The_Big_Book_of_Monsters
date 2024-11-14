@@ -40,7 +40,6 @@ public class Prestige : MonoBehaviour
     public void PrestigeHero()
     {
         prestigeMulti += baseXP / 10000;
-        enemyStats.ResetPrestige();
         SoftRest();
     }
 
@@ -73,8 +72,8 @@ public class Prestige : MonoBehaviour
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
         enemyStats.enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
 
-        currentEnemy.xpRwd *= enemyStats.prestige.prestigeMulti;
-        currentEnemy.goldRwd *= enemyStats.prestige.prestigeMulti;
+        currentEnemy.xpRwd = currentEnemy.baseXpRwd * enemyStats.prestige.prestigeMulti;
+        currentEnemy.goldRwd = currentEnemy.baseGoldRwd * enemyStats.prestige.prestigeMulti;
 
         progressBarTimer.enemyAtkTime = currentEnemy.enemySpeed;
 

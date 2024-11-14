@@ -13475,7 +13475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &434914452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13492,7 +13492,6 @@ RectTransform:
   - {fileID: 1513913216}
   - {fileID: 1867023688}
   - {fileID: 1957447403}
-  - {fileID: 2044980415}
   - {fileID: 302705107}
   - {fileID: 1327996091}
   m_Father: {fileID: 1824290774}
@@ -20947,6 +20946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prestige: {fileID: 1203721484}
   playerStats: {fileID: 1581234899}
+  enemyStats: {fileID: 0}
   saveManager: {fileID: 1884933239}
   AlchPrestigeAmtText: {fileID: 887119362}
   AlchPrestigeCostText: {fileID: 1809973616}
@@ -55177,6 +55177,7 @@ Transform:
   - {fileID: 1540248783}
   - {fileID: 98370193}
   - {fileID: 723685716}
+  - {fileID: 2044980415}
   m_Father: {fileID: 1824290774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!225 &1881870346
@@ -59607,15 +59608,15 @@ RectTransform:
   m_GameObject: {fileID: 2044980414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05555556, y: 0.05555556, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 267476187}
-  m_Father: {fileID: 434914452}
+  m_Father: {fileID: 1881870345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -2.9}
+  m_AnchoredPosition: {x: 16.2, y: -15}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044980416
