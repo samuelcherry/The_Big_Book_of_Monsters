@@ -1,57 +1,52 @@
-using System;
-using Mono.Cecil.Cil;
-using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BlacksmithToggleManager : MonoBehaviour
 {
-
-    [System.Serializable]
-    public struct ToggleButton
-    {
-        public Button autoBuyer;
-        public GameObject autoBuyerButton;
-        public int toggleValue;
-    }
-
-    public ToggleButton[] toggleButtons = new ToggleButton[3];
+    public Toggle[] AutobuyerButtons = new Toggle[3];
     public SlotUpgrades slotUpgrades;
     public EnemyStats enemyStats;
     public Prestige prestige;
     public int AutoBuyerAmt = 1;
     public int AutoBuyerMax = 3;
-    public int AutoBuyerLvl;
     public int[] AutoBuyerCost;
+    public int AutoBuyerLvl;
     public TMP_Text AutoBuyerAmtText;
     public TMP_Text AutoBuyerCostText;
+    private bool[] previousToggleStates;
 
     void Start()
     {
+        AutoBuyerAmt = 0;
         AutoBuyerLvl = 0;
         AutoBuyerCost = new int[] { 10, 15, 25 };
+
+        previousToggleStates = new bool[AutobuyerButtons.Length];
+        for (int i = 0; i < AutobuyerButtons.Length; i++)
+        {
+            previousToggleStates[i] = AutobuyerButtons[i].isOn;
+        }
     }
 
     void Update()
     {
-        for (int i = 0; i < toggleButtons.Length; i++)
+        for (int i = 0; i < AutobuyerButtons.Length; i++)
         {
             CheckGold(i);
         }
         UpdateAutoBuyerText();
-        CheckToggleVisibilty();
     }
 
     public void CheckGold(int index)
     {
-        if (toggleButtons[index].toggleValue == 1)
+        if (AutobuyerButtons[index].isOn)
         {
             if (enemyStats.GoldAmt >= slotUpgrades.slotStructs[index].slotAmtArr[slotUpgrades.slotStructs[index].slotLvl])
             {
-                slotUpgrades.SlotUpgrade(index);
+                if (slotUpgrades.slotStructs[index].slotLvl < slotUpgrades.slotStructs[index].slotAmtArr.Length - 1)
+                    slotUpgrades.SlotUpgrade(index);
             }
-            else { }
         }
     }
 
@@ -59,43 +54,44 @@ public class BlacksmithToggleManager : MonoBehaviour
 
     public void ShowButtons(int index)
     {
-        if (toggleButtons[index].toggleValue == 0 && AutoBuyerAmt > 0)
+        if (AutoBuyerAmt > 0 && AutobuyerButtons[index].isOn && !previousToggleStates[index])
         {
             AutoBuyerAmt -= 1;
-            toggleButtons[index].toggleValue = 1;
+            AutobuyerButtons[index].isOn = true;
+            previousToggleStates[index] = true;
         }
-        else if (toggleButtons[index].toggleValue == 1)
+        else if (AutoBuyerAmt <= 0 && AutobuyerButtons[index].isOn && !previousToggleStates[index])
+        {
+            AutobuyerButtons[index].isOn = false;
+            previousToggleStates[index] = false;
+        }
+        else if (!AutobuyerButtons[index].isOn && previousToggleStates[index])
         {
             AutoBuyerAmt += 1;
-            toggleButtons[index].toggleValue = 0;
+            AutobuyerButtons[index].isOn = false;
+            previousToggleStates[index] = false;
         }
-    }
-
-
-    public void CheckToggleVisibilty()
-    {
-        for (int i = 0; i < toggleButtons.Length; i++)
+        else
         {
-            if (toggleButtons[i].toggleValue == 0)
-            {
-                toggleButtons[i].autoBuyerButton.SetActive(false);
-            }
-            else if (toggleButtons[i].toggleValue == 1)
-            {
-                toggleButtons[i].autoBuyerButton.SetActive(true);
-            }
+            AutobuyerButtons[index].isOn = false;
+            previousToggleStates[index] = false;
         }
     }
+
 
     public void UpdateAutoBuyerText()
     {
         if (AutoBuyerAmtText != null)
         {
-            AutoBuyerAmtText.text = AutoBuyerLvl + "/" + AutoBuyerMax;
+            AutoBuyerAmtText.text = AutoBuyerAmt + "/" + AutoBuyerMax;
         }
         if (AutoBuyerCostText != null && AutoBuyerLvl < AutoBuyerMax)
         {
-            AutoBuyerCostText.text = "Cost: " + AutoBuyerCost[AutoBuyerLvl] + " Prestige points";
+            AutoBuyerCostText.text = "Cost: " + AutoBuyerCost[AutoBuyerLvl] + "\nPrestige points";
+        }
+        else if (AutoBuyerLvl >= AutoBuyerMax)
+        {
+            AutoBuyerCostText.text = "Cost: MAX";
         }
     }
 
@@ -106,6 +102,7 @@ public class BlacksmithToggleManager : MonoBehaviour
             if (prestige.prestigeMulti - 1 >= AutoBuyerCost[AutoBuyerLvl])
             {
                 prestige.prestigeMulti -= AutoBuyerCost[AutoBuyerLvl];
+                AutoBuyerAmt += 1;
                 AutoBuyerLvl += 1;
             }
         }

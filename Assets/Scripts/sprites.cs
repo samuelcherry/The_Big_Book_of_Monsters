@@ -1,48 +1,70 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Sprites : MonoBehaviour
 {
     public Upgrades upgrades; // Reference to the Upgrades script
+    public PlayerStats playerStats;
 
     [System.Serializable]
-    public struct SpriteSet
+    public class UpgradeButtonRoles
+    {
+        public int roleIndex;
+        public UpgradeButtonSprite[] upgradeButtonSprites = new UpgradeButtonSprite[12];
+    }
+
+    [System.Serializable]
+    public class UpgradeButtonSprite
     {
         public Sprite lockedSprite;
         public Sprite unlockedSprite;
         public Sprite purchasedSprite;
+        public int upgradeIndex;
+        public Button upgradeButtons;
     }
-
-    public SpriteSet[] upgradeSprites; // Array of SpriteSets for each upgrade
-    public Image[] upgradeButtons; // Array for each button’s Image component
+    public UpgradeButtonRoles[] upgradeButtonRoles = new UpgradeButtonRoles[4];
 
     void Update()
     {
-        UpdateSprites();
+        for (int r = 0; r < upgradeButtonRoles.Length; r++)
+        {
+            for (int i = 0; i < upgradeButtonRoles[r].upgradeButtonSprites.Length; i++)
+            {
+                UpdateSprites(r, i);
+            }
+        }
+
     }
 
     // Update each button's sprite based on the upgrade's state
-    private void UpdateSprites()
+    public void UpdateSprites(int roleIndex, int upgradeIndex)
     {
-        for (int i = 0; i < upgradeButtons.Length; i++)
+
+        var upgrade = upgrades.roles[roleIndex].upgrades[upgradeIndex];
+        var upgradeButton = upgradeButtonRoles[roleIndex].upgradeButtonSprites[upgradeIndex];
+
+        if (upgrade.metalCount == upgrade.metalMax)
         {
-            if (i >= upgrades.upgrades.Length) break;
-
-            var upgrade = upgrades.upgrades[i];
-            var spriteSet = upgradeSprites[i];
-
-            if (!upgrade.unlocked && !upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.lockedSprite;
-            }
-            else if (upgrade.unlocked && !upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.unlockedSprite;
-            }
-            else if (upgrade.purchased)
-            {
-                upgradeButtons[i].sprite = spriteSet.purchasedSprite;
-            }
+            upgradeButton.upgradeButtons.image.sprite = upgradeButton.purchasedSprite;
         }
+
+
+        else if (!upgrade.unlocked && !upgrade.purchased)
+        {
+            upgradeButton.upgradeButtons.image.sprite = upgradeButton.lockedSprite;
+        }
+        else if (upgrade.unlocked && !upgrade.purchased)
+        {
+            upgradeButton.upgradeButtons.image.sprite = upgradeButton.unlockedSprite;
+        }
+        else if (upgrade.purchased)
+        {
+            upgradeButton.upgradeButtons.image.sprite = upgradeButton.purchasedSprite;
+        }
+
+
     }
 }
+
+
