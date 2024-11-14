@@ -13475,7 +13475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &434914452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44482,9 +44482,6 @@ MonoBehaviour:
   atkText: {fileID: 1002578449}
   defText: {fileID: 1705592449}
   spdText: {fileID: 1522016811}
-  passiveAtkBonusText: {fileID: 1203318221}
-  passiveDefBonusText: {fileID: 1395088074}
-  passiveHpBonusText: {fileID: 1611494943}
   xpBar: {fileID: 93190907}
   hpBar: {fileID: 1574976885}
   level: 1
@@ -60077,6 +60074,9 @@ MonoBehaviour:
   hpPassiveMulti: 0.02
   roles:
   - roleName: Hero
+    passiveAtkBonusText: {fileID: 1203318221}
+    passiveDefBonusText: {fileID: 1395088074}
+    passiveHpBonusText: {fileID: 1611494943}
     upgrades:
     - upgradeName: Hero 00
       unlocked: 0
@@ -60199,6 +60199,9 @@ MonoBehaviour:
       metalMax: 400
       upgradeButton: {fileID: 1053297080}
   - roleName: Tank
+    passiveAtkBonusText: {fileID: 1095181919}
+    passiveDefBonusText: {fileID: 432182588}
+    passiveHpBonusText: {fileID: 839020148}
     upgrades:
     - upgradeName: Tank 00
       unlocked: 0
@@ -60321,6 +60324,9 @@ MonoBehaviour:
       metalMax: 500
       upgradeButton: {fileID: 1393114856}
   - roleName: Dps
+    passiveAtkBonusText: {fileID: 80354682}
+    passiveDefBonusText: {fileID: 492787825}
+    passiveHpBonusText: {fileID: 255866881}
     upgrades:
     - upgradeName: Dps 00
       unlocked: 0
@@ -60443,6 +60449,9 @@ MonoBehaviour:
       metalMax: 400
       upgradeButton: {fileID: 1179421818}
   - roleName: Healer
+    passiveAtkBonusText: {fileID: 1724337763}
+    passiveDefBonusText: {fileID: 693938135}
+    passiveHpBonusText: {fileID: 1395863133}
     upgrades:
     - upgradeName: Healer 00
       unlocked: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class Upgrades : MonoBehaviour
     public class Roles
     {
         public string roleName;
+        public TMP_Text passiveAtkBonusText, passiveDefBonusText, passiveHpBonusText;
         public List<Upgrade> upgrades = new();
         //SET OF UPGRADES INSIDE ROLES
         [Serializable]

@@ -130,17 +130,20 @@ public class Prestige : MonoBehaviour
     }
     public void UpdatePostPrestigeText()
     {
-        if (playerStats.passiveAtkBonusText != null)
+        for (int r = 0; r < upgrades.roles.Length; r++)
         {
-            playerStats.passiveAtkBonusText.text = "Passive ATK Bonus: \n" + playerStats.atkMetalCount * upgrades.atkPassiveMulti;
-        }
-        if (playerStats.passiveDefBonusText != null)
-        {
-            playerStats.passiveDefBonusText.text = "Passive DEF Bonus: \n" + playerStats.defMetalCount * upgrades.defPassiveMulti;
-        }
-        if (playerStats.passiveHpBonusText != null)
-        {
-            playerStats.passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount * upgrades.hpPassiveMulti;
+            if (upgrades.roles[r].passiveAtkBonusText != null)
+            {
+                upgrades.roles[r].passiveAtkBonusText.text = "Passive ATK Bonus: \n" + playerStats.atkMetalCount * upgrades.atkPassiveMulti;
+            }
+            if (upgrades.roles[r].passiveDefBonusText != null)
+            {
+                upgrades.roles[r].passiveDefBonusText.text = "Passive DEF Bonus: \n" + playerStats.defMetalCount * upgrades.defPassiveMulti;
+            }
+            if (upgrades.roles[r].passiveHpBonusText != null)
+            {
+                upgrades.roles[r].passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount * upgrades.hpPassiveMulti;
+            }
         }
     }
 

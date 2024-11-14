@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
 
-    public TMP_Text levelText, xpText, hpText, atkText, defText, spdText, passiveAtkBonusText, passiveDefBonusText, passiveHpBonusText;
+    public TMP_Text levelText, xpText, hpText, atkText, defText, spdText;
     public Slider xpBar, hpBar;
 
     public int level, atkMetalCount, defMetalCount, hpMetalCount, role;

@@ -146,8 +146,8 @@ public class EnemyStats : MonoBehaviour
     public void ResetEnemies()
     {
         var currentEnemy = currentAdventure.enemies[Stage - 1];
-        currentEnemy.goldRwd = currentEnemy.goldRwd * prestige.prestigeMulti;
-        currentEnemy.xpRwd = currentEnemy.xpRwd * prestige.prestigeMulti;
+        currentEnemy.goldRwd = currentEnemy.baseGoldRwd * prestige.prestigeMulti;
+        currentEnemy.xpRwd = currentEnemy.baseXpRwd * prestige.prestigeMulti;
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
         enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
         UpdateEnemyStatsText();
