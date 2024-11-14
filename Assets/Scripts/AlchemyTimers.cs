@@ -8,6 +8,7 @@ public class AlchemyTimers : MonoBehaviour
 
     public Prestige prestige;
     public PlayerStats playerStats;
+    public EnemyStats enemyStats;
     public SaveManager saveManager;
 
     [System.Serializable]
@@ -247,6 +248,7 @@ public class AlchemyTimers : MonoBehaviour
             if (prestige.prestigeMulti - 1 >= AlchemyPrestigeCost[AlchAutoBuyerLvl])
             {
                 prestige.prestigeMulti -= AlchemyPrestigeCost[AlchAutoBuyerLvl];
+                enemyStats.ResetPrestige();
                 AlchAutoBuyerAmt += 1;
                 AlchAutoBuyerLvl += 1;
             }

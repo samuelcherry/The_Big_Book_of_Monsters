@@ -102,6 +102,7 @@ public class BlacksmithToggleManager : MonoBehaviour
             if (prestige.prestigeMulti - 1 >= AutoBuyerCost[AutoBuyerLvl])
             {
                 prestige.prestigeMulti -= AutoBuyerCost[AutoBuyerLvl];
+                enemyStats.ResetPrestige();
                 AutoBuyerAmt += 1;
                 AutoBuyerLvl += 1;
             }
