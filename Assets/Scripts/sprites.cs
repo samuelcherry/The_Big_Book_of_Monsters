@@ -7,10 +7,15 @@ public class Sprites : MonoBehaviour
     public Upgrades upgrades; // Reference to the Upgrades script
     public PlayerStats playerStats;
 
+
+
     [System.Serializable]
     public class UpgradeButtonRoles
     {
         public int roleIndex;
+        public Sprite lockedSprite;
+        public Sprite unlockedSprite;
+        public Button RoleSelectButton;
         public UpgradeButtonSprite[] upgradeButtonSprites = new UpgradeButtonSprite[12];
     }
 
@@ -40,9 +45,19 @@ public class Sprites : MonoBehaviour
     // Update each button's sprite based on the upgrade's state
     public void UpdateSprites(int roleIndex, int upgradeIndex)
     {
-
         var upgrade = upgrades.roles[roleIndex].upgrades[upgradeIndex];
         var upgradeButton = upgradeButtonRoles[roleIndex].upgradeButtonSprites[upgradeIndex];
+
+        //If the role is unlocked show the unlocked sprite otherwise show the locked sprite
+        if (upgrades.roles[roleIndex].roleUnlocked == true)
+        {
+            upgradeButtonRoles[roleIndex].RoleSelectButton.image.sprite = upgradeButtonRoles[roleIndex].unlockedSprite;
+        }
+        else
+        {
+            upgradeButtonRoles[roleIndex].RoleSelectButton.image.sprite = upgradeButtonRoles[roleIndex].lockedSprite;
+        }
+
 
         if (upgrade.metalCount == upgrade.metalMax)
         {

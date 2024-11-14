@@ -14,6 +14,7 @@ public class Upgrades : MonoBehaviour
     {
         public string roleName;
         public TMP_Text passiveAtkBonusText, passiveDefBonusText, passiveHpBonusText;
+        public bool roleUnlocked = false;
         public List<Upgrade> upgrades = new();
         //SET OF UPGRADES INSIDE ROLES
         [Serializable]
