@@ -149,6 +149,9 @@ public class EnemyStats : MonoBehaviour
         ResetPrestige();
         currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
         enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
+        //Speed Reset
+        progressBarTimer.enemyAtkTime = currentAdventure.enemies[Stage - 1].enemySpeed;
+        progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level - 1];
         UpdateEnemyStatsText();
     }
 

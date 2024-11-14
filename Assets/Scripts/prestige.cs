@@ -142,7 +142,7 @@ public class Prestige : MonoBehaviour
             }
             if (upgrades.roles[r].passiveHpBonusText != null)
             {
-                upgrades.roles[r].passiveHpBonusText.text = "Passive Hp Bonus: \n" + playerStats.hpMetalCount * upgrades.hpPassiveMulti;
+                upgrades.roles[r].passiveHpBonusText.text = "Passive HP Bonus: \n" + playerStats.hpMetalCount * upgrades.hpPassiveMulti;
             }
         }
     }
