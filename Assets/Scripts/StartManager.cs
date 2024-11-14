@@ -23,7 +23,10 @@ public class StartScreenManager : MonoBehaviour
     public void StartButton()
     {
         startScreen.SetActive(false);
+        mainGame.SetActive(false);
         roleSelect.SetActive(true);
+
+        Time.timeScale = 0;
     }
 
     public void StartGame(int index)
