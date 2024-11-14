@@ -40,6 +40,7 @@ public class Prestige : MonoBehaviour
     public void PrestigeHero()
     {
         prestigeMulti += baseXP / 10000;
+        enemyStats.ResetPrestige();
         SoftRest();
     }
 
