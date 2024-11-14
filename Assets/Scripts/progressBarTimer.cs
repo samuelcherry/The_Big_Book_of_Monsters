@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,21 +14,14 @@ public class ProgressBarTimer : MonoBehaviour
 
     public TMP_Text spdText;
 
-    private int level;
-    private int stage;
-
-
-    readonly float[] speedArray = new float[] { 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
-    readonly float[] enemySpeedArray = new float[] { 2F, 2F, 2F, 2F, 1F, 0.5F, 0.25F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F, 0.125F };
 
 
 
-    private float totalTime;
-    private float timeLeft;
-    private float enemyAtkTime;
+
+    public float playerAtkTime;
+    private float playerAtkTimeLeft;
+    public float enemyAtkTime;
     private float enemyAtkTimeLeft;
-
-
 
 
     public Animator animator;
@@ -37,20 +31,19 @@ public class ProgressBarTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UpdateSpdText();
-        level = playerStats.level;
-        stage = enemyStats.Stage;
+        playerAtkTime = playerStats.speedArray[playerStats.level - 1];
+        enemyAtkTime = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemySpeed;
 
-        totalTime = speedArray[level];
-        enemyAtkTime = enemySpeedArray[stage];
-
-        timeLeft = totalTime;
+        playerAtkTimeLeft = playerAtkTime;
         progressBar.value = 1;
 
         enemyAtkTimeLeft = enemyAtkTime;
         enemyAtkTimer.value = 1;
 
 
+        enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
+
+        UpdateSpdText();
 
         if (playerStats == null)
         {
@@ -63,27 +56,22 @@ public class ProgressBarTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        level = playerStats.level;
-        stage = enemyStats.Stage;
-        totalTime = speedArray[level - 1];
-        enemyAtkTime = enemySpeedArray[stage - 1];
 
-
-        if (timeLeft > 0)
+        //PLAYER ATTACK
+        if (playerAtkTimeLeft > 0)
         {
-            timeLeft -= Time.deltaTime;
-            progressBar.value = timeLeft / totalTime;
+            playerAtkTimeLeft -= Time.deltaTime;
+            progressBar.value = playerAtkTimeLeft / playerAtkTime;
         }
         else
         {
-            enemyStats?.TakeDamage();
-            TriggerAnimation();
-
-            timeLeft = totalTime;
+            enemyStats.TakeDamage();
+            PlayerAttack();
+            playerAtkTimeLeft = playerAtkTime;
             progressBar.value = 1;
         }
 
-
+        //ENEMY ATTACK
         if (enemyAtkTimeLeft > 0)
         {
             enemyAtkTimeLeft -= Time.deltaTime;
@@ -91,37 +79,36 @@ public class ProgressBarTimer : MonoBehaviour
         }
         else
         {
-            playerStats?.PlayerTakeDamage();
-            enemyAtkTimeLeft = enemyAtkTime;
-            enemyAtkTimer.value = 1;
-        }
-
-
-
-        if (enemyAtkTimeLeft > 0)
-        {
-            enemyAtkTimeLeft -= Time.deltaTime;
-            enemyAtkTimer.value = enemyAtkTimeLeft / enemyAtkTime;
-        }
-        else
-        {
+            playerStats.PlayerTakeDamage();
+            EnemyAttack();
             enemyAtkTimeLeft = enemyAtkTime;
             enemyAtkTimer.value = 1;
         }
     }
-    private void TriggerAnimation()
+
+    public void SetStageAnimation()
     {
-        animator.SetTrigger("PlayAnimation");
-        enemyAnimator.SetTrigger("Take_Hit");
-
-
+        enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
     }
+
+    private void PlayerAttack()
+    {
+        animator.SetTrigger("PlayerAttack");
+        enemyAnimator.SetTrigger("EnemyTakeHit");
+    }
+
+    private void EnemyAttack()
+    {
+        enemyAnimator.SetTrigger("EnemyAttack");
+        animator.SetTrigger("PlayerTakeHit");
+    }
+
 
     public void UpdateSpdText()
     {
         if (spdText != null)
         {
-            spdText.text = "Spd: " + totalTime;
+            spdText.text = "Spd: " + playerAtkTime;
         }
     }
 }

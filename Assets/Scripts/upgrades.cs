@@ -1,199 +1,137 @@
-using TMPro;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
     public PlayerStats playerStats;
-    public float atkPassiveMulti;
-    public float defPassiveMulti;
-    public float hpPassiveMulti;
-
-
-
-
-    [System.Serializable]
-    public struct Upgrade
+    public float atkPassiveMulti = 0.02f, defPassiveMulti = 0.02f, hpPassiveMulti = 0.02f;
+    //CREATING ROLES
+    [Serializable]
+    public class Roles
     {
-        public PlayerStats playerStats;
-        public bool unlocked;
-        public bool purchased;
-        public bool blocked;
-
-        public int attackBoost;
-        public int defenseBoost;
-        public int healthBoost;
-
-        public float metalCount;
-
-        public Slider metalSlider;
-
-        public float metalMax;
-
-        // Add more fields as needed for each upgrade’s specific boosts or effects.
-   
-   
+        public string roleName;
+        public List<Upgrade> upgrades = new();
+        //SET OF UPGRADES INSIDE ROLES
+        [Serializable]
+        public class Upgrade
+        {
+            //declare variables
+            public string upgradeName;
+            public bool unlocked = false, purchased = false, blocked = false;
+            public int attackBoost = 0, defenseBoost = 0, healthBoost = 0;
+            public float metalCount, metalMax;
+            public Button upgradeButton;
+        }
     }
 
-
-    public Upgrade[] upgrades = new Upgrade[12];
-
-    void Start()
-    {
-        InitializeUpgrades();
-        atkPassiveMulti = 1.02f;
-        defPassiveMulti = 1.02f;
-        hpPassiveMulti = 1.02f;
-
-    }
+    public Roles[] roles;
 
     void Update()
     {
         UpgradeLocks();
     }
-
-    // Initialize each upgrade's properties (e.g., attackBoost, defenseBoost)
-    private void InitializeUpgrades()
-    {
-        // Set default values for each upgrade here or in the Inspector.
-        upgrades[0].attackBoost = 5; // Example: Tier 1, Upgrade 1
-        upgrades[0].metalMax = 10;
-
-        upgrades[1].defenseBoost = 5; // Example: Tier 1, Upgrade 2
-        upgrades[1].metalMax = 10;
-
-        upgrades[2].healthBoost = 20; // Example: Tier 1, Upgrade 3
-        upgrades[2].metalMax = 10;
-        
-        //Tier 2
-        upgrades[3].attackBoost = 10;
-        upgrades[3].metalMax = 20;
-
-        upgrades[4].defenseBoost = 10;
-        upgrades[4].metalMax = 20;
-
-        upgrades[5].healthBoost = 30;
-        upgrades[5].metalMax = 20;
-        
-        //Tier 3
-        upgrades[6].attackBoost = 15;
-        upgrades[6].metalMax = 30;
-
-        upgrades[7].defenseBoost = 15;
-        upgrades[7].metalMax = 30;
-
-        upgrades[8].healthBoost = 40;
-        upgrades[8].metalMax = 30;
-
-        //Tier 4
-        upgrades[9].attackBoost = 20;
-        upgrades[9].metalMax = 40;
-
-        upgrades[10].defenseBoost = 20;
-        upgrades[10].metalMax = 40;
-
-        upgrades[11].healthBoost = 50;
-        upgrades[11].metalMax = 40;
-
-        // Continue to set values as needed
-    }
-
     public void UpgradeLocks()
     {
-        // Tier 1 unlocks at level 5
-        if (playerStats.level >= 5)
+        // Loop through each role in the roles array
+        for (int r = 0; r < roles.Length; r++)
         {
-            for (int i = 0; i < 3; i++)
+            // Loop through the upgrades for the current role
+            for (int i = 0; i < roles[r].upgrades.Count; i++)
             {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
-            }
-        }
-
-        // Tier 2 unlocks at level 10
-        if (playerStats.level >= 10)
-        {
-            for (int i = 3; i < 6; i++)
-            {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
-            }
-        }
-        if (playerStats.level >= 15)
-        {
-            for (int i = 3; i < 9; i++)
-            {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
-            }
-        }
-        if (playerStats.level >= 20)
-        {
-            for (int i = 3; i < 12; i++)
-            {
-                if (!upgrades[i].blocked) upgrades[i].unlocked = true;
+                var upgrade = roles[r].upgrades[i]; // Get the current upgrade for the role
+                // Check the player's level and unlock upgrades based on the conditions
+                if (playerStats.level >= 5)
+                {
+                    // Unlock upgrades in the first tier (0-2)
+                    if (i < 3 && !upgrade.blocked && upgrade.metalCount < upgrade.metalMax)
+                    {
+                        upgrade.unlocked = true;
+                    }
+                }
+                if (playerStats.level >= 10)
+                {
+                    // Unlock upgrades in the second tier (3-5)
+                    if (i >= 3 && i < 6 && !upgrade.blocked && upgrade.metalCount < upgrade.metalMax)
+                    {
+                        upgrade.unlocked = true;
+                    }
+                }
+                if (playerStats.level >= 15)
+                {
+                    // Unlock upgrades in the third tier (6-8)
+                    if (i >= 6 && i < 9 && !upgrade.blocked && upgrade.metalCount < upgrade.metalMax)
+                    {
+                        upgrade.unlocked = true;
+                    }
+                }
+                if (playerStats.level >= 20)
+                {
+                    // Unlock upgrades in the fourth tier (9-11)
+                    if (i >= 9 && i < 12 && !upgrade.blocked && upgrade.metalCount < upgrade.metalMax)
+                    {
+                        upgrade.unlocked = true;
+                    }
+                }
             }
         }
     }
 
-    public void PurchaseUpgrade(int index)
+    public void PurchaseUpgrade(int roleIndex, int upgradeIndex)
     {
-        if (upgrades[index].unlocked && !upgrades[index].purchased)
+        // Get the role and upgrade based on the passed indices
+        var role = roles[roleIndex];
+        var upgrade = role.upgrades[upgradeIndex];
+
+        if (upgrade.unlocked && !upgrade.purchased)
         {
-            UpdateMetalSliders(index);
-            upgrades[index].purchased = true;
+            upgrade.purchased = true;
 
             // Apply the upgrade's effects
-            playerStats.atk += upgrades[index].attackBoost;
-            playerStats.def += upgrades[index].defenseBoost;
-            playerStats.maxHp += upgrades[index].healthBoost;
-            
-//sets the limits based on the tier
+            playerStats.atk += upgrade.attackBoost;
+            playerStats.def += upgrade.defenseBoost;
+            playerStats.maxHp += upgrade.healthBoost;
+            Debug.Log(playerStats.atk);
 
-            if (upgrades[index].attackBoost > 0)
+            // Set the limits based on the tier (metal count)
+            if (upgrade.attackBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrades[index].metalCount++;
+                    upgrade.metalCount++;
                     playerStats.atkMetalCount++;
-                    UpdateMetalSliders(index);
                 }
             }
-             if (upgrades[index].defenseBoost > 0)
+            if (upgrade.defenseBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrades[index].metalCount++;
+                    upgrade.metalCount++;
                     playerStats.defMetalCount++;
-                    UpdateMetalSliders(index);
                 }
             }
-             if (upgrades[index].healthBoost > 0)
+            if (upgrade.healthBoost > 0)
             {
-                if(upgrades[index].metalCount < upgrades[index].metalMax)
+                if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrades[index].metalCount++;
+                    upgrade.metalCount++;
                     playerStats.hpMetalCount++;
-                    UpdateMetalSliders(index);
                 }
             }
 
             // Lock other upgrades in the same tier
-            int tierStart = index / 3 * 3; // 0–2 for tier 1, 3–5 for tier 2
+            int tierStart = upgradeIndex / 3 * 3; // 0–2 for tier 1, 3–5 for tier 2
             for (int i = tierStart; i < tierStart + 3; i++)
             {
-                if (i != index)
+                if (i != upgradeIndex)
                 {
-                    upgrades[i].blocked = true;
-                    upgrades[i].unlocked = false;
+                    role.upgrades[i].blocked = true;
+                    role.upgrades[i].unlocked = false;
                 }
             }
         }
     }
 
-    public void UpdateMetalSliders(int index)
-    {
-        if (upgrades[index].metalCount == 0){
-            upgrades[index].metalCount = 0;
-        }else{
-        upgrades[index].metalSlider.value = upgrades[index].metalCount / upgrades[index].metalMax;
-        }
-    }
+
 }
