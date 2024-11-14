@@ -7,6 +7,7 @@ public class StartScreenManager : MonoBehaviour
     public PlayerStats playerStats;
     public Upgrades upgrades;
     public Prestige prestige;
+    public SaveManager saveManager;
     public GameObject startScreen; // Reference to the start screen UI
     public GameObject roleSelect;
     public GameObject mainGame;
@@ -29,6 +30,9 @@ public class StartScreenManager : MonoBehaviour
         startScreen.SetActive(false);
         mainGame.SetActive(false);
         roleSelect.SetActive(true);
+
+        saveManager.Load();
+        prestige.UpdatePrestigeText();
 
         Time.timeScale = 0;
     }

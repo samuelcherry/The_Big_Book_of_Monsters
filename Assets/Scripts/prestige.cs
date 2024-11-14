@@ -13,8 +13,7 @@ public class Prestige : MonoBehaviour
     public ProgressBarTimer progressBarTimer;
     public float baseXP;
     public float prestigeMulti;
-    public TMP_Text currentMultiText;
-    public TMP_Text futureMultiText;
+    public TMP_Text currentMultiText, futureMultiText, roleSelectPrestigePoints;
 
     void Awake()
     {
@@ -126,6 +125,11 @@ public class Prestige : MonoBehaviour
         {
             futureMultiText.text = playerStats.FormatStatValue(prestigeMulti + baseXP / 10000).ToString();
         }
+        if (roleSelectPrestigePoints != null)
+        {
+            roleSelectPrestigePoints.text = "Prestige Points: " + playerStats.FormatStatValue(prestigeMulti).ToString();
+        }
+
 
     }
     public void UpdatePostPrestigeText()
