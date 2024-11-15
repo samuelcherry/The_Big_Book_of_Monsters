@@ -104,9 +104,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1152
-        width: 128
-        height: 128
+        y: 972
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +125,10 @@ TextureImporter:
       name: roleSelectButtons_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1152
-        width: 128
-        height: 128
+        x: 312
+        y: 972
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: roleSelectButtons_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1152
-        width: 128
-        height: 128
+        x: 624
+        y: 972
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: roleSelectButtons_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1152
-        width: 128
-        height: 128
+        x: 0
+        y: 664
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: roleSelectButtons_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1152
-        width: 128
-        height: 128
+        x: 312
+        y: 664
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: roleSelectButtons_5
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1152
-        width: 128
-        height: 128
+        x: 624
+        y: 664
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: roleSelectButtons_6
       rect:
         serializedVersion: 2
-        x: 768
-        y: 1152
-        width: 128
-        height: 128
+        x: 936
+        y: 664
+        width: 312
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

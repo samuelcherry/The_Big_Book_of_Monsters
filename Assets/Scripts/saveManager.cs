@@ -39,6 +39,10 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("AutoBuyerLvl", blacksmithToggleManager.AutoBuyerLvl);
         PlayerPrefs.SetInt("AutoBuyerAmt", blacksmithToggleManager.AutoBuyerAmt);
 
+        for (int i = 0; i < enemyStats.adventures.Length; i++)
+        {
+            PlayerPrefs.SetInt($"AdventureIsCompleted_{i}", enemyStats.adventures[i].isCompleted);
+        }
         //BOOK SAVES
         for (int i = 0; i < bestiary.entry.Length; i++)
         {
@@ -58,6 +62,11 @@ public class SaveManager : MonoBehaviour
         //ENEMY LOAD
 
         enemyStats.GoldAmt = PlayerPrefs.GetFloat("GoldAmt");
+
+        for (int i = 0; i < enemyStats.adventures.Length; i++)
+        {
+            enemyStats.adventures[i].isCompleted = PlayerPrefs.GetInt($"AdventureIsCompleted_{i}");
+        }
 
 
         //PLAYER LOAD

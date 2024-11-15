@@ -23,15 +23,18 @@ public class EnemyStats : MonoBehaviour
 
     public class Adventure
     {
-        public int maxStages;
+        public int maxStages, adventureId;
         public string adventureTitle;
         public Enemy[] enemies;
+        public int isCompleted;
 
-        public Adventure(string adventureTitle, int maxStages, Enemy[] enemies)
+        public Adventure(string adventureTitle, int maxStages, Enemy[] enemies, int adventureId, int isCompleted)
         {
             this.adventureTitle = adventureTitle;
             this.maxStages = maxStages;
             this.enemies = enemies;
+            this.adventureId = adventureId;
+            this.isCompleted = isCompleted;
         }
 
         [System.Serializable]
@@ -132,10 +135,10 @@ public class EnemyStats : MonoBehaviour
 
 
 
-        adventures[0] = new Adventure("Goblin Camp", 5, adventure1Enemies);
-        adventures[1] = new Adventure("Mushroom Farm", 10, adventure2Enemies);
-        adventures[2] = new Adventure("Mushroom Farm", 15, adventure3Enemies);
-        adventures[3] = new Adventure("Mushroom Farm", 20, adventure4Enemies);
+        adventures[0] = new Adventure("Goblin Camp", 5, adventure1Enemies, 1, 0);
+        adventures[1] = new Adventure("Mushroom Farm", 10, adventure2Enemies, 2, 0);
+        adventures[2] = new Adventure("Mystic Cave", 15, adventure3Enemies, 3, 0);
+        adventures[3] = new Adventure("The Crypt", 20, adventure4Enemies, 4, 0);
 
 
         currentAdventure = adventures[0];
@@ -176,6 +179,9 @@ public class EnemyStats : MonoBehaviour
         {
             currentEnemy.enemyCurrentHp -= playerStats.atk - currentEnemy.enemyDef;
             enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
+
+
+
             if (currentEnemy.enemyCurrentHp <= 0)  // KILL ENEMY
             {
                 playerStats.AddGold();
@@ -192,6 +198,11 @@ public class EnemyStats : MonoBehaviour
                             saveManager.Save();
                         }
                     }
+                }
+                if (Stage == currentAdventure.maxStages)
+                {
+                    currentAdventure.isCompleted = 1;
+                    saveManager.Save();
                 }
             }
         }

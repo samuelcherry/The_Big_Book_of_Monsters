@@ -7,8 +7,17 @@ public class Sprites : MonoBehaviour
 {
     public Upgrades upgrades; // Reference to the Upgrades script
     public PlayerStats playerStats;
+    public EnemyStats enemyStats;
 
 
+    [System.Serializable]
+    public class AdventureButtons
+    {
+        public int adventureIndex;
+        public Sprite notCompleted;
+        public Sprite completed;
+        public Button advenutureButton;
+    }
 
     [System.Serializable]
     public class UpgradeButtonRoles
@@ -30,6 +39,7 @@ public class Sprites : MonoBehaviour
         public Button upgradeButtons;
     }
     public UpgradeButtonRoles[] upgradeButtonRoles = new UpgradeButtonRoles[4];
+    public AdventureButtons[] adventureButtons = new AdventureButtons[4];
 
     void Update()
     {
@@ -40,7 +50,23 @@ public class Sprites : MonoBehaviour
                 UpdateSprites(r, i);
             }
         }
+        for (int i = 0; i < adventureButtons.Length; i++)
+        {
+            UpdateAdventureSprites(i);
+        }
 
+    }
+
+    public void UpdateAdventureSprites(int adventureIndex)
+    {
+        if (enemyStats.adventures[adventureIndex].isCompleted == 0)
+        {
+            adventureButtons[adventureIndex].advenutureButton.image.sprite = adventureButtons[adventureIndex].notCompleted;
+        }
+        else
+        {
+            adventureButtons[adventureIndex].advenutureButton.image.sprite = adventureButtons[adventureIndex].completed;
+        }
     }
 
     // Update each button's sprite based on the upgrade's state

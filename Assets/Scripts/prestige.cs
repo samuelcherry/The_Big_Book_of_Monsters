@@ -84,7 +84,7 @@ public class Prestige : MonoBehaviour
         playerStats.atk *= playerStats.atkMetalCount * upgrades.atkPassiveMulti + 1;
         playerStats.def *= playerStats.defMetalCount * upgrades.defPassiveMulti + 1;
         playerStats.maxHp *= playerStats.hpMetalCount * upgrades.hpPassiveMulti + 1;
-        progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level];
+        progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level - 1];
 
         //UPGRADES RESET
 

@@ -124,7 +124,6 @@
     <Compile Include="Assets\Scripts\BlacksmithToggleManager.cs" />
     <Compile Include="Assets\Scripts\enemyStats.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\Scripts\adventures.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
