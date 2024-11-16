@@ -39,4 +39,5 @@ public class ConfirmManager : MonoBehaviour
             confirmMenus[index].isVisible = false;
         }
     }
+
 }

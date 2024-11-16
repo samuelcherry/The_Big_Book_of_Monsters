@@ -35,6 +35,7 @@ public class PlayerStats : MonoBehaviour
         atkMetalCount = 0;
         defMetalCount = 0;
         hpMetalCount = 0;
+
         xpArray = new int[] { 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600, 820000, 1640000, 3275000, 6500000, 13000000, 26000000, 52500000 };
         hpMaxArray = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000 };
         atkArray = new float[] { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 };
@@ -222,11 +223,6 @@ public class PlayerStats : MonoBehaviour
     public void UpdateDefText()
     {
         defText.text = "Def: " + FormatStatValue(def);
-    }
-
-    public void UpdateSpeedText()
-    {
-
     }
 
 

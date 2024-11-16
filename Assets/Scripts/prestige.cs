@@ -96,22 +96,23 @@ public class Prestige : MonoBehaviour
                 upgrades.roles[r].upgrades[i].purchased = false;
                 upgrades.roles[r].upgrades[i].blocked = false;
             }
-
-            //TEXT RESET
-
-            playerStats.UpdateStatText();
-            enemyStats.UpdateEnemyStatsText();
-            UpdatePrestigeText();
-            UpdatePostPrestigeText();
-
-            for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
-            {
-                slotUpgrades.UpdateSlotText(i);
-            }
-
-
-            saveManager.Save();
         }
+
+        //TEXT RESET
+
+        playerStats.UpdateStatText();
+        enemyStats.UpdateEnemyStatsText();
+        UpdatePrestigeText();
+        UpdatePostPrestigeText();
+
+        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+        {
+            slotUpgrades.UpdateSlotText(i);
+        }
+
+
+        saveManager.Save();
+
     }
 
     public void UpdatePrestigeText()

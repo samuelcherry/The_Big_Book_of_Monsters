@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Upgrades : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public SaveManager saveManager;
     public float atkPassiveMulti = 0.02f, defPassiveMulti = 0.02f, hpPassiveMulti = 0.02f;
     //CREATING ROLES
     [Serializable]
@@ -26,6 +27,7 @@ public class Upgrades : MonoBehaviour
             public int attackBoost = 0, defenseBoost = 0, healthBoost = 0;
             public float metalCount, metalMax;
             public Button upgradeButton;
+            public Slider skillPointSlider;
         }
     }
 
@@ -95,6 +97,9 @@ public class Upgrades : MonoBehaviour
             playerStats.atk += upgrade.attackBoost;
             playerStats.def += upgrade.defenseBoost;
             playerStats.maxHp += upgrade.healthBoost;
+
+            upgrade.skillPointSlider.value = upgrade.metalCount / upgrade.metalMax;
+
             Debug.Log(playerStats.atk);
 
             // Set the limits based on the tier (metal count)
@@ -134,6 +139,7 @@ public class Upgrades : MonoBehaviour
                 }
             }
         }
+        saveManager.Save();
     }
 
 

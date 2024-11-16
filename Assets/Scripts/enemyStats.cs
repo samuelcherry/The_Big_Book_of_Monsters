@@ -18,6 +18,16 @@ public class EnemyStats : MonoBehaviour
 
     public int Stage;
     public float GoldAmt;
+    public int tempAdventureNumber;
+
+    [System.Serializable]
+    public struct AdventureConfirmMenu
+    {
+        public GameObject Menu;
+        public bool isVisible;
+    }
+
+    public AdventureConfirmMenu[] adventureConfirmMenus = new AdventureConfirmMenu[1];
 
     [System.Serializable]
 
@@ -67,6 +77,8 @@ public class EnemyStats : MonoBehaviour
 
     public Adventure[] adventures;
     public Adventure currentAdventure;
+
+
 
     void Awake()
     {
@@ -141,7 +153,7 @@ public class EnemyStats : MonoBehaviour
         adventures[3] = new Adventure("The Crypt", 20, adventure4Enemies, 4, 0);
 
 
-        currentAdventure = adventures[0];
+        currentAdventure = adventures[tempAdventureNumber];
     }
 
 
@@ -251,19 +263,33 @@ public class EnemyStats : MonoBehaviour
     private IEnumerator HandleButtonCooldown()
     {
         isButtonPressed = true;
-        yield return new WaitForSeconds(1f);  // Wait for 0.1 seconds (adjust as needed)
+        yield return new WaitForSeconds(0.1f);  // Wait for 0.1 seconds (adjust as needed)
         isButtonPressed = false;
         Debug.Log("CoolDown");
     }
 
     public void SelectAdventure(int adventureIndex)
     {
-        if (adventures[adventureIndex] != currentAdventure)
+        adventureConfirmMenus[0].Menu.SetActive(true);
+        tempAdventureNumber = adventureIndex;
+    }
+
+    public void ConfirmAdventure()
+    {
+
+        if (adventures[tempAdventureNumber] != currentAdventure)
         {
-            currentAdventure = adventures[adventureIndex];
+            currentAdventure = adventures[tempAdventureNumber];
             ResetEnemies();
+            Stage = 1;
+            progressBarTimer.SetStageAnimation();
+            adventureConfirmMenus[0].Menu.SetActive(false);
             prestige.PrestigeHero();
         }
+    }
+    public void CancelConfirm()
+    {
+        adventureConfirmMenus[0].Menu.SetActive(false);
     }
 
     public void UpdateEnemyStatsText()

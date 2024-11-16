@@ -2039,6 +2039,7 @@ Transform:
   - {fileID: 1882629606}
   - {fileID: 748768575}
   - {fileID: 1396978938}
+  - {fileID: 659637323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55167638
@@ -2146,11 +2147,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 242347711}
+  m_Father: {fileID: 2072183919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 825, y: 0}
+  m_AnchoredPosition: {x: 110, y: 250}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57356988
@@ -2384,7 +2385,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ARMOR
+  m_text: 'HP
+
+    upgrade'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6700,7 +6703,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SWORD
+  m_text: 'ATK
+
+    upgrade'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8467,16 +8472,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242347710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1451516214}
   - {fileID: 1158096917}
-  - {fileID: 57356987}
   m_Father: {fileID: 2072183919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -715, y: 250}
@@ -13713,11 +13717,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1817314479}
+  m_Father: {fileID: 2072183919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 825, y: 0}
+  m_AnchoredPosition: {x: 110, y: 50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479199432
@@ -15978,7 +15982,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SHIELD
+  m_text: 'DEF
+
+    upgrade'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18369,20 +18375,67 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656732425}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1540637626}
   - {fileID: 1360187860}
   m_Father: {fileID: 302705107}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -311, y: -21}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &659637322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659637323}
+  - component: {fileID: 659637324}
+  m_Layer: 0
+  m_Name: PopupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &659637323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659637322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52338138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659637324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659637322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d19852621810645a002826216d6cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 941844068}
+  fadeDuration: 1
+  visibleDuration: 1
 --- !u!1 &672216141
 GameObject:
   m_ObjectHideFlags: 0
@@ -19068,15 +19121,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697508385}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1344473708}
   - {fileID: 402185505}
   m_Father: {fileID: 302705107}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -311, y: 79}
@@ -19994,11 +20047,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1380967770}
+  m_Father: {fileID: 2072183919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 825, y: 0}
+  m_AnchoredPosition: {x: 110, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727435806
@@ -21037,6 +21090,10 @@ MonoBehaviour:
   enemyHpBar: {fileID: 826232837}
   Stage: 1
   GoldAmt: 10000
+  tempAdventureNumber: 0
+  adventureConfirmMenus:
+  - Menu: {fileID: 707274322}
+    isVisible: 0
   adventures: []
   currentAdventure:
     maxStages: 0
@@ -21887,11 +21944,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 957099248}
+  m_Father: {fileID: 2072183919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 825, y: 0}
+  m_AnchoredPosition: {x: 110, y: 150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787460621
@@ -25670,16 +25727,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928086528}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1602311213}
+  m_Father: {fileID: 2072183919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 825, y: 0}
+  m_AnchoredPosition: {x: 110, y: 350}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928086530
@@ -26299,6 +26356,142 @@ MonoBehaviour:
   roleIndex: 3
   upgradeIndex: 7
   upgradesScript: {fileID: 2067066247}
+--- !u!1 &941844066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941844067}
+  - component: {fileID: 941844069}
+  - component: {fileID: 941844068}
+  m_Layer: 5
+  m_Name: saveGameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &941844067
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941844066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1824290774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -495.85}
+  m_SizeDelta: {x: 360, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &941844068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941844066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: GAME SAVED
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &941844069
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941844066}
+  m_CullTransparentMesh: 1
 --- !u!1 &948322173
 GameObject:
   m_ObjectHideFlags: 0
@@ -26485,16 +26678,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957099247}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 758034548}
   - {fileID: 1092243793}
-  - {fileID: 787460620}
   m_Father: {fileID: 2072183919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -715, y: 150}
@@ -33897,6 +34089,7 @@ MonoBehaviour:
     metalCount: 0
     metalMax: 0
     upgradeButton: {fileID: 0}
+    skillPointSlider: {fileID: 0}
   progressBarTimer: {fileID: 231063150}
   baseXP: 0
   prestigeMulti: 1
@@ -34076,14 +34269,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1637883478}
-        m_TargetAssemblyTypeName: ConfirmManager, Assembly-CSharp
-        m_MethodName: ToggleShow
-        m_Mode: 3
+      - m_Target: {fileID: 764326449}
+        m_TargetAssemblyTypeName: EnemyStats, Assembly-CSharp
+        m_MethodName: CancelConfirm
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -35159,26 +35352,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1203721484}
-        m_TargetAssemblyTypeName: Prestige, Assembly-CSharp
-        m_MethodName: PrestigeHero
+      - m_Target: {fileID: 764326449}
+        m_TargetAssemblyTypeName: EnemyStats, Assembly-CSharp
+        m_MethodName: ConfirmAdventure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1637883478}
-        m_TargetAssemblyTypeName: ConfirmManager, Assembly-CSharp
-        m_MethodName: ToggleShow
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -37770,16 +37951,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380967769}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1236022147}
   - {fileID: 1647863878}
-  - {fileID: 727435805}
   m_Father: {fileID: 2072183919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -715, y: -50}
@@ -44675,16 +44855,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602311212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 712578464}
   - {fileID: 1447219404}
-  - {fileID: 928086529}
   m_Father: {fileID: 2072183919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -715, y: 350}
@@ -53479,16 +53658,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817314478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1154097047}
   - {fileID: 1704012066}
-  - {fileID: 479199431}
   m_Father: {fileID: 2072183919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -715, y: 50}
@@ -53649,6 +53827,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 941844067}
   - {fileID: 1881870345}
   - {fileID: 1296733478}
   - {fileID: 1138949641}
@@ -54996,6 +55175,7 @@ MonoBehaviour:
   bestiary: {fileID: 1396978939}
   blacksmithToggleManager: {fileID: 1882629607}
   alchemyTimers: {fileID: 748768576}
+  popup: {fileID: 659637324}
 --- !u!4 &1884933240
 Transform:
   m_ObjectHideFlags: 0
@@ -59138,8 +59318,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure you want to prestige? This will reset your XP, LVL, and Gold
-    but you will get Prestige points in return. Auto-buyers will not reset.
+  m_text: Changing Adventures will cause you to Prestige? Are you sure you want to
+    do this?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -59166,8 +59346,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 3.8
+  m_fontSizeBase: 3.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -59783,6 +59963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 1581234899}
+  saveManager: {fileID: 1884933239}
   atkPassiveMulti: 0.02
   defPassiveMulti: 0.02
   hpPassiveMulti: 0.02
@@ -59803,6 +59984,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 1781865306}
+      skillPointSlider: {fileID: 2069912681}
     - upgradeName: Hero 01
       unlocked: 0
       purchased: 0
@@ -59813,6 +59995,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 1002047342}
+      skillPointSlider: {fileID: 32285170}
     - upgradeName: Hero 02
       unlocked: 0
       purchased: 0
@@ -59823,6 +60006,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 1428147092}
+      skillPointSlider: {fileID: 172081762}
     - upgradeName: Hero 03
       unlocked: 0
       purchased: 0
@@ -59833,6 +60017,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 282613089}
+      skillPointSlider: {fileID: 509315081}
     - upgradeName: Hero 04
       unlocked: 0
       purchased: 0
@@ -59843,6 +60028,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 70004638}
+      skillPointSlider: {fileID: 1916656715}
     - upgradeName: Hero 05
       unlocked: 0
       purchased: 0
@@ -59853,6 +60039,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 466801280}
+      skillPointSlider: {fileID: 1130389531}
     - upgradeName: Hero 06
       unlocked: 0
       purchased: 0
@@ -59863,6 +60050,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 931006243}
+      skillPointSlider: {fileID: 1508118665}
     - upgradeName: Hero 07
       unlocked: 0
       purchased: 0
@@ -59873,6 +60061,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 28918563}
+      skillPointSlider: {fileID: 590531122}
     - upgradeName: Hero 08
       unlocked: 0
       purchased: 0
@@ -59883,6 +60072,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 638154579}
+      skillPointSlider: {fileID: 587819340}
     - upgradeName: Hero 09
       unlocked: 0
       purchased: 0
@@ -59893,6 +60083,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1922359755}
+      skillPointSlider: {fileID: 2124477633}
     - upgradeName: 
       unlocked: 0
       purchased: 0
@@ -59903,6 +60094,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1588484142}
+      skillPointSlider: {fileID: 1217099392}
     - upgradeName: 
       unlocked: 0
       purchased: 0
@@ -59913,6 +60105,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1053297080}
+      skillPointSlider: {fileID: 1940558324}
   - roleName: Tank
     passiveAtkBonusText: {fileID: 1095181919}
     passiveDefBonusText: {fileID: 432182588}
@@ -59929,6 +60122,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 244100106}
+      skillPointSlider: {fileID: 362700434}
     - upgradeName: Tank 01
       unlocked: 0
       purchased: 0
@@ -59939,6 +60133,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 1907149720}
+      skillPointSlider: {fileID: 271537679}
     - upgradeName: Tank 02
       unlocked: 0
       purchased: 0
@@ -59949,6 +60144,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 502102696}
+      skillPointSlider: {fileID: 39896808}
     - upgradeName: Tank 03
       unlocked: 0
       purchased: 0
@@ -59959,6 +60155,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 649672414}
+      skillPointSlider: {fileID: 210093466}
     - upgradeName: Tank 04
       unlocked: 0
       purchased: 0
@@ -59969,6 +60166,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 2138538559}
+      skillPointSlider: {fileID: 12043382}
     - upgradeName: Tank 05
       unlocked: 0
       purchased: 0
@@ -59979,6 +60177,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1158620013}
+      skillPointSlider: {fileID: 575853616}
     - upgradeName: Tank 06
       unlocked: 0
       purchased: 0
@@ -59989,6 +60188,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1092656750}
+      skillPointSlider: {fileID: 481704685}
     - upgradeName: Tank 07
       unlocked: 0
       purchased: 0
@@ -59999,6 +60199,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 179829922}
+      skillPointSlider: {fileID: 1333777201}
     - upgradeName: Tank 08
       unlocked: 0
       purchased: 0
@@ -60009,6 +60210,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1436340725}
+      skillPointSlider: {fileID: 1550344407}
     - upgradeName: Tank 09
       unlocked: 0
       purchased: 0
@@ -60019,6 +60221,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 483286805}
+      skillPointSlider: {fileID: 560539997}
     - upgradeName: Tank 10
       unlocked: 0
       purchased: 0
@@ -60029,6 +60232,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 812135637}
+      skillPointSlider: {fileID: 142398184}
     - upgradeName: Tank 11
       unlocked: 0
       purchased: 0
@@ -60039,6 +60243,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 500
       upgradeButton: {fileID: 1393114856}
+      skillPointSlider: {fileID: 517556948}
   - roleName: Dps
     passiveAtkBonusText: {fileID: 80354682}
     passiveDefBonusText: {fileID: 492787825}
@@ -60055,6 +60260,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 1960568353}
+      skillPointSlider: {fileID: 1750965825}
     - upgradeName: Dps 01
       unlocked: 0
       purchased: 0
@@ -60065,6 +60271,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 431616919}
+      skillPointSlider: {fileID: 1185953522}
     - upgradeName: Dps 02
       unlocked: 0
       purchased: 0
@@ -60075,6 +60282,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 330050713}
+      skillPointSlider: {fileID: 1794894494}
     - upgradeName: Dps 03
       unlocked: 0
       purchased: 0
@@ -60085,6 +60293,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 804937052}
+      skillPointSlider: {fileID: 1793055077}
     - upgradeName: Dps 04
       unlocked: 0
       purchased: 0
@@ -60095,6 +60304,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 1650564369}
+      skillPointSlider: {fileID: 1952336802}
     - upgradeName: Dps 05
       unlocked: 0
       purchased: 0
@@ -60105,6 +60315,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 1376361479}
+      skillPointSlider: {fileID: 1560963903}
     - upgradeName: Dps 06
       unlocked: 0
       purchased: 0
@@ -60115,6 +60326,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 782795368}
+      skillPointSlider: {fileID: 960961038}
     - upgradeName: Dps 07
       unlocked: 0
       purchased: 0
@@ -60125,6 +60337,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1177080348}
+      skillPointSlider: {fileID: 361885036}
     - upgradeName: Dps 08
       unlocked: 0
       purchased: 0
@@ -60135,6 +60348,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1717231522}
+      skillPointSlider: {fileID: 342908185}
     - upgradeName: Dps 09
       unlocked: 0
       purchased: 0
@@ -60145,6 +60359,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 500
       upgradeButton: {fileID: 1402896574}
+      skillPointSlider: {fileID: 482885888}
     - upgradeName: Dps 10
       unlocked: 0
       purchased: 0
@@ -60155,6 +60370,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 783222969}
+      skillPointSlider: {fileID: 41972434}
     - upgradeName: Dps 11
       unlocked: 0
       purchased: 0
@@ -60165,6 +60381,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1179421818}
+      skillPointSlider: {fileID: 2119991259}
   - roleName: Healer
     passiveAtkBonusText: {fileID: 1724337763}
     passiveDefBonusText: {fileID: 693938135}
@@ -60181,6 +60398,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 533834638}
+      skillPointSlider: {fileID: 1716013251}
     - upgradeName: Healer 01
       unlocked: 0
       purchased: 0
@@ -60191,6 +60409,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 1378946488}
+      skillPointSlider: {fileID: 1612358644}
     - upgradeName: Healer 02
       unlocked: 0
       purchased: 0
@@ -60201,6 +60420,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 100
       upgradeButton: {fileID: 1078290556}
+      skillPointSlider: {fileID: 1057262848}
     - upgradeName: Healer 03
       unlocked: 0
       purchased: 0
@@ -60211,6 +60431,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 811624989}
+      skillPointSlider: {fileID: 231687057}
     - upgradeName: Healer 04
       unlocked: 0
       purchased: 0
@@ -60221,6 +60442,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1801210806}
+      skillPointSlider: {fileID: 317772268}
     - upgradeName: Healer 05
       unlocked: 0
       purchased: 0
@@ -60231,6 +60453,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 200
       upgradeButton: {fileID: 213829965}
+      skillPointSlider: {fileID: 139429698}
     - upgradeName: Healer 06
       unlocked: 0
       purchased: 0
@@ -60241,6 +60464,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1469412206}
+      skillPointSlider: {fileID: 1232084055}
     - upgradeName: Healer 07
       unlocked: 0
       purchased: 0
@@ -60251,6 +60475,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 938347513}
+      skillPointSlider: {fileID: 1352967258}
     - upgradeName: Healer 08
       unlocked: 0
       purchased: 0
@@ -60261,6 +60486,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 300
       upgradeButton: {fileID: 1567179688}
+      skillPointSlider: {fileID: 2046150193}
     - upgradeName: Healer 09
       unlocked: 0
       purchased: 0
@@ -60271,6 +60497,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1945786619}
+      skillPointSlider: {fileID: 677629782}
     - upgradeName: Healer 10
       unlocked: 0
       purchased: 0
@@ -60281,6 +60508,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 500
       upgradeButton: {fileID: 1927386739}
+      skillPointSlider: {fileID: 977791040}
     - upgradeName: Healer 11
       unlocked: 0
       purchased: 0
@@ -60291,6 +60519,7 @@ MonoBehaviour:
       metalCount: 0
       metalMax: 400
       upgradeButton: {fileID: 1742031412}
+      skillPointSlider: {fileID: 1200198396}
 --- !u!1 &2069869265
 GameObject:
   m_ObjectHideFlags: 0
@@ -60552,6 +60781,11 @@ RectTransform:
   - {fileID: 1817314479}
   - {fileID: 1380967770}
   - {fileID: 194288251}
+  - {fileID: 928086529}
+  - {fileID: 57356987}
+  - {fileID: 479199431}
+  - {fileID: 787460620}
+  - {fileID: 727435805}
   - {fileID: 32550387}
   - {fileID: 1009430846}
   - {fileID: 609970297}
@@ -62871,15 +63105,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139749559}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1097313636}
   - {fileID: 1760314371}
   m_Father: {fileID: 302705107}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -311, y: -121}
