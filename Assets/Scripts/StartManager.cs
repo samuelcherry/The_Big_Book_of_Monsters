@@ -12,6 +12,7 @@ public class StartScreenManager : MonoBehaviour
     public GameObject startScreen; // Reference to the start screen UI
     public GameObject roleSelect;
     public GameObject mainGame;
+    public MenuManager menuManager;
 
     public int roleCost = 5;
 
@@ -54,7 +55,7 @@ public class StartScreenManager : MonoBehaviour
             mainGame.SetActive(true);
             Time.timeScale = 1;
         }
-
+        menuManager.MenuMove(0);
 
     }
 
@@ -82,5 +83,6 @@ public class StartScreenManager : MonoBehaviour
             upgrades.roles[index].roleUnlocked = 1;
             saveManager.Save();
         }
+        menuManager.MenuMove(0);
     }
 }

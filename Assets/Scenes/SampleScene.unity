@@ -14725,6 +14725,7 @@ MonoBehaviour:
   startScreenManager: {fileID: 1921505831}
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
+  blacksmithToggleManager: {fileID: 1882629607}
 --- !u!4 &491088842
 Transform:
   m_ObjectHideFlags: 0
@@ -21364,7 +21365,7 @@ GameObject:
   - component: {fileID: 769510303}
   - component: {fileID: 769510302}
   m_Layer: 5
-  m_Name: MENU_Prestige Confirm
+  m_Name: CONFIRM_Prestige
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44854,6 +44855,7 @@ MonoBehaviour:
   defMetalCount: 0
   hpMetalCount: 0
   role: 0
+  roleChoosen: 0
   currentXp: 0
   maxXP: 100
   currentHp: 0
@@ -57012,6 +57014,7 @@ MonoBehaviour:
   startScreen: {fileID: 984562109}
   roleSelect: {fileID: 1059244217}
   mainGame: {fileID: 1824290770}
+  menuManager: {fileID: 455175117}
   roleCost: 5
 --- !u!4 &1921505832
 Transform:
