@@ -15,7 +15,7 @@ public class Upgrades : MonoBehaviour
     {
         public string roleName;
         public TMP_Text passiveAtkBonusText, passiveDefBonusText, passiveHpBonusText;
-        public bool roleUnlocked = false;
+        public int roleUnlocked = 0;
         public List<Upgrade> upgrades = new();
         //SET OF UPGRADES INSIDE ROLES
         [Serializable]
@@ -107,7 +107,6 @@ public class Upgrades : MonoBehaviour
             {
                 if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrade.metalCount++;
                     playerStats.atkMetalCount++;
                 }
             }
@@ -115,7 +114,6 @@ public class Upgrades : MonoBehaviour
             {
                 if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrade.metalCount++;
                     playerStats.defMetalCount++;
                 }
             }
@@ -123,10 +121,10 @@ public class Upgrades : MonoBehaviour
             {
                 if (upgrade.metalCount < upgrade.metalMax)
                 {
-                    upgrade.metalCount++;
                     playerStats.hpMetalCount++;
                 }
             }
+            upgrade.metalCount++;
 
             // Lock other upgrades in the same tier
             int tierStart = upgradeIndex / 3 * 3; // 0–2 for tier 1, 3–5 for tier 2

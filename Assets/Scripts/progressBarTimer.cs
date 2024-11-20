@@ -33,7 +33,6 @@ public class ProgressBarTimer : MonoBehaviour
     {
         playerAtkTime = playerStats.speedArray[playerStats.level - 1];
         enemyAtkTime = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemySpeed;
-        Debug.Log(playerAtkTime);
 
         playerAtkTimeLeft = playerAtkTime;
         progressBar.value = 1;

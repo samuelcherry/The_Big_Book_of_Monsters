@@ -15,8 +15,9 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text levelText, xpText, hpText, atkText, defText, spdText;
     public Slider xpBar, hpBar;
 
-    public int level, atkMetalCount, defMetalCount, hpMetalCount, role;
+    public int level, atkMetalCount, defMetalCount, hpMetalCount, role, roleChoosen;
     public float currentXp, maxXP, currentHp, maxHp, atk, def;
+
 
     public int[] xpArray;
     public int[] hpMaxArray;
@@ -86,8 +87,6 @@ public class PlayerStats : MonoBehaviour
 
         enemyStats.GoldAmt += currentEnemy.goldRwd;
         UpdateStats();
-        Debug.Log("Expected Value: " + currentEnemy.baseGoldRwd * prestige.prestigeMulti);
-        Debug.Log("Actual Value: " + currentEnemy.goldRwd);
     }
     public void AddXp() //Adding XP and triggering Level up function
     {

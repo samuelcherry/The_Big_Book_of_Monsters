@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour
     public Prestige prestige;
     public ProgressBarTimer progressBarTimer;
     public Bestiary bestiary;
+    public ConfirmManager confirmManager;
     public TMP_Text EnemyHpText, StageNumber, EnemyNameText, GoldAmtText;
     public Slider enemyHpBar;
     private bool isButtonPressed;
@@ -37,6 +38,7 @@ public class EnemyStats : MonoBehaviour
         public string adventureTitle;
         public Enemy[] enemies;
         public int isCompleted;
+        public int prevCompleted;
 
         public Adventure(string adventureTitle, int maxStages, Enemy[] enemies, int adventureId, int isCompleted)
         {
@@ -103,10 +105,10 @@ public class EnemyStats : MonoBehaviour
         adventure2Enemies[3] = new Adventure.Enemy("Goblin Captain", 200, 16, 36, 40, 40, 10, 10, 3.4f, 3);
         adventure2Enemies[4] = new Adventure.Enemy("Goblin Chief", 400, 32, 54, 60, 60, 12, 12, 3.2f, 4);
         adventure2Enemies[5] = new Adventure.Enemy("Mushroom Varient", 600, 48, 82, 80, 80, 16, 16, 3f, 5);
-        adventure2Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1000, 72, 124, 100, 100, 20, 20, 2.8f, 6);
-        adventure2Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 1600, 108, 186, 120, 120, 24, 24, 2.6f, 7);
-        adventure2Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 2000, 162, 280, 140, 140, 28, 28, 2.4f, 8);
-        adventure2Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 4000, 324, 410, 180, 180, 32, 32, 2.2f, 9);
+        adventure2Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1000, 60, 124, 100, 100, 20, 20, 2.8f, 6);
+        adventure2Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 1600, 100, 186, 120, 120, 24, 24, 2.6f, 7);
+        adventure2Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 2000, 150, 280, 140, 140, 28, 28, 2.4f, 8);
+        adventure2Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 4000, 200, 410, 180, 180, 32, 32, 2.2f, 9);
 
         adventure3Enemies[0] = new Adventure.Enemy("Goblin grunt", 90, 6, 15, 15, 15, 6, 6, 4, 0);
         adventure3Enemies[1] = new Adventure.Enemy("Goblin Soldier", 135, 9, 24, 30, 30, 9, 9, 3.8f, 1);
@@ -214,6 +216,12 @@ public class EnemyStats : MonoBehaviour
                 if (Stage == currentAdventure.maxStages)
                 {
                     currentAdventure.isCompleted = 1;
+                    if (currentAdventure.isCompleted == 1 && currentAdventure.prevCompleted == 0)
+                    {
+                        confirmManager.ToggleShow(4);
+                        currentAdventure.prevCompleted = 1;
+                    }
+
                     saveManager.Save();
                 }
             }
@@ -270,8 +278,11 @@ public class EnemyStats : MonoBehaviour
 
     public void SelectAdventure(int adventureIndex)
     {
-        adventureConfirmMenus[0].Menu.SetActive(true);
-        tempAdventureNumber = adventureIndex;
+        if (tempAdventureNumber != adventureIndex)
+        {
+            adventureConfirmMenus[0].Menu.SetActive(true);
+            tempAdventureNumber = adventureIndex;
+        }
     }
 
     public void ConfirmAdventure()

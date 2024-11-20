@@ -76,7 +76,7 @@ public class Sprites : MonoBehaviour
         var upgradeButton = upgradeButtonRoles[roleIndex].upgradeButtonSprites[upgradeIndex];
 
         //If the role is unlocked show the unlocked sprite otherwise show the locked sprite
-        if (upgrades.roles[roleIndex].roleUnlocked == true)
+        if (upgrades.roles[roleIndex].roleUnlocked == 1)
         {
             upgradeButtonRoles[roleIndex].RoleSelectButton.image.sprite = upgradeButtonRoles[roleIndex].unlockedSprite;
         }

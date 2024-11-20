@@ -76,7 +76,7 @@ public class SlotUpgrades : MonoBehaviour
                 upgradeSlot.slotCostText.text = "Cost: " + upgradeSlot.slotCostArr[upgradeSlot.slotLvl];
             }
         }
-        else if (upgradeSlot.slotLvl >= upgradeSlot.slotAmtArr.Length)
+        else if (upgradeSlot.slotLvl >= upgradeSlot.slotAmtArr.Length - 1)
         {
             upgradeSlot.slotCostText.text = "Cost: MAX";
         }

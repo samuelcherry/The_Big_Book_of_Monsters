@@ -110,6 +110,7 @@
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Art\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\ResetManager.cs" />
     <Compile Include="Assets\Scripts\slotUpgrades.cs" />
     <Compile Include="Assets\Art\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\Scripts\upgradeButton.cs" />

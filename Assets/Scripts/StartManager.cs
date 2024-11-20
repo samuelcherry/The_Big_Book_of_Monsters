@@ -8,6 +8,7 @@ public class StartScreenManager : MonoBehaviour
     public Upgrades upgrades;
     public Prestige prestige;
     public SaveManager saveManager;
+    public EnemyStats enemyStats;
     public GameObject startScreen; // Reference to the start screen UI
     public GameObject roleSelect;
     public GameObject mainGame;
@@ -21,6 +22,15 @@ public class StartScreenManager : MonoBehaviour
         roleSelect.SetActive(false);
         mainGame.SetActive(false);
 
+        if (enemyStats.adventures[enemyStats.tempAdventureNumber] != enemyStats.currentAdventure)
+        {
+            enemyStats.currentAdventure = enemyStats.adventures[enemyStats.tempAdventureNumber];
+            enemyStats.ResetEnemies();
+            enemyStats.Stage = 1;
+            enemyStats.progressBarTimer.SetStageAnimation();
+        }
+
+
         // Set the game to pause
         Time.timeScale = 0;
     }
@@ -29,32 +39,48 @@ public class StartScreenManager : MonoBehaviour
     {
         startScreen.SetActive(false);
         mainGame.SetActive(false);
-        roleSelect.SetActive(true);
-
         saveManager.Load();
         prestige.UpdatePrestigeText();
+        upgrades.roles[0].roleUnlocked = 1;
 
-        Time.timeScale = 0;
+
+        if (playerStats.roleChoosen == 0)
+        {
+            roleSelect.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            mainGame.SetActive(true);
+            Time.timeScale = 1;
+        }
+
+
     }
 
     public void StartGame(int index)
     {
-        if (upgrades.roles[index].roleUnlocked == true)
+        if (upgrades.roles[index].roleUnlocked == 1)
         {
             // Hide the start screen
             roleSelect.SetActive(false);
             mainGame.SetActive(true);
-            Debug.Log(playerStats.role);
+            //SELECTS ROLE
             playerStats.role = index;
-            Debug.Log(playerStats.role);
+            playerStats.roleChoosen = 1;
 
             // Begin the game by setting timeScale to 1
             Time.timeScale = 1;
-        }
-        else if (upgrades.roles[index].roleUnlocked == false && prestige.prestigeMulti > roleCost + 1)
+            saveManager.Save();
+        }//Unlocking new role
+        else if (upgrades.roles[index].roleUnlocked == 0 && prestige.prestigeMulti > roleCost + 1)
         {
+            var currentEnemy = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1];
             prestige.prestigeMulti -= roleCost;
-            upgrades.roles[index].roleUnlocked = true;
+            currentEnemy.goldRwd = currentEnemy.baseGoldRwd * prestige.prestigeMulti;
+            currentEnemy.xpRwd = currentEnemy.baseXpRwd * prestige.prestigeMulti;
+            upgrades.roles[index].roleUnlocked = 1;
+            saveManager.Save();
         }
     }
 }

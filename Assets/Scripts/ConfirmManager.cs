@@ -13,7 +13,7 @@ public class ConfirmManager : MonoBehaviour
     }
 
 
-    public ConfirmMenu[] confirmMenus = new ConfirmMenu[4];
+    public ConfirmMenu[] confirmMenus = new ConfirmMenu[5];
 
 
     void Start()

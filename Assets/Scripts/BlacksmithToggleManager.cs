@@ -18,8 +18,7 @@ public class BlacksmithToggleManager : MonoBehaviour
 
     void Start()
     {
-        AutoBuyerAmt = 0;
-        AutoBuyerLvl = 0;
+        AutoBuyerAmt = AutoBuyerLvl;
         AutoBuyerCost = new int[] { 10, 15, 25 };
 
         previousToggleStates = new bool[AutobuyerButtons.Length];
