@@ -21,10 +21,10 @@ public class AlchemyTimers : MonoBehaviour
         public int req;
         public bool canRun;
         public int limit;
-        public TMP_Text limitText;
         public float alchXP;
         public float alchMaxXp;
         public int alchLvl;
+        public TMP_Text limitText;
         public Slider alchLvlBar;
         public TMP_Text lvlText;
     }
@@ -69,8 +69,6 @@ public class AlchemyTimers : MonoBehaviour
         AlchAutoBuyerLvl = 0;
         AlchAutoBuyerMax = 5;
 
-        Debug.Log(AlchAutoBuyerAmt);
-
         potion[0].PotionStrenght = 25;
         potion[1].PotionStrenght = 50;
         potion[2].PotionStrenght = 100;
@@ -97,8 +95,6 @@ public class AlchemyTimers : MonoBehaviour
 
         }
 
-        saveManager.Load();
-
         for (int i = 0; i < potion.Length; i++)
         {
             potion[i].PotionAmt = 0;
@@ -124,7 +120,6 @@ public class AlchemyTimers : MonoBehaviour
         }
 
         AlchAutoBuyerAmt = AlchAutoBuyerLvl;
-        Debug.Log(AlchAutoBuyerAmt);
     }
 
     // Update is called once per frame
@@ -309,9 +304,12 @@ public class AlchemyTimers : MonoBehaviour
     {
         if (potion[index].PotionAmt > 0)
         {
+            Debug.Log("USE POTION");
             potion[index].PotionAmt -= 1;
             playerStats.currentHp += 100 * (index + 1);
             UpdateTimerText(index);
+            playerStats.UpdateHpText();
+
 
         }
     }
