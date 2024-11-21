@@ -104,9 +104,15 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+<<<<<<< HEAD
         y: 128
         width: 32
         height: 32
+=======
+        y: 0
+        width: 295
+        height: 160
+>>>>>>> Idle-Dungeon_3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,6 +127,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD
     - serializedVersion: 2
       name: icons_color_customizible_copy_1
       rect:
@@ -1089,11 +1096,17 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+>>>>>>> Idle-Dungeon_3
     outline: []
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: b13e3cd2e00f83b48a172240b716524e
+=======
+    spriteID: 
+>>>>>>> Idle-Dungeon_3
     internalID: 0
     vertices: []
     indices: 
@@ -1102,6 +1115,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< HEAD
     nameFileIdTable:
       icons_color_customizible_copy_0: -2395437732024138838
       icons_color_customizible_copy_1: 162776625
@@ -1148,6 +1162,9 @@ TextureImporter:
       icons_color_customizible_copy_7: -1991303433
       icons_color_customizible_copy_8: -2052585963
       icons_color_customizible_copy_9: -1863728243
+=======
+    nameFileIdTable: {}
+>>>>>>> Idle-Dungeon_3
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

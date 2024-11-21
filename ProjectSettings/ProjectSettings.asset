@@ -13,7 +13,11 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Sam Cherry
+<<<<<<< HEAD
   productName: The Big Book of Monsters
+=======
+  productName: Idle Dungeon
+>>>>>>> Idle-Dungeon_3
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -140,7 +144,15 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
+<<<<<<< HEAD
   bundleVersion: 0.4
+=======
+<<<<<<< HEAD
+  bundleVersion: 0.3.2
+=======
+  bundleVersion: 1.2
+>>>>>>> Idle-Dungeon_3
+>>>>>>> Idle-Dungeon_3
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   metroInputSource: 0
@@ -673,9 +685,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
+<<<<<<< HEAD
   cloudServicesEnabled:
     Purchasing: 0
     Unity Ads: 0
+=======
+  cloudServicesEnabled: {}
+>>>>>>> Idle-Dungeon_3
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 

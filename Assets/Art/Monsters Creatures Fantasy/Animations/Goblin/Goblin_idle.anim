@@ -17,6 +17,7 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
+<<<<<<< HEAD
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
@@ -33,12 +34,16 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
     flags: 2
+=======
+  m_PPtrCurves: []
+>>>>>>> Idle-Dungeon_3
   m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
+<<<<<<< HEAD
     genericBindings:
     - serializedVersion: 2
       path: 0
@@ -54,12 +59,20 @@ AnimationClip:
     - {fileID: -7385789195546760866, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
     - {fileID: 3234629978573100161, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
     - {fileID: 6373048116405451881, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
+=======
+    genericBindings: []
+    pptrCurveMapping: []
+>>>>>>> Idle-Dungeon_3
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
+<<<<<<< HEAD
     m_StopTime: 1.0833334
+=======
+    m_StopTime: 1
+>>>>>>> Idle-Dungeon_3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
