@@ -93,14 +93,14 @@ public class ProgressBarTimer : MonoBehaviour
 
     private void PlayerAttack()
     {
-        animator.SetTrigger("PlayerAttack");
+        animator.SetTrigger("Attack1");
         enemyAnimator.SetTrigger("EnemyTakeHit");
     }
 
     private void EnemyAttack()
     {
         enemyAnimator.SetTrigger("EnemyAttack");
-        animator.SetTrigger("PlayerTakeHit");
+        animator.SetTrigger("Hurt");
     }
 
 

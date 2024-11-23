@@ -1359,7 +1359,6 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
     nameFileIdTable:
       Idle_dungeon_icons_0: 101003381719452563
       Idle_dungeon_icons_1: -7121616847491062742
@@ -1411,9 +1410,6 @@ TextureImporter:
       Idle_dungeon_icons_7: 8408274595485506712
       Idle_dungeon_icons_8: 6286191673733296596
       Idle_dungeon_icons_9: 3205035591479079483
-=======
-    nameFileIdTable: {}
->>>>>>> Idle-Dungeon_3
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

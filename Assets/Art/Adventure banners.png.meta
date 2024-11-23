@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Adventure banners_0: 4435274231508155756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

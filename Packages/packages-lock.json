@@ -18,13 +18,8 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
         "com.unity.2d.common": "6.0.6",
         "com.unity.2d.sprite": "1.0.0",
-=======
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.2d.common": "6.0.6",
->>>>>>> Idle-Dungeon_3
         "com.unity.mathematics": "1.2.6",
         "com.unity.modules.animation": "1.0.0"
       },
@@ -35,19 +30,11 @@
       "depth": 2,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
         "com.unity.burst": "1.8.4",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.mathematics": "1.1.0",
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
-=======
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.burst": "1.8.4"
->>>>>>> Idle-Dungeon_3
       },
       "url": "https://packages.unity.com"
     },
@@ -70,11 +57,7 @@
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
-<<<<<<< HEAD
       "depth": 0,
-=======
-      "depth": 1,
->>>>>>> Idle-Dungeon_3
       "source": "builtin",
       "dependencies": {}
     },
@@ -83,24 +66,15 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
         "com.unity.2d.common": "9.0.5",
         "com.unity.mathematics": "1.1.0",
-=======
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.2d.common": "9.0.5",
->>>>>>> Idle-Dungeon_3
         "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.tilemap": {
       "version": "1.0.0",
-<<<<<<< HEAD
       "depth": 0,
-=======
-      "depth": 1,
->>>>>>> Idle-Dungeon_3
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.tilemap": "1.0.0",
@@ -112,20 +86,13 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
         "com.unity.ugui": "1.0.0",
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.modules.tilemap": "1.0.0",
-=======
-        "com.unity.modules.tilemap": "1.0.0",
-        "com.unity.2d.tilemap": "1.0.0",
-        "com.unity.ugui": "1.0.0",
->>>>>>> Idle-Dungeon_3
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.ads": {
       "version": "4.4.2",
       "depth": 0,
@@ -140,8 +107,8 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.services.analytics": "1.0.4",
-        "com.unity.ugui": "1.0.0"
+        "com.unity.ugui": "1.0.0",
+        "com.unity.services.analytics": "1.0.4"
       },
       "url": "https://packages.unity.com"
     },
@@ -154,8 +121,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.burst": {
       "version": "1.8.18",
       "depth": 2,
@@ -175,21 +140,12 @@
     },
     "com.unity.collections": {
       "version": "2.5.1",
-<<<<<<< HEAD
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.8.17",
         "com.unity.test-framework": "1.4.5",
         "com.unity.nuget.mono-cecil": "1.11.4",
-=======
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.8.17",
-        "com.unity.nuget.mono-cecil": "1.11.4",
-        "com.unity.test-framework": "1.4.5",
->>>>>>> Idle-Dungeon_3
         "com.unity.test-framework.performance": "3.0.3"
       },
       "url": "https://packages.unity.com"
@@ -234,16 +190,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
-    "com.unity.ide.vscode": {
-      "version": "1.2.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.inputsystem": {
       "version": "1.11.1",
       "depth": 0,
@@ -270,16 +216,11 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
-<<<<<<< HEAD
       "depth": 2,
-=======
-      "depth": 3,
->>>>>>> Idle-Dungeon_3
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
       "depth": 2,
@@ -311,8 +252,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.render-pipelines.core": {
       "version": "17.0.3",
       "depth": 1,
@@ -363,7 +302,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.services.analytics": {
       "version": "6.0.1",
       "depth": 1,
@@ -380,9 +318,9 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.androidjni": "1.0.0",
         "com.unity.nuget.newtonsoft-json": "3.2.1",
-        "com.unity.modules.androidjni": "1.0.0"
+        "com.unity.modules.unitywebrequest": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -393,8 +331,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.shadergraph": {
       "version": "17.0.3",
       "depth": 1,
@@ -417,11 +353,7 @@
     },
     "com.unity.test-framework.performance": {
       "version": "3.0.3",
-<<<<<<< HEAD
       "depth": 2,
-=======
-      "depth": 3,
->>>>>>> Idle-Dungeon_3
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.31",
@@ -429,7 +361,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.testtools.codecoverage": {
       "version": "1.2.6",
       "depth": 0,
@@ -440,22 +371,14 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.timeline": {
       "version": "1.8.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.director": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
-=======
-        "com.unity.modules.director": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
->>>>>>> Idle-Dungeon_3
         "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -479,7 +402,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.11",
       "depth": 0,
@@ -490,8 +412,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Idle-Dungeon_3
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
