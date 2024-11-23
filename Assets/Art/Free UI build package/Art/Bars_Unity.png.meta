@@ -5,7 +5,7 @@ AssetOrigin:
   productId: 170878
   packageName: Free Ui Pack
   packageVersion: 1.0
-  assetPath: Assets/Free UI build package/Art/Bars_Unity.png
+  assetPath: Assets/Art/Free UI build package/Art/Bars_Unity.png
   uploadId: 373354
 TextureImporter:
   internalIDToNameTable:
@@ -218,7 +218,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 4
-    buildTarget: iPhone
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1

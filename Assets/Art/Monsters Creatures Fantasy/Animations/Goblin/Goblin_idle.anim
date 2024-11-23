@@ -17,7 +17,6 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-<<<<<<< HEAD
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
@@ -34,9 +33,6 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
     flags: 2
-=======
-  m_PPtrCurves: []
->>>>>>> Idle-Dungeon_3
   m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
