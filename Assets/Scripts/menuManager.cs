@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public Menu[] menu = new Menu[7];
-    public UpgradeMenu[] upgradeMenus = new UpgradeMenu[4];
+    public UpgradeMenu[] upgradeMenus = new UpgradeMenu[5];
 
 
     void Start()
