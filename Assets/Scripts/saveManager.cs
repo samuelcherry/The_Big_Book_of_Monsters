@@ -68,11 +68,7 @@ public class SaveManager : MonoBehaviour
                 var upgrade = upgrades.roles[r].upgrades[i];
                 upgrade.skillPointSlider.value = upgrade.metalCount / upgrade.metalMax;
             }
-
         }
-
-        Debug.Log("Load");
-
     }
     public void PlayerSave()
     {
@@ -258,7 +254,6 @@ public class SaveManager : MonoBehaviour
             alchBar[i].totalTime = alchBar[i].baseTime / alchBar[i].alchLvl;
 
         }
-        Debug.Log($"Load RWD: " + alchemyTimers.alchemyProgressBar[0].rwd);
 
         for (int i = 0; i < alchemyTimers.potion.Length; i++)
         {

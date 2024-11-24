@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using JetBrains.Annotations;
 
 
 public class EnemyStats : MonoBehaviour
@@ -11,12 +12,14 @@ public class EnemyStats : MonoBehaviour
     public Prestige prestige;
     public ProgressBarTimer progressBarTimer;
     public Bestiary bestiary;
+    public Inventory inventory;
     public ConfirmManager confirmManager;
     public TMP_Text EnemyHpText, StageNumber, EnemyNameText, GoldAmtText;
     public Slider enemyHpBar;
     private bool isButtonPressed;
 
 
+    public string drop;
     public int Stage;
     public float GoldAmt;
     public int tempAdventureNumber;
@@ -200,6 +203,7 @@ public class EnemyStats : MonoBehaviour
             {
                 playerStats.AddGold();
                 playerStats.AddXp();
+                inventory.DropTable();
                 currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
                 playerStats.currentHp = playerStats.maxHp;
                 for (int i = 0; i < bestiary.entry.Length; i++)
@@ -227,6 +231,11 @@ public class EnemyStats : MonoBehaviour
             }
         }
         UpdateEnemyStatsText();
+    }
+
+    public void DropTable()
+    {
+        drop = "";
     }
 
 
