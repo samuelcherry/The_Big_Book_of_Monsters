@@ -20993,6 +20993,7 @@ MonoBehaviour:
   playerStats: {fileID: 1581234899}
   enemyStats: {fileID: 764326449}
   saveManager: {fileID: 1884933239}
+  playerInventory: {fileID: 1676385016}
   AlchPrestigeAmtText: {fileID: 887119362}
   AlchPrestigeCostText: {fileID: 1809973616}
   AlchemyPrestigeCost: 
@@ -47722,11 +47723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c51821c06b624a4fb11785f69cf1062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drop: potion
-  inventoryGrid: {fileID: 1348690735}
-  inventoryItemPrefab: {fileID: 2396631653478742447, guid: 15af5189422c2c24985b6069f752ed25, type: 3}
   sampleList: []
   masterItemList: []
+  inventoryGrid: {fileID: 1348690735}
+  inventoryItemPrefab: {fileID: 2396631653478742447, guid: 15af5189422c2c24985b6069f752ed25, type: 3}
 --- !u!1 &1683416982
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class AlchemyTimers : MonoBehaviour
     public PlayerStats playerStats;
     public EnemyStats enemyStats;
     public SaveManager saveManager;
+    public Inventory playerInventory;
 
     [System.Serializable]
     public struct AlchemyProgressBars
@@ -274,13 +275,14 @@ public class AlchemyTimers : MonoBehaviour
     {
         if (potion[index].PotionAmt < potion[index].PotionMax)
         {
-            if (alchemyProgressBar[4].rwd >= potion[index].PotionReq)
+            if (playerInventory.HasItem("Water Weed", 2) && alchemyProgressBar[4].rwd >= potion[index].PotionReq)
             {
                 alchemyProgressBar[4].rwd -= potion[index].PotionReq;
                 potion[index].PotionAmt += 1;
+                saveManager.AlchemySave();
             }
         }
-        saveManager.AlchemySave();
+
     }
 
     public void UsePotions(int index)

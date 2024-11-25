@@ -52,9 +52,9 @@ public class Inventory : MonoBehaviour
         // Initialize the master item list with predefined items
         masterItemList = new List<ItemDefinition>
         {
-            new() { name = "Potion_01", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon1") },
-            new() { name = "Potion_02", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon2") },
-            new() { name = "Potion_03", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon3") },
+            new() { name = "Water Weed", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon24") },
+            new() { name = "Fire Fruit", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon19") },
+            new() { name = "Spark Flowers", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon40") },
        };
 
         enemyDropTables = new Dictionary<int, List<DropRateItem>>
@@ -76,7 +76,50 @@ public class Inventory : MonoBehaviour
         };
     }
 
+    public bool HasItem(string itemName, int reqAmount)
+    {
+        InventoryItem existingItem = sampleList.Find(item => item.name == itemName);
+        if (existingItem != null && existingItem.quantity >= reqAmount)
+        {
+            existingItem.quantity -= reqAmount;
 
+            if (existingItem.quantity <= 0)
+            {
+                sampleList.Remove(existingItem);
+                RemoveItemUI(itemName);
+            }
+            else
+            {
+                UpdateIteamQuantityUI(itemName, existingItem.quantity);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private void RemoveItemUI(string itemName)
+    {
+        if (itemSlotDictionary.ContainsKey(itemName))
+        {
+            GameObject slotToRemove = itemSlotDictionary[itemName];
+            itemSlotDictionary.Remove(itemName);
+            Destroy(slotToRemove);
+
+            Debug.Log($"Removed UI slot for {itemName}");
+        }
+    }
+
+    private void UpdateIteamQuantityUI(string itemName, int newQuantity)
+    {
+        if (itemSlotDictionary.ContainsKey(itemName))
+        {
+            var quantityText = itemSlotDictionary[itemName].transform.Find("Quantity").GetComponent<TMP_Text>();
+            if (quantityText != null)
+            {
+                quantityText.text = newQuantity.ToString();
+            }
+        }
+    }
 
     public void DropTable(int enemyId)
     {
