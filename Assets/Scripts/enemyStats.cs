@@ -57,7 +57,8 @@ public class EnemyStats : MonoBehaviour
         public class Enemy
         {
             public string enemyName;
-            public float enemyMaxHp, enemyCurrentHp, enemyDef, enemyAtk, xpRwd, baseXpRwd, goldRwd, baseGoldRwd, enemySpeed, enemyId;
+            public int enemyId;
+            public float enemyMaxHp, enemyCurrentHp, enemyDef, enemyAtk, xpRwd, baseXpRwd, goldRwd, baseGoldRwd, enemySpeed;
 
             // Constructor to initialize all fields
             public Enemy(string name, float maxHp, float def, float atk, float xpRwd, float baseXpRwd, float baseGoldRwd, float goldRwd, float speed, int enemyId)
@@ -203,7 +204,7 @@ public class EnemyStats : MonoBehaviour
             {
                 playerStats.AddGold();
                 playerStats.AddXp();
-                inventory.DropTable();
+                inventory.DropTable(currentEnemy.enemyId);
                 currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
                 playerStats.currentHp = playerStats.maxHp;
                 for (int i = 0; i < bestiary.entry.Length; i++)

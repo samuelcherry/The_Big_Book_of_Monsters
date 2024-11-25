@@ -6251,7 +6251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF+30 HP+30
   roleIndex: 1
   upgradeIndex: 7
 --- !u!114 &179829922
@@ -7506,7 +7506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +40
   roleIndex: 3
   upgradeIndex: 5
 --- !u!114 &213829965
@@ -8604,7 +8604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +10 HP +10
   roleIndex: 1
   upgradeIndex: 0
 --- !u!114 &244100106
@@ -11158,7 +11158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +10 ATK +10
   roleIndex: 2
   upgradeIndex: 2
 --- !u!114 &330050713
@@ -13074,7 +13074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +10 ATK +10
   roleIndex: 2
   upgradeIndex: 1
 --- !u!114 &431616919
@@ -14417,7 +14417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +40 HP +40
   roleIndex: 1
   upgradeIndex: 9
 --- !u!114 &483286805
@@ -15025,7 +15025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +20
   roleIndex: 1
   upgradeIndex: 2
 --- !u!114 &502102696
@@ -16042,7 +16042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +10 HP +10
   roleIndex: 3
   upgradeIndex: 0
 --- !u!114 &533834638
@@ -18522,7 +18522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK + 20 HP +20
   roleIndex: 1
   upgradeIndex: 3
 --- !u!114 &649672414
@@ -21946,7 +21946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +60
   roleIndex: 2
   upgradeIndex: 6
 --- !u!114 &782795368
@@ -22101,7 +22101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +40 ATK +40
   roleIndex: 2
   upgradeIndex: 10
 --- !u!114 &783222969
@@ -22963,7 +22963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +40
   roleIndex: 2
   upgradeIndex: 3
 --- !u!114 &804937052
@@ -23252,7 +23252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +20 HP +20
   roleIndex: 3
   upgradeIndex: 3
 --- !u!114 &811624989
@@ -23407,7 +23407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +40 HP +40
   roleIndex: 1
   upgradeIndex: 10
 --- !u!114 &812135637
@@ -26770,7 +26770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +30 HP +30
   roleIndex: 3
   upgradeIndex: 7
 --- !u!114 &938347513
@@ -29778,7 +29778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +20
   roleIndex: 3
   upgradeIndex: 2
 --- !u!114 &1078290556
@@ -30008,7 +30008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK+30 HP+30
   roleIndex: 1
   upgradeIndex: 6
 --- !u!114 &1092656750
@@ -33406,7 +33406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +40
   roleIndex: 1
   upgradeIndex: 5
 --- !u!114 &1158620013
@@ -33966,7 +33966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +30 ATK +30
   roleIndex: 2
   upgradeIndex: 7
 --- !u!114 &1177080348
@@ -34157,7 +34157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +40 ATK +40
   roleIndex: 2
   upgradeIndex: 11
 --- !u!114 &1179421818
@@ -38604,7 +38604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +20 ATK +20
   roleIndex: 2
   upgradeIndex: 5
 --- !u!114 &1376361479
@@ -38759,7 +38759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +10 HP +10
   roleIndex: 3
   upgradeIndex: 1
 --- !u!114 &1378946488
@@ -39373,7 +39373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +80
   roleIndex: 1
   upgradeIndex: 11
 --- !u!114 &1393114856
@@ -40036,7 +40036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +80
   roleIndex: 2
   upgradeIndex: 9
 --- !u!114 &1402896574
@@ -40896,7 +40896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +60
   roleIndex: 1
   upgradeIndex: 8
 --- !u!114 &1436340725
@@ -42082,7 +42082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +30 HP +30
   roleIndex: 3
   upgradeIndex: 6
 --- !u!114 &1469412206
@@ -44851,7 +44851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +60
   roleIndex: 3
   upgradeIndex: 8
 --- !u!114 &1567179688
@@ -47218,7 +47218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +20 ATK +20
   roleIndex: 2
   upgradeIndex: 4
 --- !u!114 &1650564369
@@ -48455,7 +48455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +30 ATK +30
   roleIndex: 2
   upgradeIndex: 8
 --- !u!114 &1717231522
@@ -52189,7 +52189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: HP +80
   roleIndex: 3
   upgradeIndex: 11
 --- !u!114 &1742031412
@@ -54245,7 +54245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +20 HP +20
   roleIndex: 3
   upgradeIndex: 4
 --- !u!114 &1801210806
@@ -56949,7 +56949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +10 HP +10
   roleIndex: 1
   upgradeIndex: 1
 --- !u!114 &1907149720
@@ -57987,7 +57987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +40 HP +40
   roleIndex: 3
   upgradeIndex: 10
 --- !u!114 &1927386739
@@ -58629,7 +58629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +40 HP +40
   roleIndex: 3
   upgradeIndex: 9
 --- !u!114 &1945786619
@@ -59297,7 +59297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: ATK +20
   roleIndex: 2
   upgradeIndex: 0
 --- !u!114 &1960568353
@@ -64402,7 +64402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotUpgrades: {fileID: 316611369}
   upgrades: {fileID: 2067066247}
-  upgradeDescription: 
+  upgradeDescription: DEF +20 HP +20
   roleIndex: 1
   upgradeIndex: 4
 --- !u!114 &2138538559
