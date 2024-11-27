@@ -14,15 +14,7 @@ public class ProgressBarTimer : MonoBehaviour
 
     public TMP_Text spdText;
 
-
-
-
-
-    public float playerAtkTime;
-    private float playerAtkTimeLeft;
-    public float enemyAtkTime;
-    private float enemyAtkTimeLeft;
-
+    public float playerAtkTime, playerAtkTimeLeft, enemyAtkTime, enemyAtkTimeLeft, spdBuff;
 
     public Animator animator;
     public Animator enemyAnimator;

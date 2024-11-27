@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour
     public Slider xpBar, hpBar;
 
     public int level, atkMetalCount, defMetalCount, hpMetalCount, role, roleChoosen;
-    public float currentXp, maxXP, currentHp, maxHp, atk, def;
+    public float currentXp, maxXP, currentHp, maxHp, atk, def, atkBuff, defBuff;
 
 
     public int[] xpArray;
@@ -57,6 +57,7 @@ public class PlayerStats : MonoBehaviour
         UpdateStats();
         UpdateStatText();
     }
+
 
 
 
@@ -171,13 +172,16 @@ public class PlayerStats : MonoBehaviour
         maxHp += hpMaxArray[level - 1] * (hpMetalCount * upgrades.hpPassiveMulti);
 
         currentHp = maxHp;
+
         atk = atkArray[level - 1];
         atk += slotUpgrade[1].slotAmtArr[slotUpgrade[1].slotLvl];
         atk += atkArray[level - 1] * (atkMetalCount * upgrades.atkPassiveMulti);
+        atk += atkBuff;
 
         def = defArray[level - 1];
         def += slotUpgrade[2].slotAmtArr[slotUpgrade[2].slotLvl];
         def += defArray[level - 1] * (defMetalCount * upgrades.defPassiveMulti);
+        def += defBuff;
 
         for (int r = 0; r < upgrades.roles.Length; r++)
         {

@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class AlchemyTimers : MonoBehaviour
@@ -34,6 +37,22 @@ public class AlchemyTimers : MonoBehaviour
         public TMP_Text PotionAmtText, PotionInvText;
     }
 
+    public class PotionRecipe
+    {
+        public string potionName;
+        public List<Ingredient> ingredients;
+        public int alchemyReq;
+        public int maxPotionAmt;
+    }
+
+    [Serializable]
+    public class Ingredient
+    {
+        public string name;
+        public int quantity;
+    }
+
+    public List<PotionRecipe> potionRecipes;
 
     public AlchemyProgressBars[] alchemyProgressBar = new AlchemyProgressBars[5];
     public Toggle[] alchemyToggles = new Toggle[5];
@@ -90,6 +109,103 @@ public class AlchemyTimers : MonoBehaviour
         }
 
         AlchAutoBuyerAmt = AlchAutoBuyerLvl;
+
+        //CREATING RECIPES
+
+        potionRecipes = new List<PotionRecipe>
+        {
+            new() {
+                potionName = "Hp Potion 1",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Water Weed", quantity = 2},
+                    new() {name = "Fire Fruit", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+            new() {
+                potionName = "Atk Potion 1",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Water Weed", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+
+            new() {
+                potionName = "Def Potion 1",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Fire Fruit", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+
+            new() {
+                potionName = "Spd Potion 1",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Fire Fruit", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+
+                        new() {
+                potionName = "Hp Potion 2",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Water Weed", quantity = 2},
+                    new() {name = "Hp Potion 1", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+            new() {
+                potionName = "Atk Potion 2",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Atk Potion 1", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+
+            new() {
+                potionName = "Def Potion 2",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Def Potion 1", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            },
+
+            new() {
+                potionName = "Spd Potion 2",
+                ingredients = new List<Ingredient>
+                {
+                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Spd Potion 1", quantity = 1}
+                },
+                alchemyReq = 0,
+                maxPotionAmt = 5
+            }
+        };
+
+
+
+
+
+
         saveManager.AlchemyLoad();
     }
 
@@ -273,34 +389,48 @@ public class AlchemyTimers : MonoBehaviour
 
     public void BrewPotion(int index)
     {
-        if (potion[index].PotionAmt < potion[index].PotionMax)
+        if (index < 0 || index >= potionRecipes.Count)
         {
-            if (playerInventory.HasItem("Water Weed", 2) && alchemyProgressBar[4].rwd >= potion[index].PotionReq)
+            Debug.LogError("Invalid potion index.");
+            return;
+        }
+
+        PotionRecipe recipe = potionRecipes[index];
+
+        foreach (var ingredient in recipe.ingredients)
+        {
+            if (!playerInventory.HasItem(ingredient.name, ingredient.quantity))
             {
-                alchemyProgressBar[4].rwd -= potion[index].PotionReq;
-                potion[index].PotionAmt += 1;
-                saveManager.AlchemySave();
+                Debug.Log($"Missing required ingredient: {ingredient.name}");
+                return;
             }
         }
 
-    }
-
-    public void UsePotions(int index)
-    {
-        if (potion[index].PotionAmt > 0)
+        if (alchemyProgressBar[4].rwd < recipe.alchemyReq)
         {
-            Debug.Log("USE POTION");
-            potion[index].PotionAmt -= 1;
-            playerStats.currentHp += 100 * (index + 1);
-            if (playerStats.currentHp > playerStats.maxHp)
-            {
-                playerStats.currentHp = playerStats.maxHp;
-            }
-            UpdateTimerText(index);
-            playerStats.UpdateHpText();
-
-
+            Debug.Log("Not enough alchemy progress");
+            return;
         }
+
+        alchemyProgressBar[4].rwd -= recipe.alchemyReq;
+
+        var itemDefinition = playerInventory.masterItemList.Find(item => item.name == recipe.potionName);
+
+        if (itemDefinition != null)
+        {
+            playerInventory.AddItem(itemDefinition.name, 1, itemDefinition.icon);
+
+            var updatedItem = playerInventory.sampleList.Find(item => item.name == itemDefinition.name);
+            if (updatedItem != null)
+            {
+                playerInventory.UpdateIteamQuantityUI(updatedItem.name, updatedItem.quantity);
+            }
+        }
+        else
+        {
+            Debug.LogError($"Item {recipe.potionName} not found in masterItemList.");
+        }
+
         saveManager.AlchemySave();
     }
 
