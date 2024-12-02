@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using JetBrains.Annotations;
+using System;
 
 
 public class EnemyStats : MonoBehaviour
@@ -14,8 +15,9 @@ public class EnemyStats : MonoBehaviour
     public Bestiary bestiary;
     public Inventory inventory;
     public ConfirmManager confirmManager;
-    public TMP_Text EnemyHpText, StageNumber, EnemyNameText, GoldAmtText;
+    public TMP_Text EnemyHpText, StageNumber, EnemyNameText, GoldAmtText, dmgText;
     public Slider enemyHpBar;
+    public Popup popup;
     private bool isButtonPressed;
 
 
@@ -195,10 +197,15 @@ public class EnemyStats : MonoBehaviour
         var currentEnemy = currentAdventure.enemies[Stage - 1];
         if (currentEnemy.enemyCurrentHp > 0 && playerStats.atk > currentEnemy.enemyDef)
         {
-            currentEnemy.enemyCurrentHp -= playerStats.atk - currentEnemy.enemyDef;
+            float baseDMG = playerStats.atk - currentEnemy.enemyDef;
+            float maxDMG = (float)(baseDMG * 1.20);
+            float minDMG = (float)(baseDMG * .80);
+            float damage = UnityEngine.Random.Range(minDMG, maxDMG);
+            dmgText.text = playerStats.FormatStatValue(damage).ToString();
+            popup.FadePopup();
+
+            currentEnemy.enemyCurrentHp -= damage;
             enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
-
-
 
             if (currentEnemy.enemyCurrentHp <= 0)  // KILL ENEMY
             {
@@ -231,8 +238,72 @@ public class EnemyStats : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            dmgText.text = "0";
+            popup.FadePopup();
+        }
         UpdateEnemyStatsText();
     }
+
+
+    public void ClickDamage()
+    {
+        if (Stage <= 0 || Stage > currentAdventure.maxStages) return;  // Bounds check
+
+        var currentEnemy = currentAdventure.enemies[Stage - 1];
+        if (currentEnemy.enemyCurrentHp > 0 && playerStats.atk > currentEnemy.enemyDef)
+        {
+            float baseDMG = playerStats.atk - currentEnemy.enemyDef;
+            float maxDMG = (float)(baseDMG * 1.20);
+            float minDMG = (float)(baseDMG * .80);
+            float damage = UnityEngine.Random.Range(minDMG, maxDMG);
+            dmgText.text = playerStats.FormatStatValue(damage / 10).ToString();
+            popup.FadePopup();
+
+            currentEnemy.enemyCurrentHp -= damage / 10;
+            enemyHpBar.value = currentEnemy.enemyCurrentHp / currentEnemy.enemyMaxHp;
+
+            if (currentEnemy.enemyCurrentHp <= 0)  // KILL ENEMY
+            {
+                playerStats.AddGold();
+                playerStats.AddXp();
+                inventory.DropTable(currentEnemy.enemyId);
+                currentEnemy.enemyCurrentHp = currentEnemy.enemyMaxHp;
+                playerStats.currentHp = playerStats.maxHp;
+                for (int i = 0; i < bestiary.entry.Length; i++)
+                {
+                    if (bestiary.entry[i].EntryId == currentEnemy.enemyId)
+                    {
+                        if (bestiary.entry[i].IsDefeated == 0)
+                        {
+                            bestiary.entry[i].IsDefeated = 1;
+                            saveManager.Save();
+                        }
+                    }
+                }
+                if (Stage == currentAdventure.maxStages)
+                {
+                    currentAdventure.isCompleted = 1;
+                    if (currentAdventure.isCompleted == 1 && currentAdventure.prevCompleted == 0)
+                    {
+                        confirmManager.ToggleShow(4);
+                        currentAdventure.prevCompleted = 1;
+                    }
+
+                    saveManager.Save();
+                }
+            }
+        }
+        else
+        {
+            dmgText.text = "0";
+            popup.FadePopup();
+        }
+        UpdateEnemyStatsText();
+    }
+
+
 
     public void DropTable()
     {
@@ -248,14 +319,12 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HandleButtonCooldown());
 
             Stage++;
-
-            playerStats.currentHp = playerStats.maxHp;
-            progressBarTimer.enemyAtkTime = currentAdventure.enemies[Stage - 1].enemySpeed;
-            progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level - 1];
+            playerStats.UpdateStats();
+            playerStats.FullHeal();
+            playerStats.UpdateStatText();
             progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
-            playerStats.UpdateStatText();
         }
     }
 
@@ -267,14 +336,12 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HandleButtonCooldown());
 
             Stage--;
-
-            playerStats.currentHp = playerStats.maxHp;
-            progressBarTimer.enemyAtkTime = currentAdventure.enemies[Stage - 1].enemySpeed;
-            progressBarTimer.playerAtkTime = playerStats.speedArray[playerStats.level - 1];
+            playerStats.UpdateStats();
+            playerStats.FullHeal();
+            playerStats.UpdateStatText();
             progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
-            playerStats.UpdateStatText();
         }
     }
 

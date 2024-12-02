@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class AlchemyTimers : MonoBehaviour
@@ -14,8 +13,9 @@ public class AlchemyTimers : MonoBehaviour
     public EnemyStats enemyStats;
     public SaveManager saveManager;
     public Inventory playerInventory;
+    public Sprite genericPotionIcon;
 
-    [System.Serializable]
+    [Serializable]
     public struct AlchemyProgressBars
     {
         public Slider progressBar, alchLvlBar;
@@ -30,7 +30,7 @@ public class AlchemyTimers : MonoBehaviour
     public int AlchAutoBuyerLvl, AlchAutoBuyerAmt, AlchAutoBuyerMax;
 
 
-    [System.Serializable]
+    [Serializable]
     public struct Potions
     {
         public int PotionAmt, PotionMax, PotionStrenght, PotionReq;
@@ -65,17 +65,9 @@ public class AlchemyTimers : MonoBehaviour
     {
 
 
-        AlchemyPrestigeCost = new int[] { 1, 5, 10, 15, 20 };
+        AlchemyPrestigeCost = new int[] { 0, 5, 10, 15, 20 };
         AlchAutoBuyerLvl = 0;
         AlchAutoBuyerMax = 5;
-
-        potion[0].PotionStrenght = 25;
-        potion[1].PotionStrenght = 50;
-        potion[2].PotionStrenght = 100;
-
-        potion[0].PotionReq = 1;
-        potion[1].PotionReq = 2;
-        potion[2].PotionReq = 3;
 
         for (int i = 0; i < alchemyProgressBar.Length; i++)
         {
@@ -118,20 +110,18 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Hp Potion 1",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Water Weed", quantity = 2},
-                    new() {name = "Fire Fruit", quantity = 1}
+                    new() {name = "Snake Charm Flower", quantity = 1},
+                    new() {name = "Generic Potion", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
             new() {
                 potionName = "Atk Potion 1",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Spark Flowers", quantity = 1},
-                    new() {name = "Water Weed", quantity = 1}
+                    new() {name = "Fire Fruit", quantity = 1},
+                    new() {name = "Generic Potion", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
 
@@ -139,10 +129,9 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Def Potion 1",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Spark Flowers", quantity = 1},
-                    new() {name = "Fire Fruit", quantity = 1}
+                    new() {name = "Water Weed", quantity = 1},
+                    new() {name = "Generic Potion", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
 
@@ -151,9 +140,8 @@ public class AlchemyTimers : MonoBehaviour
                 ingredients = new List<Ingredient>
                 {
                     new() {name = "Spark Flowers", quantity = 1},
-                    new() {name = "Fire Fruit", quantity = 1}
+                    new() {name = "Generic Potion", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
 
@@ -161,20 +149,18 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Hp Potion 2",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Water Weed", quantity = 2},
+                    new() {name = "Animum Powder", quantity = 2},
                     new() {name = "Hp Potion 1", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
             new() {
                 potionName = "Atk Potion 2",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Ember Buds", quantity = 1},
                     new() {name = "Atk Potion 1", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
 
@@ -182,10 +168,9 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Def Potion 2",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Frost Berries", quantity = 1},
                     new() {name = "Def Potion 1", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             },
 
@@ -193,46 +178,33 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Spd Potion 2",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Spark Flowers", quantity = 1},
+                    new() {name = "Volt Apples", quantity = 1},
                     new() {name = "Spd Potion 1", quantity = 1}
                 },
-                alchemyReq = 0,
                 maxPotionAmt = 5
             }
         };
-
-
-
-
-
-
         saveManager.AlchemyLoad();
     }
 
-    // Update is called once per frame
     public void Update()
     {
         if (alchemyToggles[0].isOn)
         {
-            // Handle the first timer separately
-            if (alchemyProgressBar[0].rwd < alchemyProgressBar[0].limit)
+            if (alchemyProgressBar[0].rwd < alchemyProgressBar[0].limit)// Handle the first timer separately
             {
                 if (alchemyProgressBar[0].timeLeft > 0)
                 {
                     alchemyProgressBar[0].timeLeft -= Time.deltaTime;
-                    alchemyProgressBar[0].progressBar.value = alchemyProgressBar[0].timeLeft / alchemyProgressBar[0].totalTime;
                 }
                 else
                 {
-
                     alchemyProgressBar[0].rwd += 1;
                     AlchAddXp(0);
                     alchemyProgressBar[0].timeLeft = alchemyProgressBar[0].totalTime;
                     alchemyProgressBar[0].progressBar.value = 1;
 
                     alchemyProgressBar[0].previousToggleStates = true;
-                    alchemyToggles[0].isOn = true;
-                    alchemyProgressBar[0].progressBar.value = alchemyProgressBar[0].timeLeft / alchemyProgressBar[0].totalTime;
                 }
             }
         }
@@ -249,7 +221,6 @@ public class AlchemyTimers : MonoBehaviour
                     {
                         alchemyProgressBar[i - 1].rwd -= 1; // Deduct one reward from the previous timer to start this timer
                         alchemyProgressBar[i].timeLeft -= Time.deltaTime;
-                        alchemyProgressBar[i].progressBar.value = alchemyProgressBar[i].timeLeft / alchemyProgressBar[i].totalTime;
                         alchemyProgressBar[i].canRun = true;
                     }
 
@@ -257,7 +228,6 @@ public class AlchemyTimers : MonoBehaviour
                     if (alchemyProgressBar[i].timeLeft < alchemyProgressBar[i].totalTime && alchemyProgressBar[i].canRun)
                     {
                         alchemyProgressBar[i].timeLeft -= Time.deltaTime;
-                        alchemyProgressBar[i].progressBar.value = alchemyProgressBar[i].timeLeft / alchemyProgressBar[i].totalTime;
 
                         if (alchemyProgressBar[i].timeLeft <= 0) // If the timer finishes
                         {
@@ -266,13 +236,16 @@ public class AlchemyTimers : MonoBehaviour
                             alchemyProgressBar[i].timeLeft = alchemyProgressBar[i].totalTime;
                             alchemyProgressBar[i].progressBar.value = 1;
                             alchemyProgressBar[i].canRun = true;
+                            UpdateAlchText();
                         }
                     }
                 }
             }
         }
+
         for (int i = 0; i < alchemyProgressBar.Length; i++)
         {
+            alchemyProgressBar[i].progressBar.value = alchemyProgressBar[i].timeLeft / alchemyProgressBar[i].totalTime;
             UpdateTimerText(i);
         }
     }
@@ -309,7 +282,7 @@ public class AlchemyTimers : MonoBehaviour
 
             alchemyProgressBar[index].alchXP += 1;
 
-            //Rest timers
+            //Reset timers
             alchemyProgressBar[index].limit = 10 * alchemyProgressBar[index].alchLvl;
             alchemyProgressBar[index].alchMaxXp = math.floor(100 * alchemyProgressBar[index].alchLvl / (index + 1));
             alchemyProgressBar[index].totalTime = alchemyProgressBar[index].baseTime / alchemyProgressBar[index].alchLvl;
@@ -338,8 +311,6 @@ public class AlchemyTimers : MonoBehaviour
         saveManager.AlchemySave();
     }
 
-
-
     public void PurchaseAutoBuyer()
     {
         if (AlchAutoBuyerLvl < AlchAutoBuyerMax)
@@ -354,6 +325,7 @@ public class AlchemyTimers : MonoBehaviour
         }
 
     }
+
     public void UpdateTimerText(int index)
     {
         if (alchemyProgressBar[index].limitText != null)
@@ -389,49 +361,56 @@ public class AlchemyTimers : MonoBehaviour
 
     public void BrewPotion(int index)
     {
-        if (index < 0 || index >= potionRecipes.Count)
-        {
-            Debug.LogError("Invalid potion index.");
-            return;
-        }
-
         PotionRecipe recipe = potionRecipes[index];
+        var itemDefinition = playerInventory.masterItemList.Find(item => item.name == recipe.potionName);
+        bool hasAllIngredients = true;
 
-        foreach (var ingredient in recipe.ingredients)
+        foreach (var ingredient in recipe.ingredients) //Check if they have the ingredients
         {
-            if (!playerInventory.HasItem(ingredient.name, ingredient.quantity))
+            if (!playerInventory.HasItem(ingredient.name, ingredient.quantity)) //if not RETURN;
             {
                 Debug.Log($"Missing required ingredient: {ingredient.name}");
+                hasAllIngredients = false;
                 return;
             }
-        }
-
-        if (alchemyProgressBar[4].rwd < recipe.alchemyReq)
-        {
-            Debug.Log("Not enough alchemy progress");
-            return;
-        }
-
-        alchemyProgressBar[4].rwd -= recipe.alchemyReq;
-
-        var itemDefinition = playerInventory.masterItemList.Find(item => item.name == recipe.potionName);
-
-        if (itemDefinition != null)
-        {
-            playerInventory.AddItem(itemDefinition.name, 1, itemDefinition.icon);
-
-            var updatedItem = playerInventory.sampleList.Find(item => item.name == itemDefinition.name);
-            if (updatedItem != null)
+            else
             {
-                playerInventory.UpdateIteamQuantityUI(updatedItem.name, updatedItem.quantity);
+                Debug.Log($"Has {ingredient.quantity}: {ingredient.name}");
             }
         }
-        else
-        {
-            Debug.LogError($"Item {recipe.potionName} not found in masterItemList.");
-        }
 
-        saveManager.AlchemySave();
+        if (hasAllIngredients) //they have all the ingredients
+        {
+            Debug.Log($"Has all ingredients");
+            foreach (var ingredient in recipe.ingredients)
+            {
+                var ingredientList = playerInventory.sampleList.Find(item => item.name == ingredient.name);
+                ingredientList.quantity -= ingredient.quantity;
+
+                if (ingredientList.quantity <= 0)
+                {
+                    playerInventory.sampleList.Remove(ingredientList);
+                    Debug.Log($"{ingredient.name} was used up and removed from inventory.");
+                }
+            }
+
+            if (itemDefinition != null)
+            {
+                Debug.Log("TEST");
+                playerInventory.AddItem(itemDefinition.name, 1, itemDefinition.icon);
+            }
+
+            saveManager.AlchemySave();
+        }
+    }
+
+    public void BrewGeneric()
+    {
+        if (alchemyProgressBar[4].rwd > 0)
+        {
+            alchemyProgressBar[4].rwd -= 1;
+            playerInventory.AddItem("Generic Potion", 1, genericPotionIcon);
+        }
     }
 
     public void UpdateAlchText()

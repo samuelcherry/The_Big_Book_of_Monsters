@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
+
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,12 +11,13 @@ public class PlayerStats : MonoBehaviour
     public Prestige prestige;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+    public Popup2 enemyDMGPopup;
 
-    public TMP_Text levelText, xpText, hpText, atkText, defText, spdText;
+    public TMP_Text levelText, xpText, hpText, enemyDMGText;
     public Slider xpBar, hpBar;
 
     public int level, atkMetalCount, defMetalCount, hpMetalCount, role, roleChoosen;
-    public float currentXp, maxXP, currentHp, maxHp, atk, def, atkBuff, defBuff;
+    public float currentXp, maxXP, currentHp, maxHp, atk, def, atkBuff, defBuff, spdBuff;
 
 
     public int[] xpArray;
@@ -41,7 +42,7 @@ public class PlayerStats : MonoBehaviour
         hpMaxArray = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000 };
         atkArray = new float[] { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 };
         defArray = new int[] { 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 8, 8, 8, 10, 10, 10, 12, 12, 12, 14 };
-        speedArray = new float[] { 4F, 3.8F, 3.6F, 3.4F, 3.2F, 3F, 2.8F, 2.6F, 2.4F, 2.2F, 2F, 1.8F, 1.6F, 1.4F, 1.2F, 1F, 0.8F, 0.6F, 0.4F, 0.2F };
+        speedArray = new float[] { 2F, 1.9F, 1.9F, 1.8F, 1.8F, 1.7F, 1.7F, 1.6F, 1.6F, 1.5F, 1.5F, 1.4F, 1.4F, 1.3F, 1.3F, 1.2F, 1.2F, 1.1F, 1.1F, 1F };
 
 
         if (level < 20)
@@ -49,17 +50,16 @@ public class PlayerStats : MonoBehaviour
             maxXP = xpArray[level - 1];
         }
         currentHp = maxHp;
+
     }
 
     void Start()
     {
         saveManager.Load();
         UpdateStats();
+        FullHeal();
         UpdateStatText();
     }
-
-
-
 
     // A generic method to format any stat value based on its range
     public string FormatStatValue(float value)
@@ -129,6 +129,7 @@ public class PlayerStats : MonoBehaviour
             xpBar.value = currentXp / maxXP;
             progressBarTimer.playerAtkTime = speedArray[level - 1];
             UpdateStats();
+            FullHeal();
             saveManager.Save();
         }
         else
@@ -138,6 +139,7 @@ public class PlayerStats : MonoBehaviour
             xpBar.value = currentXp / maxXP;
             progressBarTimer.playerAtkTime = speedArray[level - 1];
             UpdateStats();
+            FullHeal();
             saveManager.Save();
         }
 
@@ -150,7 +152,18 @@ public class PlayerStats : MonoBehaviour
         {
             if (enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemyAtk > def)
             {
-                currentHp -= enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemyAtk - def;
+                float baseDMG = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemyAtk - def;
+                float maxDMG = (float)(baseDMG * 1.20);
+                float minDMG = (float)(baseDMG * .80);
+                float damage = Random.Range(minDMG, maxDMG);
+                enemyDMGText.text = FormatStatValue(damage).ToString();
+                enemyDMGPopup.FadePopup();
+                currentHp -= damage;
+            }
+            else
+            {
+                enemyDMGText.text = "0";
+                enemyDMGPopup.FadePopup();
             }
         }
 
@@ -159,7 +172,13 @@ public class PlayerStats : MonoBehaviour
             enemyStats.DecreaseStage();
             Reset();
         }
+        UpdateStats();
         UpdateStatText();
+    }
+
+    public void FullHeal()
+    {
+        currentHp = maxHp;
     }
 
 
@@ -171,8 +190,6 @@ public class PlayerStats : MonoBehaviour
         maxHp += slotUpgrade[0].slotAmtArr[slotUpgrade[0].slotLvl];
         maxHp += hpMaxArray[level - 1] * (hpMetalCount * upgrades.hpPassiveMulti);
 
-        currentHp = maxHp;
-
         atk = atkArray[level - 1];
         atk += slotUpgrade[1].slotAmtArr[slotUpgrade[1].slotLvl];
         atk += atkArray[level - 1] * (atkMetalCount * upgrades.atkPassiveMulti);
@@ -182,6 +199,12 @@ public class PlayerStats : MonoBehaviour
         def += slotUpgrade[2].slotAmtArr[slotUpgrade[2].slotLvl];
         def += defArray[level - 1] * (defMetalCount * upgrades.defPassiveMulti);
         def += defBuff;
+
+        if (spdBuff < 1)
+        {
+            spdBuff = 1;
+        }
+        progressBarTimer.playerAtkTime = speedArray[level - 1] / spdBuff;
 
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
@@ -199,15 +222,11 @@ public class PlayerStats : MonoBehaviour
         UpdateStatText();
     }
 
-
     public void UpdateStatText() //Checks for new values and updates text fields accordingly
     {
         UpdateHpText();
-        UpdateAtkText();
-        UpdateDefText();
         UpdateLevelText();
         UpdateGoldText();
-        progressBarTimer.UpdateSpdText();
     }
 
     public void UpdateHpText()
@@ -219,16 +238,6 @@ public class PlayerStats : MonoBehaviour
             hpBar.value = currentHp / maxHp;
         }
     }
-    public void UpdateAtkText()
-    {
-        atkText.text = "Atk: " + FormatStatValue(atk);
-    }
-    public void UpdateDefText()
-    {
-        defText.text = "Def: " + FormatStatValue(def);
-    }
-
-
     public void UpdateLevelText()
     {
         if (level < 20)

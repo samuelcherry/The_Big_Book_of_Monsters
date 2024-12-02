@@ -1,21 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using TMPro;
 using UnityEngine;
-
-
 
 public class Inventory : MonoBehaviour
 {
     public PlayerStats playerStats;
     public BuffManager buffManager;
+    public ListToText listToText;
     public ProgressBarTimer progressBarTimer;
     public AlchemyTimers alchemyTimers;
     [Serializable]
-
-
     public class InventoryItem
     {
         public string name;
@@ -49,27 +44,68 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> sampleList; // Player's inventory
     public List<ItemDefinition> masterItemList; // Predetermined list of items
     private Dictionary<int, List<DropRateItem>> enemyDropTables;
-    public GameObject inventoryGrid;
-    public GameObject inventoryItemPrefab;
-
-    private Dictionary<string, GameObject> itemSlotDictionary = new();
-
+    private Transform inventoryGrid;
+    private Transform inventoryItemPrefab;
     public Sprite attackBuffIcon, defBuffIcon, spdBuffIcon;
 
+    [Serializable]
+    private class InventoryListWrapper
+    {
+        public List<InventoryItem> inventoryItems;
+        public InventoryListWrapper(List<InventoryItem> items)
+        {
+            inventoryItems = items;
+        }
+
+    }
+
+    void SaveToPrefs<T>(string key, T data)
+    {
+        string json = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString(key, json);
+        PlayerPrefs.Save();
+    }
+
+    void SaveInventory()
+    {
+        SaveToPrefs("Inventory", new InventoryListWrapper(sampleList));
+        Debug.Log("Inventory Saved!");
+        listToText.PopulateText(sampleList);
+    }
+
+    public void LoadInventory()
+    {
+        ClearInventory();
+
+        if (PlayerPrefs.HasKey("Inventory"))
+        {
+            string json = PlayerPrefs.GetString("Inventory");
+
+            InventoryListWrapper wrapper = JsonUtility.FromJson<InventoryListWrapper>(json);
+            sampleList = wrapper.inventoryItems;
+
+            Debug.Log("Inventory loaded!");
+        }
+        else
+        {
+            Debug.LogWarning("No inventory data found.");
+        }
+
+        listToText.PopulateText(sampleList);
+
+    }
 
     void Start()
     {
-
         // Initialize the inventory list
         sampleList = new List<InventoryItem>();
-
         // Initialize the master item list with predefined items
         masterItemList = new List<ItemDefinition>
         {
-            new() { id=0, name = "Water Weed", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon24") },
+            new() { id=0,name = "Snake Charm Flower", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon14") },
             new() { id=1,name = "Fire Fruit", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon19") },
-            new() { id=2,name = "Spark Flowers", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon3") },
-            new() { id=3,name = "Snake Charm Flower", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon14") },
+            new() { id=2, name = "Water Weed", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon24") },
+            new() { id=3,name = "Spark Flowers", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon3") },
             new() { id=4,name = "Ember Buds", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon4") },
             new() { id=5,name = "Frost Berries", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon22") },
             new() { id=6,name = "Volt Apples", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon48") },
@@ -83,6 +119,14 @@ public class Inventory : MonoBehaviour
             new() { id=13,name = "Atk Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon4") },
             new() { id=14,name = "Def Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon8") },
             new() { id=15,name = "Spd Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon16") },
+            new() { id=16,name = "Generic Potion", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions 2/PNG/Transperent/Icon46") },
+            //FOOD
+            new() { id=17,name = "Bread", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon9") },
+            new() { id=18,name = "Drumstick", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon3") },
+            new() { id=19,name = "Full Plate", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon31") },
+            new() { id=20,name = "Bowl of Soup", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon43") },
+
+
 
        };
 
@@ -91,142 +135,150 @@ public class Inventory : MonoBehaviour
             {
                 0, new List<DropRateItem> // Enemy ID 0
                 {
-                    new() { item = masterItemList[0], dropRate = 10f },
+                    new() { item = masterItemList[17], dropRate = 30f },
+                    new() { item = masterItemList[18], dropRate = 10f },
+
                 }
             },
             {
                 1, new List<DropRateItem> // Enemy ID 1
                 {
-                    new() { item = masterItemList[1], dropRate = 10f },
+                    new() { item = masterItemList[17], dropRate = 35f },
+                    new() { item = masterItemList[18], dropRate = 15f },
                 }
             },
                         {
                 2, new List<DropRateItem> // Enemy ID 2
                 {
-                    new() { item = masterItemList[2], dropRate = 10f },
+                    new() { item = masterItemList[17], dropRate = 40f },
+                    new() { item = masterItemList[18], dropRate = 20f },
+                    new() { item = masterItemList[19], dropRate = 10f },
                 }
             },
             {
                 3, new List<DropRateItem> // Enemy ID 3
                 {
-                    new() { item = masterItemList[3], dropRate = 10f },
+                    new() { item = masterItemList[18], dropRate = 40f },
+                    new() { item = masterItemList[19], dropRate = 20f },
+                    new() { item = masterItemList[20], dropRate = 10f },
                 }
             },
                         {
                 4, new List<DropRateItem> // Enemy ID 4
                 {
-                    new() { item = masterItemList[0], dropRate = 10f },
-                    new() { item = masterItemList[1], dropRate = 10f },
-                    new() { item = masterItemList[2], dropRate = 10f },
-                    new() { item = masterItemList[3], dropRate = 10f }
+                    new() { item = masterItemList[17], dropRate = 45f },
+                    new() { item = masterItemList[18], dropRate = 40f },
+                    new() { item = masterItemList[19], dropRate = 25f },
+                    new() { item = masterItemList[20], dropRate = 20f },
+                    new() { item = masterItemList[0], dropRate = 15f }
                 }
             },
             {
                 5, new List<DropRateItem> // Enemy ID 5
                 {
-                    new() { item = masterItemList[0], dropRate = 20f },
+                    new() { item = masterItemList[0], dropRate = 40f },
                 }
             },
                         {
                 6, new List<DropRateItem> // Enemy ID 6
                 {
-                    new() { item = masterItemList[1], dropRate = 20f },
+                    new() { item = masterItemList[1], dropRate = 40f },
                 }
             },
             {
                 7, new List<DropRateItem> // Enemy ID 7
                 {
-                    new() { item = masterItemList[2], dropRate = 20f },
+                    new() { item = masterItemList[2], dropRate = 40f },
                 }
             },
                         {
                 8, new List<DropRateItem> // Enemy ID 8
                 {
-                    new() { item = masterItemList[3], dropRate = 20f }
+                    new() { item = masterItemList[3], dropRate = 40f }
                 }
             },
             {
                 9, new List<DropRateItem> // Enemy ID 9
                 {
-                    new() { item = masterItemList[0], dropRate = 20f },
-                    new() { item = masterItemList[1], dropRate = 20f },
-                    new() { item = masterItemList[2], dropRate = 20f },
-                    new() { item = masterItemList[3], dropRate = 20f },
-                    new() { item = masterItemList[8], dropRate = 10f },
+                    new() { item = masterItemList[0], dropRate = 50f },
+                    new() { item = masterItemList[1], dropRate = 50f },
+                    new() { item = masterItemList[2], dropRate = 50f },
+                    new() { item = masterItemList[3], dropRate = 50f },
+                    new() { item = masterItemList[8], dropRate = 20f },
                 }
             },
                         {
                 10, new List<DropRateItem> // Enemy ID 10
                 {
-                    new() { item = masterItemList[4], dropRate = 5f },
-                    new() { item = masterItemList[8], dropRate = 5f },
+                    new() { item = masterItemList[4], dropRate = 50f },
+                    new() { item = masterItemList[8], dropRate = 25f },
                 }
             },
             {
                 11, new List<DropRateItem> // Enemy ID 11
                 {
-                    new() { item = masterItemList[5], dropRate = 5f },
-                    new() { item = masterItemList[9], dropRate = 5f },
+                    new() { item = masterItemList[5], dropRate = 50f },
+                    new() { item = masterItemList[9], dropRate = 25f },
                 }
             },
                         {
                 12, new List<DropRateItem> // Enemy ID 12
                 {
-                    new() { item = masterItemList[6], dropRate = 5f },
-                    new() { item = masterItemList[10], dropRate = 5f },
+                    new() { item = masterItemList[6], dropRate = 50f },
+                    new() { item = masterItemList[10], dropRate = 25f },
                 }
             },
             {
                 13, new List<DropRateItem> // Enemy ID 13
                 {
-                    new() { item = masterItemList[7], dropRate = 5f },
-                    new() { item = masterItemList[11], dropRate = 5f },
+                    new() { item = masterItemList[7], dropRate = 50f },
+                    new() { item = masterItemList[11], dropRate = 25f },
                 }
             },
                         {
                 14, new List<DropRateItem> // Enemy ID 14
                 {
-                    new() { item = masterItemList[4], dropRate = 10f },
-                    new() { item = masterItemList[5], dropRate = 10f },
-                    new() { item = masterItemList[6], dropRate = 10f },
-                    new() { item = masterItemList[7], dropRate = 10f },
+                    new() { item = masterItemList[4], dropRate = 60f },
+                    new() { item = masterItemList[5], dropRate = 60f },
+                    new() { item = masterItemList[6], dropRate = 60f },
+                    new() { item = masterItemList[7], dropRate = 60f },
                 }
             },
             {
                 15, new List<DropRateItem> // Enemy ID 15
                 {
-                    new() { item = masterItemList[4], dropRate = 20f },
+                    new() { item = masterItemList[4], dropRate = 70f },
                 }
             },
                                     {
                 16, new List<DropRateItem> // Enemy ID 16
                 {
-                    new() { item = masterItemList[5], dropRate = 20f },
+                    new() { item = masterItemList[5], dropRate = 70f },
                 }
             },
             {
                 17, new List<DropRateItem> // Enemy ID 17
                 {
-                    new() { item = masterItemList[6], dropRate = 20f },
+                    new() { item = masterItemList[6], dropRate = 70f },
                 }
             },
                         {
                 18, new List<DropRateItem> // Enemy ID 18
                 {
-                    new() { item = masterItemList[7], dropRate = 20f },
+                    new() { item = masterItemList[7], dropRate = 70f },
                 }
             },
             {
                 19, new List<DropRateItem> // Enemy ID 19
                 {
-                    new() { item = masterItemList[4], dropRate = 20f },
-                    new() { item = masterItemList[5], dropRate = 20f },
-                    new() { item = masterItemList[6], dropRate = 20f },
-                    new() { item = masterItemList[7], dropRate = 20f },
-                    new() { item = masterItemList[8], dropRate = 10f },
-                    new() { item = masterItemList[9], dropRate = 10f },
-                    new() { item = masterItemList[10], dropRate = 10f },
-                    new() { item = masterItemList[11], dropRate = 10f }
+                    new() { item = masterItemList[4], dropRate = 70f },
+                    new() { item = masterItemList[5], dropRate = 70f },
+                    new() { item = masterItemList[6], dropRate = 70f },
+                    new() { item = masterItemList[7], dropRate = 70f },
+                    new() { item = masterItemList[8], dropRate = 40f },
+                    new() { item = masterItemList[9], dropRate = 40f },
+                    new() { item = masterItemList[10], dropRate = 40f },
+                    new() { item = masterItemList[11], dropRate = 40f }
                 }
             },
 
@@ -236,46 +288,23 @@ public class Inventory : MonoBehaviour
     public bool HasItem(string itemName, int reqAmount)
     {
         InventoryItem existingItem = sampleList.Find(item => item.name == itemName);
-        if (existingItem != null && existingItem.quantity >= reqAmount)
-        {
-            existingItem.quantity -= reqAmount;
 
-            if (existingItem.quantity <= 0)
-            {
-                sampleList.Remove(existingItem);
-                RemoveItemUI(itemName);
-            }
-            else
-            {
-                UpdateIteamQuantityUI(itemName, existingItem.quantity);
-            }
-            return true;
+        if (existingItem == null || existingItem.quantity < reqAmount)
+        {
+            Debug.LogWarning($"Not enough {itemName} in inventory. Required: {reqAmount}, Available: {existingItem?.quantity ?? 0}");
+            return false;
         }
-        return false;
+
+        if (existingItem.quantity <= 0)
+        {
+            Debug.Log("REMOVE ITEM");
+        }
+        return true;
     }
 
-    private void RemoveItemUI(string itemName)
+    public void ClearInventory()
     {
-        if (itemSlotDictionary.ContainsKey(itemName))
-        {
-            GameObject slotToRemove = itemSlotDictionary[itemName];
-            itemSlotDictionary.Remove(itemName);
-            Destroy(slotToRemove);
-
-            Debug.Log($"Removed UI slot for {itemName}");
-        }
-    }
-
-    public void UpdateIteamQuantityUI(string itemName, int newQuantity)
-    {
-        if (itemSlotDictionary.ContainsKey(itemName))
-        {
-            var quantityText = itemSlotDictionary[itemName].transform.Find("Quantity").GetComponent<TMP_Text>();
-            if (quantityText != null)
-            {
-                quantityText.text = newQuantity.ToString();
-            }
-        }
+        sampleList.Clear();
     }
 
     public void DropTable(int enemyId)
@@ -297,53 +326,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
-
     public void AddItem(string itemName, int itemQuantity, Sprite itemIcon)
     {
-        // Check if the item already exists in the player's inventory
         InventoryItem existingItem = sampleList.Find(item => item.name == itemName);
+        // Check if the item already exists in the inventory
+
         if (existingItem != null)
         {
-            existingItem.quantity += itemQuantity;
-
-            if (itemSlotDictionary.ContainsKey(itemName))
+            if (existingItem.quantity < 99)
             {
-                var quantityText = itemSlotDictionary[itemName].transform.Find("Quantity").GetComponent<TMP_Text>();
-                if (quantityText != null)
-                {
-                    quantityText.text = existingItem.quantity.ToString();
-                }
+                existingItem.quantity += 1;
+            }
+            else
+            {
+                existingItem.quantity = 99;
             }
         }
         else
         {
-            // Add a new item to the player's inventory
-            InventoryItem newItem = new(itemName, itemQuantity, itemIcon);
-            sampleList.Add(newItem);
-
-            // Create a new UI slot for the item
-            GameObject newSlot = Instantiate(inventoryItemPrefab, inventoryGrid.transform);
-
-            // Update the UI slot with the item's details
-            var iconImage = newSlot.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>();
-            var quantityText = newSlot.transform.Find("Quantity").GetComponent<TMP_Text>();
-            var button = newSlot.GetComponent<UnityEngine.UI.Button>();
-
-
-            if (iconImage != null) iconImage.sprite = itemIcon;
-            if (quantityText != null) quantityText.text = itemQuantity.ToString();
-
-            itemSlotDictionary.Add(itemName, newSlot);
-
-            if (button != null)
+            InventoryItem newItem = new(itemName, itemQuantity, itemIcon)
             {
-                button.onClick.AddListener(() => OnItemClicked(newItem));
-            }
-
-            // Optionally name the UI slot for easier debugging
-            newSlot.name = itemName;
+                name = itemName,
+                quantity = itemQuantity,
+                itemIcon = itemIcon
+            };
+            sampleList.Add(newItem);
         }
+
+        // Optional: Save inventory to persistent storage
+        SaveInventory();
+    }
+
+    public List<InventoryItem> GetItemList()
+    {
+        return sampleList;
     }
 
     public void OnItemClicked(InventoryItem item)
@@ -355,41 +371,70 @@ public class Inventory : MonoBehaviour
         {
             switch (item.name)
             {
+                case "Bread":
+                    HpPotion(10);
+                    item.quantity--;
+                    break;
+
+                case "Drumstick":
+                    HpPotion(20);
+                    item.quantity--;
+                    break;
+
+                case "Full Plate":
+                    HpPotion(30);
+                    item.quantity--;
+                    break;
+
+                case "Bowl of Soup":
+                    HpPotion(40);
+                    item.quantity--;
+                    break;
+
                 case "Hp Potion 1":
                     HpPotion(50);
+                    item.quantity--;
                     break;
 
                 case "Atk Potion 1":
                     AtkPotion(item.name, 0.5f);
+                    item.quantity--;
                     break;
 
                 case "Def Potion 1":
                     DefPotion(item.name, 0.5f);
+                    item.quantity--;
                     break;
 
                 case "Spd Potion 1":
                     SpdPotion(item.name, 2f);
+                    item.quantity--;
                     break;
 
                 case "Hp Potion 2":
                     HpPotion(150);
+                    item.quantity--;
                     break;
 
                 case "Atk Potion 2":
                     AtkPotion(item.name, 1f);
+                    item.quantity--;
                     break;
 
                 case "Def Potion 2":
                     DefPotion(item.name, 1f);
+                    item.quantity--;
                     break;
 
                 case "Spd Potion 2":
                     SpdPotion(item.name, 3f);
+                    item.quantity--;
                     break;
             }
 
             // Reduce the quantity of the item
-            item.quantity--;
+
+
         }
         else
         {
@@ -399,15 +444,9 @@ public class Inventory : MonoBehaviour
         if (item.quantity <= 0)
         {
             sampleList.Remove(item);
-            RemoveItemUI(item.name);
             Debug.Log($"{item.name} was used up and removed from inventory.");
         }
-        else
-        {
-            // Update the UI to reflect the new quantity
-            UpdateIteamQuantityUI(item.name, item.quantity);
-        }
-
+        SaveInventory();
     }
 
     public void HpPotion(int amt)
@@ -429,12 +468,11 @@ public class Inventory : MonoBehaviour
         buffManager.activeBuffnames.Add(buffName);
         playerStats.atkBuff += playerStats.atk * amt;
         playerStats.UpdateStats();
-        playerStats.UpdateAtkText();
 
-        buffManager.AddBuff("Atk Buff", attackBuffIcon, 10f);
+        buffManager.AddBuff("Atk Buff", attackBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
-        StartCoroutine(RemoveAtkPotionEffect(buffName, 10f));
+        StartCoroutine(RemoveAtkPotionEffect(buffName, 60f));
     }
 
     public void DefPotion(string buffName, float amt)
@@ -442,28 +480,25 @@ public class Inventory : MonoBehaviour
         // Increase attack value
         playerStats.defBuff += playerStats.def * amt;
         playerStats.UpdateStats();
-        playerStats.UpdateAtkText();
 
-        buffManager.AddBuff("Def Buff", defBuffIcon, 10f);
+        buffManager.AddBuff("Def Buff", defBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
-        StartCoroutine(RemoveDefPotionEffect(buffName, 10f));
+        StartCoroutine(RemoveDefPotionEffect(buffName, 60f));
     }
-
 
     public void SpdPotion(string buffName, float amt)
     {
         // Increase attack value
+        playerStats.spdBuff = amt;
         progressBarTimer.playerAtkTime /= amt;
         playerStats.UpdateStats();
-        progressBarTimer.UpdateSpdText();
 
-        buffManager.AddBuff("Spd Buff", spdBuffIcon, 10f);
+        buffManager.AddBuff("Spd Buff", spdBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
-        StartCoroutine(RemoveSpdPotionEffect(buffName, 10f, amt));
+        StartCoroutine(RemoveSpdPotionEffect(buffName, 60f, amt));
     }
-
 
     private IEnumerator RemoveAtkPotionEffect(string buffName, float duration)
     {
@@ -473,7 +508,6 @@ public class Inventory : MonoBehaviour
         // Restore the original attack value
         playerStats.atkBuff = 0;
         buffManager.activeBuffnames.Remove(buffName);
-        playerStats.UpdateAtkText();
 
         Debug.Log("Atk potion effect has worn off.");
     }
@@ -485,7 +519,6 @@ public class Inventory : MonoBehaviour
 
         // Restore the original attack value
         playerStats.defBuff = 0;
-        playerStats.UpdateDefText();
 
         Debug.Log("Def potion effect has worn off.");
     }
@@ -496,8 +529,9 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Restore the original attack value
+        playerStats.spdBuff = 1;
         progressBarTimer.playerAtkTime *= amt;
-        progressBarTimer.UpdateSpdText();
+        playerStats.UpdateStats();
 
         Debug.Log("Def potion effect has worn off.");
     }

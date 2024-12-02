@@ -13,6 +13,7 @@ public class StartScreenManager : MonoBehaviour
     public GameObject roleSelect;
     public GameObject mainGame;
     public MenuManager menuManager;
+    public Inventory playerInventory;
 
     public int roleCost = 5;
 
@@ -22,6 +23,7 @@ public class StartScreenManager : MonoBehaviour
         startScreen.SetActive(true);
         roleSelect.SetActive(false);
         mainGame.SetActive(false);
+        playerInventory.LoadInventory();
 
         if (enemyStats.adventures[enemyStats.tempAdventureNumber] != enemyStats.currentAdventure)
         {

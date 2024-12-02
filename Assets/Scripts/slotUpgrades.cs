@@ -59,8 +59,6 @@ public class SlotUpgrades : MonoBehaviour
                 playerStats.UpdateStats();
                 playerStats.UpdateGoldText();
                 playerStats.UpdateHpText();
-                playerStats.UpdateAtkText();
-                playerStats.UpdateDefText();
                 saveManager.Save();
             }
         }

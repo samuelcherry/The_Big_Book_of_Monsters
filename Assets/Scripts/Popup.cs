@@ -1,27 +1,24 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
 {
     public TMP_Text text;
+    public Image popupBackground; // Reference to the Image component of the popup background
     public float fadeDuration = 0.5f;
     public float visibleDuration = 1f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        if (text != null)
-        {
-            Color color = text.color;
-            text.color = new Color(color.r, color.g, color.b, 0);
-        }
-
+        // Initialize the alpha values to 0 (invisible)
+        SetAlpha(0f);
     }
 
-    public void FadeText()
+    public void FadePopup()
     {
-        if (text != null)
+        if (popupBackground != null && text != null)
         {
             StartCoroutine(FadeInAndOut());
         }
@@ -29,30 +26,45 @@ public class Popup : MonoBehaviour
 
     private IEnumerator FadeInAndOut()
     {
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
-            SetTextAlpha(alpha);
-            yield return null;
-        }
+        // Fade in
+        yield return Fade(0f, 1f, fadeDuration);
 
+        // Stay visible for the specified duration
         yield return new WaitForSeconds(visibleDuration);
 
-        elapsed = 0f;
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Clamp01(1 - (elapsed / fadeDuration));
-            SetTextAlpha(alpha);
-            yield return null;
-        }
+        // Fade out
+        yield return Fade(1f, 0f, fadeDuration);
     }
 
-    private void SetTextAlpha(float alpha)
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
     {
-        Color color = text.color;
-        text.color = new Color(color.r, color.g, color.b, alpha);
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
+            SetAlpha(alpha);
+            yield return null;
+        }
+
+        // Ensure final alpha is set
+        SetAlpha(endAlpha);
+    }
+
+    private void SetAlpha(float alpha)
+    {
+        // Set the alpha for the background
+        if (popupBackground != null)
+        {
+            Color bgColor = popupBackground.color;
+            popupBackground.color = new Color(bgColor.r, bgColor.g, bgColor.b, alpha);
+        }
+
+        // Set the alpha for the text
+        if (text != null)
+        {
+            Color textColor = text.color;
+            text.color = new Color(textColor.r, textColor.g, textColor.b, alpha);
+        }
     }
 }

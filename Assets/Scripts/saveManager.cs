@@ -32,7 +32,6 @@ public class SaveManager : MonoBehaviour
         AdventureSave();
         BookSave();
         AlchemySave();
-        popup.FadeText();
         PlayerPrefs.Save();
 
     }
@@ -233,7 +232,6 @@ public class SaveManager : MonoBehaviour
         {
             SaveInt($"potionAmt{i}", alchemyTimers.potion[i].PotionAmt);
         }
-        Debug.Log($"Save RWD: " + alchemyTimers.alchemyProgressBar[0].rwd);
 
     }
 

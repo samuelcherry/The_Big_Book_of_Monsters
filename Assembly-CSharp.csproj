@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\EnemyAnimation.cs" />
     <Compile Include="Assets\Art\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
     <Compile Include="Assets\Scripts\TooltipTrigger.cs" />
+    <Compile Include="Assets\Scripts\ListToText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Art\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\EnemyDMGPopup.cs" />
     <Compile Include="Assets\Scripts\upgradeButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />

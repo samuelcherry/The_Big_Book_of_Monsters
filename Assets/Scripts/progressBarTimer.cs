@@ -12,7 +12,7 @@ public class ProgressBarTimer : MonoBehaviour
     public Slider progressBar;
     public Slider enemyAtkTimer;
 
-    public TMP_Text spdText;
+
 
     public float playerAtkTime, playerAtkTimeLeft, enemyAtkTime, enemyAtkTimeLeft, spdBuff;
 
@@ -34,8 +34,6 @@ public class ProgressBarTimer : MonoBehaviour
 
 
         enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
-
-        UpdateSpdText();
 
         if (playerStats == null)
         {
@@ -93,14 +91,5 @@ public class ProgressBarTimer : MonoBehaviour
     {
         enemyAnimator.SetTrigger("EnemyAttack");
         animator.SetTrigger("Hurt");
-    }
-
-
-    public void UpdateSpdText()
-    {
-        if (spdText != null)
-        {
-            spdText.text = "Spd: " + playerAtkTime;
-        }
     }
 }

@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class ResetManager : MonoBehaviour
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
     public BlacksmithToggleManager blacksmithToggleManager;
+    public Inventory playerInventory;
+    public ListToText listToText;
 
     public void SoftReset()
     {
@@ -162,6 +165,11 @@ public class ResetManager : MonoBehaviour
         {
             bestiary.entry[i].IsDefeated = 0;
         }
+
+        //INVENTORY RESET
+        playerInventory.ClearInventory();
+        listToText.PopulateText(playerInventory.sampleList);
+
 
         SoftReset();
     }
