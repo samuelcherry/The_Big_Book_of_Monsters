@@ -83,6 +83,7 @@ public class Upgrades : MonoBehaviour
         }
     }
 
+
     public void PurchaseUpgrade(int roleIndex, int upgradeIndex)
     {
         // Get the role and upgrade based on the passed indices

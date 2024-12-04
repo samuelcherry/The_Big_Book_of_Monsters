@@ -97,7 +97,7 @@ public class ResetManager : MonoBehaviour
             slotUpgrades.UpdateSlotText(i);
         }
 
-
+        playerInventory.LoadInventory();
         saveManager.Save();
 
     }
@@ -157,8 +157,23 @@ public class ResetManager : MonoBehaviour
 
         blacksmithToggleManager.AutoBuyerLvl = 0;
         blacksmithToggleManager.AutoBuyerAmt = 0;
+
+
+        //ALCHEMY RESET
         alchemyTimers.AlchAutoBuyerAmt = 0;
         alchemyTimers.AlchAutoBuyerLvl = 0;
+        for (int i = 0; i < alchemyTimers.alchemyProgressBar.Length; i++)
+        {
+            alchemyTimers.alchemyProgressBar[i].alchLvl = 1;
+            alchemyTimers.alchemyProgressBar[i].alchXP = 0;
+            alchemyTimers.alchemyProgressBar[i].rwd = 0;
+            alchemyTimers.alchemyProgressBar[i].alchLvlBar.value = 0;
+            alchemyTimers.alchemyProgressBar[i].progressBar.value = 0;
+            alchemyTimers.alchemyProgressBar[i].timeLeft = alchemyTimers.alchemyProgressBar[i].totalTime;
+            alchemyTimers.alchemyProgressBar[i].limit = 10;
+            alchemyTimers.alchemyProgressBar[i].alchMaxXp = 20;
+
+        }
 
         //BOOK RESET
         for (int i = 0; i < bestiary.entry.Length; i++)
@@ -169,6 +184,8 @@ public class ResetManager : MonoBehaviour
         //INVENTORY RESET
         playerInventory.ClearInventory();
         listToText.PopulateText(playerInventory.sampleList);
+
+
 
 
         SoftReset();

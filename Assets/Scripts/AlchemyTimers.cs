@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,20 +13,22 @@ public class AlchemyTimers : MonoBehaviour
     public SaveManager saveManager;
     public Inventory playerInventory;
     public Sprite genericPotionIcon;
+    public Inventory inventory;
+
+    public float[] alchLvlUp;
 
     [Serializable]
     public struct AlchemyProgressBars
     {
         public Slider progressBar, alchLvlBar;
-        public float totalTime, baseTime, timeLeft, alchXP, alchMaxXp;
-        public int rwd, req, limit, alchLvl;
-        public bool canRun, previousToggleStates;
+        public float totalTime, baseTime, timeLeft, alchXP, alchMaxXp, alchLvl, rwd, limit;
+        public bool previousToggleStates;
         public TMP_Text limitText, lvlText;
     }
     public TMP_Text AlchPrestigeAmtText, AlchPrestigeCostText;
 
     public int[] AlchemyPrestigeCost;
-    public int AlchAutoBuyerLvl, AlchAutoBuyerAmt, AlchAutoBuyerMax;
+    public float AlchAutoBuyerLvl, AlchAutoBuyerAmt, AlchAutoBuyerMax;
 
 
     [Serializable]
@@ -63,41 +64,36 @@ public class AlchemyTimers : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
         AlchemyPrestigeCost = new int[] { 0, 5, 10, 15, 20 };
+        alchLvlUp = new float[] { 20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240 };
         AlchAutoBuyerLvl = 0;
         AlchAutoBuyerMax = 5;
 
         for (int i = 0; i < alchemyProgressBar.Length; i++)
         {
-            alchemyProgressBar[i].alchMaxXp = math.floor(100 * alchemyProgressBar[i].alchLvl / (i + 1));
-            alchemyProgressBar[i].totalTime = alchemyProgressBar[i].baseTime / alchemyProgressBar[i].alchLvl;
-            UpdateAlchText();
+            if (alchemyProgressBar[i].alchLvl < 1)
+            {
+                alchemyProgressBar[i].alchLvl = 1;
+            }
 
+            alchemyProgressBar[i].alchMaxXp = alchLvlUp[(int)(alchemyProgressBar[i].alchLvl - 1)];
+            alchemyProgressBar[i].totalTime = alchemyProgressBar[i].baseTime / alchemyProgressBar[i].alchLvl;
+            alchemyProgressBar[i].timeLeft = alchemyProgressBar[i].totalTime;
+
+            alchemyProgressBar[i].limit = 10 * alchemyProgressBar[i].alchLvl;
+
+            alchemyProgressBar[i].previousToggleStates = false;
+            alchemyToggles[i].isOn = false;
+
+
+            UpdateTimerText(i);
+            UpdateAlchText();
         }
 
         for (int i = 0; i < potion.Length; i++)
         {
             potion[i].PotionAmt = 0;
             potion[i].PotionMax = 5;
-        }
-
-        for (int i = 0; i < alchemyProgressBar.Length; i++)  //sets the timers to 0 and reward total to 0
-        {
-            alchemyProgressBar[i].timeLeft = alchemyProgressBar[i].totalTime;
-            alchemyProgressBar[i].limit = 10 * alchemyProgressBar[i].alchLvl;
-        }
-
-
-        for (int i = 0; i < alchemyToggles.Length; i++)
-        {
-            alchemyProgressBar[i].previousToggleStates = alchemyToggles[i].isOn;
-        }
-
-        for (int i = 0; i < alchemyProgressBar.Length; i++)
-        {
-            UpdateTimerText(i);
         }
 
         AlchAutoBuyerAmt = AlchAutoBuyerLvl;
@@ -110,7 +106,7 @@ public class AlchemyTimers : MonoBehaviour
                 potionName = "Hp Potion 1",
                 ingredients = new List<Ingredient>
                 {
-                    new() {name = "Snake Charm Flower", quantity = 1},
+                    new() {name = "Snake Flower", quantity = 1},
                     new() {name = "Generic Potion", quantity = 1}
                 },
                 maxPotionAmt = 5
@@ -184,8 +180,8 @@ public class AlchemyTimers : MonoBehaviour
                 maxPotionAmt = 5
             }
         };
-        saveManager.AlchemyLoad();
     }
+
 
     public void Update()
     {
@@ -221,11 +217,10 @@ public class AlchemyTimers : MonoBehaviour
                     {
                         alchemyProgressBar[i - 1].rwd -= 1; // Deduct one reward from the previous timer to start this timer
                         alchemyProgressBar[i].timeLeft -= Time.deltaTime;
-                        alchemyProgressBar[i].canRun = true;
                     }
 
                     // Only run the current timer if it has started (timeLeft < totalTime)
-                    if (alchemyProgressBar[i].timeLeft < alchemyProgressBar[i].totalTime && alchemyProgressBar[i].canRun)
+                    if (alchemyProgressBar[i].timeLeft < alchemyProgressBar[i].totalTime && alchemyToggles[i].isOn)
                     {
                         alchemyProgressBar[i].timeLeft -= Time.deltaTime;
 
@@ -235,7 +230,6 @@ public class AlchemyTimers : MonoBehaviour
                             AlchAddXp(i);
                             alchemyProgressBar[i].timeLeft = alchemyProgressBar[i].totalTime;
                             alchemyProgressBar[i].progressBar.value = 1;
-                            alchemyProgressBar[i].canRun = true;
                             UpdateAlchText();
                         }
                     }
@@ -254,24 +248,22 @@ public class AlchemyTimers : MonoBehaviour
     {
         // Get current states
         bool isOn = alchemyToggles[index].isOn;
-        bool previousState = alchemyProgressBar[index].previousToggleStates;
 
-        if (AlchAutoBuyerAmt > 0 && isOn && !previousState)
+        if (AlchAutoBuyerAmt > 0 && isOn && !alchemyProgressBar[index].previousToggleStates)
         {
             AlchAutoBuyerAmt -= 1;
             alchemyToggles[index].isOn = true;
 
         }
-        else if (AlchAutoBuyerAmt <= 0 && isOn && !previousState)
+        else if (AlchAutoBuyerAmt <= 0 && isOn && !alchemyProgressBar[index].previousToggleStates)
         {
             alchemyToggles[index].isOn = false;
         }
-        else if (!isOn && previousState)
+        else if (!isOn && alchemyProgressBar[index].previousToggleStates)
         {
             AlchAutoBuyerAmt += 1;
             alchemyToggles[index].isOn = false;
         }
-        alchemyProgressBar[index].canRun = alchemyToggles[index].isOn;
         alchemyProgressBar[index].previousToggleStates = alchemyToggles[index].isOn;
     }
 
@@ -279,14 +271,7 @@ public class AlchemyTimers : MonoBehaviour
     {
         if (alchemyProgressBar[index].alchLvl < 10)
         {
-
             alchemyProgressBar[index].alchXP += 1;
-
-            //Reset timers
-            alchemyProgressBar[index].limit = 10 * alchemyProgressBar[index].alchLvl;
-            alchemyProgressBar[index].alchMaxXp = math.floor(100 * alchemyProgressBar[index].alchLvl / (index + 1));
-            alchemyProgressBar[index].totalTime = alchemyProgressBar[index].baseTime / alchemyProgressBar[index].alchLvl;
-            alchemyProgressBar[index].timeLeft = alchemyProgressBar[index].totalTime;
             UpdateTimerText(index);
 
             if (alchemyProgressBar[index].alchXP == 0)
@@ -295,7 +280,7 @@ public class AlchemyTimers : MonoBehaviour
             }
             else
             {
-                alchemyProgressBar[index].alchLvlBar.value = alchemyProgressBar[index].alchXP / alchemyProgressBar[index].alchMaxXp;
+                alchemyProgressBar[index].alchLvlBar.value = alchemyProgressBar[index].alchXP / alchLvlUp[(int)(alchemyProgressBar[index].alchLvl - 1)];
             }
 
             if (alchemyProgressBar[index].alchXP >= alchemyProgressBar[index].alchMaxXp)
@@ -303,21 +288,21 @@ public class AlchemyTimers : MonoBehaviour
                 alchemyProgressBar[index].alchXP = 0;
                 alchemyProgressBar[index].alchLvl += 1;
                 alchemyProgressBar[index].limit = 10 * alchemyProgressBar[index].alchLvl;
-                alchemyProgressBar[index].alchMaxXp = math.floor(100 * alchemyProgressBar[index].alchLvl / (index + 1));
+                alchemyProgressBar[index].alchMaxXp = alchLvlUp[(int)(alchemyProgressBar[index].alchLvl - 1)];
                 alchemyProgressBar[index].totalTime = alchemyProgressBar[index].baseTime / alchemyProgressBar[index].alchLvl;
                 UpdateAlchText();
             }
         }
-        saveManager.AlchemySave();
+        saveManager.Save();
     }
 
     public void PurchaseAutoBuyer()
     {
         if (AlchAutoBuyerLvl < AlchAutoBuyerMax)
         {
-            if (prestige.prestigeMulti - 1 >= AlchemyPrestigeCost[AlchAutoBuyerLvl])
+            if (prestige.prestigeMulti - 1 >= AlchemyPrestigeCost[(int)AlchAutoBuyerLvl])
             {
-                prestige.prestigeMulti -= AlchemyPrestigeCost[AlchAutoBuyerLvl];
+                prestige.prestigeMulti -= AlchemyPrestigeCost[(int)AlchAutoBuyerLvl];
                 enemyStats.ResetPrestige();
                 AlchAutoBuyerAmt += 1;
                 AlchAutoBuyerLvl += 1;
@@ -338,7 +323,7 @@ public class AlchemyTimers : MonoBehaviour
         }
         if (AlchPrestigeCostText != null && AlchAutoBuyerLvl < AlchAutoBuyerMax)
         {
-            AlchPrestigeCostText.text = "Prestige Cost: " + AlchemyPrestigeCost[AlchAutoBuyerLvl];
+            AlchPrestigeCostText.text = "Prestige Cost: " + AlchemyPrestigeCost[(int)AlchAutoBuyerLvl];
         }
         else if (AlchPrestigeCostText != null && AlchAutoBuyerLvl == AlchAutoBuyerMax)
         {
@@ -400,17 +385,20 @@ public class AlchemyTimers : MonoBehaviour
                 playerInventory.AddItem(itemDefinition.name, 1, itemDefinition.icon);
             }
 
-            saveManager.AlchemySave();
+            saveManager.Save();
         }
     }
 
     public void BrewGeneric()
     {
-        if (alchemyProgressBar[4].rwd > 0)
+        Inventory.InventoryItem genericPotion = inventory.sampleList.Find(item => item.name == "Generic Potion");
+        if (alchemyProgressBar[4].rwd > 0 && (genericPotion == null || genericPotion.quantity < 99))
         {
+            //SET CONDITION FOR IF POTION IS NULL AND ALSO A CONDITION FOR IF IT'S OVER 99
             alchemyProgressBar[4].rwd -= 1;
             playerInventory.AddItem("Generic Potion", 1, genericPotionIcon);
         }
+
     }
 
     public void UpdateAlchText()
@@ -424,6 +412,7 @@ public class AlchemyTimers : MonoBehaviour
             else
             {
                 alchemyProgressBar[i].lvlText.text = "Lvl: MAX";
+                alchemyProgressBar[i].progressBar.value = 1;
             }
         }
     }

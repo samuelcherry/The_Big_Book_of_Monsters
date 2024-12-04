@@ -25,6 +25,7 @@ public class StartScreenManager : MonoBehaviour
         mainGame.SetActive(false);
         playerInventory.LoadInventory();
 
+
         if (enemyStats.adventures[enemyStats.tempAdventureNumber] != enemyStats.currentAdventure)
         {
             enemyStats.currentAdventure = enemyStats.adventures[enemyStats.tempAdventureNumber];
@@ -43,6 +44,7 @@ public class StartScreenManager : MonoBehaviour
         startScreen.SetActive(false);
         mainGame.SetActive(false);
         saveManager.Load();
+        Debug.Log("START MANAGER LOAD");
         prestige.UpdatePrestigeText();
         upgrades.roles[0].roleUnlocked = 1;
 
@@ -58,7 +60,7 @@ public class StartScreenManager : MonoBehaviour
             Time.timeScale = 1;
         }
         menuManager.MenuMove(0);
-
+        playerInventory.LoadInventory();
     }
 
     public void StartGame(int index)

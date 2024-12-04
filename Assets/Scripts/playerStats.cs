@@ -56,6 +56,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         saveManager.Load();
+        Debug.Log("PLAYER STATS LOAD");
         UpdateStats();
         FullHeal();
         UpdateStatText();

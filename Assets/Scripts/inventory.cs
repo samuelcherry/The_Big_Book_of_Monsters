@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -31,7 +32,18 @@ public class Inventory : MonoBehaviour
         public int id;
         public string name;
         public int quantity;
+        public string itemText;
         public Sprite icon;
+
+        public ItemDefinition(int id, string name, int quantity, string itemText, Sprite icon)
+        {
+            this.id = id;
+            this.name = name;
+            this.quantity = quantity;
+            this.itemText = itemText;
+            this.icon = icon ?? Resources.Load<Sprite>("DefaultIcon"); // Assign a default icon if null
+        }
+
     }
 
     [Serializable]
@@ -47,6 +59,7 @@ public class Inventory : MonoBehaviour
     private Transform inventoryGrid;
     private Transform inventoryItemPrefab;
     public Sprite attackBuffIcon, defBuffIcon, spdBuffIcon;
+
 
     [Serializable]
     private class InventoryListWrapper
@@ -75,7 +88,7 @@ public class Inventory : MonoBehaviour
 
     public void LoadInventory()
     {
-        ClearInventory();
+        // ClearInventory();
 
         if (PlayerPrefs.HasKey("Inventory"))
         {
@@ -102,33 +115,30 @@ public class Inventory : MonoBehaviour
         // Initialize the master item list with predefined items
         masterItemList = new List<ItemDefinition>
         {
-            new() { id=0,name = "Snake Charm Flower", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon14") },
-            new() { id=1,name = "Fire Fruit", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon19") },
-            new() { id=2, name = "Water Weed", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon24") },
-            new() { id=3,name = "Spark Flowers", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon3") },
-            new() { id=4,name = "Ember Buds", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon4") },
-            new() { id=5,name = "Frost Berries", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon22") },
-            new() { id=6,name = "Volt Apples", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon48") },
-            new() { id=7,name = "Animum Powder", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon35") },
-            //POTIONS
-            new() { id=8,name = "Hp Potion 1", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon3") },
-            new() { id=9,name = "Atk Potion 1", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon1") },
-            new() { id=10,name = "Def Potion 1", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon5") },
-            new() { id=11,name = "Spd Potion 1", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon2") },
-            new() { id=12,name = "Hp Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon7")},
-            new() { id=13,name = "Atk Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon4") },
-            new() { id=14,name = "Def Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon8") },
-            new() { id=15,name = "Spd Potion 2", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon16") },
-            new() { id=16,name = "Generic Potion", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Potions 2/PNG/Transperent/Icon46") },
-            //FOOD
-            new() { id=17,name = "Bread", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon9") },
-            new() { id=18,name = "Drumstick", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon3") },
-            new() { id=19,name = "Full Plate", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon31") },
-            new() { id=20,name = "Bowl of Soup", quantity = 0, icon = Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon43") },
-
-
-
-       };
+        new(0, "Snake Flower", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon14")),
+        new(1, "Fire Fruit", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon19")),
+        new(2, "Water Weed", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon24")),
+        new(3, "Spark Flowers", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon3")),
+        new(4, "Ember Buds", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy2/PNG/Transperent/Icon4")),
+        new(5, "Frost Berries", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon22")),
+        new(6, "Volt Apples", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon48")),
+        new(7, "Animum Powder", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Alchemy1/PNG/Transperent/Icon35")),
+        // POTIONS
+        new(8, "Hp Potion 1", 0, "HP +50", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon3")),
+        new(9, "Atk Potion 1", 0, "ATK +50%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon1")),
+        new(10, "Def Potion 1", 0, "DEF +50%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon5")),
+        new(11, "Spd Potion 1", 0, "SPD +100%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon2")),
+        new(12, "Hp Potion 2", 0, "HP +150", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon7")),
+        new(13, "Atk Potion 2", 0, "ATK +100%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon4")),
+        new(14, "Def Potion 2", 0, "DEF +100%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon8")),
+        new(15, "Spd Potion 2", 0, "SPD +150%", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions/PNG/Transperent/Icon16")),
+        new(16, "Generic Potion", 0, "Used in Alchemy", Resources.Load<Sprite>("RPG Icons Pixel Art/Potions 2/PNG/Transperent/Icon46")),
+        // FOOD
+        new(17, "Bread", 0, "HP +10", Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon9")),
+        new(18, "Drumstick", 0, "HP +20", Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon3")),
+        new(19, "Full Plate", 0, "HP +30", Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon31")),
+        new(20, "Bowl of Soup", 0, "HP +40", Resources.Load<Sprite>("RPG Icons Pixel Art/Food_icons/PNG/Transperent/Icon43")),
+    };
 
         enemyDropTables = new Dictionary<int, List<DropRateItem>>
         {
@@ -153,6 +163,8 @@ public class Inventory : MonoBehaviour
                     new() { item = masterItemList[17], dropRate = 40f },
                     new() { item = masterItemList[18], dropRate = 20f },
                     new() { item = masterItemList[19], dropRate = 10f },
+                    new() { item = masterItemList[1], dropRate = 15f },
+
                 }
             },
             {
@@ -161,6 +173,8 @@ public class Inventory : MonoBehaviour
                     new() { item = masterItemList[18], dropRate = 40f },
                     new() { item = masterItemList[19], dropRate = 20f },
                     new() { item = masterItemList[20], dropRate = 10f },
+                    new() { item = masterItemList[1], dropRate = 10f },
+                    new() { item = masterItemList[0], dropRate = 10f },
                 }
             },
                         {
@@ -170,7 +184,9 @@ public class Inventory : MonoBehaviour
                     new() { item = masterItemList[18], dropRate = 40f },
                     new() { item = masterItemList[19], dropRate = 25f },
                     new() { item = masterItemList[20], dropRate = 20f },
-                    new() { item = masterItemList[0], dropRate = 15f }
+                    new() { item = masterItemList[0], dropRate = 15f },
+                    new() { item = masterItemList[1], dropRate = 10f },
+                    new() { item = masterItemList[2], dropRate = 10f },
                 }
             },
             {
@@ -364,8 +380,6 @@ public class Inventory : MonoBehaviour
 
     public void OnItemClicked(InventoryItem item)
     {
-        Debug.Log($"Clicked on item: {item.name}");
-
         // Check if the buff already exists before proceeding
         if (!buffManager.activeBuffnames.Contains(item.name))
         {
@@ -478,6 +492,7 @@ public class Inventory : MonoBehaviour
     public void DefPotion(string buffName, float amt)
     {
         // Increase attack value
+        buffManager.activeBuffnames.Add(buffName);
         playerStats.defBuff += playerStats.def * amt;
         playerStats.UpdateStats();
 
@@ -490,6 +505,7 @@ public class Inventory : MonoBehaviour
     public void SpdPotion(string buffName, float amt)
     {
         // Increase attack value
+        buffManager.activeBuffnames.Add(buffName);
         playerStats.spdBuff = amt;
         progressBarTimer.playerAtkTime /= amt;
         playerStats.UpdateStats();

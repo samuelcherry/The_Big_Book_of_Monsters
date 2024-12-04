@@ -46,7 +46,6 @@ public class SlotUpgrades : MonoBehaviour
 
 
     }
-
     public void SlotUpgrade(int index)
     {
         if (slotStructs[index].slotLvl < slotStructs[index].slotAmtArr.Length - 1)

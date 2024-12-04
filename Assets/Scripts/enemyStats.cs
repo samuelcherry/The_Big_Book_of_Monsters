@@ -2,8 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using JetBrains.Annotations;
-using System;
+
 
 
 public class EnemyStats : MonoBehaviour
@@ -18,13 +17,11 @@ public class EnemyStats : MonoBehaviour
     public TMP_Text EnemyHpText, StageNumber, EnemyNameText, GoldAmtText, dmgText;
     public Slider enemyHpBar;
     public Popup popup;
+
     private bool isButtonPressed;
-
-
     public string drop;
-    public int Stage;
     public float GoldAmt;
-    public int tempAdventureNumber;
+    public int Stage, tempAdventureNumber;
 
     [System.Serializable]
     public struct AdventureConfirmMenu
@@ -99,59 +96,59 @@ public class EnemyStats : MonoBehaviour
         Adventure.Enemy[] adventure3Enemies = new Adventure.Enemy[15];
         Adventure.Enemy[] adventure4Enemies = new Adventure.Enemy[20];
 
-        adventure1Enemies[0] = new Adventure.Enemy("Goblin grunt", 30, 2, 5, 5, 5, 2, 2, 4, 0);
-        adventure1Enemies[1] = new Adventure.Enemy("Goblin Soldier", 45, 4, 8, 10, 10, 3, 3, 3.8f, 1);
-        adventure1Enemies[2] = new Adventure.Enemy("Goblin Elite", 80, 12, 8, 15, 15, 4, 4, 3.6f, 2);
-        adventure1Enemies[3] = new Adventure.Enemy("Goblin Captain", 100, 20, 16, 20, 20, 5, 5, 3.4f, 3);
-        adventure1Enemies[4] = new Adventure.Enemy("Goblin Chief", 200, 30, 32, 30, 30, 6, 6, 3.2f, 4);
+        adventure1Enemies[0] = new Adventure.Enemy("Goblin grunt", 30, 1, 5, 5, 5, 2, 2, 4, 0);
+        adventure1Enemies[1] = new Adventure.Enemy("Goblin Soldier", 45, 3, 8, 10, 10, 3, 3, 3.8f, 1);
+        adventure1Enemies[2] = new Adventure.Enemy("Goblin Elite", 80, 6, 8, 15, 15, 4, 4, 3.6f, 2);
+        adventure1Enemies[3] = new Adventure.Enemy("Goblin Captain", 100, 10, 16, 20, 20, 5, 5, 3.4f, 3);
+        adventure1Enemies[4] = new Adventure.Enemy("Goblin Chief", 200, 15, 32, 30, 30, 6, 6, 3.2f, 4);
 
-        adventure2Enemies[0] = new Adventure.Enemy("Goblin grunt", 60, 4, 4, 10, 10, 4, 4, 4, 0);
-        adventure2Enemies[1] = new Adventure.Enemy("Goblin Soldier", 90, 8, 6, 20, 20, 6, 6, 3.8f, 1);
-        adventure2Enemies[2] = new Adventure.Enemy("Goblin Elite", 160, 14, 10, 30, 30, 8, 8, 3.6f, 2);
-        adventure2Enemies[3] = new Adventure.Enemy("Goblin Captain", 200, 20, 18, 40, 40, 10, 10, 3.4f, 3);
-        adventure2Enemies[4] = new Adventure.Enemy("Goblin Chief", 400, 32, 35, 60, 60, 12, 12, 3.2f, 4);
-        adventure2Enemies[5] = new Adventure.Enemy("Mushroom Varient", 600, 45, 45, 80, 80, 16, 16, 3f, 5);
-        adventure2Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1000, 70, 60, 100, 100, 20, 20, 2.8f, 6);
-        adventure2Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 1600, 100, 80, 120, 120, 24, 24, 2.6f, 7);
-        adventure2Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 2000, 140, 100, 140, 140, 28, 28, 2.4f, 8);
-        adventure2Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 4000, 190, 135, 180, 180, 32, 32, 2.2f, 9);
+        adventure2Enemies[0] = new Adventure.Enemy("Goblin grunt", 60, 2, 4, 10, 10, 4, 4, 4, 0);
+        adventure2Enemies[1] = new Adventure.Enemy("Goblin Soldier", 90, 4, 6, 20, 20, 6, 6, 3.8f, 1);
+        adventure2Enemies[2] = new Adventure.Enemy("Goblin Elite", 160, 7, 10, 30, 30, 8, 8, 3.6f, 2);
+        adventure2Enemies[3] = new Adventure.Enemy("Goblin Captain", 200, 10, 18, 40, 40, 10, 10, 3.4f, 3);
+        adventure2Enemies[4] = new Adventure.Enemy("Goblin Chief", 400, 16, 35, 60, 60, 12, 12, 3.2f, 4);
+        adventure2Enemies[5] = new Adventure.Enemy("Mushroom Varient", 600, 22, 45, 80, 80, 16, 16, 3f, 5);
+        adventure2Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1000, 35, 60, 100, 100, 20, 20, 2.8f, 6);
+        adventure2Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 1600, 50, 80, 120, 120, 24, 24, 2.6f, 7);
+        adventure2Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 2000, 70, 100, 140, 140, 28, 28, 2.4f, 8);
+        adventure2Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 4000, 95, 135, 180, 180, 32, 32, 2.2f, 9);
 
-        adventure3Enemies[0] = new Adventure.Enemy("Goblin grunt", 90, 6, 5, 15, 15, 6, 6, 4, 0);
-        adventure3Enemies[1] = new Adventure.Enemy("Goblin Soldier", 135, 10, 12, 30, 30, 9, 9, 3.8f, 1);
-        adventure3Enemies[2] = new Adventure.Enemy("Goblin Elite", 240, 15, 18, 45, 45, 12, 12, 3.6f, 2);
-        adventure3Enemies[3] = new Adventure.Enemy("Goblin Captain", 300, 22, 25, 60, 60, 15, 15, 3.4f, 3);
-        adventure3Enemies[4] = new Adventure.Enemy("Goblin Chief", 600, 32, 35, 90, 90, 18, 18, 3.2f, 4);
-        adventure3Enemies[5] = new Adventure.Enemy("Mushroom Varient", 900, 44, 60, 120, 120, 24, 24, 3f, 5);
-        adventure3Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1500, 60, 90, 150, 150, 30, 30, 2.8f, 6);
-        adventure3Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 2400, 80, 120, 180, 180, 36, 36, 2.6f, 7);
-        adventure3Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 3000, 110, 150, 210, 210, 41, 41, 2.4f, 8);
-        adventure3Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 6000, 150, 190, 270, 270, 48, 48, 2.2f, 9);
-        adventure3Enemies[10] = new Adventure.Enemy("Flying Eye Tracker", 9000, 200, 240, 330, 330, 60, 60, 2f, 10);
-        adventure3Enemies[11] = new Adventure.Enemy("Flying Eye Informer", 15000, 275, 300, 390, 390, 75, 75, 1.8f, 11);
-        adventure3Enemies[12] = new Adventure.Enemy("Flying Eye Spy", 24000, 375, 400, 450, 450, 90, 90, 1.6f, 12);
-        adventure3Enemies[13] = new Adventure.Enemy("Flying Eye Agent", 30000, 500, 500, 510, 510, 105, 105, 1.4f, 13);
-        adventure3Enemies[14] = new Adventure.Enemy("Flying Eye Master Mind", 60000, 650, 700, 600, 600, 120, 120, 1.2f, 14);
+        adventure3Enemies[0] = new Adventure.Enemy("Goblin grunt", 90, 3, 5, 15, 15, 6, 6, 4, 0);
+        adventure3Enemies[1] = new Adventure.Enemy("Goblin Soldier", 135, 5, 12, 30, 30, 9, 9, 3.8f, 1);
+        adventure3Enemies[2] = new Adventure.Enemy("Goblin Elite", 240, 6, 18, 45, 45, 12, 12, 3.6f, 2);
+        adventure3Enemies[3] = new Adventure.Enemy("Goblin Captain", 300, 11, 25, 60, 60, 15, 15, 3.4f, 3);
+        adventure3Enemies[4] = new Adventure.Enemy("Goblin Chief", 600, 16, 35, 90, 90, 18, 18, 3.2f, 4);
+        adventure3Enemies[5] = new Adventure.Enemy("Mushroom Varient", 900, 22, 60, 120, 120, 24, 24, 3f, 5);
+        adventure3Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 1500, 30, 90, 150, 150, 30, 30, 2.8f, 6);
+        adventure3Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 2400, 40, 120, 180, 180, 36, 36, 2.6f, 7);
+        adventure3Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 3000, 55, 150, 210, 210, 41, 41, 2.4f, 8);
+        adventure3Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 6000, 75, 190, 270, 270, 48, 48, 2.2f, 9);
+        adventure3Enemies[10] = new Adventure.Enemy("Flying Eye Tracker", 9000, 100, 240, 330, 330, 60, 60, 2f, 10);
+        adventure3Enemies[11] = new Adventure.Enemy("Flying Eye Informer", 15000, 137, 300, 390, 390, 75, 75, 1.8f, 11);
+        adventure3Enemies[12] = new Adventure.Enemy("Flying Eye Spy", 24000, 187, 400, 450, 450, 90, 90, 1.6f, 12);
+        adventure3Enemies[13] = new Adventure.Enemy("Flying Eye Agent", 30000, 250, 500, 510, 510, 105, 105, 1.4f, 13);
+        adventure3Enemies[14] = new Adventure.Enemy("Flying Eye Master Mind", 60000, 325, 700, 600, 600, 120, 120, 1.2f, 14);
 
-        adventure4Enemies[0] = new Adventure.Enemy("Goblin grunt", 480, 8, 8, 20, 20, 8, 8, 4, 0);
-        adventure4Enemies[1] = new Adventure.Enemy("Goblin Soldier", 180, 15, 12, 40, 40, 12, 12, 3.8f, 1);
-        adventure4Enemies[2] = new Adventure.Enemy("Goblin Elite", 320, 25, 18, 60, 60, 16, 16, 3.6f, 2);
-        adventure4Enemies[3] = new Adventure.Enemy("Goblin Captain", 400, 50, 25, 80, 80, 20, 20, 3.4f, 3);
-        adventure4Enemies[4] = new Adventure.Enemy("Goblin Chief", 800, 80, 35, 120, 120, 24, 24, 3.2f, 4);
-        adventure4Enemies[5] = new Adventure.Enemy("Mushroom Varient", 1200, 105, 60, 160, 160, 32, 32, 3f, 5);
-        adventure4Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 2000, 140, 90, 200, 200, 40, 40, 2.8f, 6);
-        adventure4Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 3200, 180, 120, 240, 240, 48, 48, 2.6f, 7);
-        adventure4Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 4000, 220, 150, 280, 280, 56, 56, 2.4f, 8);
-        adventure4Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 8000, 300, 190, 360, 360, 64, 64, 2.2f, 9);
-        adventure4Enemies[10] = new Adventure.Enemy("Flying Eye Tracker", 12000, 400, 240, 440, 440, 80, 80, 2f, 10);
-        adventure4Enemies[11] = new Adventure.Enemy("Flying Eye Informer", 20000, 600, 300, 520, 520, 100, 100, 1.8f, 11);
-        adventure4Enemies[12] = new Adventure.Enemy("Flying Eye Spy", 32000, 1000, 400, 600, 600, 120, 120, 1.6f, 12);
-        adventure4Enemies[13] = new Adventure.Enemy("Flying Eye Agent", 40000, 1500, 500, 680, 680, 140, 140, 1.4f, 13);
-        adventure4Enemies[14] = new Adventure.Enemy("Flying Eye Master Mind", 80000, 2000, 700, 800, 800, 800, 160, 1.2f, 14);
-        adventure4Enemies[15] = new Adventure.Enemy("Skeleton Fighter", 120000, 2250, 900, 960, 960, 200, 200, 1f, 15);
-        adventure4Enemies[16] = new Adventure.Enemy("Skeleton Guard", 200000, 2500, 1100, 1120, 1120, 300, 300, 0.8f, 16);
-        adventure4Enemies[17] = new Adventure.Enemy("Skeleton Soldier", 320000, 3200, 1300, 1280, 1280, 500, 500, 0.6f, 17);
-        adventure4Enemies[18] = new Adventure.Enemy("Skeleton Knight", 400000, 4000, 1600, 1440, 1440, 800, 800, 0.4f, 18);
-        adventure4Enemies[19] = new Adventure.Enemy("Skeleton King", 800000, 5000, 2000, 1600, 1600, 1200, 1200, 0.2f, 19);
+        adventure4Enemies[0] = new Adventure.Enemy("Goblin grunt", 480, 4, 8, 20, 20, 8, 8, 4, 0);
+        adventure4Enemies[1] = new Adventure.Enemy("Goblin Soldier", 180, 7, 12, 40, 40, 12, 12, 3.8f, 1);
+        adventure4Enemies[2] = new Adventure.Enemy("Goblin Elite", 320, 12, 18, 60, 60, 16, 16, 3.6f, 2);
+        adventure4Enemies[3] = new Adventure.Enemy("Goblin Captain", 400, 25, 25, 80, 80, 20, 20, 3.4f, 3);
+        adventure4Enemies[4] = new Adventure.Enemy("Goblin Chief", 800, 40, 35, 120, 120, 24, 24, 3.2f, 4);
+        adventure4Enemies[5] = new Adventure.Enemy("Mushroom Varient", 1200, 52, 60, 160, 160, 32, 32, 3f, 5);
+        adventure4Enemies[6] = new Adventure.Enemy("Mushroom Specimen", 2000, 70, 90, 200, 200, 40, 40, 2.8f, 6);
+        adventure4Enemies[7] = new Adventure.Enemy("Mushroom Mutant", 3200, 90, 120, 240, 240, 48, 48, 2.6f, 7);
+        adventure4Enemies[8] = new Adventure.Enemy("Mushroom Monstrosity", 4000, 110, 150, 280, 280, 56, 56, 2.4f, 8);
+        adventure4Enemies[9] = new Adventure.Enemy("Mushroom Abomination", 8000, 150, 190, 360, 360, 64, 64, 2.2f, 9);
+        adventure4Enemies[10] = new Adventure.Enemy("Flying Eye Tracker", 12000, 225, 240, 440, 440, 80, 80, 2f, 10);
+        adventure4Enemies[11] = new Adventure.Enemy("Flying Eye Informer", 20000, 350, 300, 520, 520, 100, 100, 1.8f, 11);
+        adventure4Enemies[12] = new Adventure.Enemy("Flying Eye Spy", 32000, 550, 400, 600, 600, 120, 120, 1.6f, 12);
+        adventure4Enemies[13] = new Adventure.Enemy("Flying Eye Agent", 40000, 750, 500, 680, 680, 140, 140, 1.4f, 13);
+        adventure4Enemies[14] = new Adventure.Enemy("Flying Eye Master Mind", 80000, 1000, 700, 800, 800, 800, 160, 1.2f, 14);
+        adventure4Enemies[15] = new Adventure.Enemy("Skeleton Fighter", 120000, 1250, 900, 960, 960, 200, 200, 1f, 15);
+        adventure4Enemies[16] = new Adventure.Enemy("Skeleton Guard", 200000, 1600, 1100, 1120, 1120, 300, 300, 0.8f, 16);
+        adventure4Enemies[17] = new Adventure.Enemy("Skeleton Soldier", 320000, 2000, 1300, 1280, 1280, 500, 500, 0.6f, 17);
+        adventure4Enemies[18] = new Adventure.Enemy("Skeleton Knight", 400000, 2500, 1600, 1440, 1440, 800, 800, 0.4f, 18);
+        adventure4Enemies[19] = new Adventure.Enemy("Skeleton King", 800000, 3000, 2000, 1600, 1600, 1200, 1200, 0.2f, 19);
 
 
 
@@ -189,7 +186,6 @@ public class EnemyStats : MonoBehaviour
     {
         ResetEnemies();
     }
-
     public void TakeDamage()
     {
         if (Stage <= 0 || Stage > currentAdventure.maxStages) return;  // Bounds check
@@ -244,9 +240,10 @@ public class EnemyStats : MonoBehaviour
             popup.FadePopup();
         }
         UpdateEnemyStatsText();
+        playerStats.UpdateHpText();
     }
 
-
+    [System.Obsolete]
     public void ClickDamage()
     {
         if (Stage <= 0 || Stage > currentAdventure.maxStages) return;  // Bounds check

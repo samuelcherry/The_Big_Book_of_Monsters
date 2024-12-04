@@ -1,263 +1,262 @@
 using UnityEngine;
+using System.IO;
+using System.Collections.Generic;
+
+
 
 public class SaveManager : MonoBehaviour
 {
-    public EnemyStats enemyStats;
     public PlayerStats playerStats;
-    public Prestige prestige;
+    public EnemyStats enemyStats;
     public SlotUpgrades slotUpgrades;
+    public Prestige prestige;
+    public AlchemyTimers alchemy;
+    public SlotUpgrades skillPointSystem;
     public Upgrades upgrades;
     public Bestiary bestiary;
     public BlacksmithToggleManager blacksmithToggleManager;
-    public AlchemyTimers alchemyTimers;
-    public StartScreenManager startScreenManager;
-    public Popup popup;
-    public ResetManager resetManager;
-    //HELPER FUNCTIONS
-    private void SaveInt(string key, int value) => PlayerPrefs.SetInt(key, value);
-    private int LoadInt(string key, int defaultValue = 0) => PlayerPrefs.GetInt(key, defaultValue);
-    private void SaveFloat(string key, float value) => PlayerPrefs.SetFloat(key, value);
-    private float LoadFloat(string key, float defaultValue = 0f) => PlayerPrefs.GetFloat(key, defaultValue);
+    private string saveFilePath;
+    // Static instance of the SaveManager
 
-
-    //SAVE FUNCTION
-
-    public void Save()
+    private void Awake()
     {
-        PlayerSave();
-        EnemySave();
-        SlotUpgradeSave();
-        PrestigeSave();
-        SkillPointSave();
-        AdventureSave();
-        BookSave();
-        AlchemySave();
-        PlayerPrefs.Save();
-
+        saveFilePath = Path.Combine(Application.persistentDataPath, "saveData.json");
     }
 
-    public void Load()
+    public void SaveGame(SaveData saveData)
     {
-        PlayerLoad();
-        EnemyLoad();
-        SlotUpgradeLoad();
-        PrestigeLoad();
-        SkillPointLoad();
-        AdventureLoad();
-        BookLoad();
-        AlchemyLoad();
-
-        //TEXT UPDATES
-        prestige.UpdatePostPrestigeText();
-        playerStats.UpdateStatText();
-        enemyStats.UpdateEnemyStatsText();
-        for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
-        {
-            slotUpgrades.UpdateSlotText(i);
-        }
-
-        //SLIDER UPDATE
-        playerStats.xpBar.value = playerStats.currentXp / playerStats.maxXP;
-
-        for (int r = 0; r < upgrades.roles.Length; r++)
-        {
-
-            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
-            {
-                var upgrade = upgrades.roles[r].upgrades[i];
-                upgrade.skillPointSlider.value = upgrade.metalCount / upgrade.metalMax;
-            }
-        }
+        string json = JsonUtility.ToJson(saveData, true); // true for pretty print
+        File.WriteAllText(saveFilePath, json);
+        Debug.Log($"Game saved to {saveFilePath}");
     }
-    public void PlayerSave()
+
+    public SaveData LoadGame()
     {
-        //PLAYER SAVE
-        SaveInt("Level", playerStats.level);
-        SaveFloat("Xp", playerStats.currentXp);
-        SaveInt("AtkMetalCount", playerStats.atkMetalCount);
-        SaveInt("DefMetalCount", playerStats.defMetalCount);
-        SaveInt("HpMetalCount", playerStats.hpMetalCount);
-    }
-    public void PlayerLoad()
-    {
-        //PLAYER LOAD
-        if (PlayerPrefs.GetInt("Level") <= 1)
+        if (File.Exists(saveFilePath))
         {
-            playerStats.level = 1;
+            string json = File.ReadAllText(saveFilePath);
+            SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+            Debug.Log("Game loaded successfully.");
+            return saveData;
         }
         else
         {
-            playerStats.level = PlayerPrefs.GetInt("Level");
+            Debug.LogWarning("Save file not found!");
+            return new SaveData(); // Return default values
         }
-        playerStats.currentXp = LoadFloat("Xp", 0);
-        playerStats.atkMetalCount = LoadInt("AtkMetalCount", 0);
-        playerStats.defMetalCount = LoadInt("DefMetalCount", 0);
-        playerStats.hpMetalCount = LoadInt("HpMetalCount", 0);
     }
 
-    public void EnemySave()
+    public void Save()
     {
-        //ENEMY SAVE
-        SaveFloat("GoldAmt", enemyStats.GoldAmt);
-    }
-
-    public void EnemyLoad()
-    {
-        //ENEMY LOAD
-        enemyStats.GoldAmt = LoadFloat("GoldAmt", 0);
-    }
-
-    public void SlotUpgradeSave()
-    {
-        //SLOT UPGRADES SAVE
-        SaveInt("SlotOneLvl", slotUpgrades.slotStructs[0].slotLvl);
-        SaveInt("SlotTwoLvl", slotUpgrades.slotStructs[1].slotLvl);
-        SaveInt("SlotThreeLvl", slotUpgrades.slotStructs[2].slotLvl);
-        SaveInt("AutoBuyerLvl", blacksmithToggleManager.AutoBuyerLvl);
-
-    }
-
-    public void SlotUpgradeLoad()
-    {
-        //SLOT UPGRADES LOAD
-        slotUpgrades.slotStructs[0].slotLvl = LoadInt("SlotOneLvl", 0);
-        slotUpgrades.slotStructs[1].slotLvl = LoadInt("SlotTwoLvl", 0);
-        slotUpgrades.slotStructs[2].slotLvl = LoadInt("SlotThreeLvl", 0);
-        blacksmithToggleManager.AutoBuyerLvl = LoadInt("AutoBuyerLvl", 0);
-    }
-
-    public void PrestigeSave()
-    {
-        //PRESTIGE SAVE
-        SaveFloat("BaseXp", prestige.baseXP);
-        SaveFloat("PrestigeMulti", prestige.prestigeMulti);
-    }
-    public void PrestigeLoad()
-    {
-        LoadFloat("PrestigeMulti", 1);
-        prestige.baseXP = LoadFloat("BaseXp", 0);
-    }
-    public void SkillPointSave()
-    {
-        //SKILL POINT SAVE
-        for (int r = 0; r < upgrades.roles.Length; r++)
+        SaveData saveData = new SaveData
         {
-            SaveInt($"RoleUnlocked{r}", upgrades.roles[r].roleUnlocked);
-            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
+            playerData = new PlayerData
             {
-                SaveFloat($"UpgradeMetalCount_{r}_{i}", upgrades.roles[r].upgrades[i].metalCount);
-                PlayerPrefs.SetInt($"unlocked_{r}_{i}", upgrades.roles[r].upgrades[i].unlocked ? 1 : 0);
-                PlayerPrefs.SetInt($"purchased_{r}_{i}", upgrades.roles[r].upgrades[i].purchased ? 1 : 0);
-                PlayerPrefs.SetInt($"blocked_{r}_{i}", upgrades.roles[r].upgrades[i].blocked ? 1 : 0);
+                level = playerStats.level,
+                currentXp = playerStats.currentXp,
+                atkMetalCount = playerStats.atkMetalCount,
+                defMetalCount = playerStats.defMetalCount,
+                hpMetalCount = playerStats.hpMetalCount,
+                role = playerStats.role,
+                roleChoosen = playerStats.roleChoosen
+            },
+            enemyData = new EnemyData
+            {
+                goldAmt = enemyStats.GoldAmt,
+                adventures = new List<AdventureData>()
+            },
+            slotUpgradeData = new SlotUpgradeData
+            {
+                autoBuyerLevel = blacksmithToggleManager.AutoBuyerLvl
+            },
+            prestigeData = new PrestigeData
+            {
+                baseXP = prestige.baseXP,
+                prestigeMulti = prestige.prestigeMulti
+            },
+            skillPointData = new SkillPointData
+            {
+                roles = new List<RoleData>()
+            },
+            bestiaryData = new BestiaryData(),
+            alchemyData = new AlchemyData
+            {
+                alchAutoBuyerLevel = (int)alchemy.AlchAutoBuyerLvl,
+                alchemyBars = new List<AlchemyBarData>(),
+                potionAmounts = new List<int>()
+            },
+            adventureData = new AdventureData
+            {
+                tempAdventureNumber = enemyStats.tempAdventureNumber
+            }
+        };
 
+        foreach (var entry in bestiary.entry)
+        {
+            saveData.bestiaryData.defeatedEntries.Add(entry.IsDefeated);
+        }
+
+        foreach (var slot in slotUpgrades.slotStructs)
+        {
+            saveData.slotUpgradeData.slotLevels.Add(slot.slotLvl);
+        }
+
+
+        // Add adventures
+        foreach (var adventure in enemyStats.adventures)
+        {
+            saveData.enemyData.adventures.Add(new AdventureData
+            {
+                isCompleted = adventure.isCompleted,
+                prevCompleted = adventure.prevCompleted
+            });
+        }
+
+        // Add roles and upgrades
+        foreach (var role in upgrades.roles)
+        {
+            RoleData roleData = new RoleData
+            {
+                roleUnlocked = role.roleUnlocked,
+                upgrades = new List<UpgradeData>()
+            };
+
+            foreach (var upgrade in role.upgrades)
+            {
+                roleData.upgrades.Add(new UpgradeData
+                {
+                    metalCount = upgrade.metalCount,
+                    unlocked = upgrade.unlocked,
+                    purchased = upgrade.purchased,
+                    blocked = upgrade.blocked
+                });
+            }
+
+            saveData.skillPointData.roles.Add(roleData);
+        }
+
+        // Add alchemy bars
+        foreach (var bar in alchemy.alchemyProgressBar)
+        {
+            saveData.alchemyData.alchemyBars.Add(new AlchemyBarData
+            {
+                alchLvl = bar.alchLvl,
+                alchXP = bar.alchXP,
+                alchMaxXp = bar.alchMaxXp,
+                rwd = bar.rwd,
+                limit = bar.limit,
+                totalTime = bar.totalTime,
+                baseTime = bar.baseTime
+            });
+        }
+
+        SaveGame(saveData);
+    }
+
+
+    public void Load()
+    {
+        SaveData saveData = LoadGame();
+
+        if (saveData == null)
+        {
+            Debug.LogWarning("No save data found! Starting a new game.");
+            return;
+        }
+
+        // Load Player Data
+        playerStats.level = saveData.playerData.level;
+        playerStats.currentXp = saveData.playerData.currentXp;
+        playerStats.atkMetalCount = saveData.playerData.atkMetalCount;
+        playerStats.defMetalCount = saveData.playerData.defMetalCount;
+        playerStats.hpMetalCount = saveData.playerData.hpMetalCount;
+        playerStats.role = saveData.playerData.role;
+        playerStats.roleChoosen = saveData.playerData.roleChoosen;
+
+        // Load Enemy Data
+        enemyStats.GoldAmt = saveData.enemyData.goldAmt;
+        for (int i = 0; i < saveData.enemyData.adventures.Count; i++)
+        {
+            enemyStats.adventures[i].isCompleted = saveData.enemyData.adventures[i].isCompleted;
+            enemyStats.adventures[i].prevCompleted = saveData.enemyData.adventures[i].prevCompleted;
+        }
+
+        // Load Slot Upgrades
+        // Load Slot Levels from saved data
+        if (saveData.slotUpgradeData.slotLevels.Count > 0)
+        {
+            for (int i = 0; i < slotUpgrades.slotStructs.Length; i++)
+            {
+                if (i < saveData.slotUpgradeData.slotLevels.Count)
+                {
+                    slotUpgrades.slotStructs[i].slotLvl = saveData.slotUpgradeData.slotLevels[i];
+                    slotUpgrades.UpdateSlotText(i);
+                }
+            }
+            blacksmithToggleManager.AutoBuyerLvl = saveData.slotUpgradeData.autoBuyerLevel;
+        }
+        // Load Prestige Data
+        prestige.baseXP = saveData.prestigeData.baseXP;
+        prestige.prestigeMulti = saveData.prestigeData.prestigeMulti;
+
+        // Load Skill Points
+        for (int i = 0; i < saveData.skillPointData.roles.Count; i++)
+        {
+            upgrades.roles[i].roleUnlocked = saveData.skillPointData.roles[i].roleUnlocked;
+
+            for (int j = 0; j < saveData.skillPointData.roles[i].upgrades.Count; j++)
+            {
+                upgrades.roles[i].upgrades[j].metalCount = saveData.skillPointData.roles[i].upgrades[j].metalCount;
+                upgrades.roles[i].upgrades[j].unlocked = saveData.skillPointData.roles[i].upgrades[j].unlocked;
+                upgrades.roles[i].upgrades[j].purchased = saveData.skillPointData.roles[i].upgrades[j].purchased;
+                upgrades.roles[i].upgrades[j].blocked = saveData.skillPointData.roles[i].upgrades[j].blocked;
             }
         }
-        SaveInt("Role", playerStats.role);
-        SaveInt("RoleChoosen", playerStats.roleChoosen);
-    }
 
-    public void SkillPointLoad()
-    {
-        //UPGRADES LOAD
-        for (int r = 0; r < upgrades.roles.Length; r++)
+        // Load Bestiary
+        if (saveData.bestiaryData.defeatedEntries.Count > 0)
         {
-            upgrades.roles[r].roleUnlocked = LoadInt($"RoleUnlocked{r}", 0);
-            for (int i = 0; i < upgrades.roles[r].upgrades.Count; i++)
+            for (int i = 0; i < bestiary.entry.Length; i++)
             {
-                upgrades.roles[r].upgrades[i].metalCount = LoadFloat($"UpgradeMetalCount_{r}_{i}", 0);
-                upgrades.roles[r].upgrades[i].unlocked = PlayerPrefs.GetInt($"unlocked_{r}_{i}", 0) == 1;
-                upgrades.roles[r].upgrades[i].purchased = PlayerPrefs.GetInt($"purchased_{r}_{i}", 0) == 1;
-                upgrades.roles[r].upgrades[i].blocked = PlayerPrefs.GetInt($"blocked_{r}_{i}", 0) == 1;
+                if (i < saveData.bestiaryData.defeatedEntries.Count)
+                {
+                    bestiary.entry[i].IsDefeated = saveData.bestiaryData.defeatedEntries[i];
+                }
             }
         }
-        playerStats.role = LoadInt("Role", 0);
-        playerStats.roleChoosen = LoadInt("RoleChoosen", 0);
-    }
 
-    public void AdventureSave()
-    {
-        //ADVENTURE SAVE
-        for (int i = 0; i < enemyStats.adventures.Length; i++)
+
+        // Load Alchemy System
+        alchemy.AlchAutoBuyerLvl = saveData.alchemyData.alchAutoBuyerLevel;
+        alchemy.AlchAutoBuyerAmt = alchemy.AlchAutoBuyerLvl;
+        for (int i = 0; i < saveData.alchemyData.potionAmounts.Count; i++)
         {
-            SaveInt($"AdventureIsCompleted_{i}", enemyStats.adventures[i].isCompleted);
-            SaveInt($"AdventurePrevCompleted_{i}", enemyStats.adventures[i].prevCompleted);
-        }
-        SaveInt("AdventureIndex", enemyStats.tempAdventureNumber);
-
-    }
-
-    public void AdventureLoad()
-    {
-        //ADVENTURE LOAD
-        for (int i = 0; i < enemyStats.adventures.Length; i++)
-        {
-            enemyStats.adventures[i].isCompleted = LoadInt($"AdventureIsCompleted_{i}", 0);
-            enemyStats.adventures[i].prevCompleted = LoadInt($"AdventurePrevCompleted_{i}", 0);
-        }
-        enemyStats.tempAdventureNumber = LoadInt("AdventureIndex", 0);
-    }
-
-    public void BookSave()
-    {
-        //BOOK SAVES
-        for (int i = 0; i < bestiary.entry.Length; i++)
-        {
-            SaveInt($"IsDefeated_{i}", bestiary.entry[i].IsDefeated);
-        }
-    }
-
-    public void BookLoad()
-    {
-        //BOOK LOAD
-        for (int i = 0; i < bestiary.entry.Length; i++)
-        {
-            bestiary.entry[i].IsDefeated = LoadInt($"IsDefeated_{i}", 0);
-        }
-    }
-
-    public void AlchemySave()
-    {
-        SaveInt("AlchAutoBuyerLvl", alchemyTimers.AlchAutoBuyerLvl);
-
-        for (int i = 0; i < alchemyTimers.alchemyProgressBar.Length; i++)
-        {
-            var alchBar = alchemyTimers.alchemyProgressBar;
-            SaveInt($"alchLvl{i}", alchBar[i].alchLvl);
-            SaveFloat($"alchXP{i}", alchBar[i].alchXP);
-            SaveInt($"alchRwd{i}", alchBar[i].rwd);
-            SaveInt($"alchLimit{i}", alchBar[i].limit);
+            alchemy.potion[i].PotionAmt = saveData.alchemyData.potionAmounts[i];
         }
 
-        for (int i = 0; i < alchemyTimers.potion.Length; i++)
+
+        for (int i = 0; i < saveData.alchemyData.alchemyBars.Count; i++)
         {
-            SaveInt($"potionAmt{i}", alchemyTimers.potion[i].PotionAmt);
+            alchemy.alchemyProgressBar[i].alchLvl = saveData.alchemyData.alchemyBars[i].alchLvl;
+            alchemy.alchemyProgressBar[i].alchXP = saveData.alchemyData.alchemyBars[i].alchXP;
+            alchemy.alchemyProgressBar[i].alchMaxXp = saveData.alchemyData.alchemyBars[i].alchMaxXp;
+            alchemy.alchemyProgressBar[i].rwd = saveData.alchemyData.alchemyBars[i].rwd;
+            alchemy.alchemyProgressBar[i].limit = saveData.alchemyData.alchemyBars[i].limit;
+            alchemy.alchemyProgressBar[i].totalTime = saveData.alchemyData.alchemyBars[i].totalTime;
+            alchemy.alchemyProgressBar[i].baseTime = saveData.alchemyData.alchemyBars[i].baseTime;
+
+            alchemy.alchemyProgressBar[i].timeLeft = alchemy.alchemyProgressBar[i].totalTime;
+            alchemy.UpdateTimerText(i);
         }
 
-    }
+        //Load Adventure Data
+        enemyStats.tempAdventureNumber = saveData.adventureData.tempAdventureNumber;
 
-    public void AlchemyLoad()
-    {
 
-        alchemyTimers.AlchAutoBuyerLvl = LoadInt("AlchAutoBuyerLvl", 0);
-        alchemyTimers.AlchAutoBuyerAmt = alchemyTimers.AlchAutoBuyerLvl;
-        for (int i = 0; i < alchemyTimers.alchemyProgressBar.Length; i++)
-        {
-            var alchBar = alchemyTimers.alchemyProgressBar;
-
-            alchBar[i].alchLvl = LoadInt($"alchLvl{i}", 1);
-            alchBar[i].alchXP = LoadFloat($"alchXP{i}", 0f);
-            alchBar[i].rwd = LoadInt($"alchRwd{i}", 0);
-            alchBar[i].limit = LoadInt($"alchLimit{i}", 10);
-
-            alchBar[i].totalTime = alchBar[i].baseTime / alchBar[i].alchLvl;
-
-        }
-
-        for (int i = 0; i < alchemyTimers.potion.Length; i++)
-        {
-            alchemyTimers.potion[i].PotionAmt = LoadInt($"potionAmt{i}", 0);
-        }
-
-        alchemyTimers.UpdateAlchText();
+        playerStats.UpdateStatText();
+        alchemy.UpdateAlchText();
+        prestige.UpdatePrestigeText();
+        prestige.UpdatePostPrestigeText();
+        Debug.Log("Game loaded successfully.");
     }
 }
