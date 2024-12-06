@@ -16,6 +16,8 @@ public class SaveManager : MonoBehaviour
     public Bestiary bestiary;
     public BlacksmithToggleManager blacksmithToggleManager;
     private string saveFilePath;
+
+    public GameObject roleSelect;
     // Static instance of the SaveManager
 
     private void Awake()
@@ -42,6 +44,7 @@ public class SaveManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Save file not found!");
+            roleSelect.SetActive(true);
             return new SaveData(); // Return default values
         }
     }
@@ -146,7 +149,6 @@ public class SaveManager : MonoBehaviour
                 rwd = bar.rwd,
                 limit = bar.limit,
                 totalTime = bar.totalTime,
-                baseTime = bar.baseTime
             });
         }
 
@@ -243,8 +245,8 @@ public class SaveManager : MonoBehaviour
             alchemy.alchemyProgressBar[i].rwd = saveData.alchemyData.alchemyBars[i].rwd;
             alchemy.alchemyProgressBar[i].limit = saveData.alchemyData.alchemyBars[i].limit;
             alchemy.alchemyProgressBar[i].totalTime = saveData.alchemyData.alchemyBars[i].totalTime;
-            alchemy.alchemyProgressBar[i].baseTime = saveData.alchemyData.alchemyBars[i].baseTime;
 
+            alchemy.alchemyProgressBar[i].totalTime = alchemy.alchemyProgressBar[i].baseTime / alchemy.alchemyProgressBar[i].alchLvl;
             alchemy.alchemyProgressBar[i].timeLeft = alchemy.alchemyProgressBar[i].totalTime;
             alchemy.UpdateTimerText(i);
         }

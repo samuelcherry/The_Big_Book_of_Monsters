@@ -1,5 +1,4 @@
-using JetBrains.Annotations;
-using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +22,7 @@ public class ProgressBarTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SetStageAnimation();
         playerAtkTime = playerStats.speedArray[playerStats.level - 1];
         enemyAtkTime = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1].enemySpeed;
 
@@ -78,7 +78,7 @@ public class ProgressBarTimer : MonoBehaviour
 
     public void SetStageAnimation()
     {
-        enemyAnimator.SetInteger("Stage", enemyStats.Stage - 1);
+        enemyAnimator.SetInteger("Stage", enemyStats.Stage);
     }
 
     private void PlayerAttack()
@@ -91,5 +91,10 @@ public class ProgressBarTimer : MonoBehaviour
     {
         enemyAnimator.SetTrigger("EnemyAttack");
         animator.SetTrigger("Hurt");
+    }
+
+    public void Restart()
+    {
+        enemyAnimator.SetTrigger("Restart");
     }
 }

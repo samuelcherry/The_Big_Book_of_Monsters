@@ -87,5 +87,5 @@ public class AlchemyData
 [Serializable]
 public class AlchemyBarData
 {
-    public float alchLvl, alchXP, alchMaxXp, rwd, limit, totalTime, baseTime;
+    public float alchLvl, alchXP, alchMaxXp, rwd, limit, totalTime;
 }

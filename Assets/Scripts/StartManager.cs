@@ -14,6 +14,7 @@ public class StartScreenManager : MonoBehaviour
     public GameObject mainGame;
     public MenuManager menuManager;
     public Inventory playerInventory;
+    public BuffManager buffManager;
 
     public int roleCost = 5;
 
@@ -24,6 +25,7 @@ public class StartScreenManager : MonoBehaviour
         roleSelect.SetActive(false);
         mainGame.SetActive(false);
         playerInventory.LoadInventory();
+        buffManager.activeBuffnames.Clear();
 
 
         if (enemyStats.adventures[enemyStats.tempAdventureNumber] != enemyStats.currentAdventure)
@@ -44,7 +46,6 @@ public class StartScreenManager : MonoBehaviour
         startScreen.SetActive(false);
         mainGame.SetActive(false);
         saveManager.Load();
-        Debug.Log("START MANAGER LOAD");
         prestige.UpdatePrestigeText();
         upgrades.roles[0].roleUnlocked = 1;
 

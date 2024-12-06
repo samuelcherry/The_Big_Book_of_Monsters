@@ -7,6 +7,7 @@ public class ResetManager : MonoBehaviour
 {
     public AlchemyTimers alchemyTimers;
     public Bestiary bestiary;
+    public BuffManager buffManager;
     public EnemyStats enemyStats;
     public PlayerStats playerStats;
     public Prestige prestige;
@@ -97,6 +98,13 @@ public class ResetManager : MonoBehaviour
             slotUpgrades.UpdateSlotText(i);
         }
 
+
+        //BUFF RESET
+        buffManager.activeBuffs.Clear();
+        buffManager.activeBuffnames.Clear();
+
+
+
         playerInventory.LoadInventory();
         saveManager.Save();
 
@@ -169,6 +177,7 @@ public class ResetManager : MonoBehaviour
             alchemyTimers.alchemyProgressBar[i].rwd = 0;
             alchemyTimers.alchemyProgressBar[i].alchLvlBar.value = 0;
             alchemyTimers.alchemyProgressBar[i].progressBar.value = 0;
+            alchemyTimers.alchemyProgressBar[i].totalTime = alchemyTimers.alchemyProgressBar[i].baseTime;
             alchemyTimers.alchemyProgressBar[i].timeLeft = alchemyTimers.alchemyProgressBar[i].totalTime;
             alchemyTimers.alchemyProgressBar[i].limit = 10;
             alchemyTimers.alchemyProgressBar[i].alchMaxXp = 20;
@@ -184,9 +193,6 @@ public class ResetManager : MonoBehaviour
         //INVENTORY RESET
         playerInventory.ClearInventory();
         listToText.PopulateText(playerInventory.sampleList);
-
-
-
 
         SoftReset();
     }

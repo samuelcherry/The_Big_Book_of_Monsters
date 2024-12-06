@@ -243,7 +243,6 @@ public class EnemyStats : MonoBehaviour
         playerStats.UpdateHpText();
     }
 
-    [System.Obsolete]
     public void ClickDamage()
     {
         if (Stage <= 0 || Stage > currentAdventure.maxStages) return;  // Bounds check
@@ -300,14 +299,6 @@ public class EnemyStats : MonoBehaviour
         UpdateEnemyStatsText();
     }
 
-
-
-    public void DropTable()
-    {
-        drop = "";
-    }
-
-
     public void IncreaseStage()
     {
         if (Stage < currentAdventure.enemies.Length)
@@ -316,10 +307,10 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HandleButtonCooldown());
 
             Stage++;
+            progressBarTimer.SetStageAnimation();
             playerStats.UpdateStats();
             playerStats.FullHeal();
             playerStats.UpdateStatText();
-            progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
         }
@@ -333,10 +324,10 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HandleButtonCooldown());
 
             Stage--;
+            progressBarTimer.SetStageAnimation();
             playerStats.UpdateStats();
             playerStats.FullHeal();
             playerStats.UpdateStatText();
-            progressBarTimer.SetStageAnimation();
             ResetEnemies();
             UpdateEnemyStatsText();
         }
@@ -345,7 +336,7 @@ public class EnemyStats : MonoBehaviour
     private IEnumerator HandleButtonCooldown()
     {
         isButtonPressed = true;
-        yield return new WaitForSeconds(0.1f);  // Wait for 0.1 seconds (adjust as needed)
+        yield return new WaitForSeconds(1f);  // Wait for 0.1 seconds (adjust as needed)
         isButtonPressed = false;
         Debug.Log("CoolDown");
     }
@@ -368,6 +359,7 @@ public class EnemyStats : MonoBehaviour
             ResetEnemies();
             Stage = 1;
             progressBarTimer.SetStageAnimation();
+            progressBarTimer.Restart();
             adventureConfirmMenus[0].Menu.SetActive(false);
             prestige.PrestigeHero();
         }
@@ -375,6 +367,7 @@ public class EnemyStats : MonoBehaviour
     public void CancelConfirm()
     {
         adventureConfirmMenus[0].Menu.SetActive(false);
+        tempAdventureNumber = currentAdventure.adventureId;
     }
 
     public void UpdateEnemyStatsText()

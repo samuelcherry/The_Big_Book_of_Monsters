@@ -33,10 +33,26 @@ public class Upgrades : MonoBehaviour
 
     public Roles[] roles;
 
+    void Start()
+    {
+        for (int r = 0; r < roles.Length; r++)
+        {
+            // Loop through the upgrades for the current role
+            for (int i = 0; i < roles[r].upgrades.Count; i++)
+            {
+                roles[r].upgrades[i].skillPointSlider.value = roles[r].upgrades[i].metalCount / roles[r].upgrades[i].metalMax;
+            }
+        }
+    }
+
     void Update()
     {
         UpgradeLocks();
     }
+
+
+
+
     public void UpgradeLocks()
     {
         // Loop through each role in the roles array
@@ -45,6 +61,7 @@ public class Upgrades : MonoBehaviour
             // Loop through the upgrades for the current role
             for (int i = 0; i < roles[r].upgrades.Count; i++)
             {
+                roles[r].upgrades[i].skillPointSlider.value = roles[r].upgrades[i].metalCount / roles[r].upgrades[i].metalMax;
                 var upgrade = roles[r].upgrades[i]; // Get the current upgrade for the role
                 // Check the player's level and unlock upgrades based on the conditions
                 if (playerStats.level >= 5)
@@ -81,6 +98,7 @@ public class Upgrades : MonoBehaviour
                 }
             }
         }
+
     }
 
 

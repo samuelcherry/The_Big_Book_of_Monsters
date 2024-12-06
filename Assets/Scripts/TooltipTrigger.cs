@@ -6,7 +6,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private Tooltip tooltip;
     public SlotUpgrades slotUpgrades;
     public Upgrades upgrades;
+
+    [TextArea(3, 10)]
     public string upgradeDescription;
+
     string tooltipMessage;
     public int roleIndex;
     public int upgradeIndex;

@@ -348,11 +348,13 @@ public class AlchemyTimers : MonoBehaviour
     {
         PotionRecipe recipe = potionRecipes[index];
         var itemDefinition = playerInventory.masterItemList.Find(item => item.name == recipe.potionName);
+        var inventoryItem = playerInventory.sampleList.Find(item => item.name == recipe.potionName);
         bool hasAllIngredients = true;
 
-        foreach (var ingredient in recipe.ingredients) //Check if they have the ingredients
+        // Check if player has all required ingredients
+        foreach (var ingredient in recipe.ingredients)
         {
-            if (!playerInventory.HasItem(ingredient.name, ingredient.quantity)) //if not RETURN;
+            if (!playerInventory.HasItem(ingredient.name, ingredient.quantity)) // If not, return
             {
                 Debug.Log($"Missing required ingredient: {ingredient.name}");
                 hasAllIngredients = false;
@@ -364,31 +366,29 @@ public class AlchemyTimers : MonoBehaviour
             }
         }
 
-        if (hasAllIngredients) //they have all the ingredients
+        // Only proceed if player has all ingredients
+        if (hasAllIngredients)
         {
-            Debug.Log($"Has all ingredients");
-            foreach (var ingredient in recipe.ingredients)
+            if (inventoryItem == null || inventoryItem.quantity < 99)
             {
-                var ingredientList = playerInventory.sampleList.Find(item => item.name == ingredient.name);
-                ingredientList.quantity -= ingredient.quantity;
-
-                if (ingredientList.quantity <= 0)
+                // Subtract ingredients
+                foreach (var ingredient in recipe.ingredients)
                 {
-                    playerInventory.sampleList.Remove(ingredientList);
-                    Debug.Log($"{ingredient.name} was used up and removed from inventory.");
+                    var ingredientList = playerInventory.sampleList.Find(item => item.name == ingredient.name);
+                    ingredientList.quantity -= ingredient.quantity;
+
+                    if (ingredientList.quantity <= 0)
+                    {
+                        playerInventory.sampleList.Remove(ingredientList);
+                        Debug.Log($"{ingredient.name} was used up and removed from inventory.");
+                    }
                 }
-            }
-
-            if (itemDefinition != null)
-            {
-                Debug.Log("TEST");
                 playerInventory.AddItem(itemDefinition.name, 1, itemDefinition.icon);
+                saveManager.Save();
             }
-
-            saveManager.Save();
+            return;
         }
     }
-
     public void BrewGeneric()
     {
         Inventory.InventoryItem genericPotion = inventory.sampleList.Find(item => item.name == "Generic Potion");
@@ -412,7 +412,7 @@ public class AlchemyTimers : MonoBehaviour
             else
             {
                 alchemyProgressBar[i].lvlText.text = "Lvl: MAX";
-                alchemyProgressBar[i].progressBar.value = 1;
+                alchemyProgressBar[i].progressBar.value = 0;
             }
         }
     }

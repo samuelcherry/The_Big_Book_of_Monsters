@@ -535,6 +535,7 @@ public class Inventory : MonoBehaviour
 
         // Restore the original attack value
         playerStats.defBuff = 0;
+        buffManager.activeBuffnames.Remove(buffName);
 
         Debug.Log("Def potion effect has worn off.");
     }
@@ -547,6 +548,7 @@ public class Inventory : MonoBehaviour
         // Restore the original attack value
         playerStats.spdBuff = 1;
         progressBarTimer.playerAtkTime *= amt;
+        buffManager.activeBuffnames.Remove(buffName);
         playerStats.UpdateStats();
 
         Debug.Log("Def potion effect has worn off.");
