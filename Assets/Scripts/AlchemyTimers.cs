@@ -34,8 +34,9 @@ public class AlchemyTimers : MonoBehaviour
     [Serializable]
     public struct Potions
     {
-        public int PotionAmt, PotionMax, PotionStrenght, PotionReq;
-        public TMP_Text PotionAmtText, PotionInvText;
+        public string potionName;
+        public Sprite potionSprite;
+        public TMP_Text PotionAmtText;
     }
 
     public class PotionRecipe
@@ -58,7 +59,7 @@ public class AlchemyTimers : MonoBehaviour
     public AlchemyProgressBars[] alchemyProgressBar = new AlchemyProgressBars[5];
     public Toggle[] alchemyToggles = new Toggle[5];
 
-    public Potions[] potion = new Potions[3];
+    public Potions[] potion = new Potions[8];
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -89,13 +90,6 @@ public class AlchemyTimers : MonoBehaviour
             UpdateTimerText(i);
             UpdateAlchText();
         }
-
-        for (int i = 0; i < potion.Length; i++)
-        {
-            potion[i].PotionAmt = 0;
-            potion[i].PotionMax = 5;
-        }
-
         AlchAutoBuyerAmt = AlchAutoBuyerLvl;
 
         //CREATING RECIPES
@@ -330,18 +324,6 @@ public class AlchemyTimers : MonoBehaviour
             AlchPrestigeCostText.text = "Prestige Cost: MAX ";
         }
         alchemyProgressBar[index].alchLvlBar.value = alchemyProgressBar[index].alchXP / alchemyProgressBar[index].alchMaxXp;
-
-        //POTION TEXT
-
-        if (index < potion.Length && potion[index].PotionAmtText != null)
-        {
-            potion[index].PotionAmtText.text = potion[index].PotionAmt + "/" + potion[index].PotionMax;
-        }
-        if (index < potion.Length && potion[index].PotionInvText != null)
-        {
-            potion[index].PotionInvText.text = potion[index].PotionAmt + "";
-        }
-
     }
 
     public void BrewPotion(int index)
@@ -398,7 +380,6 @@ public class AlchemyTimers : MonoBehaviour
             alchemyProgressBar[4].rwd -= 1;
             playerInventory.AddItem("Generic Potion", 1, genericPotionIcon);
         }
-
     }
 
     public void UpdateAlchText()
@@ -416,6 +397,24 @@ public class AlchemyTimers : MonoBehaviour
             }
         }
     }
+
+    public void UpdatePotionAmtText()
+    {
+        for (int i = 0; i < potion.Length; i++)
+        {
+            Inventory.InventoryItem existingItem = inventory.sampleList.Find(item => item.name == potion[i].potionName);
+            if (existingItem != null)
+            {
+                potion[i].PotionAmtText.text = existingItem.quantity.ToString();
+            }
+            else
+            {
+                potion[i].PotionAmtText.text = "0";
+            }
+        }
+
+    }
+
 
 }
 

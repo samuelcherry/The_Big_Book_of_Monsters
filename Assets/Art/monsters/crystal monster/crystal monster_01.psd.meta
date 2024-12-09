@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: fd27372a7bed8a8458844378fb36a58c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6720260831145064214
+    second: crystal monster_01_0
+  - first:
+      213: 5757211724383047995
+    second: crystal monster_01_1
+  - first:
+      213: 3633586535024887981
+    second: crystal monster_01_2
+  - first:
+      213: 1950655843996966407
+    second: crystal monster_01_3
+  - first:
+      213: -88206096963399723
+    second: crystal monster_01_4
+  - first:
+      213: -2079880968647314265
+    second: crystal monster_01_5
+  - first:
+      213: 5130853102040868833
+    second: crystal monster_01_6
+  - first:
+      213: -201219079745227417
+    second: crystal monster_01_7
+  - first:
+      213: -4407193435520308118
+    second: crystal monster_01_8
+  - first:
+      213: 3361965066549155681
+    second: crystal monster_01_9
+  - first:
+      213: -6952431052505436056
+    second: crystal monster_01_10
+  - first:
+      213: -1179062585524419609
+    second: crystal monster_01_11
+  - first:
+      213: 87925003035879365
+    second: crystal monster_01_12
+  - first:
+      213: -1669728624965345620
+    second: crystal monster_01_13
+  - first:
+      213: -1988846387215695386
+    second: crystal monster_01_14
+  - first:
+      213: 721022095856728802
+    second: crystal monster_01_15
+  - first:
+      213: 5208190520292375022
+    second: crystal monster_01_16
+  - first:
+      213: 4897455900811841338
+    second: crystal monster_01_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crystal monster_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6177f56de99234d50800000000000000
+      internalID: 6720260831145064214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b31d0907f89b5ef40800000000000000
+      internalID: 5757211724383047995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da80dc8b3b71d6230800000000000000
+      internalID: 3633586535024887981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70e9a74b72f121b10800000000000000
+      internalID: 1950655843996966407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df097ba501a6cef0800000000000000
+      internalID: -88206096963399723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a47ea85747c223e0800000000000000
+      internalID: -2079880968647314265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 192
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e76bdd36b3743740800000000000000
+      internalID: 5130853102040868833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76531c52050253df0800000000000000
+      internalID: -201219079745227417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_8
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 128
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6ce063bbe086d2c0800000000000000
+      internalID: -4407193435520308118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 128
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1675fe26a6918ae20800000000000000
+      internalID: 3361965066549155681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_10
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 128
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 860b4061bc0048f90800000000000000
+      internalID: -6952431052505436056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e30ddd43d023afe0800000000000000
+      internalID: -1179062585524419609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c724dc035f583100800000000000000
+      internalID: 87925003035879365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_13
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae93a589aee3d8e0800000000000000
+      internalID: -1669728624965345620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e180398fb23664e0800000000000000
+      internalID: -1988846387215695386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_15
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea7fbaa6c5910a00800000000000000
+      internalID: 721022095856728802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_16
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9759c1fa5374840800000000000000
+      internalID: 5208190520292375022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal monster_01_17
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 64
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3fc707a13247f340800000000000000
+      internalID: 4897455900811841338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 706a22584e226384e82d0ba052e9c696
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crystal monster_01_0: 6720260831145064214
+      crystal monster_01_1: 5757211724383047995
+      crystal monster_01_10: -6952431052505436056
+      crystal monster_01_11: -1179062585524419609
+      crystal monster_01_12: 87925003035879365
+      crystal monster_01_13: -1669728624965345620
+      crystal monster_01_14: -1988846387215695386
+      crystal monster_01_15: 721022095856728802
+      crystal monster_01_16: 5208190520292375022
+      crystal monster_01_17: 4897455900811841338
+      crystal monster_01_2: 3633586535024887981
+      crystal monster_01_3: 1950655843996966407
+      crystal monster_01_4: -88206096963399723
+      crystal monster_01_5: -2079880968647314265
+      crystal monster_01_6: 5130853102040868833
+      crystal monster_01_7: -201219079745227417
+      crystal monster_01_8: -4407193435520308118
+      crystal monster_01_9: 3361965066549155681
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

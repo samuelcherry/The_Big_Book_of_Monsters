@@ -22,6 +22,7 @@ public class BuffManager : MonoBehaviour
         if (activeBuffnames.Contains(buffName))
         {
             Debug.LogError($"Buff '{buffName}' is already active and cannot be added again.");
+            Debug.Log(activeBuffnames.Count);
             return;
         }
 

@@ -43,6 +43,7 @@ public class ResetManager : MonoBehaviour
         //ENEMY STATS RESET
 
         enemyStats.Stage = 1;
+        progressBarTimer.SetStageAnimation();
         enemyStats.GoldAmt = 0;
         var currentEnemy = enemyStats.currentAdventure.enemies[enemyStats.Stage - 1];
 

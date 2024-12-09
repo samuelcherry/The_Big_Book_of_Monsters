@@ -411,12 +411,12 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "Atk Potion 1":
-                    AtkPotion(item.name, 0.5f);
+                    AtkPotion1(item.name, 0.5f);
                     item.quantity--;
                     break;
 
                 case "Def Potion 1":
-                    DefPotion(item.name, 0.5f);
+                    DefPotion1(item.name, 0.5f);
                     item.quantity--;
                     break;
 
@@ -431,12 +431,12 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "Atk Potion 2":
-                    AtkPotion(item.name, 1f);
+                    AtkPotion2(item.name, 1f);
                     item.quantity--;
                     break;
 
                 case "Def Potion 2":
-                    DefPotion(item.name, 1f);
+                    DefPotion2(item.name, 1f);
                     item.quantity--;
                     break;
 
@@ -475,66 +475,114 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void AtkPotion(string buffName, float amt)
+    public void AtkPotion1(string buffName, float amt)
     {
 
         // Increase attack value
-        buffManager.activeBuffnames.Add(buffName);
-        playerStats.atkBuff += playerStats.atk * amt;
+        playerStats.atkBuff1 += playerStats.atk * amt;
         playerStats.UpdateStats();
 
-        buffManager.AddBuff("Atk Buff", attackBuffIcon, 60f);
+        buffManager.AddBuff(buffName, attackBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
-        StartCoroutine(RemoveAtkPotionEffect(buffName, 60f));
+        StartCoroutine(RemoveAtkPotion1Effect(buffName, 60f, amt));
     }
 
-    public void DefPotion(string buffName, float amt)
+    public void AtkPotion2(string buffName, float amt)
     {
+
         // Increase attack value
-        buffManager.activeBuffnames.Add(buffName);
-        playerStats.defBuff += playerStats.def * amt;
+        playerStats.atkBuff2 += playerStats.atk * amt;
         playerStats.UpdateStats();
 
-        buffManager.AddBuff("Def Buff", defBuffIcon, 60f);
+        buffManager.AddBuff(buffName, attackBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
-        StartCoroutine(RemoveDefPotionEffect(buffName, 60f));
+        StartCoroutine(RemoveAtkPotion2Effect(buffName, 60f, amt));
+    }
+
+
+
+    public void DefPotion1(string buffName, float amt)
+    {
+        // Increase attack value
+        playerStats.defBuff1 += playerStats.def * amt;
+        playerStats.UpdateStats();
+
+        buffManager.AddBuff(buffName, defBuffIcon, 60f);
+
+        // Start coroutine to remove the effect after 10 seconds
+        StartCoroutine(RemoveDef1PotionEffect(buffName, 60f, amt));
+    }
+    public void DefPotion2(string buffName, float amt)
+    {
+        // Increase attack value
+        playerStats.defBuff1 += playerStats.def * amt;
+        playerStats.UpdateStats();
+
+        buffManager.AddBuff(buffName, defBuffIcon, 60f);
+
+        // Start coroutine to remove the effect after 10 seconds
+        StartCoroutine(RemoveDef2PotionEffect(buffName, 60f, amt));
     }
 
     public void SpdPotion(string buffName, float amt)
     {
         // Increase attack value
-        buffManager.activeBuffnames.Add(buffName);
-        playerStats.spdBuff = amt;
+        playerStats.spdBuff1 = 1;
         progressBarTimer.playerAtkTime /= amt;
         playerStats.UpdateStats();
 
-        buffManager.AddBuff("Spd Buff", spdBuffIcon, 60f);
+        buffManager.AddBuff(buffName, spdBuffIcon, 60f);
 
         // Start coroutine to remove the effect after 10 seconds
         StartCoroutine(RemoveSpdPotionEffect(buffName, 60f, amt));
     }
 
-    private IEnumerator RemoveAtkPotionEffect(string buffName, float duration)
+    private IEnumerator RemoveAtkPotion1Effect(string buffName, float duration, float amt)
     {
         // Wait for the duration
         yield return new WaitForSeconds(duration);
 
         // Restore the original attack value
-        playerStats.atkBuff = 0;
+        playerStats.atkBuff1 = 0;
         buffManager.activeBuffnames.Remove(buffName);
 
         Debug.Log("Atk potion effect has worn off.");
     }
 
-    private IEnumerator RemoveDefPotionEffect(string buffName, float duration)
+    private IEnumerator RemoveAtkPotion2Effect(string buffName, float duration, float amt)
     {
         // Wait for the duration
         yield return new WaitForSeconds(duration);
 
         // Restore the original attack value
-        playerStats.defBuff = 0;
+        playerStats.atkBuff2 = 0;
+        buffManager.activeBuffnames.Remove(buffName);
+
+        Debug.Log("Atk potion effect has worn off.");
+    }
+
+
+    private IEnumerator RemoveDef1PotionEffect(string buffName, float duration, float amt)
+    {
+        // Wait for the duration
+        yield return new WaitForSeconds(duration);
+
+        // Restore the original attack value
+        playerStats.defBuff1 = 0;
+        buffManager.activeBuffnames.Remove(buffName);
+
+        Debug.Log("Def potion effect has worn off.");
+    }
+
+    private IEnumerator RemoveDef2PotionEffect(string buffName, float duration, float amt)
+    {
+        // Wait for the duration
+        yield return new WaitForSeconds(duration);
+
+        // Restore the original attack value
+        playerStats.defBuff2 = 0;
         buffManager.activeBuffnames.Remove(buffName);
 
         Debug.Log("Def potion effect has worn off.");
@@ -546,7 +594,7 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Restore the original attack value
-        playerStats.spdBuff = 1;
+        playerStats.spdBuff1 -= amt;
         progressBarTimer.playerAtkTime *= amt;
         buffManager.activeBuffnames.Remove(buffName);
         playerStats.UpdateStats();

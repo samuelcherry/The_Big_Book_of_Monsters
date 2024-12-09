@@ -6,18 +6,22 @@ using System.Collections.Generic;
 
 public class SaveManager : MonoBehaviour
 {
-    public PlayerStats playerStats;
-    public EnemyStats enemyStats;
-    public SlotUpgrades slotUpgrades;
-    public Prestige prestige;
     public AlchemyTimers alchemy;
-    public SlotUpgrades skillPointSystem;
-    public Upgrades upgrades;
     public Bestiary bestiary;
     public BlacksmithToggleManager blacksmithToggleManager;
-    private string saveFilePath;
-
+    public BuffManager buffManager;
+    public EnemyStats enemyStats;
+    public PlayerStats playerStats;
+    public Prestige prestige;
     public GameObject roleSelect;
+    private string saveFilePath;
+    public SlotUpgrades skillPointSystem;
+    public SlotUpgrades slotUpgrades;
+    public Upgrades upgrades;
+
+
+
+
     // Static instance of the SaveManager
 
     private void Awake()
@@ -231,10 +235,6 @@ public class SaveManager : MonoBehaviour
         // Load Alchemy System
         alchemy.AlchAutoBuyerLvl = saveData.alchemyData.alchAutoBuyerLevel;
         alchemy.AlchAutoBuyerAmt = alchemy.AlchAutoBuyerLvl;
-        for (int i = 0; i < saveData.alchemyData.potionAmounts.Count; i++)
-        {
-            alchemy.potion[i].PotionAmt = saveData.alchemyData.potionAmounts[i];
-        }
 
 
         for (int i = 0; i < saveData.alchemyData.alchemyBars.Count; i++)
@@ -251,8 +251,15 @@ public class SaveManager : MonoBehaviour
             alchemy.UpdateTimerText(i);
         }
 
+        //Load Buffs
+        buffManager.activeBuffnames.Clear();
+        Debug.Log("active buff count " + buffManager.activeBuffnames.Count);
+        buffManager.activeBuffs.Clear();
+
         //Load Adventure Data
         enemyStats.tempAdventureNumber = saveData.adventureData.tempAdventureNumber;
+        enemyStats.adventureAnimators[enemyStats.tempAdventureNumber].gameObject.SetActive(true);
+        enemyStats.backgrounds[enemyStats.tempAdventureNumber].SetActive(true);
 
 
         playerStats.UpdateStatText();

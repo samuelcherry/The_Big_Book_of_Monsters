@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 
 
@@ -18,10 +19,13 @@ public class EnemyStats : MonoBehaviour
     public Slider enemyHpBar;
     public Popup popup;
 
+    public Animator[] adventureAnimators;
+    public GameObject[] backgrounds;
+
     private bool isButtonPressed;
     public string drop;
     public float GoldAmt;
-    public int Stage, tempAdventureNumber;
+    public int Stage, tempAdventureNumber, tempConfirm;
 
     [System.Serializable]
     public struct AdventureConfirmMenu
@@ -152,6 +156,9 @@ public class EnemyStats : MonoBehaviour
 
 
 
+
+
+
         adventures[0] = new Adventure("Goblin Camp", 5, adventure1Enemies, 1, 0);
         adventures[1] = new Adventure("Mushroom Farm", 10, adventure2Enemies, 2, 0);
         adventures[2] = new Adventure("Mystic Cave", 15, adventure3Enemies, 3, 0);
@@ -159,6 +166,17 @@ public class EnemyStats : MonoBehaviour
 
 
         currentAdventure = adventures[tempAdventureNumber];
+
+
+        foreach (var animator in adventureAnimators)
+        {
+            animator?.gameObject.SetActive(false);
+        }
+
+        foreach (var background in backgrounds)
+        {
+            background?.SetActive(false);
+        }
     }
 
 
@@ -346,18 +364,35 @@ public class EnemyStats : MonoBehaviour
         if (tempAdventureNumber != adventureIndex)
         {
             adventureConfirmMenus[0].Menu.SetActive(true);
-            tempAdventureNumber = adventureIndex;
+
+            tempConfirm = adventureIndex;
         }
     }
 
     public void ConfirmAdventure()
     {
-
+        tempAdventureNumber = tempConfirm;
         if (adventures[tempAdventureNumber] != currentAdventure)
         {
             currentAdventure = adventures[tempAdventureNumber];
             ResetEnemies();
             Stage = 1;
+
+            //Clear animation arrays and set to current adventure
+            foreach (var animator in adventureAnimators)
+            {
+                animator?.gameObject.SetActive(false);
+            }
+            adventureAnimators[tempAdventureNumber].gameObject.SetActive(true);
+
+            foreach (var background in backgrounds)
+            {
+                background?.SetActive(false);
+            }
+            backgrounds[tempAdventureNumber].SetActive(true);
+
+
+
             progressBarTimer.SetStageAnimation();
             progressBarTimer.Restart();
             adventureConfirmMenus[0].Menu.SetActive(false);
@@ -367,7 +402,7 @@ public class EnemyStats : MonoBehaviour
     public void CancelConfirm()
     {
         adventureConfirmMenus[0].Menu.SetActive(false);
-        tempAdventureNumber = currentAdventure.adventureId;
+        tempAdventureNumber = currentAdventure.adventureId - 1;
     }
 
     public void UpdateEnemyStatsText()

@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     public Slider xpBar, hpBar;
 
     public int level, atkMetalCount, defMetalCount, hpMetalCount, role, roleChoosen;
-    public float currentXp, maxXP, currentHp, maxHp, atk, def, atkBuff, defBuff, spdBuff;
+    public float currentXp, maxXP, currentHp, maxHp, atk, def, atkBuff1, atkBuff2, defBuff1, defBuff2, spdBuff1, spdBuff2;
 
 
     public int[] xpArray;
@@ -194,18 +194,25 @@ public class PlayerStats : MonoBehaviour
         atk = atkArray[level - 1];
         atk += slotUpgrade[1].slotAmtArr[slotUpgrade[1].slotLvl];
         atk += atkArray[level - 1] * (atkMetalCount * upgrades.atkPassiveMulti);
-        atk += atkBuff;
+        atk += atkBuff1;
+        atk += atkBuff2;
 
         def = defArray[level - 1];
         def += slotUpgrade[2].slotAmtArr[slotUpgrade[2].slotLvl];
         def += defArray[level - 1] * (defMetalCount * upgrades.defPassiveMulti);
-        def += defBuff;
+        def += defBuff1;
+        def += defBuff2;
 
-        if (spdBuff < 1)
+        if (spdBuff1 < 1)
         {
-            spdBuff = 1;
+            spdBuff1 = 1;
         }
-        progressBarTimer.playerAtkTime = speedArray[level - 1] / spdBuff;
+        if (spdBuff2 < 1)
+        {
+            spdBuff2 = 1;
+        }
+        progressBarTimer.playerAtkTime = speedArray[level - 1] / spdBuff1;
+
 
         for (int r = 0; r < upgrades.roles.Length; r++)
         {
